@@ -1,0 +1,392 @@
+<% include header.ejs %>
+
+<div ng-controller="generalChampion">
+        <div class="champion-area" ng-controller="championData">
+          <div class="container-fluid">
+            <div class="row">
+              
+              <div class="col-xs-12 col-sm-3 col-md-2 champion-profile">
+                <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/champion/<%= champion.key %>.png" class="champ-img"/>
+                <h1><%= champion.name %></h1>
+                <ul>
+
+                  <% for(var i=0; i<champion.roles.length; i++) {%>
+                    <li <%if (champion.role === champion.roles[i].role) { %> class="selected-role"<% } %>>
+                      <a href="/champion/<%= champion.key %>/<%= champion.roles[i].title %>">
+                        <h3>
+                          <%= champion.roles[i].title %>
+                        </h3>
+                      </a>
+                      <small> <%= champion.roles[i].percentPlayed %>% Pick Rate </small>
+                      <small style="display:block"> <%= champion.roles[i].games %> Analyzed This Patch </small>
+                    </li>
+                  <% } %>
+                    
+                </ul>
+              </div>
+
+              <div class="col-xs-12 col-sm-9 col-md-4 champion-statistics">
+                <h2 style="margin-bottom:8px">Statistics</h2>
+                <table class="table table-striped">
+                  <thead>
+                    <tr >
+                      <th style="width:37%"><span class="text-indent">Type</span></th>
+                      <th style="width:21%">Average</th>
+                      <th style="width:21%">Role Placement</th>
+                      <th style="width:21%">Placement Change this patch</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <% for(var i=0; i<championData.general.length; i++) {%>
+                     <tr>
+                      <td><span class="text-indent"><%= championData.general[i].title %></span></td>
+                      <td><%= championData.general[i].val %><% if(i < 3){ %>%<%}%></td>
+                      <td>  
+                        <strong class="<%if (championData.general[i].position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>">
+                          <%= championData.general[i].position %> 
+                        </strong>
+                      <small>/ <%= generalRole.totalNumber %></small>
+                      </td>
+                      <td>
+                        <span class="glyphicon <%if (championData.general[i].change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.general[i].change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.general[i].change === 0) { %> same-position <% } %>">
+                        </span>
+                       <%- Math.abs(championData.general[i].change) %></td>
+                      </tr>
+
+                    <% } %>
+
+                    <tr>
+                      <td colspan=2><span class="text-indent">Overall Placement</span></td>
+                      <td style="text-align:center"><strong class="<%if (championData.overallPosition.position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>"><%= championData.overallPosition.position %> </strong><small>/ <%= generalRole.totalNumber %></small></td>
+                      <td><span class="glyphicon <%if (championData.overallPosition.change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.overallPosition.change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.overallPosition.change === 0) { %> same-position <% } %>">
+                        </span> <%- Math.abs(championData.overallPosition.change) %></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="row">
+
+                  <div class="col-xxs-12 col-xs-6">
+                    <h2 class="champion-stats">Most Frequent Summoners</h2>
+                    <div class="summoner-wrapper">
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.mostGames.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner1.name %>"/></a>
+                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.mostGames.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner2.name %>"/></a>                 
+                    <div class="summoner-text"><strong><%= championData.summoners.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.mostGames.games %></strong> Games</div>
+                    </div>
+                  </div>
+
+                  <div class="col-xxs-12 col-xs-6">
+                    <h2 class="champion-stats">Highest Win Percent Summoners</h2>
+                    <div class="summoner-wrapper">
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner1.name %>"/></a> 
+                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner2.name %>"/></a>                
+                    <div class="summoner-text"><strong><%= championData.summoners.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.highestWinPercent.games %></strong> Games</div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+
+             
+              <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+                <h2>Overall Champion Matrix</h2>
+                <div class="middle-graphic-holder">
+                  <canvas tc-chartjs-radar chart-data="overallComparison.data" chart-options="overallComparison.settings" chart-legend="generalComparison" id="canvas2" height="242" width="339"></canvas>
+                </div>
+                <span class="glyphicon glyphicon-question-sign" style="position:absolute;top:35%;left:49%" tooltip="Strong performances are further from the center of the graph. Therefore, a lower number of deaths will be further from the center."></span>
+                <div tc-chartjs-legend chart-legend="generalComparison"></div>
+                <h2 class="champion-stats">Damage Composition</h2>
+                <div class="clearfix middle-graphic-holder damage-dealt">
+                  <div class="physical-dmg" style="width:<%= championData.dmgComposition.physicalDmg %>%"></div>
+                  <div class="magic-dmg" style="left:<%= championData.dmgComposition.physicalDmg %>%;width:<%= championData.dmgComposition.magicDmg %>%"></div>
+                  <div class="true-dmg" style="right:0;width:<%= championData.dmgComposition.trueDmg %>%"></div>
+                </div>
+                <ul class="radar-legend">
+                  <li><span class="physical-dmg"></span>Physical</li>
+                  <li><span class="magic-dmg"></span>Magic</li>
+                  <li><span class="true-dmg"></span>True</li>
+                </ul>
+
+                <h2 class="champion-stats">Most Frequent Build</h2>
+                <div class="build-wrapper">
+                  <% for(var k=0; k<championData.items.mostGames.items.length; k++) {%>
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.mostGames.items[k].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/item/<%= championData.items.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.items.mostGames.items[k].name %>"/></a>
+                  <% } %>
+                 
+                  <div class="build-text"><strong><%= championData.items.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.items.mostGames.games %></strong> Games</div>
+                </div>
+
+                <h2 class="champion-stats" >Highest Win Percent Build</h2>
+                <div class="build-wrapper">
+                  <% for(var l=0; l<championData.items.highestWinPercent.items.length; l++) {%>
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/item/<%= championData.items.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.items.highestWinPercent.items[l].name %>"/></a>
+                  <% } %>
+                 
+                  <div class="build-text"><strong><%= championData.items.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.items.highestWinPercent.games %></strong> Games</div>
+                </div>
+              </div>
+
+              <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+                <h2 class="line-chart-header">Gold by Game Length</h2>
+                <div class="chart-holder">
+                  <canvas tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" chart-legend="goldComparison" id="canvas" height="150" width="300"></canvas>
+                </div>
+                <div tc-chartjs-legend chart-legend="goldComparison"></div>
+                <h2 class="line-chart-header">Win Rate by Game Length</h2>
+                <div class="chart-holder">
+                  <canvas tc-chartjs-line chart-data="gameLength.data" chart-options="gameLength.settings" id="canvas" height="150" width="300"></canvas>
+                </div>
+                <h2 class="line-chart-header">Win Rate By Patch</h2>
+                <div class="chart-holder">
+                  <canvas tc-chartjs-line chart-data="patchRate.data" chart-options="patchRate.settings" id="canvas3" height="150" width="300"></canvas>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+      <div class="matchups">
+        <div class="container-fluid"  ng-controller="matchupData">
+            <div class="matchup-wrapper">
+              <div class="matchup-settings">
+                <span>Display matchups with at least</span> 
+                <select class="minimum-games" ng-model="minGames">
+                  <option value="0">Show All</option>
+                  <option value="100">100+</option>
+                  <option value="250">250+</option>
+                  <option value="500">500+</option>
+                  <option value="1000">1000+</option>
+                  <option value="10000">10000+</option>
+                </select>
+                <span>games.</span>
+              </div>
+              <span class="glyphicon glyphicon-question-sign" tooltip="The coloured bars below show <%= champion.name %>'s performance in the matchup."></span>
+            </div>
+            <div class="row counter-row">
+              <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
+                <h2><%= champion.roleTitle %> Champions that Counter <%= champion.name %></h2>
+                <filters matchup-type="matchups"></filters>
+                <matchups order="" matchup-type="matchups"></matchups>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <h2><%= champion.roleTitle %> Champions that <%= champion.name %> Counters</h2>
+                <filters matchup-type="matchups"></filters>
+                <matchups order="-" matchup-type="matchups"></matchups>
+              </div>
+            </div>
+          
+           <%if (champion.role === 'DUO_SUPPORT' || champion.role === 'DUO_CARRY') { %>
+            <div class="row counter-row">
+              <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
+                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Counter <%= champion.name %></h2>
+                <filters matchup-type="adcsupport"></filters>
+                <matchups order="" matchup-type="adcsupport"></matchups>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that <%= champion.name %> Counters</h2>
+                <filters matchup-type="adcsupport"></filters>
+                <matchups order="-" matchup-type="adcsupport"></matchups>
+              </div>
+            </div>
+          
+
+            <div class="row counter-row">
+              <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
+              
+                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise poorly with <%= champion.name %></h2>
+                <filters matchup-type="synergy"></filters>
+                <matchups order="" matchup-type="synergy"></matchups>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise well with <%= champion.name %></h2>
+                <filters matchup-type="synergy"></filters>
+                <matchups order="-" matchup-type="synergy"></matchups>
+              </div>
+            </div>
+
+            <% } %>
+
+          </div>
+
+      </div> 
+
+        <div class="champion-area">
+          <div class="container-fluid">
+            <div class="row counter-row">
+              <div class="col-xs-12 col-md-6">
+                <h2> Advertising Support </h2>    
+              </div>
+              <div class="col-xs-12 col-md-6" ng-controller="reddit">
+                <h2> Recent <%= champion.name %> Threads on Reddit </h2>
+
+                <div ng-repeat="thread in redditData | filter:enoughUpvotes | limitTo:5" ng-controller="redditThread">
+                  <div class="container-reddit">
+                  <div class="reddit-titles">
+                    <h4><a href="{{thread.data.url}}" target="_blank">{{thread.data.title}}</a></h4>
+                    <span ng-click="toggleSummary()" class="reddit-summary">View Summary <span ng-hide="summaryVisible">&#x25B6</span><span ng-show="summaryVisible">&#x25BC</span></span>
+                    <a href="{{thread.data.url}}" target="_blank" class="reddit-comments">{{thread.data.num_comments}} comments.</a>
+                     <small class="reddit-date">Created on <strong>{{thread.data.created * 1000 | date:'d MMMM yyyy'}}</strong></small>
+                   </div>
+                  <div ng-show="summaryVisible" class="reddit-summary-area">
+                     <div ng-bind-html="thread.data.selftext_html | to_trusted"></div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Templates -->
+<script type="text/ng-template" id="filters.html">
+  <div class="clearfix">
+    <div class="search-sorter">
+      <input class="matchupSearch" type="text" ng-model="search[matchupType].name" ng-model-options="{debounce: 30}" placeholder="Search By Name" />
+    </div>
+    <div ng-click="saveSort('statScore')" class="stat-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'statScore'}">
+      Statistical Rating
+    </div>
+    <div ng-click="saveSort('userScore')" class="user-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'userScore'}">
+      User Rating
+    </div>
+    <div ng-click="saveSort('overallScore')" class="overall-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'overallScore'}">
+      Overall Rating
+    </div>
+  </div>
+</div>
+</script>
+
+
+
+  <script type="text/ng-template" id="matchups.html">
+
+<div ng-repeat="matchup in filtered[matchupType] = (allMatchups[matchupType] | orderBy:[order+sortExpression.sortBy,order+'overallScore'] | startsWith:search[matchupType].name | filter:matchAmount) | limitTo:itemsLimit(matchupType,order)" ng-controller="specificMatchup" class="animate-repeat" ng-class="{'left': order === '', 'right': order === '-'}">  
+            <div class="row counter-matchups">
+
+              <div class="matchup-champion-info">
+                <a href="/champion/{{matchup.key}}/{{generateChampUrl(matchupType)}}">
+                  <div class="matchup-champion {{matchup.key}}"></div>
+                  <h3>{{matchup.name}}</h3>
+                </a>
+                 <span class="glyphicon glyphicon-stats view-more-stats" tooltip="View Indepth Stats" ng-click="toggleMatchup(matchupType, matchup.key)"></span>
+                <span class="glyphicon glyphicon-comment view-more-comment" tooltip="View Discussion" ng-click="matchupDiscussion(matchupType, matchup.key, 'toggle', order)"></span>
+                <a href="{{generateMatchupUrl(matchup.key, matchupType)}}"><span class="glyphicon glyphicon-link view-linked-page" tooltip="View Matchup Page"></span></a>
+              </div>
+              
+                <div class="matchup-stats">
+                <div class="progress">
+                            <strong class="statistic-rating" ng-show="false">{{matchup.statScore}} / 10 </strong>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ng-class="{'above-average': matchup.statScore > 6, 'below-average': matchup.statScore < 4, 'average': matchup.statScore >= 4 && matchup.statScore <= 6}" ng-style="{'width': matchup.statScore*10+'%'}">
+                  </div>
+                </div>
+                <small><strong>{{matchup.games}}</strong> Games </small>
+                </div>
+                <div class="champ-user-rating">
+                  <div class="clearfix">
+                    <div class="total-rating" ng-class="{'above-average': matchup.userScore > 3.5, 'below-average': matchup.userScore < 2.5, 'average': matchup.userScore >= 2.5 && matchup.userScore <= 3.5}"> <strong>{{matchup.userScore}}</strong>
+                  </div>
+                  <ul class="user-rating" ng-controller="matchupRating">
+                    <li ng-repeat="rate in ratingLength" ng-class="{'selected': rate === displayRating(matchup.key, champion.key, champion.role, matchupType)}" ng-click="addRating(rate, matchup.key, champion.key, champion.role, matchupType)"></li>
+                  </ul>
+                  </div>
+                  
+                  <small> <strong>{{matchup.ratings}}</strong> Ratings </small>
+                </div>
+
+              <div class="overall-score-rating">
+                <div class="progress overall-score">
+                            <strong class="statistic-rating" ng-show="false">{{matchup.overallScore}} / 15 </strong>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ng-class="{'above-average': matchup.overallScore > 9, 'below-average': matchup.overallScore < 6, 'average': matchup.overallScore >= 6 && matchup.overallScore <= 9}" ng-style="{'width': matchup.overallScore*6.66+'%'}">
+                  </div>
+                </div>
+
+                </div>
+                </div>
+            
+
+            <div class="row" ng-show="matchupType === 'matchups'">
+              <div class="col-xxs-12 col-xs-6">
+                  <h4 ng-show="showMatchups && matchupRetrieved"> Matchup Performance </h4>
+                  <div class="middle-graphic-holder">
+                    <canvas ng-show="showMatchups && matchupRetrieved" tc-chartjs-radar chart-data="champComparison.data" chart-options="champComparison.settings" chart-legend="championMatchup" height="400" width="560"></canvas>
+                  </div>
+              </div>
+              <div class="col-xxs-12 col-xs-6">
+                <h4 ng-show="showMatchups && matchupRetrieved"> Gold Over Time </h4>
+                <div class="middle-graphic-holder">
+                  <canvas ng-show="showMatchups && matchupRetrieved" tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" height="400" width="560"> </canvas>
+                </div>
+
+              </div>
+              <div ng-show="showMatchups && matchupRetrieved" tc-chartjs-legend chart-legend="championMatchup"></div>
+            </div>
+
+           
+
+            <div class="row chart-area matchup-stat-area" ng-show="showMatchups">
+
+              <div class="loading-symbol" ng-hide="matchupRetrieved">Loading...</div>
+             <div class="col-xs-12 col-sm-12 col-md-12" ng-show="matchupRetrieved">
+              <div class="matchup-title-width matchup-div-header"></div><div class="matchup-champ-img-width matchup-div-header">
+                <div class="matchup-champion matchup-table {{champion.key}}"></div>
+                </div><div class="matchup-champ-img-width matchup-div-header">
+                <div class="matchup-champion matchup-table {{matchup.key}}"></div>
+                </div>
+                 <table class="table table-striped">
+              <thead>
+                
+                <tr>
+                  <th class="matchup-title-width" >Type</th>
+                  <th class="matchup-values-width">Matchup Average</th>
+                  <th class="matchup-values-width">Change</th>
+                  <th class="matchup-values-width">Matchup Average</th>
+                  <th class="matchup-values-width">Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="matchupInfo in matchup.specificMatchup.general">
+                  <td class="matchup-title-width">{{matchupInfo.title}}</td>
+
+                  <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key, true)].val}}<span ng-show="$index===0">%</span></td>
+                  <td class="matchup-values-width"> <span class="glyphicon {{matchupInfo.title}}-title" ng-class="{'glyphicon-arrow-up': matchupInfo[champtype(matchup.key, true)].change > (0), 'glyphicon-arrow-down': matchupInfo[champtype(matchup.key, true)].change < 0}"></span>{{Math.abs(matchupInfo[champtype(matchup.key, true)].change)}}</td>
+                  <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key)].val}}<span ng-show="$index===0">%</span></td>
+                  <td class="matchup-values-width"><span class="glyphicon {{matchupInfo.title}}-title" ng-class="{'glyphicon-arrow-up': matchupInfo[champtype(matchup.key)].change > (0), 'glyphicon-arrow-down': matchupInfo[champtype(matchup.key)].change < 0}"></span>{{Math.abs(matchupInfo[champtype(matchup.key)].change)}}</small></td>
+                  
+                </tr>
+              </tbody>
+            </table>
+               
+                </div>
+             </div>
+<div class="row" ng-show="matchupDiscussion(matchupType, matchup.key, 'bind', order)">
+            <disqus disqus-shortname="matchup" disqus-identifier="{{generateId(matchupType, matchup.key)}}" disqus-url="http://localhost:3000/{{generateId(matchupType, matchup.key)}}" disqus-id="{{matchupDiscussion(matchupType, matchup.key, 'id', order)}}" ready-to-bind="{{matchupDiscussion(matchupType, matchup.key, 'bind', order)}}" ></disqus>
+            </div>
+             </div>
+             
+            </div>
+          </div>
+          <div class="show-more" ng-show="hasMoreItemsToShow(matchupType,order)" ng-click="showMoreItems(matchupType,order)"><small>{{itemsLimit(matchupType,order)}} / {{matchupsCount(matchupType)}} - </small><strong>Show More</strong> </div>
+</script> 
+    <% include scripts.ejs %>   
+    <script>
+      matchupData.champion = <%- JSON.stringify(champion) %>;
+      matchupData.generalRole = <%- JSON.stringify(generalRole) %>;
+      matchupData.championData = <%- JSON.stringify(championData) %>;
+      matchupData.championVotes = <%- JSON.stringify(championVotes) %>;
+      /* Has general data on the chosen champion */
+    </script>
+    <script src="/dist/js/dirDisqus.js"></script>
+    <script src="/js/championPage.js"></script>
+
+<% include footer.ejs %>

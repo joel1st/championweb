@@ -1,0 +1,92 @@
+<% include header.ejs %>
+
+<div class="large-header">
+<h2>Champion.gg analyzes millions of League of Legend Diamond/Master/Challenger games to provide champion statistics, matchups and counters.</h2>
+</div>
+
+
+<div class="container-fluid"  id="home">
+	<div class="row summary">
+		<div class="col-xss-12 col-sm-6 summary-side" style="padding-left: 30px;border-right: 1px solid rgb(39, 46, 48);">
+			<span class="champion-name champion-list-header">Current Patch <span class="summary-highlight">Champion Ranking Changes</span></span>
+			<% for(var x=0;x<summaries.length;x++){ %>
+				<div class="stat-summary-box">
+					<h3><%= summaries[x].title %></h3>
+					<div class="stat-summary-container <%if(x===0){%>first-summary<%}%>">
+						<div class="col-sm-12">
+							<a href="/champion/<%=summaries[x].mostImproved.key%>/<%=summaries[x].title%>">
+							<div class="home-champion <%=summaries[x].mostImproved.key%>" style="zoom:1"></div>
+							<span class="champion-name"><%= summaries[x].mostImproved.name %></span></a>
+							<span class="summary-value"><span class="glyphicon  glyphicon-arrow-up"></span> <%=summaries[x].mostImproved.difference %></span>
+							
+						</div>
+						<div class="col-sm-12 bottom-champ">
+							<a href="/champion/<%=summaries[x].leastImproved.key%>/<%=summaries[x].title%>">
+							<div class="home-champion <%=summaries[x].leastImproved.key%>" style="zoom:1"></div>
+							<span class="champion-name"><%= summaries[x].leastImproved.name %></span></a>
+							<span class="summary-value"><span class="glyphicon  glyphicon-arrow-down"></span> <%=summaries[x].leastImproved.difference %> </span>
+							
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+		<div class="col-xss-12 col-sm-6 summary-side" style="padding-right: 30px;">
+			<span class="champion-name champion-list-header">Highest and Lowest Current Patch <span class="summary-highlight">Win Rates</span></span>
+			<% for(var y=0;y<summaries.length;y++){ %>
+				<div class="stat-summary-box">
+					<h3><%= summaries[y].title %></h3>
+					<div class="stat-summary-container <%if(y===0){%>first-summary<%}%>">
+						<div class="col-sm-12">
+							<a href="/champion/<%=summaries[y].highestWinRate.key%>/<%=summaries[y].title%>">
+							<div class="home-champion <%=summaries[y].highestWinRate.key%>" style="zoom:1"></div>
+								<span class="champion-name"><%= summaries[y].highestWinRate.name %></span>
+							</a>
+							<span class="top-half summary-value"><%= summaries[y].highestWinRate.value %>%</span>
+							
+						</div>
+						<div class="col-sm-12 bottom-champ">
+							<a href="/champion/<%=summaries[y].lowestWinRate.key%>/<%=summaries[y].title%>">
+							<div class="home-champion <%=summaries[y].lowestWinRate.key%>" style="zoom:1"></div>
+								<span class="champion-name"><%= summaries[y].lowestWinRate.name %></span>
+							</a>
+							<span class="bottom-half summary-value"><%= summaries[y].lowestWinRate.value %>%</span>
+							
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+		
+
+	<div class="row" style="margin-top:50px">
+		<span class="champion-name champion-list-header">Choose a champion for <span class="summary-highlight">in-depth statistics</span> and <span class="summary-highlight">counters</span>.</span>
+		<div class="col-md-10" style="margin-top:15px;">
+		<% for(var i=0;i<data.length;i++){ %>
+			<div class="champ-height">
+				<div class="champ-index-img <%= data[i].key %>">
+				<a href="/champion/<%= data[i].key %>">
+				<div class="home-champion <%= data[i].key %>"></div>
+				<span class="champion-name"><%= data[i].name %></span>
+				</a>
+					<% for(var t=0;t<data[i].roles.length;t++){ %>
+						<a href="/champion/<%= data[i].key %>/<%= data[i].roles[t].title %>" style="display:block">
+							<%= data[i].roles[t].title %>
+						</a>
+					<% } %>
+				</div>
+			</div>
+		<% } %>
+		</div>
+		<div class="col-md-2">
+		</div>
+
+
+	</div>
+</div>
+
+<% include scripts.ejs %>
+
+<% include footer.ejs %>

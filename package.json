@@ -1,0 +1,28 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "1.9.2",
+    "compression": "1.2.0",
+    "debug": "2.1.0 ",
+    "ejs": "1.0.0",
+    "express": "4.10.2",
+    "mongoose": "3.8.19",
+    "morgan": "1.5.0 ",
+    "serve-favicon": "2.1.7"
+  },
+  "devDependencies" : {
+    "grunt" :                   "~0.4.0",
+    "grunt-contrib-cssmin":         "*",
+    "grunt-contrib-uglify":         "*",
+    "grunt-contrib-watch":          "*",
+    "grunt-contrib-concat":         "*",
+    "grunt-contrib-jshint":         "*",
+    "grunt-htmlhint":               "*",
+    "matchdep":                     "*"
+  }
+}
