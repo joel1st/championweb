@@ -1432,6 +1432,11 @@ h1.champ2, .victor2{
   background-color:rgba(1,1,1,0.2);padding:12px;margin-top:4px;border:1px solid #333;color:#C7C7C7;
 }
 
+.footer-attr{
+  margin-top:15px;
+  padding: 15px 20%;
+  font-size:0.8em;
+}
 
 div.matchup-champion{
     width: 36px;
