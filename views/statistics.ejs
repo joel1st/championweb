@@ -110,7 +110,6 @@ matchupData.stats = <%- JSON.stringify(data) %>;
      var timeOut = setTimeout(function(){
         $fixedHeader.width($table.width());
        for(var t=0;t<$fixedHeaderTd.length;t++){
-        console.log($originalHeaderTd.eq(0).width());
         $fixedHeaderTd.eq(t).width($originalHeaderTd.eq(t).width());
        }
     },200);
