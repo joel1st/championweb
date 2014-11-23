@@ -65,7 +65,7 @@
 	   	function determineString(word){
 	   		return ((word+"").toLowerCase()).indexOf(prefix.toLowerCase()) === 0 || ((str+"").toLowerCase()).indexOf(prefix.toLowerCase()) === 0;
 	   	}
-	   	console.log(wordSplit.length);
+	   	
 	   	for(var i=0;i<wordSplit.length;i++){
 	   		if(determineString(wordSplit[i])){
 	   			return true;
