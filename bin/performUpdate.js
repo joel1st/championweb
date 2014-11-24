@@ -156,6 +156,7 @@ function compileChampStats(){
 						ratings: matchupData.votes,
 						userScore: matchupData.average1Value
 					});
+					matchupData = null;//free up memory
 					matchupsCompleted++;
 					determineMoreMatchups();
 				});		
@@ -167,6 +168,7 @@ function compileChampStats(){
 		function saveMatchup(d){
 			ChampionVotes.update({champ1: docs[d].key, role:docs[d].role}, voteMatchup[d], {upsert:true}, function(err, numEffected){
 				console.log('vote updated');
+				docs[d] = null; //free up memory
 				championsCompleted++;
 				determineMoreChampions();
 			});
