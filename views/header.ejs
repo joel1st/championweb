@@ -50,4 +50,17 @@
       </div>
     </div>
     <div class="page-content">
-    <noscript>To make the most of this website, we strongly recommend turning JavaScript on! It powers the graphs, data sorting and other cool features!</noscript>
+    <%if (pageData.updating) { %> 
+     <div class="update-happening">
+      <%if (pageData.name === 'champion') { %>
+         We're currently updating the data - You'll be able to vote again soon!
+      <% } %>
+      <%if (pageData.name === 'error') { %>
+        We're currently updating the data - If you're trying to access a page that normally works, it should be up again in a matter of seconds!
+      <% } %>
+      <%if (pageData.name === 'matchups') { %>
+        We're currently updating the data - Vote stats will be available soon! 
+      <% } %>
+      </div>
+    <% } %>
+    <noscript><div class="update-happening">To make the most of this website, we strongly recommend turning JavaScript on! It powers the graphs, data sorting and other cool features!</div></noscript>

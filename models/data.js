@@ -728,6 +728,8 @@
       }
    };
 
+   var updating = (process.env.NODE_ENV === 'updating');
+
    var currentPatch = '4.20.1';
 
    var roleList =  {
@@ -765,6 +767,7 @@
       }
    };
 
+   exports.updating = updating;
    exports.currentPatch = currentPatch;
    exports.champList = champList;
    exports.roleList = roleList;

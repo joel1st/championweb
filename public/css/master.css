@@ -537,7 +537,12 @@ margin-left:3px;
 .navbar-inverse .navbar-nav>li>a {
 color: #D3D3D3;
 }
-
+.update-happening{
+  font-weight: bold;
+  color: #FFA680;
+  text-align: center;
+  margin-top: 15px;
+}
 
 .champion-area{
     border-color: #0F0F0F;

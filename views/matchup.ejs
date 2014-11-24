@@ -17,6 +17,7 @@
         </li>      
     </ul>
     </a>
+    <%if (!pageData.updating) { %> 
     <div class="champ-user-rating">
       Vote:
        <ul class="user-rating" ng-controller="matchupRating" style="margin:auto">
@@ -28,6 +29,7 @@
         <% } %>
         </ul>
     </div>
+    <% } %>
   </div>
   <% } %>
   <div class="col-xs-12 col-sm-6 col-md-8" style="text-align:center">
