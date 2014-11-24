@@ -12,23 +12,24 @@ var ChampionMatchups = require('../models/championMatchup.js');
 
 
 
-ChampionMatchups.find({}, function(err, data){
+ChampionMatchups.find({}, function(err, docs){
 		var votesAggregated = 0;
 		var determineMoreVotes = function(){
-			if(votesAggregated === data.length){
+			if(votesAggregated === docs.length){
 				console.log('vote aggregation completed');
+				docs = null; //free up memory asap
 				compileChampStats();
 			} else {
 				voteAggregator(votesAggregated);
 			}
 		};
 		var voteAggregator = function(index){
-				Votes.update({champ1: data[index].champ1.id, champ2: data[index].champ2.id, role:data[index].role}, { 
+				Votes.update({champ1: docs[index].champ1.id, champ2: docs[index].champ2.id, role:docs[index].role}, { 
 				$pull: { voters: { dateModified: { $lte: Date.now() - 1000*60*60*24*30*2 } } },
 				$setOnInsert: { 
-					champ1: data[index].champ1.id, 
-					champ2: data[index].champ2.id, 
-					role: data[index].role,
+					champ1: docs[index].champ1.id, 
+					champ2: docs[index].champ2.id, 
+					role: docs[index].role,
 					votes: 0,
 					score1Total: 0,
 					score2Total: 0,
@@ -43,9 +44,9 @@ ChampionMatchups.find({}, function(err, data){
 				if(process.env.UPDATES === 'aggregation'){
 					Votes.aggregate([
 						{$match: {
-								champ1: data[index].champ1.id, 
-					 			champ2: data[index].champ2.id, 
-					 			role:data[index].role
+								champ1: docs[index].champ1.id, 
+					 			champ2: docs[index].champ2.id, 
+					 			role:docs[index].role
 						}},
 						{$unwind:"$voters"}, 
 						{$group:{
@@ -63,7 +64,7 @@ ChampionMatchups.find({}, function(err, data){
 						
 						if(results.length){
 							console.log(results);
-							Votes.update({champ1: data[index].champ1.id, champ2: data[index].champ2.id, role:data[index].role}, { 
+							Votes.update({champ1: docs[index].champ1.id, champ2: docs[index].champ2.id, role:docs[index].role}, { 
 								'$set': {
 					                votes: results[0].votes,
 					                score1Total: results[0].score1Total,
