@@ -40,47 +40,52 @@ ChampionMatchups.find({}, function(err, data){
 				if(err){
 					console.log(err);
 				}
-				Votes.aggregate([
-					{$match: {
-							champ1: data[index].champ1.id, 
-				 			champ2: data[index].champ2.id, 
-				 			role:data[index].role
-					}},
-					{$unwind:"$voters"}, 
-					{$group:{
-						_id: "votingAggregation",
-						//current patch
+				if(process.env.UPDATES === 'aggregation'){
+					Votes.aggregate([
+						{$match: {
+								champ1: data[index].champ1.id, 
+					 			champ2: data[index].champ2.id, 
+					 			role:data[index].role
+						}},
+						{$unwind:"$voters"}, 
+						{$group:{
+							_id: "votingAggregation",
+							//current patch
 
-						votes: {$sum:1},
-						score1Total: {$sum: "$voters.vote1"},
-						score2Total: {$sum: "$voters.vote2"},
-						average1Value: {$avg: "$voters.vote1"},
-						average2Value: {$avg: "$voters.vote2"}		
-					}}
-				], function(err, results){
-					if(err){console.log(err);}
-					
-					if(results.length){
-						console.log(results);
-						Votes.update({champ1: data[index].champ1.id, champ2: data[index].champ2.id, role:data[index].role}, { 
-							'$set': {
-				                votes: results[0].votes,
-				                score1Total: results[0].score1Total,
-				                score2Total: results[0].score2Total,
-				                average1Value: results[0].average1Value.toFixed(2),
-				                average2Value: results[0].average2Value.toFixed(2)
-				              }    
-						}, function(err, numEffected){
-							if(err){console.log(err);}
-							console.log('matches found and updated');
+							votes: {$sum:1},
+							score1Total: {$sum: "$voters.vote1"},
+							score2Total: {$sum: "$voters.vote2"},
+							average1Value: {$avg: "$voters.vote1"},
+							average2Value: {$avg: "$voters.vote2"}		
+						}}
+					], function(err, results){
+						if(err){console.log(err);}
+						
+						if(results.length){
+							console.log(results);
+							Votes.update({champ1: data[index].champ1.id, champ2: data[index].champ2.id, role:data[index].role}, { 
+								'$set': {
+					                votes: results[0].votes,
+					                score1Total: results[0].score1Total,
+					                score2Total: results[0].score2Total,
+					                average1Value: results[0].average1Value.toFixed(2),
+					                average2Value: results[0].average2Value.toFixed(2)
+					              }    
+							}, function(err, numEffected){
+								if(err){console.log(err);}
+								console.log('matches found and updated');
+								votesAggregated++;
+								determineMoreVotes();
+							});
+						} else {
 							votesAggregated++;
 							determineMoreVotes();
-						});
-					} else {
-						votesAggregated++;
-						determineMoreVotes();
-					}
-				});
+						}
+					});
+				} else {
+					votesAggregated++;
+					determineMoreVotes();
+				}
 			});
 		};
 		determineMoreVotes();
