@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 "use strict";
-var db = require('./db');
+var db = require('../db');
 var Votes = require('../models/votes.js');
 var ChampionData = require('../models/championData.js');
 var ChampionRoles = require('../models/championRoles.js');
