@@ -1,11 +1,13 @@
 "use strict";
 var express = require('express');
+var data = require('./models/data')
 var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var compress = require('compression');
+
 
 //routes
 var champion = require('./routes/champion');
@@ -16,6 +18,7 @@ var votes = require('./routes/votes');
 var faq = require('./routes/faq');
 var index = require('./routes/index');
 var votes = require('./routes/votes');
+var maintenance = require('./routes/maintenance');
 
 var app = express();
 
@@ -32,6 +35,9 @@ app.use(bodyParser.urlencoded({limit: '2kb', extended: true}));
 app.use(express.static(path.join(__dirname, 'public'), {maxAge:86400000})); //one day
 
 //pages
+if(app.get('env') === 'serverUpdate'){
+  app.get('*', maintenance);
+}
 app.get('/champion/:champ', champion.champion);
 app.get('/champion/:champ/:role', champion.championRole);
 
@@ -65,29 +71,29 @@ if (app.get('env') === 'development') {
           pageData:{
             appName: 'core',
             name:'error',
-            title: 'We got ourselves a problem...' 
+            title: 'We got ourselves a problem...',
+            updating: data.updating
           },
           message: err.message,
           error: err
       });
   });
-}
-
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.statusCode = err.status;
-  res.render('error', {
-      pageData:{
-        appName: 'core',
-        name:'error',
-        title: 'We got ourselves a wild teemo problem...' 
-      },
-      message: err.message,
-      error: {}
+} else {
+  // production error handler
+  // no stacktraces leaked to user
+  app.use(function(err, req, res, next) {
+    res.statusCode = err.status;
+    res.render('error', {
+        pageData:{
+          appName: 'core',
+          name:'error',
+          title: 'We got ourselves a wild teemo problem...',
+          updating: data.updating 
+        },
+        message: err.message,
+        error: {}
+    });
   });
-});
-
+}
 
 module.exports = app;

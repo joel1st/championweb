@@ -11,7 +11,8 @@ var pageData = {
   patch: data.currentPatch,
   appName: 'championPage',
   name:'champion',
-  title: ''
+  title: '',
+  updating: data.updating
 };
 
 exports.champion = function(req, res, next){

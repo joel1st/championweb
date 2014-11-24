@@ -102,7 +102,7 @@
 		  	return localStorageAccess.retrieve('matchupRating');
 		  };
 
-		  var saveRating = function(allData, newData, roles){
+		  var saveRating = function(allData, newData, roles, updateClientObj){
 		  	var sendData = {
 		  		champ1: newData.champs[0],
 		  		champ2: newData.champs[1],
@@ -112,16 +112,23 @@
 		  		champ2Role: roles[1],
 		  		role: newData.role
 		  	};
-		  	console.log(sendData);
 		  	$http.post('/sendmatchup', sendData).
 			  success(function(data, status, headers, config) {
-			  	console.log('messaged recieved');
+			  	if(updateClientObj){
+			  		updateClientRatings(updateClientObj.matchupKey, updateClientObj.rating, updateClientObj.matchType, updateClientObj.previousRating);
+			  	}
 			  	localStorageAccess.save('matchupRating', allData);
 			    // this callback will be called asynchronously
 			    // when the response is available
 			  }).
 			  error(function(data, status, headers, config) {
-			  	console.log('no messaged recieved');
+			  	if(status===404){
+			  		alert('This matchup no longer exists, Chances are we just performed an update and there wasn\'t enough fresh data to continue displaying this matchup.');
+			  	} else if(status===503){
+			  		alert('We\'re currently performing vote updates to the site, voting should be back up soon.');
+			  	} else if(!status){
+			  		alert('Unable to connect to the Champion.gg server! Refresh the page and try again!');
+			  	}
 			    // called asynchronously if an error occurs
 			    // or server returns response with an error status.
 			  });
@@ -204,9 +211,9 @@
 		  	}
 		  	if(previousRating !== rating){
 		  		if(!primaryRole){
-		  			updateClientRatings(matchupKey, rating, matchType, previousRating);
+		  			var updateClientObj = {matchupKey:matchupKey, rating:rating, matchType:matchType, previousRating:previousRating}
 		  		}
-		  		saveRating(currentData, newData, roles); // add function to send to server
+		  		saveRating(currentData, newData, roles, updateClientObj); // add function to send to server
 		  	}
 		  };
 

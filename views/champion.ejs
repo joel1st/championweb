@@ -296,7 +296,11 @@
                     <div class="total-rating" ng-class="{'above-average': matchup.userScore > 3.5, 'below-average': matchup.userScore < 2.5, 'average': matchup.userScore >= 2.5 && matchup.userScore <= 3.5}"> <strong>{{matchup.userScore}}</strong>
                   </div>
                   <ul class="user-rating" ng-controller="matchupRating">
+                   <% if (!pageData.updating) { %> 
                     <li ng-repeat="rate in ratingLength" ng-class="{'selected': rate === displayRating(matchup.key, champion.key, champion.role, matchupType)}" ng-click="addRating(rate, matchup.key, champion.key, champion.role, matchupType)"></li>
+                    <% } else { %>
+                      Updating
+                      <% } %>
                   </ul>
                   </div>
                   
