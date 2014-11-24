@@ -11,25 +11,25 @@ var data = require('../models/data.js');
 var ChampionMatchups = require('../models/championMatchup.js');
 
 
-//memory effecient updates test
-ChampionMatchups.find({}, function(err, docs){
+ChampionMatchups.find({},{champ1:1, champ2:1, role:1}, function(err, docs){
 		var votesAggregated = 0;
-		var determineMoreVotes = function(){
-			if(votesAggregated === docs.length){
+		var docsLength = docs.length
+		function determineMoreVotes(){
+			if(votesAggregated === docsLength){
 				console.log('vote aggregation completed');
 				docs = null; //free up memory asap
 				compileChampStats();
 			} else {
-				voteAggregator(votesAggregated);
+				voteAggregator();
 			}
 		};
-		var voteAggregator = function(index){
-				Votes.update({champ1: docs[index].champ1.id, champ2: docs[index].champ2.id, role:docs[index].role}, { 
+		function voteAggregator(){
+				Votes.update({champ1: docs[votesAggregated].champ1.id, champ2: docs[votesAggregated].champ2.id, role:docs[votesAggregated].role}, { 
 				$pull: { voters: { dateModified: { $lte: Date.now() - 1000*60*60*24*30*2 } } },
 				$setOnInsert: { 
-					champ1: docs[index].champ1.id, 
-					champ2: docs[index].champ2.id, 
-					role: docs[index].role,
+					champ1: docs[votesAggregated].champ1.id, 
+					champ2: docs[votesAggregated].champ2.id, 
+					role: docs[votesAggregated].role,
 					votes: 0,
 					score1Total: 0,
 					score2Total: 0,
@@ -37,58 +37,63 @@ ChampionMatchups.find({}, function(err, docs){
 					average2Value: 3,
 				}
 				
-			}, {upsert:true}, function(err, numEffected){
-				if(err){
-					console.log(err);
-				}
-				if(process.env.UPDATES === 'aggregation'){
-					Votes.aggregate([
-						{$match: {
-								champ1: docs[index].champ1.id, 
-					 			champ2: docs[index].champ2.id, 
-					 			role:docs[index].role
-						}},
-						{$unwind:"$voters"}, 
-						{$group:{
-							_id: "votingAggregation",
-							//current patch
+			}, {upsert:true}, aggregator);
+		};
 
-							votes: {$sum:1},
-							score1Total: {$sum: "$voters.vote1"},
-							score2Total: {$sum: "$voters.vote2"},
-							average1Value: {$avg: "$voters.vote1"},
-							average2Value: {$avg: "$voters.vote2"}		
-						}}
-					], function(err, results){
-						if(err){console.log(err);}
-						
-						if(results.length){
-							console.log(results);
-							Votes.update({champ1: docs[index].champ1.id, champ2: docs[index].champ2.id, role:docs[index].role}, { 
-								'$set': {
-					                votes: results[0].votes,
-					                score1Total: results[0].score1Total,
-					                score2Total: results[0].score2Total,
-					                average1Value: results[0].average1Value.toFixed(2),
-					                average2Value: results[0].average2Value.toFixed(2)
-					              }    
-							}, function(err, numEffected){
-								if(err){console.log(err);}
-								console.log('matches found and updated');
-								votesAggregated++;
-								determineMoreVotes();
-							});
-						} else {
+		function aggregator(err, numEffected){
+			if(err){
+				console.log(err);
+			}
+			if(process.env.UPDATES === 'aggregation'){
+				Votes.aggregate([
+					{$match: {
+							champ1: docs[votesAggregated].champ1.id, 
+				 			champ2: docs[votesAggregated].champ2.id, 
+				 			role:docs[votesAggregated].role
+					}},
+					{$unwind:"$voters"}, 
+					{$group:{
+						_id: "votingAggregation",
+						//current patch
+
+						votes: {$sum:1},
+						score1Total: {$sum: "$voters.vote1"},
+						score2Total: {$sum: "$voters.vote2"},
+						average1Value: {$avg: "$voters.vote1"},
+						average2Value: {$avg: "$voters.vote2"}		
+					}}
+				], function(err, results){
+					if(err){console.log(err);}
+					
+					if(results.length){
+						console.log(results);
+						Votes.update({champ1: docs[votesAggregated].champ1.id, champ2: docs[votesAggregated].champ2.id, role:docs[votesAggregated].role}, { 
+							'$set': {
+				                votes: results[0].votes,
+				                score1Total: results[0].score1Total,
+				                score2Total: results[0].score2Total,
+				                average1Value: results[0].average1Value.toFixed(2),
+				                average2Value: results[0].average2Value.toFixed(2)
+				              }    
+						}, function(err, numEffected){
+							if(err){console.log(err);}
+							console.log('matches found and updated');
+							docs[votesAggregated] = null;
 							votesAggregated++;
 							determineMoreVotes();
-						}
-					});
-				} else {
-					votesAggregated++;
-					determineMoreVotes();
-				}
-			});
-		};
+						});
+					} else {
+						docs[votesAggregated] = null;
+						votesAggregated++;
+						determineMoreVotes();
+					}
+				});
+			} else {
+				docs[votesAggregated] = null;
+				votesAggregated++;
+				determineMoreVotes();
+			}
+		}
 		determineMoreVotes();
 });
 
@@ -96,8 +101,7 @@ ChampionMatchups.find({}, function(err, docs){
 
 
 function compileChampStats(){
-
-	ChampionData.find({}, function(err, docs){
+	ChampionData.find({},{key:1,role:1,matchups:1,adcsupport:1,synergy:1},function(err, docs){
 		if(err){console.log(err);}
 		var championsCompleted = 0;
 		var determineMoreChampions = function(){
@@ -137,7 +141,7 @@ function compileChampStats(){
 		function getAllMatchups(id, d, matchupType, role, callback){
 
 			var matchupsCompleted = 0;
-			var determineMoreMatchups = function(){
+			function determineMoreMatchups(){
 				if(matchupsCompleted === docs[d][matchupType].length){
 					console.log('matchups analyzed!');
 					callback();
