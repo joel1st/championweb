@@ -11,7 +11,7 @@ var data = require('../models/data.js');
 var ChampionMatchups = require('../models/championMatchup.js');
 
 
-
+//memory effecient updates test
 ChampionMatchups.find({}, function(err, docs){
 		var votesAggregated = 0;
 		var determineMoreVotes = function(){
