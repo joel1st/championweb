@@ -22,15 +22,12 @@ module.exports = function(req, res, next){
     	});
 	}	
 
- 	ChampionRoles.find({}, function(err, data){
+ 	ChampionRoles.find({}).sort({'roles.0.games':-1}).exec(function(err, data){
 		if(err){
 			return next(produceError('serverMaintenance', 503));
 		} else if(!data){
 			return next(produceError('serverMaintenance', 503));
 		} else {
-	 		data.sort(function(a,b){
-	 			return b.roles[0].games - a.roles[0].games;
-	 		});
 	 		champData = data;
 	 		if(retrievedYet){
 	 			responseObj();
