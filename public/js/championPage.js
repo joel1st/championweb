@@ -436,27 +436,27 @@ appChampion.controller('specificMatchup', ['$scope', '$http', function($scope, $
         labels: $scope.specificMatchupCharts.championMatrix.labels,
         datasets: [
         
-         
-          {
-            label: matchupData.championList[$scope.champion.key].name,
-            fillColor : "rgba(101, 228, 245, 0.65)",
-            strokeColor : "rgba(101, 228, 245, 1)",
-            pointColor : "rgba(101, 228, 245, 1)",
-            pointStrokeColor : "#fff",
-            pointHighlightFill : "#fff",
-            pointHighlightStroke : "rgba(101, 228, 245, 1)",
-            data:$scope.specificMatchupCharts.championMatrix[determineChamp(0)]
-          },
-           {
-            label: matchupData.championList[$scope.matchup.key].name,
-            fillColor: "rgba(255, 83, 83, 0.55)",
+         {
+            label: 'champ1',
+            fillColor: "rgba(255, 83, 83, 0.48)",
             strokeColor: "rgba(255, 83, 83, 0.99)",
             pointColor: "rgba(255, 83, 83, 0.99)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(255, 83, 83, 0.99)",
             data: $scope.specificMatchupCharts.championMatrix[determineChamp(1)]
+          },
+          {
+            label: 'champ2',
+            fillColor : "rgba(101, 228, 245, 0.48)",
+            strokeColor : "rgba(101, 228, 245, 1)",
+            pointColor : "rgba(101, 228, 245, 1)",
+            pointStrokeColor : "#fff",
+            pointHighlightFill : "#fff",
+            pointHighlightStroke : "rgba(101, 228, 245, 1)",
+            data: $scope.specificMatchupCharts.championMatrix[determineChamp(0)]
           }
+           
         ]
       },
       settings : radarChartSettings
@@ -468,7 +468,7 @@ appChampion.controller('specificMatchup', ['$scope', '$http', function($scope, $
 	        datasets : [
 	          {
 	            label: "champ2",
-	            fillColor: "rgba(255, 83, 83, 0.6)",
+	            fillColor: "rgba(255, 83, 83, 0.48)",
 	            strokeColor: "rgba(255, 83, 83, 0.99)",
 	            pointColor: "rgba(255, 83, 83, 0.99)",
 	            pointStrokeColor: "#fff",
@@ -477,7 +477,7 @@ appChampion.controller('specificMatchup', ['$scope', '$http', function($scope, $
 	            data : $scope.specificMatchupCharts.goldLength[determineChamp(1)]
 	          },{
 	            label: "champ1",
-	            fillColor : "rgba(101, 228, 245, 0.5)",
+	            fillColor : "rgba(101, 228, 245, 0.48)",
 	            strokeColor : "rgba(101, 228, 245, 1)",
 	            pointColor : "rgba(101, 228, 245, 1)",
 	            pointStrokeColor : "#fff",

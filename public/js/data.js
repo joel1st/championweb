@@ -816,7 +816,7 @@ matchupData.championList = {
         datasetFill : true,
         
         //Boolean - Whether to animate the chart
-        animation : true,
+        animation : false,
 
         //Number - Number of animation steps
         animationSteps : 60,
@@ -827,6 +827,7 @@ matchupData.championList = {
       };
 
      var lineChartSettings = {
+          animation : false,
           responsive: true,
           //Boolean - If we show the scale above the chart data     
           scaleOverlay : false,
