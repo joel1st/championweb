@@ -229,11 +229,11 @@
                   <div class="container-reddit">
                   <div class="reddit-titles">
                     <h4><a href="{{thread.data.url}}" target="_blank">{{thread.data.title}}</a></h4>
-                    <span ng-click="toggleSummary()" class="reddit-summary">View Summary <span ng-hide="summaryVisible">&#x25B6</span><span ng-show="summaryVisible">&#x25BC</span></span>
+                    <span ng-click="toggleSummary()" class="reddit-summary">View Summary <span ng-if="!summaryVisible">&#x25B6</span><span ng-if="summaryVisible">&#x25BC</span></span>
                     <a href="{{thread.data.url}}" target="_blank" class="reddit-comments">{{thread.data.num_comments}} comments.</a>
                      <small class="reddit-date">Created on <strong>{{thread.data.created * 1000 | date:'d MMMM yyyy'}}</strong></small>
                    </div>
-                  <div ng-show="summaryVisible" class="reddit-summary-area">
+                  <div ng-if="summaryVisible" class="reddit-summary-area">
                      <div ng-bind-html="thread.data.selftext_html | to_trusted"></div>
                   </div>
                 </div>
@@ -285,7 +285,6 @@
               
                 <div class="matchup-stats">
                 <div class="progress">
-                            <strong class="statistic-rating" ng-show="false">{{matchup.statScore}} / 10 </strong>
                   <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ng-class="{'above-average': matchup.statScore > 6, 'below-average': matchup.statScore < 4, 'average': matchup.statScore >= 4 && matchup.statScore <= 6}" ng-style="{'width': matchup.statScore*10+'%'}">
                   </div>
                 </div>
@@ -309,7 +308,6 @@
 
               <div class="overall-score-rating">
                 <div class="progress overall-score">
-                            <strong class="statistic-rating" ng-show="false">{{matchup.overallScore}} / 15 </strong>
                   <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ng-class="{'above-average': matchup.overallScore > 9, 'below-average': matchup.overallScore < 6, 'average': matchup.overallScore >= 6 && matchup.overallScore <= 9}" ng-style="{'width': matchup.overallScore*6.66+'%'}">
                   </div>
                 </div>
@@ -318,29 +316,32 @@
                 </div>
             
 
-            <div class="row" ng-show="matchupType === 'matchups'">
+            <div class="row" ng-if="matchupType === 'matchups' && showMatchups && matchupRetrieved">
               <div class="col-xxs-12 col-xs-6">
-                  <h4 ng-show="showMatchups && matchupRetrieved"> Matchup Performance </h4>
+                  <h4 ng-if="showMatchups && matchupRetrieved"> Matchup Performance </h4>
                   <div class="middle-graphic-holder">
-                    <canvas ng-show="showMatchups && matchupRetrieved" tc-chartjs-radar chart-data="champComparison.data" chart-options="champComparison.settings" chart-legend="championMatchup" height="400" width="560"></canvas>
+                    <canvas ng-if="showMatchups && matchupRetrieved" tc-chartjs-radar chart-data="champComparison.data" chart-options="champComparison.settings" chart-legend="championMatchup" height="400" width="560"></canvas>
                   </div>
               </div>
               <div class="col-xxs-12 col-xs-6">
-                <h4 ng-show="showMatchups && matchupRetrieved"> Gold Over Time </h4>
+                <h4 ng-if="showMatchups && matchupRetrieved"> Gold Over Time </h4>
                 <div class="middle-graphic-holder">
-                  <canvas ng-show="showMatchups && matchupRetrieved" tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" height="400" width="560"> </canvas>
+                  <canvas ng-if="showMatchups && matchupRetrieved" tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" height="400" width="560"> </canvas>
                 </div>
 
               </div>
-              <div ng-show="showMatchups && matchupRetrieved" tc-chartjs-legend chart-legend="championMatchup"></div>
+               <ul class="radar-legend">
+                  <li><span class="magic-dmg"></span>{{champion.name}}</li>
+                  <li><span class="physical-dmg"></span>{{matchup.name}}</li>
+                </ul>
             </div>
 
            
 
-            <div class="row chart-area matchup-stat-area" ng-show="showMatchups">
+            <div class="row chart-area matchup-stat-area" ng-if="showMatchups">
 
-              <div class="loading-symbol" ng-hide="matchupRetrieved">Loading...</div>
-             <div class="col-xs-12 col-sm-12 col-md-12" ng-show="matchupRetrieved">
+              <div class="loading-symbol" ng-if="!matchupRetrieved">Loading...</div>
+             <div class="col-xs-12 col-sm-12 col-md-12" ng-if="matchupRetrieved">
               <div class="matchup-title-width matchup-div-header"></div><div class="matchup-champ-img-width matchup-div-header">
                 <div class="matchup-champion matchup-table {{champion.key}}"></div>
                 </div><div class="matchup-champ-img-width matchup-div-header">
@@ -361,9 +362,9 @@
                 <tr ng-repeat="matchupInfo in matchup.specificMatchup.general">
                   <td class="matchup-title-width">{{matchupInfo.title}}</td>
 
-                  <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key, true)].val}}<span ng-show="$index===0">%</span></td>
+                  <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key, true)].val}}<span ng-if="$index===0">%</span></td>
                   <td class="matchup-values-width"> <span class="glyphicon {{matchupInfo.title}}-title" ng-class="{'glyphicon-arrow-up': matchupInfo[champtype(matchup.key, true)].change > (0), 'glyphicon-arrow-down': matchupInfo[champtype(matchup.key, true)].change < 0}"></span>{{Math.abs(matchupInfo[champtype(matchup.key, true)].change)}}</td>
-                  <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key)].val}}<span ng-show="$index===0">%</span></td>
+                  <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key)].val}}<span ng-if="$index===0">%</span></td>
                   <td class="matchup-values-width"><span class="glyphicon {{matchupInfo.title}}-title" ng-class="{'glyphicon-arrow-up': matchupInfo[champtype(matchup.key)].change > (0), 'glyphicon-arrow-down': matchupInfo[champtype(matchup.key)].change < 0}"></span>{{Math.abs(matchupInfo[champtype(matchup.key)].change)}}</small></td>
                   
                 </tr>
@@ -372,14 +373,14 @@
                
                 </div>
              </div>
-<div class="row" ng-show="matchupDiscussion(matchupType, matchup.key, 'bind', order)">
+<div class="row" ng-if="matchupDiscussion(matchupType, matchup.key, 'bind', order)">
             <disqus disqus-shortname="championgg" disqus-identifier="{{generateId(matchupType, matchup.key)}}" disqus-url="http://champion.gg/{{generateId(matchupType, matchup.key)}}" disqus-id="{{matchupDiscussion(matchupType, matchup.key, 'id', order)}}" ready-to-bind="{{matchupDiscussion(matchupType, matchup.key, 'bind', order)}}" ></disqus>
             </div>
              </div>
              
             </div>
           </div>
-          <div class="show-more" ng-show="hasMoreItemsToShow(matchupType,order)" ng-click="showMoreItems(matchupType,order)"><small>{{itemsLimit(matchupType,order)}} / {{matchupsCount(matchupType)}} - </small><strong>Show More</strong> </div>
+          <div class="show-more" ng-if="hasMoreItemsToShow(matchupType,order)" ng-click="showMoreItems(matchupType,order)"><small>{{itemsLimit(matchupType,order)}} / {{matchupsCount(matchupType)}} - </small><strong>Show More</strong> </div>
 </script> 
     <% include scripts.ejs %>   
     <script>

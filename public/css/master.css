@@ -928,6 +928,13 @@ transition: color 0.15s;
     margin: auto;
     left: 20%;
 }
+.left+.show-more{
+  color:#F17D59;
+}
+.right+.show-more{
+  color:#89f5a2;
+}
+
 .show-more{
 height: 40px;
 text-align: center;
@@ -946,6 +953,10 @@ border-top:none;
     color: white;
     border: 1px solid rgb(27, 31, 37);
 border-top: none;
+}
+
+.show-more:active{
+  background-color: rgb(37, 42, 45);
 }
 
 
@@ -1064,7 +1075,7 @@ width: 29%;text-align:center;
     cursor:pointer;
     padding: 8px 0px;
 }
-.user-sorter:hover, .overall-sorter:hover, .stat-sorter:hover{
+.user-sorter:not(.selected-sorter):hover, .overall-sorter:not(.selected-sorter):hover, .stat-sorter:not(.selected-sorter):hover{
     color:white;
     background-color: rgb(40, 40, 42);
 }
