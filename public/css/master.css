@@ -1399,12 +1399,12 @@ div.home-champion{
 
 .summary h3{
   text-align:center;
-  color:rgba(101, 245, 179, 1);
+  color: rgba(101, 245, 179, 1);
   font-size:1em;
   font-size: 1.4em;
 }
 .bottom-champ{
-margin-top:30px;
+margin-top: 14px;
 }
 .stat-summary-box{
   margin-bottom:25px;
@@ -1412,6 +1412,13 @@ margin-top:30px;
 }
 .stat-summary-box h3{
   text-align:center;
+  padding-bottom: 8px;
+  padding-top: 6px;
+  /* background-color: rgba(25, 29, 32, 1); */
+  border: 1px solid #3F986F;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-transform: uppercase;
 }
 .stat-summary-container{
   text-align:center;
@@ -2376,6 +2383,9 @@ margin-bottom: 15px;
     .large-header{
       margin-top:0px;
       padding:8px 4%;
+    }
+    .large-header h2{
+		font-size:1.5em;
     }
     .champ-height{
      width:24%;
