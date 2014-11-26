@@ -375,8 +375,9 @@ body{
   width:33%;
 }
 .input-group {
-    margin-top:31px;
-          left: 25%;
+    
+          margin: auto;
+          margin-top: 29px;
 }
 .dropdown-search{
   position: relative;
@@ -399,7 +400,18 @@ text-align: center;
 span.text-indent {
 margin-left: 6px;
 }
-
+.first-column{
+  width:37%
+}
+.second-column{
+  width:21%
+}
+.third-column{
+  width:21%
+}
+.fourth-column{
+  width:21%
+}
 .navbar-brand img{
   margin-top:-3px;margin-left: 14px;
 }
@@ -483,7 +495,9 @@ color: white;
 padding: 5px;
 margin-left:3px;
 }
-
+.nav li.first-button{
+  margin-left:0px;
+}
 .navbar-inverse .navbar-nav>li>a {
 color: #D3D3D3;
 }
@@ -2270,6 +2284,9 @@ margin-bottom: 15px;
  }
 
   @media (max-width: 600px) {
+    .nav li.first-button{
+      margin-left:5px;
+    }
     .matchup-wrapper{
       margin-bottom:-30px;
     }
@@ -2367,22 +2384,37 @@ margin-bottom: 15px;
     width: 32%;
     margin-bottom:15px;
     }
+    .first-column, .second-column, .third-column, .fourth-column{
+      width:25%
+    }
+
   }
 
   @media (max-width: 410px) {
+    .nav li.first-button{
+      margin-left:7px;
+    }
     .overall-score-rating{
       padding-left:0px;
       width:22%;
     }
+    .logo-holder img{
+      width:80%;
+    }
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 360px) {
+    .nav li.first-button{
+      margin-left:7px;
+    }
     .overall-score-rating{
       padding-left:0px;
-      float:right;
       width:15%;
     }
     .matchup-stats{
       width:32%;
+    }
+    .nav li {
+    margin-left: 10px;
     }
   }
