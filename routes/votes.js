@@ -16,7 +16,7 @@ module.exports = function(req, res){
   var vote1 = req.body.vote1;
   var vote2 = req.body.vote2;
 
-  if(!championData.updating){
+  if(!championData.core.updating){
 
     if(typeof champ1 === 'number' && typeof champ2 === 'number' && typeof role === 'string' && typeof vote1 === 'number' && typeof vote2 === 'number' && typeof champ1Role === 'string' && typeof champ2Role === 'string'){
 

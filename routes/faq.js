@@ -5,7 +5,7 @@ module.exports = function(req, res){
 
     res.render('faq', {
     	pageData:{
-    		patch: data.currentPatch,
+    		core: data.core,
         	appName: 'core',
         	name:'faq',
         	title: 'All your questions answered here!' 

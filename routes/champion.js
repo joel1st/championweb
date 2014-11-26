@@ -8,11 +8,10 @@ var produceError = require('../logic/produceError.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
 
 var pageData = {
-  patch: data.currentPatch,
   appName: 'championPage',
   name:'champion',
   title: '',
-  updating: data.updating
+  core: data.core
 };
 
 exports.champion = function(req, res, next){

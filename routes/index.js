@@ -14,7 +14,7 @@ module.exports = function(req, res, next){
 	    	summaries:summaries,
 	    	data:champData,
 	    	pageData:{
-	    		patch: data.currentPatch,
+	    		core: data.core,
 	        	appName: 'core',
 	        	name:'home',
 	        	title: 'Champion Statistics, Counters, Matchups and much more!' 
@@ -22,7 +22,7 @@ module.exports = function(req, res, next){
     	});
 	}	
 
- 	ChampionRoles.find({}).sort({'roles.0.games':-1}).exec(function(err, data){
+ 	ChampionRoles.find({}).sort({name:1}).exec(function(err, data){
 		if(err){
 			return next(produceError('serverMaintenance', 503));
 		} else if(!data){
