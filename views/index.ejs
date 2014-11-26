@@ -8,7 +8,7 @@
 <div class="container-fluid"  id="home">
 	<div class="row summary">
 		<div class="col-xss-12 col-sm-6 summary-side" style="padding-left: 30px;border-right: 1px solid rgb(39, 46, 48);">
-			<span class="champion-name champion-list-header">Current Patch <span class="summary-highlight">Champion Ranking Changes</span></span>
+			<span class="champion-name champion-list-header"><span class="summary-highlight">Champion Ranking Changes</span></span>
 			<% for(var x=0;x<summaries.length;x++){ %>
 				<div class="stat-summary-box">
 					<h3><%= summaries[x].title %></h3>
@@ -32,7 +32,7 @@
 			<% } %>
 		</div>
 		<div class="col-xss-12 col-sm-6 summary-side" style="padding-right: 30px;">
-			<span class="champion-name champion-list-header">Highest and Lowest Current Patch <span class="summary-highlight">Win Rates</span></span>
+			<span class="champion-name champion-list-header">Highest and Lowest <span class="summary-highlight">Win Rates</span></span>
 			<% for(var y=0;y<summaries.length;y++){ %>
 				<div class="stat-summary-box">
 					<h3><%= summaries[y].title %></h3>
