@@ -6,7 +6,7 @@
             <div class="row">
               
               <div class="col-xs-12 col-sm-3 col-md-2 champion-profile">
-                <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/champion/<%= champion.key %>.png" class="champ-img"/>
+                <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/champion/<%= champion.key %>.png" class="champ-img"/>
                 <h1><%= champion.name %></h1>
                 <ul>
 
@@ -31,9 +31,9 @@
                   <thead>
                     <tr >
                       <th class="first-column"><span class="text-indent">Type</span></th>
-                      <th class="second-column"style="width:21%">Average</th>
-                      <th class="third-column"style="width:21%">Role Placement</th>
-                      <th class="fourth-column"style="width:21%">Placement Change this patch</th>
+                      <th class="second-column">Average</th>
+                      <th class="third-column">Role Placement</th>
+                      <th class="fourth-column">Placement Change this patch</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -69,8 +69,8 @@
                   <div class="col-xxs-12 col-xs-6">
                     <h2 class="champion-stats">Most Frequent Summoners</h2>
                     <div class="summoner-wrapper">
-                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.mostGames.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner1.name %>"/></a>
-                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.mostGames.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner2.name %>"/></a>                 
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner1.name %>"/></a>
+                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner2.name %>"/></a>                 
                     <div class="summoner-text"><strong><%= championData.summoners.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.mostGames.games %></strong> Games</div>
                     </div>
                   </div>
@@ -78,8 +78,8 @@
                   <div class="col-xxs-12 col-xs-6">
                     <h2 class="champion-stats">Highest Win Percent Summoners</h2>
                     <div class="summoner-wrapper">
-                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner1.name %>"/></a> 
-                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner2.name %>"/></a>                
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner1.name %>"/></a> 
+                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner2.name %>"/></a>                
                     <div class="summoner-text"><strong><%= championData.summoners.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.highestWinPercent.games %></strong> Games</div>
                     </div>
                   </div>
@@ -113,7 +113,7 @@
                 <h2 class="champion-stats">Most Frequent Build</h2>
                 <div class="build-wrapper">
                   <% for(var k=0; k<championData.items.mostGames.items.length; k++) {%>
-                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.mostGames.items[k].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/item/<%= championData.items.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.items.mostGames.items[k].name %>"/></a>
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.mostGames.items[k].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.items.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.items.mostGames.items[k].name %>"/></a>
                   <% } %>
                  
                   <div class="build-text"><strong><%= championData.items.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.items.mostGames.games %></strong> Games</div>
@@ -122,7 +122,7 @@
                 <h2 class="champion-stats" >Highest Win Percent Build</h2>
                 <div class="build-wrapper">
                   <% for(var l=0; l<championData.items.highestWinPercent.items.length; l++) {%>
-                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.patch %>/img/item/<%= championData.items.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.items.highestWinPercent.items[l].name %>"/></a>
+                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.items.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.items.highestWinPercent.items[l].name %>"/></a>
                   <% } %>
                  
                   <div class="build-text"><strong><%= championData.items.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.items.highestWinPercent.games %></strong> Games</div>
@@ -295,7 +295,7 @@
                     <div class="total-rating" ng-class="{'above-average': matchup.userScore > 3.5, 'below-average': matchup.userScore < 2.5, 'average': matchup.userScore >= 2.5 && matchup.userScore <= 3.5}"> <strong>{{matchup.userScore}}</strong>
                   </div>
                   <ul class="user-rating" ng-controller="matchupRating">
-                   <% if (!pageData.updating) { %> 
+                   <% if (!pageData.core.updating) { %> 
                     <li ng-repeat="rate in ratingLength" ng-class="{'selected': rate === displayRating(matchup.key, champion.key, champion.role, matchupType)}" ng-click="addRating(rate, matchup.key, champion.key, champion.role, matchupType)"></li>
                     <% } else { %>
                       Updating

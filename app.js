@@ -72,7 +72,7 @@ if (app.get('env') === 'development') {
             appName: 'core',
             name:'error',
             title: 'We got ourselves a problem...',
-            updating: data.updating
+            core: data.core
           },
           message: err.message,
           error: err
@@ -88,7 +88,7 @@ if (app.get('env') === 'development') {
           appName: 'core',
           name:'error',
           title: 'We got ourselves a wild teemo problem...',
-          updating: data.updating 
+          core: data.core
         },
         message: err.message,
         error: {}

@@ -1,16 +1,16 @@
 "use strict";
    var champList = {
-      "Thresh": {
-         "id": 412,
-         "title": "the Chain Warden",
-         "name": "Thresh",
-         "key": "Thresh"
-      },
       "Aatrox": {
          "id": 266,
          "title": "the Darkin Blade",
          "name": "Aatrox",
          "key": "Aatrox"
+      },
+      "Thresh": {
+         "id": 412,
+         "title": "the Chain Warden",
+         "name": "Thresh",
+         "key": "Thresh"
       },
       "Tryndamere": {
          "id": 23,
@@ -44,7 +44,7 @@
       },
       "Sion": {
          "id": 14,
-         "title": "the Undead Champion",
+         "title": "The Undead Juggernaut",
          "name": "Sion",
          "key": "Sion"
       },
@@ -384,6 +384,12 @@
          "name": "Shyvana",
          "key": "Shyvana"
       },
+      "Kalista": {
+         "id": 429,
+         "title": "the Spear of Vengeance",
+         "name": "Kalista",
+         "key": "Kalista"
+      },
       "DrMundo": {
          "id": 36,
          "title": "the Madman of Zaun",
@@ -564,17 +570,17 @@
          "name": "Fiora",
          "key": "Fiora"
       },
-      "Chogath": {
-         "id": 31,
-         "title": "the Terror of the Void",
-         "name": "Cho'Gath",
-         "key": "Chogath"
-      },
       "Rammus": {
          "id": 33,
          "title": "the Armordillo",
          "name": "Rammus",
          "key": "Rammus"
+      },
+      "Chogath": {
+         "id": 31,
+         "title": "the Terror of the Void",
+         "name": "Cho'Gath",
+         "key": "Chogath"
       },
       "Leblanc": {
          "id": 7,
@@ -728,10 +734,6 @@
       }
    };
 
-   var updating = (process.env.NODE_ENV === 'updating');
-
-   var currentPatch = '4.20.1';
-
    var roleList =  {
 	'Top':'TOP',
 	'Middle' : 'MIDDLE',
@@ -767,8 +769,14 @@
       }
    };
 
-   exports.updating = updating;
-   exports.currentPatch = currentPatch;
+   var core = {
+      updating : (process.env.NODE_ENV === 'updating'),
+      gamesAnalyzed:"2322810",
+      patch:"4.20",
+      ddPatch:'4.20.1'
+   }
+
+   exports.core = core;
    exports.champList = champList;
    exports.roleList = roleList;
    exports.roleKey = roleKey;

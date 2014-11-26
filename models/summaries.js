@@ -25,6 +25,16 @@ var summarySchema = new mongoose.Schema({
 		key: String,
 		name: String,
 		value: Number
+	},
+	bestOverall:{
+		key: String,
+		name: String,
+		value: Number
+	},
+	worstOverall:{
+		key: String,
+		name: String,
+		value: Number
 	}
 });
 

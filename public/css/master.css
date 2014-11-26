@@ -374,10 +374,30 @@ body{
   padding:10px;
   width:33%;
 }
+.search-fb-holder{
+  margin:auto;
+  width: 330px;
+}
+.analysis-holder{
+  margin: auto;
+text-transform: capitalize;
+width: 300px;
+color: #717777;
+text-align: center;
+}
+.analysis-holder strong{
+  font-size:1.2em;
+  color:#EDEDEF;
+  margin-left:3px;
+}
+.analysis-holder .spacer{
+  margin-left: 7px;
+  margin-right:7px;
+}
 .input-group {
-    
-          margin: auto;
-          margin-top: 29px;
+  margin-left:3.5%;
+  margin-top: 12px;
+  display:inline-block;
 }
 .dropdown-search{
   position: relative;
@@ -403,12 +423,15 @@ margin-left: 6px;
 .first-column{
   width:37%
 }
+
 .second-column{
   width:21%
 }
+
 .third-column{
   width:21%
 }
+
 .fourth-column{
   width:21%
 }
@@ -555,7 +578,9 @@ div.champion-area .container-fluid .row{
 .matchups {
     /* background-color: #1D1D1F; */
 }
-
+.fb-like{
+margin:auto;
+}
 .champ-img{
     display:block;
     margin:auto;
@@ -569,15 +594,14 @@ div.champion-area .container-fluid .row{
 margin-left: 50px;
 margin-bottom: 10px;
 display: block;
-font-size: 1.25em !important;
+font-size: 1.18em !important;
 text-transform: uppercase;
 }
 .summary .champion-list-header{
   /* margin-left: 25px; */
   text-align:center;
-  margin-top:15px;
   margin-left:0px;
-  margin-bottom:0px;
+  margin-bottom:6px;
 }
 .large-header{
   margin-top: 35px;
@@ -643,10 +667,9 @@ margin-top:13px;
 padding-top: 15px;
 background-color: rgba(27, 31, 32, 0.66);
 padding-bottom: 18px;
+padding-left: 1%;
+padding-right: 1%;
 /* margin: auto; */
-}
-.summary-value{
-  display:block;
 }
 .champion-name{
   font-weight:bold;
@@ -709,7 +732,7 @@ padding-bottom: 18px;
 background-color: #212325;
 }
 
-.champion-statistics tr>td:first-child, .matchups tr>td:first-child, #matchups tr>td:first-child{
+.champion-statistics tr>td:first-child, .summary-side tr>td:first-child, .matchups tr>td:first-child, #matchups tr>td:first-child{
     color: #FFE08C;
     
     padding-left: 10px;
@@ -975,9 +998,7 @@ direction: rtl;
     width: 64%;
     float: left;
 }
-.overall-score{
-    
-}
+
 .champ-user-rating{
     min-width: 130px;
 position: relative;
@@ -1101,8 +1122,62 @@ margin-right: 6px;
     padding-left:14px;
 }
 
-
-
+.first-summary{
+  width:16%;
+}
+.second-summary{
+  width:42%;
+}
+.third-summary{
+  width:42%;
+}
+.summary-side .matchup-champion {
+  zoom:0.7;
+  margin-left: -4px
+}
+.summary-side .table .champion-name{
+  position: absolute;
+left: 38px;
+top: 12px;
+font-size: 1em;
+}
+.summary-side .table .champion-name:hover{
+color: #FCFF90;
+}
+.summary-value{
+  background-color:rgb(27, 31, 32);
+  right: 10px;
+position: absolute;
+top: 15px;
+font-size:0.9em;
+}
+.summary-side .table-striped>tbody>tr:nth-child(odd)>td, .summary-side .table-striped>tbody>tr:nth-child(odd)>td .summary-value {
+  background-color:#171C1F;
+}
+.summary-side tr>td:nth-child(2), .summary-side tr>td:nth-child(3){
+  position:relative;
+}
+.summary-side tr>th:nth-child(2), .summary-side tr>th:nth-child(3){
+  text-align:center;
+}
+.summary-side tr>td:nth-child(1), .summary-side tr>td:nth-child(2){
+  border-right: 1px solid rgb(56, 56, 56);
+}
+.win-summary{
+  width:36.75%;
+  padding:1.25%;
+  float:left;
+}
+.overall-summary{
+  width:30.5%;
+  padding:1.25%;
+  float:left;
+}
+.change-summary{
+  width:32.75%;
+  padding:1.25%;
+  float:left;
+}
 
 
 
@@ -1379,7 +1454,7 @@ h1.champ2, .victor2{
   text-align: center;
 }
 
-div.matchup-champion{
+.matchup-champion{
     width: 36px;
     height: 36px;
     display: inline-block;
@@ -1387,7 +1462,7 @@ div.matchup-champion{
     margin-left: -2px;
     background-image:url('../img/champion-small.jpg');
 }
-div.home-champion{
+.home-champion{
     width: 48px;
     height: 48px;
     margin:auto;
@@ -2228,6 +2303,28 @@ margin-bottom: 15px;
     }
     
  }
+ @media (max-width: 1267px) {
+     .win-summary{
+      width:58%;
+    }
+    .overall-summary{
+      width:42%;
+    }
+    .change-summary{
+      width:100%;
+    }
+  }
+  @media (max-width: 900px) {
+     .win-summary{
+      width:100%;
+    }
+    .overall-summary{
+      width:100%;
+    }
+    .change-summary{
+      width:100%;
+    }
+  }
   @media (max-width: 775px) {
     .logo-holder{
       width:100%;
@@ -2235,10 +2332,9 @@ margin-bottom: 15px;
     }
     .search-holder{
       width:100%;
+      margin-top: -12px;
     }
-    .search-holder .input-group{
-      margin-top: -2px;
-    }
+
     .navigation-holder{
       width:100%;
       padding:0;
@@ -2401,6 +2497,9 @@ margin-bottom: 15px;
   }
 
   @media (max-width: 410px) {
+    .search-fb-holder {
+      width:auto;
+    }
     .nav li.first-button{
       margin-left:7px;
     }
@@ -2428,3 +2527,5 @@ margin-bottom: 15px;
     margin-left: 10px;
     }
   }
+
+  

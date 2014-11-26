@@ -1,17 +1,17 @@
 (function(matchupData){
 
 matchupData.championList = {
-      "Thresh": {
-         "id": 412,
-         "title": "the Chain Warden",
-         "name": "Thresh",
-         "key": "Thresh"
-      },
       "Aatrox": {
          "id": 266,
          "title": "the Darkin Blade",
          "name": "Aatrox",
          "key": "Aatrox"
+      },
+      "Thresh": {
+         "id": 412,
+         "title": "the Chain Warden",
+         "name": "Thresh",
+         "key": "Thresh"
       },
       "Tryndamere": {
          "id": 23,
@@ -45,7 +45,7 @@ matchupData.championList = {
       },
       "Sion": {
          "id": 14,
-         "title": "the Undead Champion",
+         "title": "The Undead Juggernaut",
          "name": "Sion",
          "key": "Sion"
       },
@@ -385,6 +385,12 @@ matchupData.championList = {
          "name": "Shyvana",
          "key": "Shyvana"
       },
+      "Kalista": {
+         "id": 429,
+         "title": "the Spear of Vengeance",
+         "name": "Kalista",
+         "key": "Kalista"
+      },
       "DrMundo": {
          "id": 36,
          "title": "the Madman of Zaun",
@@ -565,17 +571,17 @@ matchupData.championList = {
          "name": "Fiora",
          "key": "Fiora"
       },
-      "Chogath": {
-         "id": 31,
-         "title": "the Terror of the Void",
-         "name": "Cho'Gath",
-         "key": "Chogath"
-      },
       "Rammus": {
          "id": 33,
          "title": "the Armordillo",
          "name": "Rammus",
          "key": "Rammus"
+      },
+      "Chogath": {
+         "id": 31,
+         "title": "the Terror of the Void",
+         "name": "Cho'Gath",
+         "key": "Chogath"
       },
       "Leblanc": {
          "id": 7,

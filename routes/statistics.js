@@ -12,7 +12,7 @@ module.exports = function(req, res, next){
 			return next(produceError('serverMaintenance', 503));
 		} else {
 	    	res.render('statistics', {data: doc, pageData:{
-	    		patch: data.currentPatch,
+	    		core: data.core,
 	        	appName: 'statsPage',
 	        	name:'stats',
 	        	title: 'League of Legends Stats by Champion Role for the Current Patch' 

@@ -25,11 +25,10 @@ module.exports = function(req, res, next){
       data: pageData,
       votes: votes,
       pageData:{
-        patch: data.currentPatch,
         appName: 'matchupPage',
         name:'matchups',
         title: generateTitle(),
-        updating: data.updating 
+        core: data.core
       }
     });
   }
