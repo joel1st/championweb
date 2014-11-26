@@ -208,6 +208,8 @@
                 <filters matchup-type="synergy"></filters>
                 <matchups order="-" matchup-type="synergy"></matchups>
               </div>
+
+
             </div>
 
             <% } %>
@@ -220,7 +222,12 @@
           <div class="container-fluid">
             <div class="row counter-row">
               <div class="col-xs-12 col-md-6">
-                <h2> Advertising Support </h2>    
+                <h2> Advertising Support </h2>  
+                <div class="advert-holder" style="margin:auto;margin-left:15px">
+                  <iframe src="http://ib.adnxs.com/tt?id=3956661&referrer=http://champion.gg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="300" height="250"></iframe>
+
+                  <iframe src="http://ib.adnxs.com/tt?id=3956661&referrer=http://champion.gg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="300" height="250"></iframe>  
+                </div>
               </div>
               <div class="col-xs-12 col-md-6" ng-controller="reddit">
                 <h2> Recent <%= champion.name %> Threads on Reddit </h2>
@@ -321,8 +328,12 @@
                   <h4 ng-if="showMatchups && matchupRetrieved"> Matchup Performance </h4>
                   <div class="middle-graphic-holder">
                     <canvas ng-if="showMatchups && matchupRetrieved" tc-chartjs-radar chart-data="champComparison.data" chart-options="champComparison.settings" chart-legend="championMatchup" height="400" width="560"></canvas>
-                  </div>
+                  </div> 
               </div>
+              <ul class="radar-legend visible-xxs">
+                    <li><span class="magic-dmg"></span>{{champion.name}}</li>
+                    <li><span class="physical-dmg"></span>{{matchup.name}}</li>
+                  </ul>
               <div class="col-xxs-12 col-xs-6">
                 <h4 ng-if="showMatchups && matchupRetrieved"> Gold Over Time </h4>
                 <div class="middle-graphic-holder">
