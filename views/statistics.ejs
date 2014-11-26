@@ -5,7 +5,7 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
 <div class="container-fluid">
 <div class="row" id="stats"  ng-controller="data">
 <div class="search-sorter">
-  <input class="matchupSearch" type="text" ng-model="search.title" ng-model-options="{debounce: 40}" style="margin-left:-22px" placeholder="Filter By Name" />
+  <input class="matchupSearch" type="text" ng-model="search.title" ng-change="searchUrl()" ng-model-options="{debounce: 40}" style="margin-left:-22px" placeholder="Filter By Name" />
 </div>
 
 <table class="table table-striped" id="table-1" style="table-layout: auto;">

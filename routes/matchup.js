@@ -21,13 +21,15 @@ module.exports = function(req, res, next){
   var champ2Match = typeof data.champList[champ2] !== 'undefined';
 
   function matchupResponse(){
+    var title = generateTitle();
     res.render('matchup', {
       data: pageData,
       votes: votes,
       pageData:{
         appName: 'matchupPage',
         name:'matchups',
-        title: generateTitle(),
+        title: title,
+        description: title,
         core: data.core
       }
     });

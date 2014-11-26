@@ -32,7 +32,9 @@ display: none !important;
 .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
 background-color: #222425;
 }
-
+.visible-xxs{
+      display:none;
+    }
 .col-xxs-1, .col-xxs-2, .col-xxs-3, .col-xxs-4,
 .col-xxs-5, .col-xxs-6, .col-xxs-7, .col-xxs-8,
 .col-xxs-9, .col-xxs-10, .col-xxs-11, .col-xxs-12 {
@@ -43,6 +45,9 @@ background-color: #222425;
 }
 
 @media (max-width: 600px) {
+    .visible-xxs{
+      display:block;
+    }
     .col-xxs-1,
     .col-xxs-2,
     .col-xxs-3,
@@ -366,6 +371,7 @@ body{
 }
 .search-holder{
   float:left;
+  margin-top: 10px;
   padding:10px;
   width:33%;
 }
@@ -2493,7 +2499,9 @@ margin-bottom: 15px;
     .first-column, .second-column, .third-column, .fourth-column{
       width:25%
     }
-
+    .champion-area div h2:first-child {
+    margin-top: 30px;
+    }
   }
 
   @media (max-width: 410px) {
