@@ -122,11 +122,19 @@ matchupData.stats = <%- JSON.stringify(data) %>;
   $fixedHeaderTd.add($originalHeaderTd).on('click', fixWidths);
 
   $(window).bind("scroll", function() {
-      var offset = $(this).scrollTop();
+      var $this = $(this);
+      var leftOffset = $this.scrollLeft();
+      var offset = $this.scrollTop();
       var tableOffset = $table.offset().top;
 
-      if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
-          $fixedHeader.show();
+      if (offset >= tableOffset) {
+          
+            $fixedHeader.css('margin-left','-'+leftOffset+'px');
+            console.log('oopsies')
+          
+          if($fixedHeader.is(":hidden")){
+            $fixedHeader.show();
+          }
       }
       else if (offset < tableOffset) {
           $fixedHeader.hide();

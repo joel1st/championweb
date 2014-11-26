@@ -247,7 +247,7 @@ appChampion.controller('matchupData', ['$scope','$http','anchorSmoothScroll', 'p
 		synergy:{name:''}
 	};
 
-	$scope.minGames = 100;
+	$scope.minGames = localStorageAccess.retrieve('minGames') || 100;
 
 	$scope.matchAmount = function(item){
     	return item.games >= $scope.minGames;
@@ -294,6 +294,9 @@ appChampion.controller('matchupData', ['$scope','$http','anchorSmoothScroll', 'p
 		}
 	};
 
+	$scope.saveMinGames = function(){
+		localStorageAccess.save('minGames', $scope.minGames);
+	};
 
 	$scope.saveSort = function(type){
 		$scope.sortExpression.sortBy = type;
