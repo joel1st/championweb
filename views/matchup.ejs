@@ -1,11 +1,11 @@
 <% include header.ejs %>
 <div class="container-fluid" id="matchups">
-<h2 style="margin-bottom:20px;margin-top:25px">
+<h2>
 <%= data.champ1.name %> <%= data.champ1.roleTitle %> <%= (data.role==='SYNERGY')? 'Synergy With' : 'Against'%> <%= data.champ2.name %> <%= data.champ2.roleTitle %></h2>
-<div class="row champion-area">
+<div class="row champion-area matchup-area">
   <% for(var t=1; t<3; t++) {%>
 
-  <div class="col-xs-12 col-sm-3 col-md-2 champion-profile <% if (t===2) { %>pull-right<% } %>">
+  <div class="col-xs-6 col-sm-3 col-md-2 matchup-block champion-profile <% if (t===2) { %>pull-right<% } %>">
    <a href="/champion/<%- data['champ'+t].key %>/<%- data['champ'+t].roleTitle %>">
     <img src="//ddragon.leagueoflegends.com/cdn/<%- pageData.patch %>/img/champion/<%- data['champ'+t].key %>.png" class="champ-img"/>
     <h1 class="champ<%=t%>"><%-data['champ'+t].name%></h1>
@@ -32,7 +32,7 @@
     <% } %>
   </div>
   <% } %>
-  <div class="col-xs-12 col-sm-6 col-md-8" style="text-align:center">
+  <div class="col-xs-12 col-sm-6 col-md-8 matchup-block" style="text-align:center">
 
 
                 <h3>
@@ -83,7 +83,7 @@
 
  	       <% if(data.role !== 'ADCSUPPORT' && data.role !== 'SYNERGY'){ %>
            <div class="row" ng-controller="matchupGraphs">
-              <div class="col-xs-12 col-sm-12 col-md-6" style="border-right: 1px solid rgb(59, 62, 66);">
+              <div class="col-xs-12 col-sm-12 col-md-6 matchup-block" style="border-right: 1px solid rgb(59, 62, 66);">
               	<div class="matchup-chart-holder">
                   <h4> Matchup Performance </h4>
                   <div>
@@ -105,7 +105,7 @@
           <% } %>
 
             <div class="row chart-area matchup-stat-area">
-             <div class="col-xs-12 col-sm-12 col-md-12">
+             <div class="col-xs-12 col-sm-12 col-md-12 matchup-block">
               <div class="matchup-title-width matchup-div-header"></div><div class="matchup-champ-img-width matchup-div-header">
                 <div class="matchup-champion matchup-table <%= data.champ1.key %>"></div>
                 </div><div class="matchup-champ-img-width matchup-div-header">

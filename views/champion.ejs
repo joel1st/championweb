@@ -154,7 +154,7 @@
             <div class="matchup-wrapper">
               <div class="matchup-settings">
                 <span>Display matchups with at least</span> 
-                <select class="minimum-games" ng-model="minGames">
+                <select class="minimum-games" ng-change="saveMinGames()" ng-model="minGames">
                   <option value="0">Show All</option>
                   <option value="100">100+</option>
                   <option value="250">250+</option>
