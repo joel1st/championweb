@@ -116,7 +116,7 @@
                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.mostGames.items[k].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.items.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.items.mostGames.items[k].name %>"/></a>
                   <% } %>
                  
-                  <div class="build-text"><strong><%= championData.items.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.items.mostGames.games %></strong> Games</div>
+                  <div class="build-text"><strong><%= championData.items.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.items.mostGames.games %></strong> Games  <span class="glyphicon glyphicon-question-sign" tooltip="Build order may not be correct"></span></div> 
                 </div>
 
                 <h2 class="champion-stats" >Highest Win Percent Build</h2>
@@ -125,7 +125,7 @@
                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.items.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.items.highestWinPercent.items[l].name %>"/></a>
                   <% } %>
                  
-                  <div class="build-text"><strong><%= championData.items.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.items.highestWinPercent.games %></strong> Games</div>
+                  <div class="build-text"><strong><%= championData.items.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.items.highestWinPercent.games %></strong> Games <span class="glyphicon glyphicon-question-sign" tooltip="Build order may not be correct"></span></div>
                 </div>
               </div>
 
@@ -135,7 +135,7 @@
                   <canvas tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" chart-legend="goldComparison" id="canvas" height="150" width="300"></canvas>
                 </div>
                 <div tc-chartjs-legend chart-legend="goldComparison"></div>
-                <h2 class="line-chart-header">Win Rate by Game Length</h2>
+                <h2 class="line-chart-header">Win Rate by Game Length</h2> 
                 <div class="chart-holder">
                   <canvas tc-chartjs-line chart-data="gameLength.data" chart-options="gameLength.settings" id="canvas" height="150" width="300"></canvas>
                 </div>
