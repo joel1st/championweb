@@ -17,7 +17,7 @@ module.exports = function(req, res, next){
 	    		core: data.core,
 	        	appName: 'core',
 	        	name:'home',
-	        	title: 'Champion Statistics, Counters, Builds and Matchups!'
+	        	title: 'Champion Statistics, Counters, Builds and Matchups!',
 	        	description:'Champion.gg provides champion statistics, builds and counters by role - including Win Rate, Ban Rate, Play Rate and much more!' 
 	        }
     	});
@@ -53,4 +53,3 @@ module.exports = function(req, res, next){
  		}
  	});
 };
-
