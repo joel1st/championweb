@@ -779,10 +779,11 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"2322810",
+      gamesAnalyzed:"2822810",
       patch:"4.20",
-      ddPatch:'4.20.1'
-   }
+      ddPatch:"4.20.1",
+      patchHistory: ["4.16","4.17","4.18","4.19","4.20"]
+   };
 
    exports.core = core;
    exports.newChampion = newChampion;

@@ -1,6 +1,6 @@
 "use strict";
 var express = require('express');
-var data = require('./models/data')
+var data = require('./models/data');
 var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');

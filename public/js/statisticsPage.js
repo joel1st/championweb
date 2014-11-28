@@ -12,7 +12,7 @@
 
     $scope.searchUrl = function(){
       $location.search('search', $scope.search.title);
-    }
+    };
 
     $scope.changeSelection = function(property){
       if(property !== 'role' && property !== 'title'){

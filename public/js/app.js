@@ -210,10 +210,11 @@
 		  		currentData.push(newData);
 		  	}
 		  	if(previousRating !== rating){
+		  		var updateClientObj;
 		  		if(!primaryRole){
-		  			var updateClientObj = {matchupKey:matchupKey, rating:rating, matchType:matchType, previousRating:previousRating}
+		  			updateClientObj = {matchupKey:matchupKey, rating:rating, matchType:matchType, previousRating:previousRating};
 		  		}
-		  		saveRating(currentData, newData, roles, updateClientObj); // add function to send to server
+		  		saveRating(currentData, newData, roles, updateClientObj); 
 		  	}
 		  };
 

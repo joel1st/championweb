@@ -131,7 +131,7 @@
 
 	    $scope.patchRate = {
 	        data : {
-	          labels : ["4.15","4.16","4.17","4.18","4.19"],
+	          labels : matchupData.patchHistory,
 	          datasets : [
 	            {
 	              label: $scope.champion.name,
