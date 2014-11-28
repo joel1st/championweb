@@ -13,7 +13,7 @@ var ChampionMatchups = require('../models/championMatchup.js');
 
 ChampionMatchups.find({},{champ1:1, champ2:1, role:1}, function(err, docs){
 		var votesAggregated = 0;
-		var docsLength = docs.length
+		var docsLength = docs.length;
 		function determineMoreVotes(){
 			if(votesAggregated === docsLength){
 				console.log('vote aggregation completed');
@@ -22,7 +22,7 @@ ChampionMatchups.find({},{champ1:1, champ2:1, role:1}, function(err, docs){
 			} else {
 				voteAggregator();
 			}
-		};
+		}
 		function voteAggregator(){
 				Votes.update({champ1: docs[votesAggregated].champ1.id, champ2: docs[votesAggregated].champ2.id, role:docs[votesAggregated].role}, { 
 				$pull: { voters: { dateModified: { $lte: Date.now() - 1000*60*60*24*30*2 } } },
@@ -38,7 +38,7 @@ ChampionMatchups.find({},{champ1:1, champ2:1, role:1}, function(err, docs){
 				}
 				
 			}, {upsert:true}, aggregator);
-		};
+		}
 
 		function aggregator(err, numEffected){
 			if(err){
@@ -148,7 +148,7 @@ function compileChampStats(){
 				} else {
 					processMatchups(matchupsCompleted);
 				}
-			};
+			}
 			var orderId = [];
 			function processMatchups(t){
 				var matchupId = data.champList[docs[d][matchupType][t].key].id;

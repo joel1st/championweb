@@ -38,7 +38,7 @@ exports.champion = function(req, res, next){
           championVotes: championVotes
         };
         resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Matchups, Counters and Stats';
-        resObj.pageData.description = "Statistics, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against." 
+        resObj.pageData.description = "Statistics, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against."; 
         if(championData !== null){
           res.render('champion', resObj);
         } else {
