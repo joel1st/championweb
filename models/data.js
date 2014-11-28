@@ -734,6 +734,12 @@
       }
    };
 
+   var newChampion = {
+      key:'',
+      name:'',
+      roleTitle:''//leave blank
+   };
+
    var roleList =  {
 	'Top':'TOP',
 	'Middle' : 'MIDDLE',
@@ -759,6 +765,8 @@
    'SYNERGY':'synergy'
 	};
 
+
+
    var determineKey = function(id){
       for(var champ in champList){
          if(champList.hasOwnProperty(champ)){
@@ -777,6 +785,7 @@
    }
 
    exports.core = core;
+   exports.newChampion = newChampion;
    exports.champList = champList;
    exports.roleList = roleList;
    exports.roleKey = roleKey;

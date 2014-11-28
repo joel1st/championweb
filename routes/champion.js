@@ -39,7 +39,11 @@ exports.champion = function(req, res, next){
         };
         resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Matchups, Counters and Stats';
         resObj.pageData.description = "Statistics, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against." 
-        res.render('champion', resObj);
+        if(championData !== null){
+          res.render('champion', resObj);
+        } else {
+          res.render('newchampion', resObj);
+        }
       }
     };
 
@@ -47,7 +51,16 @@ exports.champion = function(req, res, next){
       if(err){
         return next(produceError('serverMaintenance', 503));
       } else if(!doc){
-        return next(produceError('serverMaintenance', 503));
+        if(champKey === data.newChampion.key){
+          dataCount = 2;
+          championData = null;
+          generalRole = null;
+          championVotes = null;
+          champion = data.newChampion;
+          response();
+        } else {
+          return next(produceError('serverMaintenance', 503));
+        }
       } else {
         champion = JSON.parse(JSON.stringify(doc));
         champion.role = doc.roles[0].role;
@@ -121,7 +134,7 @@ exports.championRole = function(req, res, next){
         res.render('champion', resObj);
       }
     };
-
+    
     ChampionRoles.findOne({key:champKey}, function(err, doc){
       if(err){
         return next(produceError('serverMaintenance', 503));
