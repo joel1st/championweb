@@ -4,9 +4,20 @@
 margin-bottom: -5px;">Current Patch Statistics</h2>
 <div class="container-fluid">
 <div class="row" id="stats"  ng-controller="data">
-<div class="search-sorter">
-  <input class="matchupSearch" type="text" ng-model="search.title" ng-change="searchUrl()" ng-model-options="{debounce: 40}" style="margin-left:-22px" placeholder="Filter By Name" />
+<div class="search-sorter" style="display:inline-block;">
+  <input class="matchupSearch" type="text" ng-model="search.title" ng-change="searchUrl()" ng-model-options="{debounce: 40}" style="margin-left:-22px;" placeholder="Filter By Name" />
 </div>
+<div style="display:inline-block">
+    Sort Role 
+    <select class="minimum-games" ng-change="chosenRole()" ng-model="roleSort.role" style="padding:5px">
+      <option value="">Show All</option>
+      <option value="Top">Top</option>
+      <option value="Middle">Middle</option>
+      <option value="Support">Support</option>
+      <option value="ADC">ADC</option>
+      <option value="Jungle">Jungle</option>
+    </select>
+  </div>
 
 <table class="table table-striped" id="table-1" style="table-layout: auto;">
   <thead id="original-header">
@@ -57,7 +68,7 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
   </thead>
  
   <tbody ng-cloak>
-     <tr ng-repeat="champion in championData | startsWith:search.title | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy]">
+     <tr ng-repeat="champion in championData | startsWith:search.title | filter:roleSort | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy]">
         <td ng-class="{'selected-column':determineSelected('title')}">
         <a href="/champion/{{champion.key}}/{{champion.role}}">
           <div class="matchup-champion {{champion.key}}"></div>

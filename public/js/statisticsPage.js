@@ -7,11 +7,18 @@
     $scope.search = {
       title:urlParams.search||''
     };
+    $scope.roleSort = {
+      role: urlParams.roleSort||''
+    } 
 
     $scope.Math = Math;
 
     $scope.searchUrl = function(){
       $location.search('search', $scope.search.title);
+    };
+
+    $scope.chosenRole = function(){
+      $location.search('roleSort', $scope.roleSort.role);
     };
 
     $scope.changeSelection = function(property){
