@@ -181,13 +181,13 @@
            <%if (champion.role === 'DUO_SUPPORT' || champion.role === 'DUO_CARRY') { %>
             <div class="row counter-row">
               <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
-                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Counter <%= champion.name %></h2>
+                <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Counter <%= champion.name %></h2></div>
                 <filters matchup-type="adcsupport"></filters>
                 <matchups order="" matchup-type="adcsupport"></matchups>
               </div>
 
               <div class="col-xs-12 col-sm-12 col-md-6">
-                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that <%= champion.name %> Counters</h2>
+                <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that <%= champion.name %> Counters</h2></div>
                 <filters matchup-type="adcsupport"></filters>
                 <matchups order="-" matchup-type="adcsupport"></matchups>
               </div>
@@ -197,13 +197,13 @@
             <div class="row counter-row">
               <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
               
-                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise poorly with <%= champion.name %></h2>
+                <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise poorly with <%= champion.name %></h2></div>
                 <filters matchup-type="synergy"></filters>
                 <matchups order="" matchup-type="synergy"></matchups>
               </div>
 
               <div class="col-xs-12 col-sm-12 col-md-6">
-                <h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise well with <%= champion.name %></h2>
+                <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise well with <%= champion.name %></h2></div>
                 <filters matchup-type="synergy"></filters>
                 <matchups order="-" matchup-type="synergy"></matchups>
               </div>
