@@ -806,6 +806,7 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
 }
 .matchups h2{
   margin-bottom:20px;
+  display:inline-block;
 }
 
 .counter-matchups{
@@ -1425,7 +1426,9 @@ h1.champ2, .victor2{
   color:#FF5353;
 }
 
-
+.matchup-header{
+  text-align:center;
+}
 .reddit-titles {
   padding:4px 4px 4px 12px
 }

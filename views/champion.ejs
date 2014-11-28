@@ -164,16 +164,15 @@
                 </select>
                 <span>games.</span>
               </div>
-              <span class="glyphicon glyphicon-question-sign" tooltip="The coloured bars below show <%= champion.name %>'s performance in the matchup."></span>
             </div>
             <div class="row counter-row">
               <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
-                <h2><%= champion.roleTitle %> Champions that Counter <%= champion.name %></h2>
+                <div class="matchup-header"><h2><%= champion.roleTitle %> Champions that Counter <%= champion.name %></h2> <span class="glyphicon glyphicon-question-sign" tooltip="The coloured bars below show <%= champion.name %>'s performance in the matchup. Red = Weak, Yellow = Even, Green = Strong."></span></div>
                 <filters matchup-type="matchups"></filters>
                 <matchups order="" matchup-type="matchups"></matchups>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6">
-                <h2><%= champion.roleTitle %> Champions that <%= champion.name %> Counters</h2>
+                <div class="matchup-header"><h2><%= champion.roleTitle %> Champions that <%= champion.name %> Counters</h2> <span class="glyphicon glyphicon-question-sign" tooltip="The coloured bars below show <%= champion.name %>'s performance in the matchup. Green = Strong, Yellow = Even, Red = Weak."></span></div>
                 <filters matchup-type="matchups"></filters>
                 <matchups order="-" matchup-type="matchups"></matchups>
               </div>
