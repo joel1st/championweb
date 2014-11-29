@@ -2511,6 +2511,11 @@ margin-bottom: 15px;
     margin-top: 30px;
     }
   }
+  @media (max-width: 495px) {
+    .champ-height{
+     width:32%;
+    }
+  }
 
   @media (max-width: 410px) {
     .search-fb-holder {

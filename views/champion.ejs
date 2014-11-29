@@ -32,7 +32,7 @@
                     <tr >
                       <th class="first-column"><span class="text-indent">Type</span></th>
                       <th class="second-column">Average</th>
-                      <th class="third-column">Role Placement</th>
+                      <th class="third-column"><span class="glyphicon glyphicon-question-sign" tooltip="<%= champion.roles[i].title %>'s ranking compared to other <%= champion.roleTitle %> champions."></span> Role Placement</th>
                       <th class="fourth-column">Placement Change this patch</th>
                     </tr>
                   </thead>
@@ -100,9 +100,9 @@
                 <div tc-chartjs-legend chart-legend="generalComparison"></div>
                 <h2 class="champion-stats">Damage Composition</h2>
                 <div class="clearfix middle-graphic-holder damage-dealt">
-                  <div class="physical-dmg" style="width:<%= championData.dmgComposition.physicalDmg %>%"></div>
-                  <div class="magic-dmg" style="left:<%= championData.dmgComposition.physicalDmg %>%;width:<%= championData.dmgComposition.magicDmg %>%"></div>
-                  <div class="true-dmg" style="right:0;width:<%= championData.dmgComposition.trueDmg %>%"></div>
+                  <div class="physical-dmg" tooltip="<%= championData.dmgComposition.physicalDmg %>% Physical" style="width:<%= championData.dmgComposition.physicalDmg %>%"></div>
+                  <div class="magic-dmg" tooltip="<%= championData.dmgComposition.magicDmg %>% Magic" style="left:<%= championData.dmgComposition.physicalDmg %>%;width:<%= championData.dmgComposition.magicDmg %>%"></div>
+                  <div class="true-dmg" tooltip="<%= championData.dmgComposition.trueDmg %>% True" style="right:0;width:<%= championData.dmgComposition.trueDmg %>%"></div>
                 </div>
                 <ul class="radar-legend">
                   <li><span class="physical-dmg"></span>Physical</li>
