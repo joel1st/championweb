@@ -161,7 +161,10 @@
 
 		  };
 
-		  $scope.addRating = function(rating, matchupKey, champKey, role, matchType, primaryRole){
+		  $scope.addRating = function(rating, matchupKey, champKey, role, matchType, primaryRole, order){
+		  	if(order===''){
+		  		rating = 6-rating;
+		  	}
 		  	var currentData = findRating();
 		  	var ascending = sortData(matchupKey, champKey);
 		  	role = determineRatingRole(matchType, role);
@@ -172,8 +175,7 @@
 		  		if(ascending[0] === matchupData.championList[champKey].id){
 		  			roles = (primaryRole === 'DUO_CARRY' || ($scope.champion && $scope.champion.role === 'DUO_CARRY')) ? ['DUO_CARRY','DUO_SUPPORT']:['DUO_SUPPORT','DUO_CARRY'];
 	  			} else {
-	  				roles = (primaryRole === 'DUO_CARRY' || ($scope.champion && $scope.champion.role === 'DUO_CARRY')) ? ['DUO_SUPPORT','DUO_CARRY']:['DUO_CARRY','DUO_SUPPORT'];
-	  			
+	  				roles = (primaryRole === 'DUO_CARRY' || ($scope.champion && $scope.champion.role === 'DUO_CARRY')) ? ['DUO_SUPPORT','DUO_CARRY']:['DUO_CARRY','DUO_SUPPORT'];		
 	  			}
 		  	} else {
 		  		roles = [primaryRole || $scope.champion.role, primaryRole || $scope.champion.role];
@@ -218,14 +220,18 @@
 		  	}
 		  };
 
-		  $scope.displayRating = function(matchupKey, champKey, role, matchType){
+		  $scope.displayRating = function(matchupKey, champKey, role, matchType, order){
 		  	var currentData = findRating();
 		  	role = determineRatingRole(matchType, role);
 		  	var ascending = sortData(matchupKey, champKey);
 		  	if(currentData && currentData.length){
 				for(var i = 0;i<currentData.length;i++){
 					if(currentData[i].champs[0] === ascending[0] && currentData[i].champs[1] === ascending[1] && currentData[i].role === role){
-						return (ascending[0] === matchupData.championList[champKey].id) ? currentData[i].rating[0] : currentData[i].rating[1];
+						if(order === ''){
+							return (ascending[0] === matchupData.championList[champKey].id) ? 6-currentData[i].rating[0] : 6-currentData[i].rating[1];
+						} else {
+							return (ascending[0] === matchupData.championList[champKey].id) ? currentData[i].rating[0] : currentData[i].rating[1];
+						}
 					}
 				}
 			}	

@@ -1085,11 +1085,11 @@ ul.user-rating > li:active{
 }
 
 
-ul.user-rating > li:hover, ul.user-rating > li:hover ~ li, ul.user-rating > li.selected, ul.user-rating > li.selected ~ li { 
+ul.user-rating > li:hover, ul.user-rating > li:hover ~ li, ul.user-rating > li.selected, ul.user-rating > li.selected ~ li, .reverse ul.user-rating > li + li + li + li + li:hover, .reverse ul.user-rating > li + li + li + li + li:hover, .reverse ul.user-rating > li + li + li + li + li.selected, .reverse ul.user-rating > li + li + li + li + li.selected{ 
     background-color:#89f5a2;
 }
 
-ul.user-rating > li + li:hover, ul.user-rating > li + li:hover ~ li, ul.user-rating > li + li.selected, ul.user-rating > li + li.selected ~ li { 
+ul.user-rating > li + li:hover, ul.user-rating > li + li:hover ~ li, ul.user-rating > li + li.selected, ul.user-rating > li + li.selected ~ li, .reverse ul.user-rating > li + li + li + li:hover, .reverse ul.user-rating > li + li + li + li:hover ~ li, .reverse ul.user-rating > li + li + li + li.selected, .reverse ul.user-rating > li + li + li + li.selected ~ li{ 
     background-color:#9dde94;
 }
 
@@ -1097,13 +1097,16 @@ ul.user-rating > li + li + li:hover, ul.user-rating > li + li + li:hover ~ li, u
     background-color:#bdb97e;
 }
 
-ul.user-rating > li + li + li + li:hover, ul.user-rating > li + li + li + li:hover ~ li, ul.user-rating > li + li + li + li.selected, ul.user-rating > li + li + li + li.selected ~ li{
+ul.user-rating > li + li + li + li:hover, ul.user-rating > li + li + li + li:hover ~ li, ul.user-rating > li + li + li + li.selected, ul.user-rating > li + li + li + li.selected ~ li, .reverse ul.user-rating > li + li:hover, .reverse ul.user-rating > li + li:hover ~ li, .reverse ul.user-rating > li + li.selected, .reverse ul.user-rating > li + li.selected ~ li{
     background-color:#df9266;
 }
 
-ul.user-rating > li + li + li + li + li:hover, ul.user-rating > li + li + li + li + li:hover, ul.user-rating > li + li + li + li + li.selected, ul.user-rating > li + li + li + li + li.selected{
+
+ul.user-rating > li + li + li + li + li:hover, ul.user-rating > li + li + li + li + li:hover, ul.user-rating > li + li + li + li + li.selected, ul.user-rating > li + li + li + li + li.selected, .reverse ul.user-rating > li:hover, .reverse ul.user-rating > li:hover ~ li, .reverse ul.user-rating > li.selected, .reverse ul.user-rating > li.selected ~ li{
     background-color:#f17d59;
 }
+
+
 
 .radar-legend, .line-legend {
     text-align:center;
