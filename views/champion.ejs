@@ -299,7 +299,7 @@
                 </div>
                 <div class="champ-user-rating" ng-class="{'reverse':order===''}">
                   <div class="clearfix">
-                    <div class="total-rating" ng-class="{'above-average': matchup.userScore > 3.5, 'below-average': matchup.userScore < 2.5, 'average': matchup.userScore >= 2.5 && matchup.userScore <= 3.5}"> <strong>{{(order==='')?6-matchup.userScore:matchup.userScore}}</strong>
+                    <div class="total-rating" ng-class="{'above-average': matchup.userScore > 3.5, 'below-average': matchup.userScore < 2.5, 'average': matchup.userScore >= 2.5 && matchup.userScore <= 3.5}"> <strong>{{(order==='')?((6-matchup.userScore).toFixed(2) | number) : matchup.userScore}}</strong>
                   </div>
                   <ul class="user-rating" ng-controller="matchupRating">
                    <% if (!pageData.core.updating) { %> 
