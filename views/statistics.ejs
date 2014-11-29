@@ -90,8 +90,8 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
            <td  ng-class="{'selected-column':determineSelected('totalHeal')}">{{champion.general.totalHeal}}</td>
 
            <td  ng-class="{'selected-column':determineSelected('minionsKilled')}">{{champion.general.minionsKilled}}</td>
-           <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}">{{champion.general.neutralMinionsKilledTeamJungle}}</td>
            <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledEnemyJungle')}">{{champion.general.neutralMinionsKilledEnemyJungle}}</td>
+           <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}">{{champion.general.neutralMinionsKilledTeamJungle}}</td>
            <td ng-class="{'selected-column':determineSelected('goldEarned')}">{{champion.general.goldEarned}}</td>
            <td ng-class="{'selected-column':determineSelected('overallPosition')}">{{champion.general.overallPosition}}</td>
            <td ng-class="{'selected-column':determineSelected('overallPositionChange')}"><span class="glyphicon" ng-class="{'glyphicon-arrow-up': (champion.general.overallPositionChange > 0), 'glyphicon-arrow-down': (champion.general.overallPositionChange < 0), 'same-position': (champion.general.overallPositionChange === 0)}">{{Math.abs(champion.general.overallPositionChange)}}</span></td>
