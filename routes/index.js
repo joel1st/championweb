@@ -38,13 +38,14 @@ module.exports = function(req, res, next){
  		}
  	});
 
- 	Summaries.find({}, function(err, data){
+ 	Summaries.findOne({id:1}, function(err, data){
 		if(err){
 			return next(produceError('serverMaintenance', 503));
 		} else if(!data){
 			return next(produceError('serverMaintenance', 503));
 		} else {
-	 		summaries = data;
+			console.log(data.data);
+	 		summaries = data.data;
 	 		if(retrievedYet){
 	 			responseObj();
 	 		} else {
