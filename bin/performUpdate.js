@@ -155,11 +155,13 @@ function compileChampStats(){
 				orderId[t] = id<matchupId ? [id, matchupId]:[matchupId, id];
 
 				Votes.findOne({champ1: orderId[t][0], champ2: orderId[t][1], role:role}, {votes:1, average1Value:1}, function(err, matchupData){
-					voteMatchup[d][matchupType].push({
-						key: docs[d][matchupType][t].key,
-						ratings: matchupData.votes,
-						userScore: matchupData.average1Value
-					});
+					if(matchupData){
+						voteMatchup[d][matchupType].push({
+							key: docs[d][matchupType][t].key,
+							ratings: matchupData.votes,
+							userScore: matchupData.average1Value
+						});
+					}
 					matchupData = null;//free up memory
 					matchupsCompleted++;
 					determineMoreMatchups();
