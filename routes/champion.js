@@ -1,7 +1,6 @@
 "use strict";
 var ChampionData = require('../models/championData.js');
 var ChampionRoles = require('../models/championRoles.js');
-var ChampionVotes = require('../models/championVotes.js');
 var Roles = require('../models/roles.js');
 var data = require('../models/data.js');
 var produceError = require('../logic/produceError.js');
@@ -29,7 +28,7 @@ exports.champion = function(req, res, next){
     champKey = lowerCaseChamp(champKey);
   }
     var response = function(){
-       if(dataCount === 2){
+       if(dataCount === 1){
         var resObj = { 
           pageData:pageData,
           champion: champion,
@@ -52,7 +51,7 @@ exports.champion = function(req, res, next){
         return next(produceError('serverMaintenance', 503));
       } else if(!doc){
         if(champKey === data.newChampion.key){
-          dataCount = 2;
+          dataCount = 1;
           championData = null;
           generalRole = null;
           championVotes = null;
@@ -76,12 +75,6 @@ exports.champion = function(req, res, next){
             response();
             dataCount++;
           }
-        });
-
-        ChampionVotes.findOne({key:champKey, role:champion.roles[0].role}, function(err, doc){
-          championVotes = doc;
-          response();
-          dataCount++;
         });
 
         Roles.findOne({role:champion.roles[0].role}, function(err, doc){
@@ -122,13 +115,12 @@ exports.championRole = function(req, res, next){
   }
     champRole = data.roleList[champRole];
     var response = function(){
-      if(dataCount === 3){
+      if(dataCount === 2){
         var resObj = { 
           pageData:pageData,
           champion: champion,
           generalRole: generalRole,
-          championData: championData,
-          championVotes: championVotes
+          championData: championData
         };
         resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Matchups, Counters and Stats';
         resObj.pageData.description = "Statistics, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against."; 
@@ -162,12 +154,6 @@ exports.championRole = function(req, res, next){
         dataCount++;
       }
     });
-
-    ChampionVotes.findOne({key:champKey, role:champRole}, function(err, doc){
-        championVotes = doc;
-        response();
-        dataCount++;
-      });
 
     Roles.findOne({role:champRole}, function(err, doc){
       if(err){
