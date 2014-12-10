@@ -262,7 +262,7 @@
       <input class="matchupSearch" type="text" ng-model="search[matchupType].name" ng-model-options="{debounce: 30}" placeholder="Search By Name" />
     </div>
     <div ng-click="saveSort('statScore')" class="stat-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'statScore'}">
-      Statistical Rating <span class="glyphicon glyphicon-question-sign" tooltip="Statistical rating takes more than win rate into account. Check the F.A.Q for more details."></span>
+      Statistical Rating <span class="glyphicon glyphicon-question-sign" tooltip="Statistical rating takes more than win rate into account. Click the graph button under the champion name for more details."></span>
     </div>
     <div ng-click="saveSort('winRate')" class="winrate-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'winRate'}">
       {{champion.name}} Win Rate
