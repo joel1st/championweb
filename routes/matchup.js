@@ -1,7 +1,6 @@
 /* GET users listing. */
 "use strict";
 var ChampionMatchups = require('../models/championMatchup.js');
-var Votes = require('../models/votes.js');
 var produceError = require('../logic/produceError.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
 var data = require('../models/data.js');
@@ -15,7 +14,6 @@ module.exports = function(req, res, next){
   var champRole = req.params.role;
 
   var pageData, votes;
-  var count = 0;
 
   var champ1Match = typeof data.champList[champ1] !== 'undefined';
   var champ2Match = typeof data.champList[champ2] !== 'undefined';
@@ -24,7 +22,6 @@ module.exports = function(req, res, next){
     var title = generateTitle();
     res.render('matchup', {
       data: pageData,
-      votes: votes,
       pageData:{
         appName: 'matchupPage',
         name:'matchups',
@@ -53,37 +50,6 @@ module.exports = function(req, res, next){
     champ2 = data.champList[champ2].id;
     champRole = data.roleList[champRole];
 
-    if(!data.updating){
-      Votes.findOne({champ1: champ1, champ2: champ2, role:champRole}, {voters:0}, function(err, doc){
-        if(err){
-          return next(produceError('serverMaintenance', 503));
-        } else if(!doc){
-          return next(produceError('invalidMatchup'));
-        } else {
-          votes = doc;
-          if(count === 1){
-            matchupResponse();
-          }
-          count++;
-        }
-      });
-    } else {
-      votes = {
-        champ1:champ1,
-        champ2:champ2,
-        role:champRole,
-        votes: 0,
-        score1Total: 3,
-        score2Total: 3,
-        average1Value: 3,
-        average2Value: 3,
-      };
-      if(count === 1){
-        matchupResponse();
-      }
-      count++;
-    }
-
     ChampionMatchups.findOne({'champ1.id': champ1, 'champ2.id': champ2, role: champRole}, function(err, doc){
       
       if(err){
@@ -92,10 +58,7 @@ module.exports = function(req, res, next){
         return next(produceError('invalidMatchup'));
       } else {
         pageData = doc;
-        if(count === 1){
-          matchupResponse();
-        }
-        count++;
+        matchupResponse();
       }
     });
 
