@@ -41,9 +41,9 @@
 	    $scope.overallPlacement = matchupData.championData.overallPlacement;
 	    $scope.generalRole = matchupData.generalRole;
 	    $scope.championMatrix = matchupData.championData.championMatrix;
-	    $scope.goldLengthData = matchupData.championData.goldLength;
 	    $scope.gameLengthData = matchupData.championData.gameLength;
 	    $scope.patchWinData = matchupData.championData.patchWin;
+	    $scope.patchPlayData = matchupData.championData.patchPlay;
 	    $scope.summoners = matchupData.championData.summoners;
 	    $scope.items = matchupData.championData.items;
 
@@ -86,31 +86,6 @@
 	      settings : radarChartSettings
 	      
 	    };
-	     $scope.goldIncome = {
-	      data : {
-	        labels : ["0-10","10-20","20-30","30 to End"],
-	        datasets : [
-	          {
-	            label: $scope.champion.name,
-	            fillColor : "rgba(137,245,162,0.6)",
-	            strokeColor : "#89f5a2",
-	            pointColor : "#89f5a2",
-	            pointStrokeColor : "#fff",
-	            pointHighlightFill : "#fff",
-	            pointHighlightStroke : "#89f5a2",
-	            data : $scope.goldLengthData
-	          },{
-	            label: "Average of "+$scope.champion.roleTitle+" Champs",
-	            fillColor: "rgba(220,220,220,0.3)",
-	            strokeColor: "rgba(220,220,220,1)",
-	            pointColor: "rgba(220,220,220,1)",
-	            pointStrokeColor: "#fff",
-	            pointHighlightFill: "#fff",
-	            pointHighlightStroke: "rgba(220,220,220,1)",
-	            data : $scope.generalRole.goldLength
-	          }]},
-	      settings : lineChartSettings
-	    };
 
 	    $scope.gameLength = {
 	      data : {
@@ -125,6 +100,15 @@
 	            pointHighlightFill : "#fff",
 	            pointHighlightStroke : "#89f5a2",
 	            data : $scope.gameLengthData
+	          },{
+	            label: "Average of "+$scope.champion.roleTitle+" Champs",
+	            fillColor: "rgba(220,220,220,0.3)",
+	            strokeColor: "rgba(220,220,220,1)",
+	            pointColor: "rgba(220,220,220,1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(220,220,220,1)",
+	            data : [50,50,50,50,50]
 	          }]},
 	      settings : lineChartSettings
 	    };
@@ -142,11 +126,47 @@
 	              pointHighlightFill : "#fff",
 	              pointHighlightStroke : "#89f5a2",
 	              data : $scope.patchWinData
-	            }
+	            },{
+	            label: "Average of "+$scope.champion.roleTitle+" Champs",
+	            fillColor: "rgba(220,220,220,0.3)",
+	            strokeColor: "rgba(220,220,220,1)",
+	            pointColor: "rgba(220,220,220,1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(220,220,220,1)",
+	            data : [50,50,50,50,50]
+	          }
 	          ]
 	        },
 	        settings : lineChartSettings
 	    };
+
+	    $scope.patchPlay = {
+	      data : {
+	        labels : matchupData.patchHistory,
+	        datasets : [
+	          {
+	            label: $scope.champion.name,
+	            fillColor : "rgba(137,245,162,0.6)",
+	            strokeColor : "#89f5a2",
+	            pointColor : "#89f5a2",
+	            pointStrokeColor : "#fff",
+	            pointHighlightFill : "#fff",
+	            pointHighlightStroke : "#89f5a2",
+	            data : $scope.patchPlayData
+	          },{
+	            label: "Average of "+$scope.champion.roleTitle+" Champs",
+	            fillColor: "rgba(220,220,220,0.3)",
+	            strokeColor: "rgba(220,220,220,1)",
+	            pointColor: "rgba(220,220,220,1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(220,220,220,1)",
+	            data : $scope.generalRole.patchPlay
+	          }]},
+	      settings : lineChartSettings
+	    };
+
 	}]);
 
 	appChampion.directive('filters', function(){

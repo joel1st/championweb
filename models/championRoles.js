@@ -1,4 +1,3 @@
-"use strict";
 var mongoose = require('mongoose');
 
 var championSchema = new mongoose.Schema({
