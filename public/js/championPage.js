@@ -7,22 +7,6 @@
 			if(data instanceof Array){
 				for(var i=0;i<data.length;i++){
 					data[i].name = matchupData.championList[data[i].key].name;
-					var matched = false;
-					if(matchupData.championVotes){
-						for(var t=0;t<matchupData.championVotes[type].length;t++){
-							if(data[i].key===matchupData.championVotes[type][t].key){
-								matched = true;
-								data[i].userScore = matchupData.championVotes[type][t].userScore;
-								data[i].ratings = matchupData.championVotes[type][t].ratings;
-								break;
-							}
-						}
-					}
-					if(!matched){
-						data[i].userScore = 3;
-						data[i].ratings = 0;
-					}
-					data[i].overallScore = Number((data[i].statScore + data[i].userScore).toFixed(2));
 				}
 			} 
 			return data;
@@ -275,9 +259,11 @@ appChampion.controller('matchupData', ['$scope','$http','anchorSmoothScroll', 'p
 
 
 	//default sort
+	var previousSort = localStorageAccess.retrieve('chosenSort');
 	$scope.sortExpression = {
-		sortBy: localStorageAccess.retrieve('chosenSort') || 'overallScore'
+		sortBy: (previousSort==='statScore' || previousSort==='winRate') ? previousSort : 'statScore'
 	};
+
 
 	$scope.generateId = function(matchupType, matchupKey){
 		var arr = sortData(matchupKey, $scope.champion.key);
