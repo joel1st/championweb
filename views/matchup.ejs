@@ -17,19 +17,6 @@
         </li>      
     </ul>
     </a>
-    <%if (!pageData.updating) { %> 
-    <div class="champ-user-rating">
-      Vote:
-       <ul class="user-rating" ng-controller="matchupRating" style="margin:auto">
-        <% if(t === 1){ %>
-        <li ng-repeat="rate in ratingLength" ng-class="{'selected': rate === displayRating('<%=data.champ2.key%>', '<%=data.champ1.key%>', '<%=data.role%>', '<%= (data.role==='SYNERGY' || data.role==='ADCSUPPORT')? data.role.toLowerCase() : 'matchups'%>')}" ng-click="addRating(rate, '<%=data.champ2.key%>', '<%=data.champ1.key%>', '<%=data.role%>', '<%= (data.role==='SYNERGY' || data.role==='ADCSUPPORT')? data.role.toLowerCase() : 'matchups'%>', '<%=data.champ1.role%>')"></li>
-          
-        <% } else { %>
-          <li ng-repeat="rate in ratingLength" ng-class="{'selected': rate === displayRating('<%=data.champ1.key%>', '<%=data.champ2.key%>', '<%=data.role%>', '<%= (data.role==='SYNERGY' || data.role==='ADCSUPPORT')? data.role.toLowerCase() : 'matchups'%>')}" ng-click="addRating(rate, '<%=data.champ1.key%>', '<%=data.champ2.key%>', '<%=data.role%>', '<%= (data.role==='SYNERGY' || data.role==='ADCSUPPORT')? data.role.toLowerCase() : 'matchups'%>', '<%=data.champ2.role%>')"></li>
-        <% } %>
-        </ul>
-    </div>
-    <% } %>
   </div>
   <% } %>
   <div class="col-xs-12 col-sm-6 col-md-8 matchup-block" style="text-align:center">
@@ -37,15 +24,15 @@
 
                 <h3>
                 <% if(data.role !== 'SYNERGY'){ %>
-                  <% if((((data.champ1.performance + votes.average1Value))*0.625) >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> has the advantage! <% } %>
-                  <% if( (((data.champ1.performance + votes.average1Value))*0.625) <= 4.25) { %>  <span class="victor2"><%=data.champ2.name%></span> has the advantage! <% } %> 
-                  <% if(!((((data.champ1.performance + votes.average1Value))*0.625) >= 5.75)&&!((((data.champ1.performance + votes.average1Value))*0.625) <= 4.25)){ %>
+                  <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> has the advantage! <% } %>
+                  <% if(data.champ1.performance <= 4.25) { %>  <span class="victor2"><%=data.champ2.name%></span> has the advantage! <% } %> 
+                  <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
                     Skill based matchup!
                   <% } %>
                 <% } else { %>
-                  <% if((((data.champ1.performance + votes.average1Value))*0.625) >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Strong Synergy! <% } %>
-                  <% if( (((data.champ1.performance + votes.average1Value))*0.625) <= 4.25) { %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Weak Synergy! <% } %> 
-                  <% if(!((((data.champ1.performance + votes.average1Value))*0.625) >= 5.75)&&!((((data.champ1.performance + votes.average1Value))*0.625) <= 4.25)){ %>
+                  <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Strong Synergy! <% } %>
+                  <% if(data.champ1.performance <= 4.25) { %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Weak Synergy! <% } %> 
+                  <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
                     Standard Synergy
                   <% } %>
                 <% } %>
@@ -55,29 +42,12 @@
 
 
   	<strong> Total Games Analyzed: <%= data.totalGames %> </strong> <br />
-    <strong> Total Votes Cast: <%= votes.votes %> </strong>
         <div class="matchup-progress-bars <%if(data.role === 'SYNERGY'){%> synergy <%}%>">
                 <h4> Statistical Performance </h4>
                 <div class="progress">
                   <strong class="statistic-rating"> </strong>
                   <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  style="width:<%- data.champ1.performance * 10 %>%"></div>
-                </div>
-                
-                <h4> User Votes </h4>
-                <div class="progress">
-                  <strong class="statistic-rating"> </strong>
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  style="width:<%- votes.average1Value * 1.6666666 * 10 %>%"></div>
-                </div>
-
-                <h4> Overall Performance </h4>
-                <div class="progress overall-score">
-                  <strong class="statistic-rating"> </strong>
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  style="width:<%- (((data.champ1.performance + votes.average1Value) * 10)*0.625) %>%"></div>
-                </div>
-
-                                
-
-               
+                </div>           
       </div>
 
 

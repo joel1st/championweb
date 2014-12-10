@@ -781,7 +781,7 @@
       updating : (process.env.NODE_ENV === 'updating'),
       gamesAnalyzed:"7748570",
       patch:"4.20",
-      ddPatch:"4.20.1",
+      ddPatch:"4.21.1",
       patchHistory: ["4.16","4.17","4.18","4.19","4.20"]
    };
 

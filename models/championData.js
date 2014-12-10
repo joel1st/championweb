@@ -76,16 +76,22 @@ var championDataSchema = new mongoose.Schema({
 		key:String,
 		statScore:Number,
 		games:Number,
+		winRate:Number,
+		winRateChange:Number
 	}],
 	adcsupport:[{ // only support/ad
 		key:String,
 		statScore:Number,
-		games:Number
+		games:Number,
+		winRate:Number,
+		winRateChange:Number
 	}],
 	synergy:[{ // only support/ad
 		key:String,
 		statScore:Number,
-		games:Number
+		games:Number,
+		winRate:Number,
+		winRateChange:Number
 	}]
 });
 

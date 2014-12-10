@@ -898,7 +898,7 @@ transition: color 0.15s;
     padding-bottom:20px;
 }
 .matchup-champion-info{
-  width:27.5%;display:inline-block;position:relative;
+  width:27.5%;display:inline-block;position:relative;top: 3px;
 }
 .matchup-champion-info h3:hover{
   color:#89f5a2;
@@ -953,12 +953,15 @@ border-top: none;
   background-color: rgb(37, 42, 45);
 }
 
-
+.important-message{
+  color:#FF5656;
+  margin-right:15px;
+}
 .matchup-stats{
     display:inline-block;
     margin-right:1px;
+    width:42%;
     padding-right:8px;
-    width:24%;
     /* text-align:center; */
 }
 .matchup-wrapper{
@@ -988,40 +991,20 @@ position:relative;
 color: white;
 border-radius: 3px;
 }
-.total-rating strong{
-    overflow: visible;
-              display: inline;
-              position: absolute;
-              text-shadow: -1px 1px 5px black, 1px 0px 5px rgba(1,1,1,0.8);
-              color: white;
-              left: 5px;
-              top: 0px;
+
+.winrating-area{
+position: relative;
+width:28%;
+display:inline-block;
+text-align:center;
 }
-ul.user-rating{
-    list-style-type: none; 
-    margin: 0;
-padding: 0;
-direction: rtl;
-    width: 64%;
-    float: left;
+.winrating-area strong{
+  display: block;
+  position:relative;
+  top: -8px;
+  font-size:1.3em;
 }
 
-.champ-user-rating{
-    min-width: 130px;
-position: relative;
-top: 5px;
-width:23%;
-display:inline-block;
-}
-#matchups ul.user-rating{
-float: right;
-}
-#matchups .champ-user-rating{
-margin: auto;
-float: right;
-margin-right: 15px;
-width: 80%;
-}
 #matchups h2 {
   margin-bottom:20px;margin-top:25px
 }
@@ -1052,21 +1035,17 @@ ul.user-rating li{
 }
 .stat-sorter{
 float:left;
-width: 23%;text-align:center;
+width: 42%;text-align:center;
 }
-.user-sorter{
+.winrate-sorter{
 float:left;
-width: 25%;text-align:center
-}
-.overall-sorter{
-float:left;
-width: 23%;text-align:center
+width: 28%;text-align:center;
 }
 .search-sorter{
 float:left;
 width: 29%;text-align:center;
 }
-.user-sorter, .overall-sorter, .stat-sorter{
+.winrate-sorter, .stat-sorter{
     cursor:pointer;
     padding: 8px 0px;
 }
@@ -1079,34 +1058,6 @@ width: 29%;text-align:center;
     font-weight:bold;
     color:white;
     background-color: rgb(46, 49, 55);}
-
-ul.user-rating > li:active{
-    border:2px solid white;
-}
-
-
-ul.user-rating > li:hover, ul.user-rating > li:hover ~ li, ul.user-rating > li.selected, ul.user-rating > li.selected ~ li, .reverse ul.user-rating > li + li + li + li + li:hover, .reverse ul.user-rating > li + li + li + li + li:hover, .reverse ul.user-rating > li + li + li + li + li.selected, .reverse ul.user-rating > li + li + li + li + li.selected{ 
-    background-color:#89f5a2;
-}
-
-ul.user-rating > li + li:hover, ul.user-rating > li + li:hover ~ li, ul.user-rating > li + li.selected, ul.user-rating > li + li.selected ~ li, .reverse ul.user-rating > li + li + li + li:hover, .reverse ul.user-rating > li + li + li + li:hover ~ li, .reverse ul.user-rating > li + li + li + li.selected, .reverse ul.user-rating > li + li + li + li.selected ~ li{ 
-    background-color:#9dde94;
-}
-
-ul.user-rating > li + li + li:hover, ul.user-rating > li + li + li:hover ~ li, ul.user-rating > li + li + li.selected, ul.user-rating > li + li + li.selected ~ li {
-    background-color:#bdb97e;
-}
-
-ul.user-rating > li + li + li + li:hover, ul.user-rating > li + li + li + li:hover ~ li, ul.user-rating > li + li + li + li.selected, ul.user-rating > li + li + li + li.selected ~ li, .reverse ul.user-rating > li + li:hover, .reverse ul.user-rating > li + li:hover ~ li, .reverse ul.user-rating > li + li.selected, .reverse ul.user-rating > li + li.selected ~ li{
-    background-color:#df9266;
-}
-
-
-ul.user-rating > li + li + li + li + li:hover, ul.user-rating > li + li + li + li + li:hover, ul.user-rating > li + li + li + li + li.selected, ul.user-rating > li + li + li + li + li.selected, .reverse ul.user-rating > li:hover, .reverse ul.user-rating > li:hover ~ li, .reverse ul.user-rating > li.selected, .reverse ul.user-rating > li.selected ~ li{
-    background-color:#f17d59;
-}
-
-
 
 .radar-legend, .line-legend {
     text-align:center;
@@ -2262,25 +2213,11 @@ margin-top: 14px;
 /* Responsive */
 
  @media (min-width: 992px) and (max-width: 1267px) {
-    .matchup-stats{
-      width:23%;
-    }
-    .overall-score-rating{
-      padding-left: 0px !important;
-      width: 15.5%;
-    }
     .progress{
       width:95%;
     }
  }
 
-
-@media (min-width: 600px) and (max-width: 750px) {
-  .overall-score-rating{
-    padding-left: 0px !important;
-      width: 17%;
-  }
-}
  @media (min-width: 1060px) and (max-width: 1150px) {
     .navigation-holder .nav li{
       margin-left:5px;
@@ -2401,6 +2338,26 @@ margin-bottom: 15px;
  }
 
   @media (max-width: 600px) {
+    .stat-sorter{
+      width:40%;
+    }
+    .winrate-sorter{
+      width:20%;
+    }
+    .search-sorter{
+      width:35%;
+    }
+
+    .matchup-champion-info{
+      width:35%;
+    }
+    .matchup-stats{
+      width:40%;
+    }
+    .winrating-area{
+      width:20%;
+    }
+
     .nav li.first-button{
       margin-left:5px;
     }
@@ -2424,65 +2381,15 @@ margin-bottom: 15px;
       padding-left: 0; 
       padding-right: 0; 
     }
-    .matchup-champion-info{
-      width:100%;
-      display:block;
-      margin-bottom: -5px;
-    }
-    .search-sorter{
-      width: 80%;
-      margin: auto;
-      float:none;
-      margin-bottom:4px;
-    }
-    .stat-sorter, .matchup-stats{
-      width:29%;
-    }
-    .user-sorter, .champ-user-rating{
-      width:42%;
-    }
-    .overall-sorter{
-      width:29%;
-    }
-    .overall-score-rating{
-      padding-left:0px;
-      width:25%;
-    }
+
     .progress{
       width:95%;
     }
-    
-    .counter-matchups h3 {
-      display: inline-block;
-      position: absolute;
-      font-size: 1.55em;
-      left: 52px;
-      top: -15px;
-    }
+
     div.champion-area .container-fluid .row > div:last-child, div.matchups .container-fluid .row > div:last-child {
       padding: 0px;
     }
-    .view-more-stats{
-      right: 90px;
-      top: 9px;
-      left:auto;
-      font-size:1.3em;
-    }
-    .view-more-comment{
-      right: 50px;
-      left:auto;
-      top: 9px;
-      font-size:1.3em;
-    }
-    .view-linked-page{
-      right: 10px;
-      top: 9px;
-      left:auto;
-      font-size:1.3em;
-    }
-    div.matchup-champion{
-      margin-left:0px;
-    }
+
     .counter-matchups{
       padding-top: 14px;
       padding-bottom: 15px;
@@ -2541,8 +2448,14 @@ margin-bottom: 15px;
       padding-left:0px;
       width:15%;
     }
+    .matchup-champion-info{
+      width:42%;
+    }
     .matchup-stats{
-      width:32%;
+      width:30%;
+    }
+    .winrating-area{
+      width:20%;
     }
     .nav li {
     margin-left: 10px;

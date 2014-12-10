@@ -139,11 +139,12 @@
                 <div class="chart-holder">
                   <canvas tc-chartjs-line chart-data="patchRate.data" chart-options="patchRate.settings" id="canvas3" height="150" width="300"></canvas>
                 </div>
+                <div tc-chartjs-legend chart-legend="playRate"></div>
                 <h2 class="line-chart-header">Play Rate By Patch</h2>
                 <div class="chart-holder">
                   <canvas tc-chartjs-line chart-data="patchPlay.data" chart-options="patchPlay.settings" chart-legend="playRate" id="canvas" height="150" width="300"></canvas>
                 </div>
-
+                <div tc-chartjs-legend chart-legend="playRate"></div>
               </div>
 
             </div>
@@ -261,13 +262,10 @@
       <input class="matchupSearch" type="text" ng-model="search[matchupType].name" ng-model-options="{debounce: 30}" placeholder="Search By Name" />
     </div>
     <div ng-click="saveSort('statScore')" class="stat-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'statScore'}">
-      Statistical Rating
+      Statistical Rating <span class="glyphicon glyphicon-question-sign" tooltip="Statistical rating takes more than win rate into account. Check the F.A.Q for more details."></span>
     </div>
-    <div ng-click="saveSort('userScore')" class="user-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'userScore'}">
-      User Rating
-    </div>
-    <div ng-click="saveSort('overallScore')" class="overall-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'overallScore'}">
-      Overall Rating
+    <div ng-click="saveSort('winRate')" class="winrate-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'winRate'}">
+      {{champion.name}} Win Rate
     </div>
   </div>
 </div>
@@ -298,28 +296,9 @@
                 </div>
                 <small><strong>{{matchup.games}}</strong> Games </small>
                 </div>
-                <div class="champ-user-rating" ng-class="{'reverse':order===''}">
-                  <div class="clearfix">
-                    <div class="total-rating" ng-class="{'above-average': matchup.userScore > 3.5, 'below-average': matchup.userScore < 2.5, 'average': matchup.userScore >= 2.5 && matchup.userScore <= 3.5}"> <strong>{{(order==='')?((6-matchup.userScore).toFixed(2) | number) : matchup.userScore}}</strong>
-                  </div>
-                  <ul class="user-rating" ng-controller="matchupRating">
-                   <% if (!pageData.core.updating) { %> 
-                    <li ng-repeat="rate in ratingLength" ng-class="{'selected': rate === displayRating(matchup.key, champion.key, champion.role, matchupType, order)}" ng-click="addRating(rate, matchup.key, champion.key, champion.role, matchupType, null, order)"></li>
-                    <% } else { %>
-                      Updating
-                      <% } %>
-                  </ul>
-                  </div>
-                  
-                  <small> <strong>{{matchup.ratings}}</strong> Ratings </small>
-                </div>
-
-              <div class="overall-score-rating">
-                <div class="progress overall-score">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ng-class="{'above-average': matchup.overallScore > 9, 'below-average': matchup.overallScore < 6, 'average': matchup.overallScore >= 6 && matchup.overallScore <= 9}" ng-style="{'width': order==='' ? (15-matchup.overallScore)*6.66+'%':matchup.overallScore*6.66+'%'}">
-                  </div>
-                </div>
-
+                <div class="winrating-area">
+                  <strong>{{matchup.winRate}}%</strong>
+                
                 </div>
                 </div>
             
