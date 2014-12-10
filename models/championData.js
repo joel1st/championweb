@@ -1,4 +1,3 @@
-"use strict";
 var mongoose = require('mongoose');
 
 var championDataSchema = new mongoose.Schema({
@@ -15,7 +14,7 @@ var championDataSchema = new mongoose.Schema({
 		change:Number
 	},
 	championMatrix:[Number],
-	goldLength:[Number],
+	patchPlay:[Number],
 	gameLength:[Number],
 	patchWin:[Number],
 	dmgComposition:{
@@ -77,22 +76,16 @@ var championDataSchema = new mongoose.Schema({
 		key:String,
 		statScore:Number,
 		games:Number,
-		userScore:Number,
-		ratings:Number
 	}],
 	adcsupport:[{ // only support/ad
 		key:String,
 		statScore:Number,
-		games:Number,
-		userScore:Number,
-		ratings:Number
+		games:Number
 	}],
 	synergy:[{ // only support/ad
 		key:String,
 		statScore:Number,
-		games:Number,
-		userScore:Number,
-		ratings:Number
+		games:Number
 	}]
 });
 
