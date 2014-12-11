@@ -427,6 +427,12 @@ matchupData.championList = {
          "name": "Zac",
          "key": "Zac"
       },
+      "RekSai": {
+         "id": 421,
+         "title": "the Void Burrower",
+         "name": "Rek'Sai",
+         "key": "RekSai"
+      },
       "Quinn": {
          "id": 133,
          "title": "Demacia's Wings",
