@@ -426,6 +426,12 @@
          "name": "Zac",
          "key": "Zac"
       },
+      "RekSai": {
+         "id": 421,
+         "title": "the Void Burrower",
+         "name": "Rek'Sai",
+         "key": "RekSai"
+      },
       "Quinn": {
          "id": 133,
          "title": "Demacia's Wings",
@@ -735,9 +741,9 @@
    };
 
    var newChampion = {
-      key:'',
-      name:'',
-      roleTitle:''//leave blank
+      key:"RekSai",
+      name:"Rek'Sai",
+      roleTitle:""//leave blank
    };
 
    var roleList =  {
@@ -781,7 +787,7 @@
       updating : (process.env.NODE_ENV === 'updating'),
       gamesAnalyzed:"7748570",
       patch:"4.20",
-      ddPatch:"4.21.1",
+      ddPatch:"4.21.3",
       patchHistory: ["4.16","4.17","4.18","4.19","4.20"]
    };
 
