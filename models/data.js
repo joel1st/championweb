@@ -741,8 +741,8 @@
    };
 
    var newChampion = {
-      key:"RekSai",
-      name:"Rek'Sai",
+      key:"",
+      name:"",
       roleTitle:""//leave blank
    };
 
@@ -785,10 +785,10 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"7748570",
-      patch:"4.20",
+      gamesAnalyzed:"2189450",
+      patch:"4.21",
       ddPatch:"4.21.3",
-      patchHistory: ["4.16","4.17","4.18","4.19","4.20"]
+      patchHistory: ["4.17","4.18","4.19","4.20","4.21"]
    };
 
    exports.core = core;
