@@ -785,10 +785,10 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"13,165,120",
-      patch:"4.21",
-      ddPatch:"4.21.5",
-      patchHistory: ["4.17","4.18","4.19","4.20","4.21"]
+      gamesAnalyzed:"1,753,980",
+      patch:"5.1",
+      ddPatch:"5.1.1",
+      patchHistory: ["4.18","4.19","4.20","4.21","5.1"]
    };
 
    exports.core = core;
