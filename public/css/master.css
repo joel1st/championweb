@@ -1475,6 +1475,76 @@ margin-top: 14px;
   color:rgb(255, 237, 104);
 }
 
+
+
+/*Skill Order*/
+.skill-order{
+  /*background-color:black;*/
+  width:100%;
+}
+
+
+.skill-order > div:nth-of-type(odd){
+  
+  background-color: rgb(27, 27, 27);
+}
+
+.skill-order > div:first-child{
+  background-color: rgb(21, 21, 21);
+  text-align: center;
+  font-weight: bold;
+  font-size:1.1em;
+}
+
+.skill-order > div:first-child div span{
+  position:relative;
+  top:6px;
+}
+
+.selected span{
+  color:black;
+  font-size:0.8em;
+  font-weight: bold;
+}
+
+
+.skill{
+  width:100%;
+  float:left;
+  overflow:hidden;
+}
+.skill-order img, .img-placeholder{
+  width:38px;
+  height:38px;
+  float:left;
+}
+
+.skill-selections{
+overflow:hidden;
+}
+
+.skill-selections > div {
+  width:5.555%;
+  padding-left:2px;
+  padding-right:2px;
+  height:38px;
+  border-left:1px solid rgba(63, 63, 63, 0.59);
+  border-bottom:1px solid rgba(63, 63, 63, 0.59);
+  border-collapse: collapse;
+  float:left;
+}
+
+.skill-selections > div.selected {
+
+background-color:rgb(101, 228, 245);
+}
+
+
+
+
+
+
+
 .Aatrox {
         background-position:-0px -0px;
 }
