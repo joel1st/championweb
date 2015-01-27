@@ -71,7 +71,12 @@
     <% } %>
 
 
-      <div class="update-happening" style="padding:0px 10px"> Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.</div>
+          <%if (pageData.name !== 'home') { %>
+      <div class="update-happening" style="padding:0px 10px"><span class="important-message">We are currently aggregating patch 5.2 data - check back in 4 days!</span> Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.</div>
+    <% } else { %>
+      <div class="update-happening" style="padding:0px 10px"><span class="important-message">We are currently aggregating patch 5.2 data - check back in 4 days!</span></div>
+    <% } %>
+
 
 
     
