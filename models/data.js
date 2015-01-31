@@ -741,8 +741,8 @@
    };
 
    var newChampion = {
-      key:"",
-      name:"",
+      key:"Urgot",
+      name:"Urgot",
       roleTitle:""//leave blank
    };
 
@@ -785,10 +785,10 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"5,197,950",
-      patch:"5.1",
-      ddPatch:"5.1.1",
-      patchHistory: ["4.18","4.19","4.20","4.21","5.1"]
+      gamesAnalyzed:"1,647,340",
+      patch:"5.2",
+      ddPatch:"5.2.2",
+      patchHistory: ["4.19","4.20","4.21","5.1","5.2"]
    };
 
    exports.core = core;
