@@ -150,6 +150,82 @@
             </div>
           </div>
         </div>
+
+      <div class="champion-area">
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
+            <h2 class="champion-stats">Skill Order</h2>
+              <div class="skill-order">
+
+              <div class="skill">
+                <div class="img-placeholder"></div>
+                <div class="skill-selections">
+                  <% for (var d = 0; d < 18; d++){ %>
+                    <div>
+                      <span><%= d + 1 %></span>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+
+                <% for (var i = 0 ; i < pageData.skills.length; i++){ %>
+                <div class="skill">
+                  <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= pageData.skills[i].title %>.png" />
+
+                  <div class="skill-selections">
+                    <% for (var b = 0 ; b < pageData.skills[i].order.length; b++){ %>
+                      <div class="<%=pageData.skills[i].order[b]%>">
+                        <span><%= pageData.skills[i].order[b] ? pageData.skills[i].skill : "" %></span>
+                      </div>
+                    <% } %>
+                  </div>
+
+                </div>
+                <% } %>
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
+            <h2 class="champion-stats">Build Order</h2>
+            hello
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-5 counter-column">
+            <h2 class="champion-stats">Runes</h2>
+              <div class="rune-collection">
+                <% for(var i = 0; i < pageData.runes.length; i++){ %> 
+                <div class="rune-type-area" style="width:100%">
+                  <div class="rune-img">
+                  </div>
+                  <div class="rune-info">
+                    <span class="rune-type">Mark Selection</span>
+                    <span class="rune-title"><strong>9x</strong> Greater Mark of Magic Penetration </span>
+                    <span class="rune-benefits">+7.83 Magic Penetration</span>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-7 counter-column">
+            <h2 class="champion-stats">Masteries</h2>
+              <div class="mastery0">
+                <img src="/img/mastery0.jpg" />
+              </div>
+              <div class="mastery1">
+                <img src="/img/mastery1.jpg" />
+              </div>
+              <div class="mastery2">
+                <img src="/img/mastery2.jpg" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
         
       <div class="matchups">
         <div class="container-fluid"  ng-controller="matchupData">

@@ -11,6 +11,30 @@ var pageData = {
   name:'champion',
   description:'',
   title: '',
+  runes: [{
+    type: "Mark",
+    additionalBonus: "5.35 ability power"
+  },{
+    type: "Mark",
+    additionalBonus: "5.35 ability power"
+  }],
+  skills: [{
+    skill : "Q",
+    title : "JinxQ",
+    order : ["", "selected", "", "", "selected", "", "", "", "selected", "selected", "", "selected", "", "", "", "", "", ""]
+  }, {
+    skill : "W",
+    title : "JinxW",
+    order : ["selected", "", "selected", "", "", "", "", "", "", "", "", "", "", "selected", "", "", "selected", "selected"]
+  }, {
+    skill : "E",
+    title : "JinxE",
+    order : ["", "", "", "selected", "", "", "selected", "selected", "", "", "","",  "selected", "",  "selected", "", "", ""]
+  }, {
+    skill : "R",
+    title : "JinxR",
+    order : ["", "", "", "", "", "selected", "", "", "", "", "selected", "", "", "", "", "selected", "", ""]
+  }],
   core: data.core
 };
 
