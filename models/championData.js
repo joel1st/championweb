@@ -42,6 +42,26 @@ var championDataSchema = new mongoose.Schema({
 			winPercent: Number
 		}
 	},
+	firstItems:{
+		mostGames: {
+			items: [{
+				id:Number,
+				name:String,
+				description:String
+			}],
+			games: Number,
+			winPercent: Number
+		},
+		highestWinPercent: {
+			items: [{
+				id:Number,
+				name:String,
+				description:String
+			}],
+			games: Number,
+			winPercent: Number
+		}
+	},
 	summoners:{
 		mostGames: {
 			summoner1: {
@@ -68,6 +88,60 @@ var championDataSchema = new mongoose.Schema({
 				description: String,
 				url: String
 			},
+			games: Number,
+			winPercent: Number
+		}
+	},
+	skills:{
+		skillInfo: [{
+			name: String,
+			description: String,
+			img: String,
+			key: String
+		}],
+		mostGames: {
+			order: [Number],
+			games: Number,
+			winPercent: Number
+		},
+		highestWinPercent: {
+			order: [Number],
+			games: Number,
+			winPercent: Number
+		}
+	},
+	masteries:{
+		mostGames: {
+			masteries: [{mastery:Number, points:Number}],
+			games: Number,
+			winPercent: Number
+		},
+		highestWinPercent: {
+			masteries: [{mastery:Number, points:Number}],
+			games: Number,
+			winPercent: Number
+		}
+	},
+	runes:{
+		mostGames: {
+			runes: [{
+				id: Number,
+				number: Number,
+				name: String,
+				img: String,
+				description: String,
+			}],
+			games: Number,
+			winPercent: Number
+		},
+		highestWinPercent: {
+			runes: [{
+				id: Number,
+				number: Number,
+				name: String,
+				img: String,
+				description: String,
+			}],
 			games: Number,
 			winPercent: Number
 		}

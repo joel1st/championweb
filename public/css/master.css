@@ -1150,18 +1150,44 @@ ul.user-rating li:hover {
   margin:auto;
   text-align:center;
 }
+.build-wrapper small{
+  font-weight:bold;
+  margin-left:2px;
+  margin-right:2px;
+}
 .possible-build, .possible-summoner {
     display:inline-block;
     max-width:36px;
     max-height:36px;
 }
 .build-text, .summoner-text{
-  margin-top:8px;
-  display: inline-block;
+  margin-top: 10px;
+  display: block;
   text-align: center;
   margin:bottom:5px;
 }
+.build-text strong, .summoner-text strong{
+  color: rgb(136, 244, 161);
+}
+.skill-order .build-text{
+  margin-top:20px;
+}
+.rune-img img{
+  width:42px;
+  height:42px;
+  margin-left: 10px;
+margin-right: 10px;
+}
+span.rune-title {
+color: rgb(101, 228, 245)
+}
 
+.rune-type-area{
+  background-color:#1B1B1B;
+}
+.rune-img strong {
+margin-right: 12px;
+}
 h4{
     color:#89f5a2;
     margin-bottom:25px;

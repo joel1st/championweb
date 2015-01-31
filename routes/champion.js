@@ -11,30 +11,6 @@ var pageData = {
   name:'champion',
   description:'',
   title: '',
-  runes: [{
-    type: "Mark",
-    additionalBonus: "5.35 ability power"
-  },{
-    type: "Mark",
-    additionalBonus: "5.35 ability power"
-  }],
-  skills: [{
-    skill : "Q",
-    title : "JinxQ",
-    order : ["", "selected", "", "", "selected", "", "", "", "selected", "selected", "", "selected", "", "", "", "", "", ""]
-  }, {
-    skill : "W",
-    title : "JinxW",
-    order : ["selected", "", "selected", "", "", "", "", "", "", "", "", "", "", "selected", "", "", "selected", "selected"]
-  }, {
-    skill : "E",
-    title : "JinxE",
-    order : ["", "", "", "selected", "", "", "selected", "selected", "", "", "","",  "selected", "",  "selected", "", "", ""]
-  }, {
-    skill : "R",
-    title : "JinxR",
-    order : ["", "", "", "", "", "selected", "", "", "", "", "selected", "", "", "", "", "selected", "", ""]
-  }],
   core: data.core
 };
 
@@ -73,7 +49,7 @@ exports.champion = function(req, res, next){
     ChampionRoles.findOne({key:champKey}, function(err, doc){
       if(err){
         return next(produceError('serverMaintenance', 503));
-      } else if(!doc){
+      } else if(!doc || doc.roles.length === 0){
         if(champKey === data.newChampion.key){
           dataCount = 1;
           championData = null;
