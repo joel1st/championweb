@@ -112,12 +112,30 @@ var championDataSchema = new mongoose.Schema({
 	},
 	masteries:{
 		mostGames: {
-			masteries: [{mastery:Number, points:Number}],
+			masteries: [{
+				tree: String,
+				total: Number,
+				data: {row1: [{mastery:Number, points:Number}],
+						row2: [{mastery:Number, points:Number}],
+						row3: [{mastery:Number, points:Number}],
+						row4: [{mastery:Number, points:Number}],
+						row5: [{mastery:Number, points:Number}],
+						row6: [{mastery:Number, points:Number}]}
+			}],
 			games: Number,
 			winPercent: Number
 		},
 		highestWinPercent: {
-			masteries: [{mastery:Number, points:Number}],
+			masteries: [{
+				tree: String,
+				total: Number,
+				data: {row1: [{mastery:Number, points:Number}],
+						row2: [{mastery:Number, points:Number}],
+						row3: [{mastery:Number, points:Number}],
+						row4: [{mastery:Number, points:Number}],
+						row5: [{mastery:Number, points:Number}],
+						row6: [{mastery:Number, points:Number}]}
+			}],
 			games: Number,
 			winPercent: Number
 		}

@@ -740,6 +740,7 @@
       }
    };
 
+
    var newChampion = {
       key:"Urgot",
       name:"Urgot",
@@ -788,7 +789,8 @@
       gamesAnalyzed:"1,647,340",
       patch:"5.2",
       ddPatch:"5.2.2",
-      patchHistory: ["4.19","4.20","4.21","5.1","5.2"]
+      patchHistory: ["4.19","4.20","4.21","5.1","5.2"],
+      masteryOrder: ['Offense','Defense','Utility']
    };
 
    exports.core = core;

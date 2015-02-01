@@ -141,6 +141,7 @@
 
           <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
+              <% if (championData.skills.highestWinPercent) { %>
               <h2 class="champion-stats">Most Frequent Skill Order</h2>
                 <div class="skill-order clearfix">
 
@@ -206,10 +207,51 @@
 
                 </div>
                  <div class="build-text"><strong><%= championData.skills.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.skills.highestWinPercent.games %></strong> Games </div>
+
+                 <% } %>
+                 <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 counter-column">
+             <% if (championData.runes.highestWinPercent) { %>
+            <h2 class="champion-stats" style="margin-top:40px">Most Frequent Runes</h2>
+              <div class="rune-collection">
+                <% for(var i = 0; i < championData.runes.mostGames.runes.length; i++){ %> 
+                <div class="rune-type-area" style="width:98%">
+                  <div class="rune-img">
+                    <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/rune/<%= championData.runes.mostGames.runes[i].img %>" /> <strong><%= championData.runes.mostGames.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.mostGames.runes[i].name %> </span>
+                    <span class="rune-benefits"><small><%= championData.runes.mostGames.runes[i].description %></small></span>
+                  </div>
+                  <div class="rune-info">
+                    
+                    
+                  </div>
+                </div>
+                <% } %>
+              </div>
+              <div class="build-text"><strong><%= championData.runes.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.mostGames.games %></strong> Games </div>
+
+              <h2 class="champion-stats" style="margin-top:45px">Highest Win % Runes</h2>
+              <div class="rune-collection">
+                <% for(var i = 0; i < championData.runes.highestWinPercent.runes.length; i++){ %> 
+                <div class="rune-type-area" style="width:98%">
+                  <div class="rune-img">
+                    <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/rune/<%= championData.runes.highestWinPercent.runes[i].img %>" /> <strong><%= championData.runes.highestWinPercent.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.highestWinPercent.runes[i].name %> </span>
+                    <span class="rune-benefits"><small><%= championData.runes.highestWinPercent.runes[i].description %></small></span>
+                  </div>
+                  <div class="rune-info">
+                    
+                    
+                  </div>
+                </div>
+                <% } %>
+              </div>
+              <div class="build-text"><strong><%= championData.runes.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.highestWinPercent.games %></strong> Games </div>
+            </div>
+              </div>
+              <% } %>
               </div>
             <div class="col-xs-12 col-sm-12 col-md-6 counter-column" style="border-right:none">
               <div class="row" style="margin-top:0px">
-                
+                <% if (championData.items.highestWinPercent) { %>
                 <div class="col-xs-12 col-sm-12 col-md-7 counter-column">
                 <h2 class="champion-stats">Most Frequent Core Build</h2>
                 <div class="build-wrapper">
@@ -248,54 +290,106 @@
                   <div class="build-text"><strong><%= championData.firstItems.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.firstItems.highestWinPercent.games %></strong> Games</div>
                 </div>
                 </div>
-                </div>
-                 <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 counter-column">
-            <h2 class="champion-stats">Most Frequent Runes</h2>
-              <div class="rune-collection">
-                <% for(var i = 0; i < championData.runes.mostGames.runes.length; i++){ %> 
-                <div class="rune-type-area" style="width:98%">
-                  <div class="rune-img">
-                    <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/rune/<%= championData.runes.mostGames.runes[i].img %>" /> <strong><%= championData.runes.mostGames.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.mostGames.runes[i].name %> </span>
-                    <span class="rune-benefits"><small><%= championData.runes.mostGames.runes[i].description %></small></span>
-                  </div>
-                  <div class="rune-info">
-                    
-                    
-                  </div>
-                </div>
                 <% } %>
-              </div>
-              <div class="build-text"><strong><%= championData.runes.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.mostGames.games %></strong> Games </div>
+                </div>
+                <div class="row">
+            <% if (championData.masteries.mostGames.masteries[0]) { %>
+            <h2 class="champion-stats">Most Frequent Masteries</h2>
+              <div class="mastery-container clearfix">
+                <% for (var k = 0; k<pageData.core.masteryOrder.length; k++){ %>
+                <div class="mastery<%= k %>">
+                  <div class="mastery-header">
+                  <%= championData.masteries.mostGames.masteries[k].tree %> - <%= championData.masteries.mostGames.masteries[k].total %>
+                  </div>
+                  <br />
+                    <% for (var z = 1; z<=6; z++){ %>
+                      <% var masteryColumn = championData.masteries.mostGames.masteries[k].data['row'+z]; %>
+                      <% for(var y = 0; y < masteryColumn.length; y++) { %>
 
-              <h2 class="champion-stats" style="margin-top:45px">Highest Win % Runes</h2>
-              <div class="rune-collection">
-                <% for(var i = 0; i < championData.runes.highestWinPercent.runes.length; i++){ %> 
-                <div class="rune-type-area" style="width:98%">
-                  <div class="rune-img">
-                    <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/rune/<%= championData.runes.highestWinPercent.runes[i].img %>" /> <strong><%= championData.runes.highestWinPercent.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.highestWinPercent.runes[i].name %> </span>
-                    <span class="rune-benefits"><small><%= championData.runes.highestWinPercent.runes[i].description %></small></span>
-                  </div>
-                  <div class="rune-info">
-                    
-                    
-                  </div>
-                </div>
-                <% } %>
+                       <% if(masteryColumn[y].mastery){ %>
+
+                          
+                            <% if(masteryColumn[y].points){ %>
+                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active">
+                                  <div class="points">
+                                    <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
+                                      <div class="point"></div>
+                                    <% } %>
+                                  </div>
+                              </div>
+
+                            <% } else { %>
+                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>">
+
+                              </div>
+                            <% } %>
+                        <% } else { %>
+                          <div class="mastery-spacer"></div>
+                        <% } %>
+                        
+                      <% } %>
+                      <br />
+                    <% } %>
+                    </div>
+                  
+                
+              <% } %>
               </div>
-              <div class="build-text"><strong><%= championData.runes.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.highestWinPercent.games %></strong> Games </div>
-            </div>
+            <div class="build-text"><strong><%= championData.masteries.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.masteries.mostGames.games %></strong> Games</div>
+          </div>
+          <div class="row">
+          
+            <h2 class="champion-stats">Highest Win Percent Masteries</h2>
+              <div class="mastery-container clearfix">
+                <% for (var k = 0; k<pageData.core.masteryOrder.length; k++){ %>
+                <div class="mastery<%= k %>">
+                  <div class="mastery-header">
+                  <%= championData.masteries.highestWinPercent.masteries[k].tree %> - <%= championData.masteries.highestWinPercent.masteries[k].total %>
+                  </div>
+                  <br />
+                    <% for (var z = 1; z<=6; z++){ %>
+                      <% var masteryColumn = championData.masteries.highestWinPercent.masteries[k].data['row'+z]; %>
+                      <% for(var y = 0; y < masteryColumn.length; y++) { %>
+
+                       <% if(masteryColumn[y].mastery){ %>
+
+                          
+                            <% if(masteryColumn[y].points){ %>
+                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active">
+                                  <div class="points">
+                                    <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
+                                      <div class="point"></div>
+                                    <% } %>
+                                  </div>
+                              </div>
+
+                            <% } else { %>
+                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>">
+
+                              </div>
+                            <% } %>
+                        <% } else { %>
+                          <div class="mastery-spacer"></div>
+                        <% } %>
+                        
+                      <% } %>
+                      <br />
+                    <% } %>
+                    </div>
+                  
+                
+              <% } %>
+            
               </div>
+            <div class="build-text"><strong><%= championData.masteries.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.masteries.highestWinPercent.games %></strong> Games</div>
+            <% } %>
+          </div>
+                 
              
           </div>
-          
 
-          <!--<div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-7 counter-column">
-            <h2 class="champion-stats">Masteries</h2>
-              <div style="text-align:center">Soon(tm)</div>
-            </div>
-          </div>row end-->
+
+          
         </div>
         </div>
       </div>

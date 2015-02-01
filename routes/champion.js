@@ -71,7 +71,7 @@ exports.champion = function(req, res, next){
           } else if(!doc){
             return next(produceError('serverMaintenance', 503));
           } else {
-            championData = doc;
+            championData = doc.toObject();
             response();
             dataCount++;
           }
@@ -149,7 +149,7 @@ exports.championRole = function(req, res, next){
       } else if(!doc){
         return next(produceError('serverMaintenance', 503));
       } else {
-        championData = doc;
+        championData = doc.toObject();
         response();
         dataCount++;
       }
