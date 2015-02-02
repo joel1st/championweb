@@ -41,7 +41,14 @@
                   <button style="cursor:auto;" type="submit" class="btn btn-success"><span style="cursor:auto;" class="glyphicon glyphicon-search" ></span></button>
                 </div>
               </div>
-              <div class="fb-like" style="left: 20px;" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+              <div class="social-media">
+              <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+              <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+              </div>
+              
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
             </div>
             
           </div>
@@ -56,26 +63,20 @@
       </div>
     </div>
     <div class="page-content">
-    <%if (pageData.core.updating) { %> 
-     <div class="update-happening">
-      <%if (pageData.name === 'champion') { %>
-         We're currently updating the data - You'll be able to vote again soon!
-      <% } %>
-      <%if (pageData.name === 'error') { %>
-        We're currently updating the data - If you're trying to access a page that normally works, it should be up again in a matter of seconds!
-      <% } %>
-      <%if (pageData.name === 'matchups') { %>
-        We're currently updating the data - Vote stats will be available soon! 
-      <% } %>
-      </div>
-    <% } %>
 
 
-          <%if (pageData.name !== 'home') { %>
-      <div class="update-happening" style="padding:0px 10px"><span class="important-message"><!--We are currently aggregating patch 5.2 data - check back in 1 day!--></span> Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.</div>
-    <% } else { %>
-      <div class="update-happening" style="padding:0px 10px"><span class="important-message"><!--We are currently aggregating patch 5.2 data - check back in 1 day!--></span></div>
-    <% } %>
+         
+      
+        <%if (pageData.name === 'home') { %>
+
+      <% } else { %>
+      <div class="update-happening" style="padding:0px 10px"><span class="important-message"><!--We are currently aggregating patch 5.2 data - check back in 1 day!--></span> 
+        Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.
+        </div>
+      <% } %>
+
+      
+
 
 
 

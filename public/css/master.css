@@ -382,7 +382,13 @@ body{
 }
 .search-fb-holder{
   margin:auto;
-  width: 330px;
+  width: 350px;
+}
+.fb-like{
+  display:block!important;
+  height: 20px !important;
+  width:60px;
+  position: absolute !important;
 }
 .analysis-holder{
   margin: auto;
@@ -401,9 +407,9 @@ text-align: center;
   margin-right:7px;
 }
 .input-group {
-  margin-left:3.5%;
-  margin-top: 12px;
   display:inline-block;
+  position: relative;
+top: 12px;
 }
 .dropdown-search{
   position: relative;
@@ -457,6 +463,12 @@ margin-left: 6px;
 .navbar-inverse {
 /* background-color: #222222; */
     border:none;
+}
+.social-media{
+  display:inline-block;
+  position: relative;
+top: 6px;
+left: 13px;
 }
 .champion-area div h2:first-child {
 margin-top: 12px;
@@ -584,9 +596,7 @@ div.champion-area .container-fluid .row{
 .matchups {
     /* background-color: #1D1D1F; */
 }
-.fb-like{
-margin:auto;
-}
+
 .champ-img{
     display:block;
     margin:auto;
@@ -610,14 +620,14 @@ text-transform: uppercase;
   margin-bottom:6px;
 }
 .large-header{
-  margin-top: 35px;
+  margin-top: 25px;
 background-color: rgb(24, 28, 29);
-padding: 40px 12%;
+padding: 20px 12%;
 background-image: url('/img/header-bg.jpg');
 border-bottom:1px solid rgb(23, 27, 31);
 }
 .large-header h2{
-  font-size:1.95em;
+  font-size:1.75em;
   line-height:1.6em
 }
 .glyphicon-search{
@@ -1381,7 +1391,11 @@ display: inline-block;
 float: left;
 }
 
-
+iframe.center{
+  display: block;
+margin: auto;
+position:relative;
+}
 
 .matchup-progress-bars {
 margin-bottom: 30px;
@@ -2303,6 +2317,7 @@ margin-bottom: 15px;
     }
     
  }
+
  @media (max-width: 1267px) {
      .win-summary{
       width:58%;
@@ -2314,6 +2329,14 @@ margin-bottom: 15px;
       width:100%;
     }
   }
+
+  @media(max-width:1060px){
+    .update-happening{
+      margin-top: -10px;
+      margin-bottom: 25px;
+    }
+  }
+
   @media (max-width: 900px) {
      .win-summary{
       width:100%;
@@ -2353,7 +2376,7 @@ margin-bottom: 15px;
     }
     .large-header{
       margin-top:0px;
-      padding:5px 10%;
+      padding:4px 10%;
     }
     .champion-area .row{
       margin-top:0px;
@@ -2448,10 +2471,10 @@ margin-bottom: 15px;
     }
     .large-header{
       margin-top:0px;
-      padding:8px 4%;
+      padding:6px 4%;
     }
     .large-header h2{
-		font-size:1.5em;
+		font-size:1.4em;
     }
     .champ-height{
      width:24%;
