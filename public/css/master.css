@@ -1154,7 +1154,14 @@ font-size:0.9em;
 }
 
 
-
+.viktor-skill{
+  width:25%;
+  position:relative;
+}
+.viktor-key{
+  position:absolute;
+  top:4px;
+}
 /*
 ul.user-rating li:hover {
     background-color:white;
