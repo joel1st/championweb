@@ -100,12 +100,12 @@ var championDataSchema = new mongoose.Schema({
 			key: String
 		}],
 		mostGames: {
-			order: [Number],
+			order: [String],
 			games: Number,
 			winPercent: Number
 		},
 		highestWinPercent: {
-			order: [Number],
+			order: [String],
 			games: Number,
 			winPercent: Number
 		}
@@ -164,6 +164,18 @@ var championDataSchema = new mongoose.Schema({
 			winPercent: Number
 		}
 	},
+	unique:{ //champions like viktor
+		mostGames: {
+			order: [Number],
+			games: Number,
+			winPercent: Number
+		},
+		highestWinPercent: {
+			order: [Number],
+			games: Number,
+			winPercent: Number
+		}
+	}
 	matchups:[{ // For all champions
 		key:String,
 		statScore:Number,

@@ -21,7 +21,22 @@
                       <small style="display:block"> <%= champion.roles[i].games %> Analyzed This Patch </small>
                     </li>
                   <% } %>
-                    
+
+                    <% if (championData.unique){ %>
+                      Viktor Item Skills //do the thing of adding a popular game
+
+                      <% var viktor = championData.unique.mostGames;
+                      <% for(var i = 0; i<viktor.order.length; i++){ %>
+                        <div class="viktor-skill">
+                        <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[viktor.order[i]].img %>" tooltip="<%= championData.skills.skillInfo[viktor.order[i]].name %>"/>
+                        <span class="viktor-key"><%= championData.skills.skillInfo[viktor.order[i]].key %></span>
+                        <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= 3196+i %>.png" class="possible-build"/>
+                        </div>
+                        <% if (i!==2){ %> <small>></small> <%}%>
+                      
+                      <% } %>
+                      <div class="build-text"><strong><%= viktor.winPercent %>%</strong> Win Rate | <strong><%= viktor.games %></strong> Games </div>
+                   <% } %>
                 </ul>
                 
               </div>
@@ -162,10 +177,20 @@
                     <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
 
                     <div class="skill-selections">
-                      <% for (var b = 0 ; b < championData.skills.mostGames.order.length; b++){ %>
-                        <div class="<%=championData.skills.mostGames.order[b] === i+1 ? 'selected' : '' %>">
-                          <span><%= championData.skills.mostGames.order[b] === i+1 ? championData.skills.skillInfo[i].key : "" %></span>
+                      <% var skillGames = championData.skills.mostGames.order %>
+                      <% for (var b = 0 ; b < skillGames.length; b++){ %>
+                        <div class="<%=skillGames[b][0] === ''+i+1 ? 'selected' : '' %>">
+                        
+                          <span><%= skillGames[b][0] === ''+i+1 ? championData.skills.skillInfo[i].key : "" %></span>
+                          
+                          <% if(skillMostGames[b].length === 3){ %>
+                            <span><%= championData.skills.skillInfo[skillGames[b][2]].key %></span>
+                          <% } %>
+
                         </div>
+                        
+
+                        <% } %>
                       <% } %>
                     </div>
 
@@ -194,10 +219,20 @@
                     <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
 
                     <div class="skill-selections">
-                      <% for (var b = 0 ; b < championData.skills.highestWinPercent.order.length; b++){ %>
-                        <div class="<%=championData.skills.highestWinPercent.order[b] === i+1 ? 'selected' : '' %>">
-                          <span><%= championData.skills.highestWinPercent.order[b] === i+1 ? championData.skills.skillInfo[i].key : "" %></span>
+                      <% var skillGames = championData.skills.highestWinPercent.order %>
+                      <% for (var b = 0 ; b < skillGames.length; b++){ %>
+                        <div class="<%=skillGames[b][0] === ''+i+1 ? 'selected' : '' %>">
+                        
+                          <span><%= skillGames[b][0] === ''+i+1 ? championData.skills.skillInfo[i].key : "" %></span>
+                          
+                          <% if(skillMostGames[b].length === 3){ %>
+                            <span><%= championData.skills.skillInfo[skillGames[b][2]].key %></span>
+                          <% } %>
+
                         </div>
+                        
+
+                        <% } %>
                       <% } %>
                     </div>
 
