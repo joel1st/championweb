@@ -742,8 +742,8 @@
 
 
    var newChampion = {
-      key:"Urgot",
-      name:"Urgot",
+      key:"",
+      name:"",
       roleTitle:""//leave blank
    };
 
@@ -786,7 +786,7 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"1,647,340",
+      gamesAnalyzed:"3,699,110",
       patch:"5.2",
       ddPatch:"5.2.2",
       patchHistory: ["4.19","4.20","4.21","5.1","5.2"],
