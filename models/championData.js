@@ -175,7 +175,7 @@ var championDataSchema = new mongoose.Schema({
 			games: Number,
 			winPercent: Number
 		}
-	}
+	},
 	matchups:[{ // For all champions
 		key:String,
 		statScore:Number,

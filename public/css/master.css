@@ -1154,9 +1154,24 @@ font-size:0.9em;
 }
 
 
+.viktor-skills{
+  margin-top: 35px;
+position: relative;
+left: 6px;
+}
+.viktor-skills small{
+  position: relative;
+left: -7px;
+}
 .viktor-skill{
   width:25%;
   position:relative;
+  display: inline-block
+}
+
+.viktor-skill img{
+  width:36px;
+  height:36px;
 }
 .viktor-key{
   position:absolute;
@@ -1185,6 +1200,7 @@ ul.user-rating li:hover {
   display: block;
   text-align: center;
   margin:bottom:5px;
+  white-space: nowrap;
 }
 .build-text strong, .summoner-text strong{
   color: rgb(136, 244, 161);
