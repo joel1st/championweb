@@ -774,10 +774,6 @@ background-color: #212325;
 
 .champion-statistics tr>td:nth-child(2) {
 font-weight: bold;
-/* color: rgb(199, 199, 199); */
-}
-.champion-statistics thead{
-    /* color: rgb(184, 184, 184); */
 }
 
 .table>thead>tr>th {
