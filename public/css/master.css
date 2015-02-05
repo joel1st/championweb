@@ -546,7 +546,7 @@ color: #D3D3D3;
   font-weight: bold;
   color: #FFA680;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .champion-area{
@@ -787,7 +787,9 @@ border-bottom: 1px solid #383838;
 .btn{
     border-radius:0px;
 }
-
+.form-control, .input-group-btn button{
+  height:42px;
+}
 .form-control:focus {
 /* border-color: #66afe9; */
 outline: 0;
@@ -804,6 +806,13 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
 
     padding-right: 10px;
     border-radius: 0px;
+}
+.donate{
+  position:absolute;
+  right:30px;
+  top:10px;
+  text-transform:none;
+  font-size:0.8em;
 }
 
 .counter-row{
@@ -1686,6 +1695,23 @@ border: 1px solid black;
   background-color:black;
   position: absolute;
   display:block;
+}
+.faq-column{
+  padding: 30px;
+padding-top: 5px;
+}
+.faq{
+  padding:10px;
+  padding-top:0px;
+}
+.faq h2{
+  margin-top:40px;
+  text-align:left;
+}
+.faq p{
+  line-height:1.1em;
+  line-height: 1.9em;
+color: rgb(187, 187, 187);
 }
 
 
