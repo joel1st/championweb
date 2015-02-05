@@ -19,6 +19,14 @@ var maintenance = require('./routes/maintenance');
 
 var app = express();
 
+app.get('/*', function(req, res, next) { // redirect to http instead of www
+  if (req.headers.host.match(/^www/) !== null ) {
+    res.redirect('http://' + req.headers.host.replace(/^www\./, '') + req.url);
+  } else {
+    next();     
+  }
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
