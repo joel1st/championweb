@@ -14,53 +14,7 @@ var pageData = {
     core: data.core
 };
 
-<<<<<<< HEAD
-exports.champion = function(req, res, next){
-  var champKey = req.params.champ;
 
-  var dataCount = 0;
-  var champion = {};
-  var generalRole = {};
-  var championData = {};
-  var championVotes = {};
-  var champMatch = typeof data.champList[champKey] !== 'undefined';
-  if(champMatch || lowerCaseChamp(champKey)){
-  if(!champMatch){
-    champKey = lowerCaseChamp(champKey);
-  }
-    var response = function(){
-       if(dataCount === 1){
-        var resObj = { 
-          pageData:pageData,
-          champion: champion,
-          generalRole: generalRole,
-          championData: championData,
-          championVotes: championVotes
-        };
-        resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Stats, Builds, Runes, Masteries and Counters';
-        resObj.pageData.description = "LoL Statistics, Builds, Runes, Masteries, Skill Orders, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against."; 
-        if(championData !== null){
-          res.render('champion', resObj);
-        } else {
-          res.render('newchampion', resObj);
-        }
-      }
-    };
-
-    ChampionRoles.findOne({key:champKey}, function(err, doc){
-      if(err){
-        return next(produceError('serverMaintenance', 503));
-      } else if(!doc || doc.roles.length === 0){
-        if(champKey === data.newChampion.key){
-          dataCount = 1;
-          championData = null;
-          generalRole = null;
-          championVotes = null;
-          champion = data.newChampion;
-          response();
-        } else {
-          return next(produceError('serverMaintenance', 503));
-=======
 exports.champion = function(req, res, next) {
     var champKey = req.params.champ;
 
@@ -73,7 +27,6 @@ exports.champion = function(req, res, next) {
     if (champMatch || lowerCaseChamp(champKey)) {
         if (!champMatch) {
             champKey = lowerCaseChamp(champKey);
->>>>>>> 04e55a27164d9351ca18ec9a60cc82d4cbab28e2
         }
         var response = function() {
             if (dataCount === 1) {
@@ -84,9 +37,9 @@ exports.champion = function(req, res, next) {
                     championData: championData,
                     championVotes: championVotes
                 };
-                resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Matchups, Counters and Stats';
-                resObj.pageData.description = "Statistics, Counters and Matchups for " + champion.name + " when played " + champion.roleTitle + ". Statistics include " + champion.name + "'s Win Rate, Play Rate and Ban Rate. Counters include who " + champion.name + " " + champion.roleTitle + " is Strong or Weak Against.";
-                if (championData !== null) {
+                resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Stats, Builds, Runes, Masteries and Counters';
+                resObj.pageData.description = "LoL Statistics, Builds, Runes, Masteries, Skill Orders, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against."; 
+            if (championData !== null) {
                     res.render('champion', resObj);
                 } else {
                     res.render('newchampion', resObj);
@@ -177,64 +130,13 @@ exports.championRole = function(req, res, next) {
                     generalRole: generalRole,
                     championData: championData
                 };
-                resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Matchups, Counters and Stats';
-                resObj.pageData.description = "Statistics, Counters and Matchups for " + champion.name + " when played " + champion.roleTitle + ". Statistics include " + champion.name + "'s Win Rate, Play Rate and Ban Rate. Counters include who " + champion.name + " " + champion.roleTitle + " is Strong or Weak Against.";
-
+                resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Stats, Builds, Runes, Masteries and Counters';
+                resObj.pageData.description = "LoL Statistics, Builds, Runes, Masteries, Skill Orders, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against."; 
+       
                 res.render('champion', resObj);
             }
         };
-<<<<<<< HEAD
-        resObj.pageData.title = champion.name + ' ' + champion.roleTitle + ' Stats, Builds, Runes, Masteries and Counters';
-        resObj.pageData.description = "LoL Statistics, Builds, Runes, Masteries, Skill Orders, Counters and Matchups for "+champion.name+" when played "+champion.roleTitle+". Statistics include "+champion.name+ "'s Win Rate, Play Rate and Ban Rate. Counters include who "+champion.name + " " + champion.roleTitle + " is Strong or Weak Against."; 
         
-        res.render('champion', resObj);
-      }
-    };
-    
-    ChampionRoles.findOne({key:champKey}, function(err, doc){
-      if(err){
-        return next(produceError('serverMaintenance', 503));
-      } else if(!doc){
-        return next(produceError('serverMaintenance', 503));
-      } else {
-        champion = JSON.parse(JSON.stringify(doc));
-        champion.role = champRole;
-        champion.roleTitle = data.roleKey[champRole];
-        response();
-        dataCount++;
-      }
-    });
-
-    ChampionData.findOne({key:champKey, role:champRole}, function(err, doc){
-      if(err){
-        return next(produceError('serverMaintenance', 503));
-      } else if(!doc){
-        return next(produceError('serverMaintenance', 503));
-      } else {
-        championData = doc.toObject();
-        response();
-        dataCount++;
-      }
-    });
-
-    Roles.findOne({role:champRole}, function(err, doc){
-      if(err){
-        return next(produceError('serverMaintenance', 503));
-      } else if(!doc){
-        return next(produceError('serverMaintenance', 503));
-      } else {
-        generalRole = doc;
-        response();
-        dataCount++;
-      }
-    });
-  } else {
-    return next(produceError('champNotFound'));
-  }
-  
-};
-=======
-
         ChampionRoles.findOne({
             key: champKey
         }, function(err, doc) {

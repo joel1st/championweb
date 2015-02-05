@@ -9,21 +9,6 @@ module.exports = function(req, res, next) {
     var champData = [];
     var summaries = [];
 
-<<<<<<< HEAD
-	function responseObj(){
-		res.render('index', {
-	    	summaries:summaries,
-	    	data:champData,
-	    	pageData:{
-	    		core: data.core,
-	        	appName: 'core',
-	        	name:'home',
-	        	title: 'LoL Champion Stats, Builds, Runes, Masteries, Counters and Matchups!',
-	        	description:'Champion.gg provides League of Legends champion statistics, builds, runes, masteries, skill orders and counters by role - including Win Rate, Ban Rate, Play Rate and much more!' 
-	        }
-    	});
-	}	
-=======
     function responseObj() {
         res.render('index', {
             summaries: summaries,
@@ -32,12 +17,11 @@ module.exports = function(req, res, next) {
                 core: data.core,
                 appName: 'core',
                 name: 'home',
-                title: 'Champion Statistics, Counters, Builds and Matchups!',
-                description: 'Champion.gg provides champion statistics, builds and counters by role - including Win Rate, Ban Rate, Play Rate and much more!'
+                title: 'LoL Champion Stats, Builds, Runes, Masteries, Counters and Matchups!',
+                description:'Champion.gg provides League of Legends champion statistics, builds, runes, masteries, skill orders and counters by role - including Win Rate, Ban Rate, Play Rate and much more!' 
             }
         });
     }
->>>>>>> 04e55a27164d9351ca18ec9a60cc82d4cbab28e2
 
     ChampionRoles.find({}).sort({
         name: 1
