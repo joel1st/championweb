@@ -14,7 +14,6 @@ var champion = require('./routes/champion');
 var matchup = require('./routes/matchup');
 var matchupJson = require('./routes/matchupJson');
 var statistics = require('./routes/statistics');
-var votes = require('./routes/votes');
 var faq = require('./routes/faq');
 var index = require('./routes/index');
 var votes = require('./routes/votes');
@@ -48,9 +47,6 @@ app.get('/statistics/', statistics);
 app.get('/faq/', faq);
 app.get('/', index);
 
-
-//post
-app.post('/sendmatchup', votes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
