@@ -16,7 +16,6 @@ var matchupJson = require('./routes/matchupJson');
 var statistics = require('./routes/statistics');
 var faq = require('./routes/faq');
 var index = require('./routes/index');
-var votes = require('./routes/votes');
 var maintenance = require('./routes/maintenance');
 
 var app = express();

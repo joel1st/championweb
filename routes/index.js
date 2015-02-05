@@ -17,8 +17,8 @@ module.exports = function(req, res, next){
 	    		core: data.core,
 	        	appName: 'core',
 	        	name:'home',
-	        	title: 'Champion Statistics, Counters, Builds and Matchups!',
-	        	description:'Champion.gg provides champion statistics, builds and counters by role - including Win Rate, Ban Rate, Play Rate and much more!' 
+	        	title: 'LoL Champion Stats, Builds, Runes, Masteries, Counters and Matchups!',
+	        	description:'Champion.gg provides League of Legends champion statistics, builds, runes, masteries, skill orders and counters by role - including Win Rate, Ban Rate, Play Rate and much more!' 
 	        }
     	});
 	}	
