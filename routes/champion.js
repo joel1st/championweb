@@ -186,4 +186,3 @@ exports.championRole = function(req, res, next) {
     }
 
 };
->>>>>>> 04e55a27164d9351ca18ec9a60cc82d4cbab28e2
