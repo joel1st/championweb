@@ -15,7 +15,7 @@ module.exports = function(grunt){
 		            '*.js'   
 	            ],
 	          	tasks: ['jshint']
-    		},
+    		}
 		},
 	    pkg: grunt.file.readJSON('package.json'),
 		jshint: {

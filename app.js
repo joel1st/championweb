@@ -8,7 +8,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var compress = require('compression');
 
-
 //routes
 var champion = require('./routes/champion');
 var matchup = require('./routes/matchup');
@@ -45,7 +44,6 @@ app.get('/matchupJson/:champ1/:champ2/:role', matchupJson);
 app.get('/statistics/', statistics);
 app.get('/faq/', faq);
 app.get('/', index);
-
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
