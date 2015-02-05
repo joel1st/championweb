@@ -21,7 +21,7 @@
               <tbody>
                  <% for(var y=0;y<summaries.length;y++){ %>
                  <tr>
-                  <td><%= summaries[y].title %></td>
+                  <td><a href="statistics/#?sortBy=general.winPercent&order=descend&roleSort=<%= summaries[y].title %>"><%= summaries[y].title %></a></td>
                   <td><a href="/champion/<%=summaries[y].highestWinRate.key%>/<%=summaries[y].title%>">
 							<div class="matchup-champion <%=summaries[y].highestWinRate.key%>"></div>
 								<span class="champion-name"><%= summaries[y].highestWinRate.name %></span>
@@ -54,7 +54,7 @@
               <tbody>
                  <% for(var l=0;l<summaries.length;l++){ %>
                  <tr>
-                  <td><%= summaries[l].title %></td>
+                  <td><a href="statistics/#?sortBy=general.overallPosition&order=ascend&roleSort=<%= summaries[l].title %>"><%= summaries[l].title %></a></td>
                   <td><a href="/champion/<%=summaries[l].bestOverall.key%>/<%=summaries[l].title%>">
 							<div class="matchup-champion <%=summaries[l].bestOverall.key%>"></div>
 							<span class="champion-name"><%= summaries[l].bestOverall.name %></span></a>
@@ -86,7 +86,7 @@
               <tbody>
                  <% for(var x=0;x<summaries.length;x++){ %>
                  <tr>
-                  <td><%= summaries[x].title %></td>
+                  <td><a href="statistics/#?sortBy=general.overallPositionChange&order=descend&roleSort=<%= summaries[x].title %>"><%= summaries[x].title %></a></td>
                   <td><a href="/champion/<%=summaries[x].mostImproved.key%>/<%=summaries[x].title%>">
 							<div class="matchup-champion <%=summaries[x].mostImproved.key%>"></div>
 							<span class="champion-name"><%= summaries[x].mostImproved.name %></span></a>
