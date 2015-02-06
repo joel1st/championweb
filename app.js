@@ -40,9 +40,12 @@ app.use(bodyParser.urlencoded({limit: '2kb', extended: true}));
 app.use(express.static(path.join(__dirname, 'public'), {maxAge:86400000})); //one day
 
 //pages
-if(app.get('env') === 'serverUpdate'){
-  app.get('*', maintenance);
-}
+//set cache headers for page now that we are utilizing cloudflare
+app.use(function(req, res, next){
+  res.setHeader('Cache-Control', 'public, max-age=7200'); //cache pages for 2 hours, if needed I can purge cache from cloud flare
+  next();
+});
+
 app.get('/champion/:champ', champion.champion);
 app.get('/champion/:champ/:role', champion.championRole);
 
