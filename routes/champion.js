@@ -160,7 +160,7 @@ exports.championRole = function(req, res, next) {
             if (err) {
                 return next(produceError('serverMaintenance', 503));
             } else if (!doc) {
-                return next(produceError('serverMaintenance', 503));
+                res.redirect('/champion/'+champKey);
             } else {
                 championData = doc.toObject();
                 response();
