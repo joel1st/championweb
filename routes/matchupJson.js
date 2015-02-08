@@ -2,8 +2,10 @@
 "use strict";
 var ChampionMatchups = require('../models/championMatchup.js');
 var data = require('../models/data.js');
+var express = require('express');
+var router = express.Router();
 
-module.exports = function(req, res) {
+router.get('/:champ1/:champ2/:role', function(req, res) {
 
     var champ1 = req.params.champ1;
     var champ2 = req.params.champ2;
@@ -26,4 +28,6 @@ module.exports = function(req, res) {
         res.statusCode = 404;
         res.send('invalid request');
     }
-};
+});
+
+module.exports = router;

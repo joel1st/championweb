@@ -3,8 +3,10 @@ var ChampionRoles = require('../models/championRoles.js');
 var Summaries = require('../models/summaries.js');
 var produceError = require('../logic/produceError.js');
 var data = require('../models/data.js');
+var express = require('express');
+var router = express.Router();
 
-module.exports = function(req, res, next) {
+router.get('/', function(req, res, next) {
     var retrievedYet = false;
     var champData = [];
     var summaries = [];
@@ -57,4 +59,6 @@ module.exports = function(req, res, next) {
             }
         }
     });
-};
+});
+
+module.exports = router;

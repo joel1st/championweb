@@ -1,7 +1,9 @@
 "use strict";
 var data = require('../models/data.js');
+var express = require('express');
+var router = express.Router();
 
-module.exports = function(req, res) {
+router.get('/', function(req, res) {
     res.render('faq', {
         pageData: {
             core: data.core,
@@ -10,4 +12,6 @@ module.exports = function(req, res) {
             title: 'All your questions answered here!'
         }
     });
-};
+});
+
+module.exports = router;

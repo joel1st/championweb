@@ -12,6 +12,7 @@ var compress = require('compression');
 var champion = require('./routes/champion');
 var matchup = require('./routes/matchup');
 var matchupJson = require('./routes/matchupJson');
+var apiStatic = require('./routes/apiStatic');
 var statistics = require('./routes/statistics');
 var faq = require('./routes/faq');
 var index = require('./routes/index');
@@ -46,15 +47,15 @@ app.use(function(req, res, next){
   next();
 });
 
-app.get('/champion/:champ', champion.champion);
-app.get('/champion/:champ/:role', champion.championRole);
 
-app.get('/matchup/:champ1/:champ2/:role', matchup);
-app.get('/matchupJson/:champ1/:champ2/:role', matchupJson);
+app.use('/champion', champion);
+app.use('/matchup', matchup);
+app.use('/matchupJson', matchupJson);
+app.use('/static', apiStatic);
 
-app.get('/statistics/', statistics);
-app.get('/faq/', faq);
-app.get('/', index);
+app.use('/statistics', statistics);
+app.use('/faq', faq);
+app.use('/', index);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
