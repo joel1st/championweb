@@ -2,8 +2,9 @@
 var statTable = require('../models/statTable.js');
 var produceError = require('../logic/produceError.js');
 var data = require('../models/data.js');
-
-module.exports = function(req, res, next) {
+var express = require('express');
+var router = express.Router();
+router.get('/', function(req, res, next) {
 
     statTable.find({}, function(err, doc) {
         if (err) {
@@ -23,4 +24,6 @@ module.exports = function(req, res, next) {
             });
         }
     });
-};
+});
+
+module.exports = router;

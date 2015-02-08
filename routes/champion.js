@@ -5,6 +5,8 @@ var Roles = require('../models/roles.js');
 var data = require('../models/data.js');
 var produceError = require('../logic/produceError.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
+var express = require('express');
+var router = express.Router();
 
 var pageData = {
     appName: 'championPage',
@@ -14,8 +16,7 @@ var pageData = {
     core: data.core
 };
 
-
-exports.champion = function(req, res, next) {
+router.get('/:champ', function(req, res, next) {
     var champKey = req.params.champ;
 
     var dataCount = 0;
@@ -102,11 +103,11 @@ exports.champion = function(req, res, next) {
         return next(produceError('champNotFound'));
     }
 
-};
+});
 
 
 
-exports.championRole = function(req, res, next) {
+router.get('/:champ/:role', function(req, res, next) {
     var champKey = req.params.champ;
     var champRole = req.params.role; //make function that converts role title to role key.
     var dataCount = 0;
@@ -185,4 +186,6 @@ exports.championRole = function(req, res, next) {
         return next(produceError('champNotFound'));
     }
 
-};
+});
+
+module.exports = router;

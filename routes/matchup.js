@@ -4,8 +4,10 @@ var ChampionMatchups = require('../models/championMatchup.js');
 var produceError = require('../logic/produceError.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
 var data = require('../models/data.js');
+var express = require('express');
+var router = express.Router();
 
-module.exports = function(req, res, next) {
+router.get('/:champ1/:champ2/:role', function(req, res, next) {
 
     var champ1 = req.params.champ1;
     var champ2 = req.params.champ2;
@@ -65,4 +67,6 @@ module.exports = function(req, res, next) {
     } else {
         return next(produceError('invalidMatchup'));
     }
-};
+});
+
+module.exports = router;
