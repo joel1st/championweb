@@ -23,9 +23,9 @@
   </head>
 
   <body>
-  <div class="main-container">
+  
     <div class="navbar navbar-inverse" role="navigation">
-      <div class="container-fluid">
+      <div class="container-fluid" style="max-width:1350px">
         <div class="row clearfix">
           <div class="logo-holder">
             
@@ -33,7 +33,7 @@
 
           </div>
           <div class="search-holder">
-          <div class="analysis-holder"><small>Patch <strong><%=pageData.core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=pageData.core.gamesAnalyzed%></strong></small></div>
+          
             <div class="search-fb-holder">
               <div class="input-group" ng-controller="searchCtrl">
                 <input type="text" class="form-control" placeholder="Champion Name" id="query" value="" ng-model="selected" ng-model-options="{debounce: 40}" typeahead="champ as champ.name for champ in championMenu | startsWith:$viewValue | limitTo: 12" typeahead-template-url="menu.html" style="width:188px;display: inline-block;" ng-keyup="determineSend($event.keyCode)" autocomplete="off">
@@ -56,6 +56,7 @@
           </div>
           <div class="navigation-holder cleafix">
             <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=championgg%40outlook%2ecom&lc=AU&item_name=ChampionGG&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" alt="donate"> Donate </a>
+            <div class="analysis-holder"><small>Patch <strong><%=pageData.core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=pageData.core.gamesAnalyzed%></strong></small></div>
               <ul class="nav navbar-nav">
                 <li class="first-button <%if (pageData.name === 'home') { %> active <% } %>"><a href="/">Home</a></li>
                 <li class="<%if (pageData.name === 'stats') { %> active <% } %>"><a href="/statistics/">Statistics</a></li>
@@ -65,6 +66,7 @@
         </div>   
       </div>
     </div>
+    <div class="main-container">
     <div class="page-content">
 
 
@@ -73,7 +75,7 @@
         <%if (pageData.name === 'home') { %>
 
       <% } else { %>
-      <div class="update-happening" style="padding:0px 10px"><span class="important-message"><!--We are currently aggregating patch 5.2 data - check back in 1 day!--></span> 
+      <div class="update-happening"><span class="important-message"><!--We are currently aggregating patch 5.2 data - check back in 1 day!--></span> 
         Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.
         </div>
       <% } %>
