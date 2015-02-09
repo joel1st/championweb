@@ -10,8 +10,8 @@
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="/css/master.css?v=5.2.2" rel="stylesheet">
-
+    <link href="/css/master.css?v=5.2.3" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
     <script>
       var matchupData = {};
     </script>
@@ -23,7 +23,7 @@
   </head>
 
   <body>
-  
+    <div class="primary-hue">
     <div class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid" style="max-width:1350px">
         <div class="row clearfix">
@@ -41,11 +41,7 @@
                   <button style="cursor:auto;" type="submit" class="btn btn-success"><span style="cursor:auto;" class="glyphicon glyphicon-search" ></span></button>
                 </div>
               </div>
-              <div class="social-media">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
-              <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-
-              </div>
+             
 
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -56,14 +52,25 @@
           </div>
           <div class="navigation-holder cleafix">
             <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=championgg%40outlook%2ecom&lc=AU&item_name=ChampionGG&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" alt="donate"> Donate </a>
-            <div class="analysis-holder"><small>Patch <strong><%=pageData.core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=pageData.core.gamesAnalyzed%></strong></small></div>
+            <div class="analysis-holder"><small>Patch <strong><%=pageData.core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=pageData.core.gamesAnalyzed%></strong><span class="spacer">|</span> <strong> Platinum+ Ranked </strong></small></div>
+                       
+          </div>     
+        </div>   
+      </div>
+    </div>
+    <div class="navigation-elem">
+    <div class="inner-nav">
               <ul class="nav navbar-nav">
                 <li class="first-button <%if (pageData.name === 'home') { %> active <% } %>"><a href="/">Home</a></li>
                 <li class="<%if (pageData.name === 'stats') { %> active <% } %>"><a href="/statistics/">Statistics</a></li>
                 <li class="<%if (pageData.name === 'faq') { %> active <% } %>"><a href="/faq/">F.A.Q</a></li>
-              </ul>            
-          </div>     
-        </div>   
+              </ul>   
+
+               <div class="social-media">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
+              <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+              </div>
       </div>
     </div>
     <div class="main-container">
