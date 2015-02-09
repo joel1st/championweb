@@ -894,7 +894,7 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
     
 }
 .navbar {
-
+	min-height:75px;
   background-color: rgb(13, 20, 21);
 
 }
