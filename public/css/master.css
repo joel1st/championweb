@@ -614,13 +614,13 @@ color: #F7F7F7;
     width: 100%;
     
 
-    background-color: rgb(22, 31, 32);
+    /* background-color: rgb(22, 31, 32); */
     
 
-    border-bottom: 1px solid rgb(35, 50, 55);
+    border-bottom: 1px solid rgb(36, 45, 48);
       
 
-    border-top: 1px solid rgb(35, 50, 55);
+    border-top: 1px solid rgb(36, 45, 48);
 }
 .fb_iframe_widget {
 display: inline-block;
@@ -653,7 +653,7 @@ top: -5px;
 
 
 #query{
-    background-color: #161F20;
+    background-color: #161A1B;
     border: 1px solid rgb(35, 50, 55);
     font-weight: 400;
     color: rgb(255, 255, 255);
@@ -895,7 +895,8 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
 }
 .navbar {
 	min-height:75px;
-  background-color: rgb(13, 20, 21);
+  
+	background-color: rgb(27, 32, 34);
 
 }
 .donate{
