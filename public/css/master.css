@@ -869,7 +869,8 @@ border-bottom: 1px solid #233237;
     border-radius:0px;
 }
 .form-control, .input-group-btn button{
-  height:42px;
+  height: 38px;
+margin-bottom: 4px;
 }
 .form-control:focus {
 /* border-color: #66afe9; */
