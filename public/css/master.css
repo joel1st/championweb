@@ -614,7 +614,7 @@ color: #F7F7F7;
     width: 100%;
     
 
-    /* background-color: rgb(22, 31, 32); */
+    background-color: rgb(22, 26, 27);
     
 
     border-bottom: 1px solid rgb(36, 45, 48);
@@ -654,7 +654,7 @@ top: -5px;
 
 #query{
     background-color: #161A1B;
-    border: 1px solid rgb(35, 50, 55);
+    border: 1px solid rgb(36, 45, 48);
     font-weight: 400;
     color: rgb(255, 255, 255);
 }
@@ -871,8 +871,9 @@ border-bottom: 1px solid #233237;
     border-radius:0px;
 }
 .form-control, .input-group-btn button{
-  height: 38px;
-margin-bottom: 4px;
+  height: 42px;
+
+  /* margin-bottom: 4px; */
 }
 .form-control:focus {
 /* border-color: #66afe9; */
