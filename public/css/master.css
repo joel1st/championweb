@@ -409,7 +409,7 @@ body{
 .analysis-holder{
   margin: auto;
 
-  margin-top: 10px;
+  margin-top: 18px;
   text-transform: capitalize;
 
   /* width: 300px; */
@@ -431,7 +431,8 @@ body{
 .input-group {
   display: block;
   position: relative;
-top: 12px;
+
+  top: 20px;
   margin: auto;
 }
 .dropdown-search{
@@ -471,7 +472,7 @@ margin-left: 6px;
   width:21%
 }
 .navbar-brand img{
-  margin-top: -13px;
+  margin-top: -6px;
 margin-left: 14px;
 width: 75%;
 max-width: 330px;
@@ -506,7 +507,8 @@ background-color: #0D1313;
   /* top: -12px; */
 
   float: right;
-  top: 15px;
+  top: 12px;
+  right: 10px;
   /* left: 13px; */
 }
 .champion-area div h2:first-child {
@@ -898,8 +900,8 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
 }
 .donate{
   position:absolute;
-  right:30px;
-  top:10px;
+  right: 10px;
+  top: 5px;
   text-transform:none;
   font-size:0.8em;
 }
@@ -2500,6 +2502,12 @@ margin-bottom: 15px;
       width:100%;
     }
   }
+  @media (min-width: 768px) {
+	.navbar-nav>li>a {
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+}
   @media (max-width: 775px) {
     .logo-holder{
       width:100%;
