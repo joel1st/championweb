@@ -12,13 +12,13 @@ color: #FCFF90;
 }
 .primary-hue{
 
-    /* background-color: rgba(255, 255, 255, 0.07); */
+    background-color: rgba(205, 255, 240, 0.03);
 
     /* max-width: 1400px; */
 
     margin: auto;
 
-    background: url('../img/bg.jpg');;
+    /* background: url('../img/bg.jpg'); */;
 
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -370,7 +370,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;line-height:1.1;color:#ffffff}
 
 body{
-    /* background: url('../img/bg.jpg'); */ 
+    background: url('../img/bg.jpg'); 
     background-color: #181c1c;
     background-color: rgb(16, 20, 21);
 }
@@ -528,8 +528,9 @@ padding-top: 30px;
 }
 .main-container{
   max-width:1400px;
+  width: 95%;
   margin:auto;
-  background-color: rgba(176, 219, 255, 0.03);
+  /* background-color: rgba(176, 219, 255, 0.03); */
   /* margin-top: 15px; */
 
   /* border: 1px solid #1E2425; */
@@ -614,7 +615,7 @@ color: #F7F7F7;
     width: 100%;
     
 
-    background-color: rgb(22, 26, 27);
+    /* background-color: rgb(22, 26, 27); */
     
 
     border-bottom: 1px solid rgb(36, 45, 48);
@@ -631,6 +632,8 @@ top: -5px;
 
     max-width: 1350px;
     margin: auto;
+
+    width: 95%;
 
 }
 
@@ -653,7 +656,7 @@ top: -5px;
 
 
 #query{
-    background-color: #161A1B;
+    background-color: #191D1E;
     border: 1px solid rgb(36, 45, 48);
     font-weight: 400;
     color: rgb(255, 255, 255);
@@ -895,11 +898,14 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
     
 }
 .navbar {
-	min-height:75px;
+  min-height:75px;
   
-	background-color: rgb(27, 32, 34);
+  /* max-width: 95%; */
+  /* background-color: rgb(27, 32, 34); */
 
 }
+
+
 .donate{
   position:absolute;
   right: 10px;
@@ -1585,6 +1591,11 @@ h1.champ2, .victor2{
   font-size: 0.84em;
   color: #A3A3A3;
   text-align: center;
+}
+
+.navbar .container-fluid{
+  max-width:1350px;
+  width:95%;
 }
 
 .matchup-champion{
@@ -2505,10 +2516,10 @@ margin-bottom: 15px;
     }
   }
   @media (min-width: 768px) {
-	.navbar-nav>li>a {
-		padding-top: 12px;
-		padding-bottom: 12px;
-	}
+  .navbar-nav>li>a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 }
   @media (max-width: 775px) {
     .logo-holder{
