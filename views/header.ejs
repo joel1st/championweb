@@ -10,7 +10,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="/css/master.css?v=5.2.9" rel="stylesheet">
+    <link href="/css/master.css?v=5.2.10" rel="stylesheet">
     <script>
       var matchupData = {};
     </script>
@@ -76,7 +76,11 @@
     <div class="page-content">
 
 
-         
+         <%if (pageData.name === 'home') { %> 
+          <div class="large-header">
+            <h2>Champion.gg analyzes millions of League of Legends Platinum+ games each patch to provide relevant champion builds, runes, masteries, stats, matchups and counters.</h2>
+          </div>
+         <% } %>
       
         
       <div class="update-happening"><span class="important-message">We are currently aggregating patch 5.3 data - check back in 4 days!</span> 
