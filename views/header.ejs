@@ -10,7 +10,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="/css/master.css?v=5.2.11" rel="stylesheet">
+    <link href="/css/master.css?v=5.2.12" rel="stylesheet">
     <script>
       var matchupData = {};
     </script>
@@ -23,6 +23,32 @@
 
   <body>
     <div class="primary-hue">
+    
+    
+    <div class="main-container">
+
+    <div class="navigation-elem">
+    <div class="inner-nav clearfix">
+              <ul class="nav navbar-nav">
+                <li class="first-button <%if (pageData.name === 'home') { %> active <% } %>"><a href="/">Home</a></li>
+                <li class="<%if (pageData.name === 'stats') { %> active <% } %>"><a href="/statistics/">Statistics</a></li>
+                <li class="<%if (pageData.name === 'faq') { %> active <% } %>"><a href="/faq/">F.A.Q</a></li>
+              </ul>   
+
+              
+               <div class="social-media">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
+              <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+              </div>
+
+              <div class="update-happening"><span class="important-message">We are currently aggregating patch 5.3 data - check back in 4 days!</span> 
+              <!--Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.-->
+              </div> 
+
+      </div>
+    </div>
+
     <div class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
         <div class="row clearfix">
@@ -57,22 +83,9 @@
         </div>   
       </div>
     </div>
-    <div class="navigation-elem">
-    <div class="inner-nav">
-              <ul class="nav navbar-nav">
-                <li class="first-button <%if (pageData.name === 'home') { %> active <% } %>"><a href="/">Home</a></li>
-                <li class="<%if (pageData.name === 'stats') { %> active <% } %>"><a href="/statistics/">Statistics</a></li>
-                <li class="<%if (pageData.name === 'faq') { %> active <% } %>"><a href="/faq/">F.A.Q</a></li>
-              </ul>   
 
-               <div class="social-media">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
-              <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
-              </div>
-      </div>
-    </div>
-    <div class="main-container">
+
     <div class="page-content">
 
 
@@ -80,16 +93,8 @@
           <div class="large-header">
             <h2>Champion.gg analyzes millions of League of Legends Platinum+ games each patch to provide relevant champion builds, runes, masteries, stats, matchups and counters.</h2>
           </div>
-         <% } %>
+         <% } %> 
       
-        
-      <div class="update-happening"><span class="important-message">We are currently aggregating patch 5.3 data - check back in 4 days!</span> 
-        <!--Data is sourced from Platinum+ Ranked Games from NA, Korea, EUW, and EUNE for the current patch.-->
-        </div>  
-      
-
-      
-
 
 
 

@@ -385,15 +385,16 @@ body{
   float:left;
   /* margin-top: 10px; */
   padding:10px;
-  width:33%;
+  width: 25%;
   position: relative;
-  top: -11px;
+  top: -14px;
+  left: 58px;
 }
 .navigation-holder{
   float:right;
   padding:10px;
   padding-right:0px;
-  width:33%;
+  width: 38%;
 }
 .search-fb-holder{
   margin:auto;
@@ -450,7 +451,7 @@ h1{
 
 h2 {
 color: #FFED68;
-font-size: 1.52em;
+font-size: 1.42em;
 margin-top: 5px;
 text-align: center;
 }
@@ -480,16 +481,18 @@ width: 75%;
 max-width: 330px;
 }
 .navbar-nav {
-  float: none;
+  float: left;
   margin-top: 0px;
   margin-right:15px;
-  margin-bottom: -4px;
+  /* margin-bottom: -4px; */
   margin-left: 20px;
   display:inline-block;
 }
 .nav>li>a:hover, .nav>li>a:focus {
 text-decoration: none;
-background-color: #1F2A29;
+background-color: #15181A;
+/* border-left: 1px solid rgb(43, 49, 52); */
+/* border-right: 1px solid rgb(43,49,52); */
 }
 .champion-area h2{
     margin-bottom:20px;
@@ -503,15 +506,17 @@ background-color: #1F2A29;
     border:none;
 }
 .social-media{
-  display:inline-block;
-  position: relative;
+  display: block;
+  /* position: absolute; */
 
   /* top: -12px; */
 
-  float: right;
-  top: 12px;
-  right: 10px;
+  /* float: right; */
+  /* top: 12px; */
+  /* right: 10px; */
   /* left: 13px; */
+  float: right;
+  margin-top: 10px;
 }
 .champion-area div h2:first-child {
 margin-top: 12px;
@@ -535,7 +540,10 @@ padding-top: 30px;
   background-color: rgba(176, 219, 255, 0.03);
   /* margin-top: 15px; */
 
-  /* border: 1px solid #1E2425; */
+    
+  box-shadow: 0px 0px 15px rgba(0, 0, 20, 0.21);
+
+  border: 1px solid #121617;
   /* border-left: 1px solid rgb(35, 42, 44); */
   /* border-right: 1px solid rgb(35,42,44); */
 }
@@ -594,10 +602,20 @@ margin-left:3px;
 color: #F7F7F7;
 }
 .update-happening{
-padding-top: 15px;
+/* margin-top: 15px; */
+/* text-align: center; */
+/* width: 100%; */
+/* margin-bottom: 15px; */
+/* display: inline-block; */
+/* width: 50%; */
 text-align: center;
-width: 100%;
-margin-bottom: 15px;
+top: 10px;
+position: relative;
+z-index:-9999999;
+/* float: left; */
+/* width: 90%; */
+/* width: 100%; */
+/* margin-left: 100px; */
 }
 .champion-area{
     border-color: #0F0F0F;
@@ -608,18 +626,18 @@ margin-bottom: 15px;
 
 .navigation-elem{
 
-    width: 95%;
+    /* width: 95%; */
     
 
     max-width: 1400px;
 
-    background-color: rgb(27, 34, 34);
+    /* background-color: rgb(28, 33, 35); */
     
 
-    border-bottom: 1px solid rgb(43, 49, 52);
+    border-bottom: 1px solid rgb(38, 43, 47);
       
 
-    border-top: 1px solid rgb(43, 49, 52);
+    border-top: 1px solid rgb(27, 34, 34);
     margin: auto;
 
 }
@@ -634,6 +652,8 @@ top: -5px;
     margin: auto;
 
     width: 97%;
+
+    position: relative;
 
 }
 
@@ -656,14 +676,14 @@ top: -5px;
 
 
 #query{
-    background-color: #1B2222;
+    background-color: #1E2325;
     border: 1px solid rgb(43, 49, 52);
     font-weight: 400;
     color: rgb(255, 255, 255);
 }
 
 div.champion-area .container-fluid .row > div {
-    border-right: 1px solid rgb(50, 57, 60);
+    border-right: 1px solid rgb(50, 55, 60);
 }
 
 div.champion-area .container-fluid .row > div:last-child, div.matchups .container-fluid .row > div:last-child {
@@ -713,6 +733,7 @@ text-transform: uppercase;
   /* border-bottom:1px solid rgb(23, 27, 31); */
   /* max-width: 1340px; */
   margin: auto;
+  /* display: none; */
 }
 .large-header h2{
   font-size:1.75em;
@@ -752,7 +773,7 @@ h2.champion-stats{
   border: 1px solid rgb(50, 57, 60);
 padding: 10px;
 
-  background-color: rgba(31, 38, 38, 1);
+  background-color: rgba(31, 36, 39, 1);
 margin-top:13px;
 }
 .selected-role h3{
@@ -834,7 +855,7 @@ margin: auto;
 }
 
 .champion-statistics .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
-    background-color: rgba(31, 38, 38, 1);
+    background-color: rgba(31, 36, 39, 1);
 }
 
 .matchups .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
@@ -903,14 +924,17 @@ box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
   /* width: 95%; */
   /* background-color: rgb(27, 32, 34); */
 
-  max-width: 1400px;  width: 95%;  /* height: 100%; */  background-color: rgba(176, 219, 255, 0.03);  padding-bottom: 15px;
+  max-width: 1400px;  
+  /* width: 95%; */  /* height: 100%; */  
+  background-color: rgba(25, 30, 31, 1);  padding-bottom: 15px;
   margin: auto;
+  border-bottom: 1px solid rgb(38, 43, 47);
 }
 
 
 .donate{
   position:absolute;
-  right: 10px;
+  right: 30px;
   top: 5px;
   text-transform:none;
   font-size:0.8em;
@@ -1058,7 +1082,7 @@ text-align: center;
 padding: 8px;
 cursor: pointer;
 width: 100%;
-background-color: rgb(26, 29, 30);
+background-color: rgb(32, 37, 40);
 z-index: 99999999;
 position: relative;
 border: 1px solid rgb(24, 27, 31);
@@ -1077,8 +1101,9 @@ border-top: none;
 }
 
 .important-message{
-  color:#FF5656;
-  margin-right:15px;
+  color: #FD6F6F;
+  /* margin-right:15px; */
+  margin-right: 160px;
 }
 .matchup-stats{
     display:inline-block;
@@ -1174,13 +1199,13 @@ width: 29%;text-align:center;
 }
 .user-sorter:not(.selected-sorter):hover, .overall-sorter:not(.selected-sorter):hover, .stat-sorter:not(.selected-sorter):hover{
     color:white;
-    background-color: rgb(36, 45, 45);
+    background-color: rgb(26, 29, 30);
 }
 
 .selected-sorter{
     font-weight:bold;
     color:white;
-    background-color: rgb(22, 27, 27);}
+    background-color: rgb(37, 43, 47);}
 
 .radar-legend, .line-legend {
     text-align:center;
@@ -1236,7 +1261,7 @@ top: 15px;
 font-size:0.9em;
 }
 .summary-side .table-striped>tbody>tr:nth-child(odd)>td, .summary-side .table-striped>tbody>tr:nth-child(odd)>td .summary-value {
-  background-color: #191D1E;
+  background-color: #191E1F;
 }
 .summary-side tr>td:nth-child(2), .summary-side tr>td:nth-child(3){
   position:relative;
@@ -1329,7 +1354,7 @@ color: rgb(101, 228, 245)
 }
 
 .rune-type-area{
-  background-color: #1F2626;
+  background-color: #202528;
 }
 .rune-img strong {
 margin-right: 12px;
@@ -1523,7 +1548,6 @@ font-weight:bold;
 min-height: 175px;
 text-align: center;
 width: 12%;
-display: inline-block;
 float: left;
 }
 
@@ -1671,7 +1695,7 @@ margin-top: 14px;
 
 .skill-order > div:nth-of-type(odd){
 
-  background-color: rgb(31, 38, 38);
+  background-color: rgb(32, 37, 40);
 }
 
 .skill-order > div:first-child{
@@ -2446,9 +2470,19 @@ text-transform: uppercase;
     }
  }
 
- @media (min-width: 1060px) and (max-width: 1150px) {
+ @media (min-width: 1060px) and (max-width: 1240px) {
     .navigation-holder .nav li{
       margin-left:5px;
+    }
+    .navigation-holder{
+      width:44%;
+    }
+    .search-holder{
+      width:24%;
+      left:0px;
+    }
+    .logo-holder{
+      width:30%;
     }
 
  }
@@ -2456,9 +2490,6 @@ text-transform: uppercase;
  @media (min-width: 775px) and (max-width: 1060px) {
 
     .logo-holder{
-      width:50%;
-    }
-    .search-holder{
       width:50%;
     }
     .navigation-holder{
@@ -2496,13 +2527,30 @@ margin-bottom: 15px;
     }
   }
 
+   @media (max-width: 1300px) {
+    .important-message{
+      margin-right:0px;
+    }
+  }
+
+
   @media(max-width:1060px){
     .analysis-holder{
       text-align:center;
-      padding:0px;
+      margin-top: 5px;
+margin-bottom: -7px;
+    }
+    .navbar{
+      margin-bottom:12px;
     }
     .navbar-nav {
       margin-bottom:0px;
+    }
+    .update-happening{
+      float:left;
+      width:100%;
+      top:0px;
+      margin-bottom:7px;
     }
   }
 
@@ -2531,6 +2579,7 @@ margin-bottom: 15px;
     .search-holder{
       width:100%;
       margin-top: -12px;
+      left:0px;
     }
 
     .navigation-holder{
@@ -2587,6 +2636,10 @@ margin-bottom: 15px;
  }
 
   @media (max-width: 600px) {
+    .social-media{
+      float:none;
+      margin-left:20px;
+    }
     .stat-sorter{
       width:40%;
     }
@@ -2676,8 +2729,11 @@ margin-bottom: 15px;
   }
 
   @media (max-width: 410px) {
-    .search-fb-holder {
-      width:auto;
+    .navbar-nav{
+      margin:0px;
+    }
+    .nav li {
+    margin-left: 2px;
     }
     .nav li.first-button{
       margin-left:7px;
@@ -2708,8 +2764,6 @@ margin-bottom: 15px;
     .winrating-area{
       width:20%;
     }
-    .nav li {
-    margin-left: 10px;
-    }
+    
   }
 
