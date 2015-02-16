@@ -2,6 +2,7 @@
 var ChampionData = require('../models/championData.js');
 var ChampionRoles = require('../models/championRoles.js');
 var Summaries = require('../models/summaries.js');
+var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
 var produceError = require('../logic/produceError.js');
 var data = require('../models/data.js');
 var express = require('express');
@@ -64,8 +65,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/:champ', function(req, res, next) {
     var champKey = req.params.champ;
-    if (typeof data.champList[champKey] !== 'undefined') {
+    if (typeof data.champList[champKey] !== 'undefined' || lowerCaseChamp(champKey)) {
         res.redirect('/champion/' + req.params.champ);
+    } else {
+        return next(produceError('pageNotFound', 404));
     }
 });
 
