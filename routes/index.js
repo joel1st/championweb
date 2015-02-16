@@ -1,4 +1,5 @@
 "use strict";
+var ChampionData = require('../models/championData.js');
 var ChampionRoles = require('../models/championRoles.js');
 var Summaries = require('../models/summaries.js');
 var produceError = require('../logic/produceError.js');
@@ -59,6 +60,13 @@ router.get('/', function(req, res, next) {
             }
         }
     });
+});
+
+router.get('/:champ', function(req, res, next) {
+    var champKey = req.params.champ;
+    if (typeof data.champList[champKey] !== 'undefined') {
+        res.redirect('/champion/' + req.params.champ);
+    }
 });
 
 module.exports = router;
