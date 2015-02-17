@@ -24,6 +24,7 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
 <table class="table table-striped" id="table-1" style="table-layout: auto;">
   <thead id="original-header">
     <tr ng-class="{'down':determineOrder('down'),'up':determineOrder('up')}">
+      <td style="width:3%" ng-click="changeOrder()"><span>Rank</span></td>
       <td ng-class="{'selected-column':determineSelected('title')}" style="width:10%" ng-click="changeSelection('title')"><span>Champion</span></td>
       <td ng-class="{'selected-column':determineSelected('role')}" ng-click="changeSelection('role')"><span>Role</span></td>
       <td ng-class="{'selected-column':determineSelected('winPercent')}" ng-click="changeSelection('winPercent')"><span>Win Percent</span></td>
@@ -47,6 +48,7 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
   </thead>
   <thead id="header-fixed">
     <tr ng-class="{'down':determineOrder('down'),'up':determineOrder('up')}">
+    <td style="width:3%" ng-click="changeOrder()"><span>Rank</span></td>
       <td ng-class="{'selected-column':determineSelected('title')}"ng-click="changeSelection('title')"><span>Champion</span></td>
       <td ng-class="{'selected-column':determineSelected('role')}" ng-click="changeSelection('role')"><span>Role</span></td>
       <td ng-class="{'selected-column':determineSelected('winPercent')}" ng-click="changeSelection('winPercent')"><span>Win Percent</span></td>
@@ -70,7 +72,8 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
   </thead>
  
   <tbody ng-cloak>
-     <tr ng-repeat="champion in championData | startsWith:search.title | filter:roleSort | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy]">
+     <tr ng-repeat="champion in filteredChampions = (championData | startsWith:search.title | filter:roleSort | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy])">
+        <td class="rank">{{indexNumber($index, filteredChampions.length)}}</td>
         <td ng-class="{'selected-column':determineSelected('title')}">
         <a href="/champion/{{champion.key}}/{{champion.role}}">
           <div class="matchup-champion {{champion.key}}"></div>
@@ -109,7 +112,7 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
 <script>
 matchupData.stats = <%- JSON.stringify(data) %>;
 </script>
-<script src="/js/statisticsPage.js"></script>
+<script src="/js/statisticsPage.js?v=5.3.1"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 (function($){

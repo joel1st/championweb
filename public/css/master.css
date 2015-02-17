@@ -1491,7 +1491,7 @@ padding-bottom: 12px;
 font-weight:bold;
 }
 
-#stats tr>td:nth-child(1){
+#stats tr>td:nth-child(2){
   text-align:left;
   padding-left:11px;
 }

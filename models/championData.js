@@ -5,6 +5,7 @@ var championDataSchema = new mongoose.Schema({
     key: String,
     general: [{
         title: String,
+        titleLink: String,
         val: String,
         position: Number,
         change: Number
