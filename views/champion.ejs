@@ -36,23 +36,23 @@
                       
                       <% } %>
                       <div class="build-text"><strong><%= viktor.winPercent %>%</strong> Win Rate | <strong><%= viktor.games %></strong> Games </div>
-                  </div>
-                  <div class="viktor-skills">
-                  <h2 class="champion-stats">Highest Win % Upgrades</h2>
-                  
-                      <% var viktor = championData.unique.highestWinPercent; %>
-                      <% for(var i = 0; i<viktor.order.length; i++){ %>
-                        <div class="viktor-skill">
-                        <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[viktor.order[i]-1].img %>" tooltip="<%= championData.skills.skillInfo[viktor.order[i]-1].name %>"/>
-                        <span class="viktor-key"><%= championData.skills.skillInfo[viktor.order[i]-1].key %></span>
-                        <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= 3196+i %>.png" class="possible-build"/>
-                        </div>
-                        <% if (i!==2){ %> <small>></small> <%}%>
-                      
-                      <% } %>
-                      <div class="build-text"><strong><%= viktor.winPercent %>%</strong> Win Rate | <strong><%= viktor.games %></strong> Games </div>
-                  </div>
-                <% } %>
+                    </div>
+                    <div class="viktor-skills">
+                    <h2 class="champion-stats">Highest Win % Upgrades</h2>
+                    
+                        <% var viktor = championData.unique.highestWinPercent; %>
+                        <% for(var i = 0; i<viktor.order.length; i++){ %>
+                          <div class="viktor-skill">
+                          <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[viktor.order[i]-1].img %>" tooltip="<%= championData.skills.skillInfo[viktor.order[i]-1].name %>"/>
+                          <span class="viktor-key"><%= championData.skills.skillInfo[viktor.order[i]-1].key %></span>
+                          <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= 3196+i %>.png" class="possible-build"/>
+                          </div>
+                          <% if (i!==2){ %> <small>></small> <%}%>
+                        
+                        <% } %>
+                        <div class="build-text"><strong><%= viktor.winPercent %>%</strong> Win Rate | <strong><%= viktor.games %></strong> Games </div>
+                    </div>
+                  <% } %>
                     
                 </ul>
                 
@@ -72,7 +72,12 @@
                   <tbody>
                      <% for(var i=0; i<championData.general.length; i++) {%>
                      <tr>
-                      <td><span class="text-indent"><%= championData.general[i].title %></span></td>
+                      <%
+                        var titleCamelCased = championData.general[i].title.split(" ").map(function(e, i){e=e.toLowerCase(); return i===0? e : (e[0].toUpperCase() + e.substring(1));}).join('');
+                      %>
+                      <a href="http://champion.gg/statistics/#?roleSort=<%= championData.general[i].title %>&sortBy=general.<%= titleCamelCased %>&order=descend">
+                        <td><span class="text-indent"><%= championData.general[i].title %></span></td>
+                      </a>
                       <td><%= championData.general[i].val %><% if(i < 3){ %>%<%}%></td>
                       <td>  
                         <strong class="<%if (championData.general[i].position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>">
