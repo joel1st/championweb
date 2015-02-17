@@ -15,6 +15,19 @@
 
         $scope.Math = Math;
 
+        $scope.indexNumber = function(index, dataLength){
+            var reverseList = false;
+            if($scope.sortExpression.sortBy === 'role' || $scope.sortExpression.sortBy === 'title' || $scope.sortExpression.sortBy === 'general.overallPosition'){
+                reverseList = true;
+            }
+
+            if((!reverseList && $scope.order === '-') || (reverseList && $scope.order === '')){
+                return index + 1;
+            } else {
+                return dataLength - index;
+            }
+        };
+
         $scope.searchUrl = function() {
             $location.search('search', $scope.search.title);
         };
@@ -22,6 +35,11 @@
         $scope.chosenRole = function() {
             $location.search('roleSort', $scope.roleSort.role);
         };
+
+        $scope.changeOrder = function(){
+            $scope.order = ($scope.order === '-') ? '' : '-';
+            $location.search('order', ($scope.order === '-') ? 'descend' : 'ascend');
+        }
 
         $scope.changeSelection = function(property) {
             if (property !== 'role' && property !== 'title') {
