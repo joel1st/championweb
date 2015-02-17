@@ -748,7 +748,11 @@ var radarChartSettings = {
     scaleOverlay: false,
 
     tooltipFillColor: "rgba(0,0,0,0)",
-    multiTooltipTemplate: "",
+    showTooltips: true,
+    multiTooltipTemplate: " ",
+    customTooltips: function(tooltip) {
+
+    },
 
     //Boolean - Whether to show lines for each scale point
     scaleShowLine: true,
