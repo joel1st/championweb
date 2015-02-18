@@ -57,15 +57,20 @@ router.get('/skills/:champion/:id', function(req, res) {
     var championSkills;
 
     //I'd like to find a better way to do this
-    var champFound = false;
-    for (var i in apiData.skills) {
-        if (i.toLowerCase() === champion.toLowerCase()) {
-            champion = i;
+
+    //shortcut for if the capitalization is correct
+    var champFound = apiData.skills.hasOwnProperty(champion);
+    var keys = Object.keys(apiData.skills);
+    for (var i in keys) {
+        if (champFound) break;
+        if (keys[i].toLowerCase() === champion.toLowerCase()) {
+            champion = keys[i];
             champFound = true;
+            break;
         }
     }
 
-    if (champFound || apiData.skills.hasOwnProperty(champion)) {
+    if (champFound) {
         championSkills = apiData.skills[champion].spells;
         if (id in championSkills) {
             res.json(championSkills[id]);
