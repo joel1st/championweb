@@ -858,6 +858,10 @@ margin: auto;
     background-color: rgba(31, 36, 39, 1);
 }
 
+.champion-statistics .table-striped>tbody>tr.highlighted>td {
+    background-color: rgba(55, 60, 63, 1);
+}
+
 .matchups .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
 background-color: #212325;
 }
@@ -881,7 +885,6 @@ background-color: #212325;
 .champion-statistics tbody tr:last-child {
     border: 1px solid #2E3638;
 }
-
 
 .champion-statistics tr>td:nth-child(2) {
 font-weight: bold;
