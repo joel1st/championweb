@@ -71,8 +71,7 @@
                   </thead>
                   <tbody>
                      <% for(var i=0; i<championData.general.length; i++) {%>
-                     <tr>
-                                           
+                     <tr id=<%= 'statistics-' + championData.general[i].title.replace(' ', '-').toLowerCase() + '-row' %> >
                         <td>
                           <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.<%= championData.general[i].titleLink %>&order=descend">
                             <span class="text-indent"><%= championData.general[i].title %></span>

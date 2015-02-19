@@ -748,7 +748,25 @@ var radarChartSettings = {
     scaleOverlay: false,
 
     tooltipFillColor: "rgba(0,0,0,0)",
-    multiTooltipTemplate: "",
+    showTooltips: true,
+    multiTooltipTemplate: "<%= value %>",
+    customTooltips: function(tooltip) {
+        var id, row;
+        if (tooltip && tooltip.title) {
+            if (!this.chart.highlighted) {
+                this.chart.highlighted = [];
+            } else {
+                this.chart.highlighted.forEach(function(e) {
+                    e.className = e.className.replace(' highlighted', '');
+                });
+            }
+            id = 'statistics-' + tooltip.title.replace(' ', '-').toLowerCase() + '-row';
+            row = document.getElementById(id);
+            row.className += ' highlighted';
+
+            if (this.chart.highlighted.indexOf(row) === -1) this.chart.highlighted.push(row);
+        }
+    },
 
     //Boolean - Whether to show lines for each scale point
     scaleShowLine: true,

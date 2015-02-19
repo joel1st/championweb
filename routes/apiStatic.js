@@ -51,15 +51,33 @@ router.get('/summoners/:id', function(req, res) {
 });
 
 
-router.get('/skills/:id/:champion', function(req, res) {
+router.get('/skills/:champion/:id', function(req, res) {
     var id = req.params.id;
     var champion = req.params.champion;
-    if(id >= 1 && id <= 4 ){
-        if(apiData.spells.hasOwnProperty(champion)){
-            res.json(apiData.masteries[champion].spells[id]); 
-        } else {
+    var championSkills;
+
+    //I'd like to find a better way to do this
+
+    //shortcut for if the capitalization is correct
+    var champFound = apiData.skills.hasOwnProperty(champion);
+    var keys = Object.keys(apiData.skills);
+    for (var i in keys) {
+        if (champFound) break;
+        if (keys[i].toLowerCase() === champion.toLowerCase()) {
+            champion = keys[i];
+            champFound = true;
+            break;
+        }
+    }
+
+    if (champFound) {
+        championSkills = apiData.skills[champion].spells;
+        if (id in championSkills) {
+            res.json(championSkills[id]);
+        }
+        else {
             res.statusCode = 404;
-            res.send('invalid request');
+            res.send(champion + " doesn't have that skill.");
         }
     }
 });
