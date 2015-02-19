@@ -859,7 +859,7 @@ margin: auto;
 }
 
 .champion-statistics .table-striped>tbody>tr.highlighted>td {
-    background-color: rgba(55, 60, 63, 1);
+    background-color: rgb(41, 48, 52);
 }
 
 .matchups .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
