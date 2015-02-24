@@ -405,6 +405,7 @@
             var idOrder = sortData(matchupKey, $scope.champion.key);
             var role = (matchupType === 'matchups') ? $scope.champion.role : matchupType.toUpperCase();
 
+
             // add cacheing
             $http.get('/matchupJson/' + idOrder[0] + '/' + idOrder[1] + '/' + role).success(function(data) {
                 console.log('retrieved');
