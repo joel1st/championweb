@@ -5,31 +5,31 @@
 <div class="container-fluid">
 <div class="row faq">
 	<div class="col-xs-12 col-sm-12 col-md-6 faq-column">
-	   <h2> What Stats do you use? </h2>
+	   <h2> What stats do you use? </h2>
        <p> Champion.gg uses game data from Platinum to Challenger from NA, EUW, EUNE and Korea for the current patch, available through <a href="https://developer.riotgames.com/">Riot's API</a>
 
        <h2> What advantage does Champion.gg have over any other statistic sites? </h2>
-       <p> Most other LoL statistic websites are lacking in three areas. Firstly, data doesn't necessarily reflect a champions true performance if you don't take into account how they play in certain roles - this is something Champion.gg is very well equipt for; you can select any champion in their played role to get tailored statistics.</p>
+       <p> Most other LoL statistic websites are lacking in three areas. First, data doesn't necessarily reflect a champion's true performance if their play in certain roles isn't taken into account - this is something Champion.gg is very well equipped for; any champion can be selected in their played role to get tailored statistics.</p>
        <p>
-       Secondly many statistical websites present their data over the past month/week/day. This gives an inacurate view of the champion on the current patch. This is because the sample size can cover more than the current patch or be too small (in the case of a day). Champion.gg bases all data off the current patch apart from the Counters area - which uses the past 2 patches.
+       Second, many statistical websites present their data over the past month/week/day. This gives an inaccurate view of the champion on the current patch. This is because the sample size can cover more than the current patch or be too small (in the case of a day). Champion.gg bases all data off the current patch apart from the Counters section - which uses the past 2 patches.
        </p>
        <p>
-       Thirdly many statistic websites don't show the win rates when a champion is (potentially) played at their best - Champion.gg provides win rates for the best builds, masteries, runes, summoners and skill order.
-       </p>
-
-       <h2>How is the Overall Placement/Performance Ranking Determined?</h2>
-       <p>
-       Thanks for asking! The overall performance ranking takes more than win rate into account! Depending on the particular role, different attributes (such as Win Rate, Play Rate, Ban Rate, Kills, Deaths, CS, Damage Dealt/Taken etc.) are weighted at different levels to provide an overview of how the champion performs as a whole. For example an ADC champion has a higher weighting for 'Damage Dealt' than that of a suppport champion. 
+       Third, many statistic websites don't show the win rates when a champion is (potentially) played at their best - Champion.gg provides win rates for the best builds, masteries, runes, summoners and skill order.
        </p>
 
-       <h2>How is the Counters Statistical Rating Determined?</h2>
+       <h2>How is the Overall Placement/Performance Ranking determined?</h2>
        <p>
-       Similar to above, but it also takes into account how well a champion normally performs, and how the particular matchup has effect this performance. It also takes into account who performs stronger in the matchup.
+       Thanks for asking! The overall performance ranking takes more than win rate into account! Depending on the particular role, different attributes (such as Win Rate, Play Rate, Ban Rate, Kills, Deaths, CS, Damage Dealt/Taken etc.) are weighted at different levels to provide an overview of how the champion performs as a whole. For example, an ADC champion has a higher weighting for 'Damage Dealt' than that of a support champion. 
+       </p>
+
+       <h2>How is the Counters Statistical Rating determined?</h2>
+       <p>
+       The statistical rating of counters is determined in a similar way as the overall performance ranking, but it also takes into account how well a champion normally performs, and the effect the particular matchup has on this performance. It also takes into account who has a stronger performance in the matchup.
        </p>
 
        <h2>How do you determine what role a champion plays in?</h2>
        <p>
-       Champion.gg uses Riot's API which provides the lane and role of a particular champion. This is calculated based off where a particular champion spends the majority of their laning phase. 
+       Champion.gg uses Riot's API which provides the lane and role of a particular champion. This is based on the areas a particular champion spends the majority of the early game/laning phase. 
        </p>
 
        
@@ -37,32 +37,32 @@
     <div class="col-xs-12 col-sm-12 col-md-6 faq-column">
     <h2>How frequently is data updated?</h2>
        <p>
-       Data is updated as soon as possible whenever a new patch is released (usually within 3/4 days). Towards the end of a patch, data is updated less frequently (Champion.gg has over 250gb of champion data), so processing can take up to 36 hours.
+       Data is updated as soon as possible whenever a new patch is released (usually within 3/4 days). Towards the end of a patch, data is updated less frequently--Champion.gg has over 250gb of champion data, so processing can take up to 36 hours.
        </p>
 
        <h2>Why does x champion have such a high/low win rate?</h2>
        <p>
-       Champions such as Urgot are seen very very rarely in Platinum+ games, consequently there isn't always a large enough sample size to determine whether the statistics are a true reflection of the champion's performance. If small sample size isn't an issue, chances are Riot is having balancing issues.
+       Champions such as Urgot are seen very very rarely in Platinum+ games. Consequently, there isn't always a large enough sample size to determine whether the statistics are a true reflection of the champion's performance. If small sample size isn't an issue, chances are Riot is having balancing issues.
        </p>
 
        <h2>How can I support Champion.gg?</h2>
        <p>
-       Champion.gg is and always will be free to use - It does however cost to process and download gigabytes of data each day and host it. There are a number of ways you can help out! You can share Champion.gg with your friends/groups, You can white list champion.gg through your adblocker, or for those who don't like advertisements, you could consider donating.
+       Champion.gg is and always will be free to use - it does, however, cost to process, download, and host gigabytes of data each day. There are a number of ways you can help out! You can share Champion.gg with your friends/groups, you can white list Champion.gg through your adblocker, or for those who don't like advertisements, you can consider donating.
        </p>
 
        <h2>Is Champion.gg open source?</h2>
        <p>
-       I have the web development/design side of champion.gg on <a href="https://github.com/joel1st/championweb">GitHub</a> - You can take a look for yourself! The data aggregation/processing side of things is in a private repo until I clean it up.
+       I have the web development/design side of Champion.gg on <a href="https://github.com/joel1st/championweb">GitHub</a> - You can take a look for yourself! The data aggregation/processing side of things is in a private repo until I clean it up.
        </p>
 
        <h2> What programming language(s) did you use? </h2>
        <p>
-       Champion.gg is a full JavaScript endevour, utilising Node.js/Express on the back end with MongoDB serving the data. The front end uses Angular.js as it's primary framework. Data aggregation/analysis was performed with MongoDB's aggregation framework / Node.js.
+       Champion.gg is a full JavaScript endeavour, utilising Node.js/Express on the back end with MongoDB serving the data. The front end uses Angular.js as its primary framework. Data aggregation/analysis was performed with MongoDB's aggregation framework / Node.js.
        </p>
 
        <h2> How can I contact you? </h2>
        <p>
-       Send me a message on Reddit to <a href="http://www.reddit.com/user/joeldo">/u/joeldo</a>, through the champion.gg <a href="https://www.facebook.com/championgg">Facebook page</a> or <a href="https://github.com/joel1st">GitHub</a>
+       Send me a message on Reddit at <a href="http://www.reddit.com/user/joeldo">/u/joeldo</a>, through the Champion.gg <a href="https://www.facebook.com/championgg">Facebook page</a> or <a href="https://github.com/joel1st">GitHub</a>
        </p>
     </div>
 </div>
