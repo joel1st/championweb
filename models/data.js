@@ -742,8 +742,8 @@
 
 
    var newChampion = {
-      key:"Urgot",
-      name:"Urgot",
+      key:"",
+      name:"",
       roleTitle:""//leave blank
    };
 
