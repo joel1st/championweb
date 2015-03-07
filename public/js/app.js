@@ -9,6 +9,12 @@ var sortData = function(champ1, champ2, position) {
 
     var appCore = angular.module('core', ['ui.bootstrap']);
 
+     appCore.filter('to_trusted', ['$sce', function($sce) {
+        return function(text) {
+            return $sce.trustAsHtml(text);
+        };
+    }]);
+
     appCore.controller('searchCtrl', ['$scope', function($scope) {
         $scope.selected = undefined;
 
@@ -87,6 +93,110 @@ var sortData = function(champ1, champ2, position) {
 
             return filtered;
         };
+    });
+
+    appCore.factory('ToolTip', function($window){
+        return {
+            determineDirection: function(position, tipDetails, width){
+                var ref = position;
+                var newWidth = 240 || width;
+                var cssObj = {
+                    "opacity":1,
+                    "top" : ref.bottom - ref.height - tipDetails.height + $window.scrollY + "px",
+                    "left" : ref.right - (newWidth - ((newWidth - ref.width)/2)) + $window.scrollX + "px",
+                    "height" : "auto",
+                    "width" : newWidth + "px"
+                };
+                return cssObj;
+            },
+            getTemplate: function(tElement, tAttrs){
+                var beginning = "<div class='primary-content'>";
+                var obj = {
+                    masteries: "<div ng-if=\"tooltipContent\"><h4>{{tooltipContent.name}}</h4>"
+                                + "<div class=\"description\" ng-repeat=\"tip in tooltipContent.description\">"
+                                + "{{grahh}}<div ng-class=\"{'highlight' : $index == apiSecondaryId}\" ng-bind-html=\"tip | to_trusted\">"
+                                + "</div></div></div>"
+                }
+                var end = "<div ng-if=\"!tooltipContent\">Loading...</div>"+
+                        "</div><div class='arrow-down'></div>";
+                return beginning + obj[tAttrs.apiType] + end;
+            }
+        };
+    })
+    
+
+    appCore.directive('toolContainer', function(ToolTip, $timeout, $http){
+        return {
+            restrict: "E", 
+            template:  ToolTip.getTemplate,
+            scope:{
+                position:"=",
+                apiType: "@",
+                apiPrimaryId: "@",
+                apiSecondaryId: "@"
+            },
+            link: function(scope, elem, attr){
+                elem.addClass('tooltip-hover');
+
+                var adjustCss = function(){     
+                    scope.tipDetails = elem[0].getBoundingClientRect();
+                    elem.css(ToolTip.determineDirection(scope.position, scope.tipDetails));
+                };
+                
+                $timeout(function(){
+                    adjustCss();
+                }, 0);
+
+                scope.tooltipContent = false;
+                scope.$watch('tooltipContent', function(){
+                    $timeout(function(){
+                        adjustCss();
+                    }, 0)
+                }, true);
+
+                $http.get('http://localhost/static/'+scope.apiType+'/'+scope.apiPrimaryId).success(function(data, status, headers, config){
+                    scope.tooltipContent = data; 
+                }).error(function(data,status,headers,config){
+                    console.log(data);
+                });
+                 
+            }
+        }
+    });
+
+    appCore.directive('championTip', function($compile){
+        return {
+            restrict: "A", 
+            scope:{
+                apiType: "@",
+                apiPrimaryId: "@",
+                apiSecondaryId: "@"
+            },
+            controller: function($scope){
+                $scope.positionInfo = {};
+            },
+            link: function(scope, elem, attr){
+                var elemCopy = elem;
+                
+                mouseenterFunction = function(){
+                    scope.positionInfo = this.getBoundingClientRect();                    
+                    var currentToolTip = "<tool-container api-type="+scope.apiType+" api-primary-id="+scope.apiPrimaryId+" api-secondary-id="+(scope.apiSecondaryId || 'none')+" position='positionInfo' id='currentTooltip'></tool-container>"
+                    var tool = $compile(currentToolTip)(scope);
+
+                    angular.element(document.getElementsByTagName('body')[0]).prepend(tool);
+                };
+
+                mouseoutFunction = function(){
+                     angular.element(document.getElementById('currentTooltip')).remove();
+                };
+
+                elem.bind('mouseenter', mouseenterFunction);
+                elem.children().bind('mouseenter', mouseenterFunction);
+
+                elem.bind('mouseout', mouseoutFunction);
+                elem.children().bind('mouseout', mouseoutFunction);
+            }
+        }
     });
 
 })(angular, matchupData);

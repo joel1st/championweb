@@ -519,12 +519,6 @@
         return decodeHTMLEntities;
     })();
 
-    appChampion.filter('to_trusted', ['$sce', function($sce) {
-        return function(text) {
-            return $sce.trustAsHtml(text);
-        };
-    }]);
-
     appChampion.controller('reddit', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
         $scope.redditData = [];
         $scope.enoughUpvotes = function(thread) {

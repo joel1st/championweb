@@ -373,7 +373,8 @@
 
                           
                             <% if(masteryColumn[y].points){ %>
-                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active">
+                            
+                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>" api-secondary-id="<%- masteryColumn[y].points-1 %>">
                                   <div class="points">
                                     <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
                                       <div class="point"></div>
@@ -382,7 +383,7 @@
                               </div>
 
                             <% } else { %>
-                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>">
+                              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>">
 
                               </div>
                             <% } %>

@@ -1,3 +1,38 @@
+body{
+  position:relative;
+}
+
+.tooltip-hover{
+      z-index:88888888888;
+      position:absolute;
+      opacity:0;
+      left:0;
+      right:0;
+      display:block;
+      text-align:center;
+      width:80%;
+      max-width:300px;
+      min-width:120px;
+      transition:opacity 0.2s;
+    }
+
+    .tooltip-hover > .primary-content{
+      padding:10px;
+      background-color:rgba(1,1,1,0.85);
+      color:white;
+      border-radius: 3px;
+      z-index:99999999;
+      }
+
+    .arrow-down {
+      width: 0; 
+      height: 0; 
+      margin:auto;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid rgba(1,1,1,0.85);
+    }
+
 .center-google{
   text-align:center;
   position:relative;
@@ -1371,6 +1406,9 @@ h4{
     margin-bottom:25px;
     text-align:center;
 }
+.highlight{
+  color:#89f5a2 !important;
+}
 
 
 div.matchup-table{
@@ -1766,7 +1804,7 @@ border: 1px solid black;
   background-size:120%;
   border:1px solid rgb(55, 59, 66);
   margin-left:10px;
-  zoom:0.88;
+  
 }
 .mastery-header{
   font-weight:bold;
@@ -1797,8 +1835,8 @@ border: 1px solid black;
   position:relative;
   opacity:0.35;
 }
-.mastery-icon .points {display:inline-block;width:100%;height:10px;background-color:rgba(0, 0, 0, 0.83);position:absolute;bottom:0px;}
-.mastery-icon .point {display:inline-block;background-color:yellow;width:6px;height:6px;margin-left:2px;}
+.mastery-icon .points {/* display:inline-block; *//* width:100%; */height: 10px;/* background-color:rgba(0, 0, 0, 0.83); */position:absolute;bottom:0px;}
+.mastery-icon .point {display:inline-block;background-color:yellow;width: 8px;border: 2px solid black;height: 8px;margin-left:2px;}
 .mastery-spacer{
     width:48px;
   height: 48px;
