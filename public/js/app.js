@@ -145,13 +145,13 @@ var sortData = function(champ1, champ2, position) {
                 
                 $timeout(function(){
                     adjustCss();
-                }, 0);
+                }, 1);
 
                 scope.tooltipContent = false;
                 scope.$watch('tooltipContent', function(){
                     $timeout(function(){
                         adjustCss();
-                    }, 0)
+                    }, 1)
                 }, true);
 
                 $http.get('http://localhost/static/'+scope.apiType+'/'+scope.apiPrimaryId).success(function(data, status, headers, config){
@@ -164,7 +164,7 @@ var sortData = function(champ1, champ2, position) {
         }
     });
 
-    appCore.directive('championTip', function($compile){
+    appCore.directive('championTip', function($compile, $timeout){
         return {
             restrict: "A", 
             scope:{
@@ -177,24 +177,30 @@ var sortData = function(champ1, champ2, position) {
             },
             link: function(scope, elem, attr){
                 var elemCopy = elem;
-                
+                var timed = [];
                 mouseenterFunction = function(){
-                    scope.positionInfo = this.getBoundingClientRect();                    
-                    var currentToolTip = "<tool-container api-type="+scope.apiType+" api-primary-id="+scope.apiPrimaryId+" api-secondary-id="+(scope.apiSecondaryId || 'none')+" position='positionInfo' id='currentTooltip'></tool-container>"
-                    var tool = $compile(currentToolTip)(scope);
-
-                    angular.element(document.getElementsByTagName('body')[0]).prepend(tool);
+                    timed[timed.length] = $timeout(function(){
+                        scope.positionInfo = this.getBoundingClientRect();                    
+                        var currentToolTip = "<tool-container api-type="+scope.apiType+" api-primary-id="+scope.apiPrimaryId+" api-secondary-id="+(scope.apiSecondaryId || 'none')+" position='positionInfo' class='currentTooltip'></tool-container>"
+                        var tool = $compile(currentToolTip)(scope);
+                        angular.element(document.getElementsByTagName('body')[0]).prepend(tool);
+                    }.bind(this), 120);
                 };
 
                 mouseoutFunction = function(){
-                     angular.element(document.getElementById('currentTooltip')).remove();
+                    for(var y = 0; y < timed.length; y++){
+                        $timeout.cancel(timed[y]);
+                    }
+                    
+                    var ref = angular.element(document.getElementsByClassName('currentTooltip'));
+                    for(var i = 0; i < ref.length; i++){
+                        ref[i].remove();
+                    }
                 };
 
-                elem.bind('mouseenter', mouseenterFunction);
-                elem.children().bind('mouseenter', mouseenterFunction);
+                elem.bind('mouseover', mouseenterFunction);
+                elem.bind('mouseleave', mouseoutFunction);
 
-                elem.bind('mouseout', mouseoutFunction);
-                elem.children().bind('mouseout', mouseoutFunction);
             }
         }
     });

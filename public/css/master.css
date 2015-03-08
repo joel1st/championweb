@@ -37,6 +37,11 @@ body{
   text-align:center;
   position:relative;
 }
+
+.mastery-row{
+  position:relative;
+  left:-2px;
+}
 a {
 color: #89f5a2;
 }
@@ -1406,8 +1411,16 @@ h4{
     margin-bottom:25px;
     text-align:center;
 }
-.highlight{
-  color:#89f5a2 !important;
+.description{
+  font-size:0.85em;
+}
+.description>.highlight{
+  color: #89f5a2 !important;
+font-size: 1.15em;
+font-weight: bold;
+border: 1px solid;
+padding: 2px;
+margin: 5px;
 }
 
 
@@ -1799,6 +1812,7 @@ border: 1px solid black;
 
 .mastery0, .mastery1, .mastery2{
   float:left;
+  cursor:default;
   position:relative;
   padding:10px;
   background-size:120%;
@@ -1806,6 +1820,8 @@ border: 1px solid black;
   margin-left:10px;
   
 }
+
+
 .mastery-header{
   font-weight:bold;
   font-size:1.1em;
@@ -1826,24 +1842,32 @@ border: 1px solid black;
 }
 .mastery-icon{
   background-image:url('http://ddragon.leagueoflegends.com/cdn/5.2.2/img/sprite/gray_mastery0.png');
-  margin-left:3px;
-  margin-top:3px;
+  margin-left: 6px;
+  margin-top: 6px;
   border: 1px solid grey;
-  width: 48px;
-  height: 48px;
-  display:inline-block;
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-size: initial;
   position:relative;
   opacity:0.35;
+  float: left;
+  z-index:88;
 }
-.mastery-icon .points {/* display:inline-block; *//* width:100%; */height: 10px;/* background-color:rgba(0, 0, 0, 0.83); */position:absolute;bottom:0px;}
-.mastery-icon .point {display:inline-block;background-color:yellow;width: 8px;border: 2px solid black;height: 8px;margin-left:2px;}
+.mastery-icon .points {display: block;width:100%;height: 8px;padding: 0px;margin: 0px;background-color:rgba(0, 0, 0, 0.83);position:absolute;bottom:0px;}
+.mastery-icon .point {display: block;position: relative;background-color:yellow;width: 4px;height: 4px;margin-left: 4px;top: 3px;float: left;}
 .mastery-spacer{
-    width:48px;
-  height: 48px;
-  margin-left:4px;
-  margin-top:4px;
+    width: 40px;
+  
+    height: 40px;
+  
+    margin-left: 6px;
+  
+    margin-top: 6px;
   position:relative;
-  display:inline-block;
+  
+    display: block;
+    float: left;
 }
 
 .mastery-active{

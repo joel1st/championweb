@@ -15,6 +15,8 @@ router.get('/items/:id', function(req, res) {
 });
 
 router.get('/masteries/:id', function(req, res) {
+    res.setHeader('Cache-Control', 'public, max-age=180'); //cache masteries for 3 minutes.
+
     var id = req.params.id;
     if(apiData.masteries.hasOwnProperty(id)){
         res.json(apiData.masteries[id]); 
