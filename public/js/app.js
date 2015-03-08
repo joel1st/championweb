@@ -184,7 +184,7 @@ var sortData = function(champ1, champ2, position) {
                         var currentToolTip = "<tool-container api-type="+scope.apiType+" api-primary-id="+scope.apiPrimaryId+" api-secondary-id="+(scope.apiSecondaryId || 'none')+" position='positionInfo' class='currentTooltip'></tool-container>"
                         var tool = $compile(currentToolTip)(scope);
                         angular.element(document.getElementsByTagName('body')[0]).prepend(tool);
-                    }.bind(this), 120);
+                    }.bind(this), 50);
                 };
 
                 mouseoutFunction = function(){
