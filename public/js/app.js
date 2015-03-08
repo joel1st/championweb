@@ -154,7 +154,7 @@ var sortData = function(champ1, champ2, position) {
                     }, 1)
                 }, true);
 
-                $http.get('http://localhost/static/'+scope.apiType+'/'+scope.apiPrimaryId).success(function(data, status, headers, config){
+                $http.get('/static/'+scope.apiType+'/'+scope.apiPrimaryId).success(function(data, status, headers, config){
                     scope.tooltipContent = data; 
                 }).error(function(data,status,headers,config){
                     console.log(data);
