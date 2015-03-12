@@ -18,6 +18,12 @@
          "name": "Tryndamere",
          "key": "Tryndamere"
       },
+      "Bard": {
+         "id": 432,
+         "title": "the Wandering Caretaker",
+         "name": "Bard",
+         "key": "Bard"
+      },
       "Gragas": {
          "id": 79,
          "title": "the Rabble Rouser",
@@ -742,8 +748,8 @@
 
 
    var newChampion = {
-      key:"",
-      name:"",
+      key:"Bard",
+      name:"Bard",
       roleTitle:""//leave blank
    };
 
@@ -786,9 +792,9 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"4,171,230",
+      gamesAnalyzed:"4,763,910",
       patch:"5.4",
-      ddPatch:"5.4.1",
+      ddPatch:"5.5.2",
       patchHistory: ["4.21","5.1","5.2","5.3","5.4"],
       masteryOrder: ['Offense','Defense','Utility']
    };
