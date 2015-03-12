@@ -62,7 +62,9 @@
               <div class="input-group" ng-controller="searchCtrl">
                 <input type="text" class="form-control" placeholder="Champion Name" id="query" value="" ng-model="selected" ng-model-options="{debounce: 40}" typeahead="champ as champ.name for champ in championMenu | startsWith:$viewValue | limitTo: 12" typeahead-template-url="menu.html" style="width:188px;display: inline-block;" ng-keyup="determineSend($event.keyCode)" autocomplete="off">
                 <div class="input-group-btn" style="cursor:auto;display: inline-block;">
-                  <button style="cursor:auto;" type="submit" class="btn btn-success"><span style="cursor:auto;" class="glyphicon glyphicon-search" ></span></button>
+                
+                  <button ng-click="getPage()" style="cursor:auto;" type="submit" class="btn btn-success"><span style="cursor:auto;" class="glyphicon glyphicon-search" ></span></button>
+                
                 </div>
               </div>
              

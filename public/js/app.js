@@ -17,7 +17,6 @@ var sortData = function(champ1, champ2, position) {
 
     appCore.controller('searchCtrl', ['$scope', function($scope) {
         $scope.selected = undefined;
-
         $scope.championMenu = [];
 
         for (var prop in matchupData.championList) {
@@ -29,9 +28,14 @@ var sortData = function(champ1, champ2, position) {
             }
         }
 
+        $scope.getPage = function(){
+            window.location.assign('/champion/'+ $scope.selected);
+        }
+
         $scope.determineSend = function(keyCode) {
             if (keyCode === 13) {
-                window.location.assign('/champion/' + $scope.selected.key);
+                var name = $scope.selected.key || $scope.selected;
+                window.location.assign('/champion/' + name);
             }
         };
 
