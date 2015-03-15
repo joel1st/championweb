@@ -748,8 +748,8 @@
 
 
    var newChampion = {
-      key:"Bard",
-      name:"Bard",
+      key:"",
+      name:"",
       roleTitle:""//leave blank
    };
 
@@ -792,10 +792,10 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"4,763,910",
-      patch:"5.4",
+      gamesAnalyzed:"1,412,140",
+      patch:"5.5",
       ddPatch:"5.5.2",
-      patchHistory: ["4.21","5.1","5.2","5.3","5.4"],
+      patchHistory: ["5.1","5.2","5.3","5.4","5.5"],
       masteryOrder: ['Offense','Defense','Utility']
    };
 
