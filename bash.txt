@@ -5,6 +5,7 @@ mongodump --db leaguetimes --collection championroles --out ../../code/web/db
 mongodump --db leaguetimes --collection roles --out ../../code/web/db
 mongodump --db leaguetimes --collection stattables --out ../../code/web/db
 mongodump --db leaguetimes --collection summaries --out ../../code/web/db
+git add -A && git commit -m "updated data" && git push
 
 mongorestore --db leaguetimes --collection championdatas --drop db/leaguetimes/championdatas.bson
 mongorestore --db leaguetimes --collection championmatchups --drop db/leaguetimes/championmatchups.bson
