@@ -13,6 +13,7 @@ mongorestore --db leaguetimes --collection championroles --drop db/leaguetimes/c
 mongorestore --db leaguetimes --collection roles --drop db/leaguetimes/roles.bson
 mongorestore --db leaguetimes --collection stattables --drop db/leaguetimes/stattables.bson
 mongorestore --db leaguetimes --collection summaries --drop db/leaguetimes/summaries.bson
+cd bin && pm2 restart www.js
 
 NODE_ENV=production pm2 restart www.js
 NODE_ENV=updating pm2 restart www.js
