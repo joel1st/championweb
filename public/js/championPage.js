@@ -69,6 +69,66 @@
 
         };
 
+        $scope.experienceRate = {
+            data: {
+                labels: ["0-5", "5-15", "15-50", "50-125", "125+"],
+                datasets: [{
+                    label: $scope.champion.name,
+                    fillColor: "rgba(137,245,162,0.6)",
+                    strokeColor: "#89f5a2",
+                    pointColor: "#89f5a2",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "#89f5a2",
+                    data: $scope.gameLengthData
+                }, {
+                    label: "Average of " + $scope.champion.roleTitle + " Champs",
+                    fillColor: "rgba(220,220,220,0.3)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [50, 50, 50, 50, 50]
+                }]
+            },
+            settings: lineChartSettings
+        };
+
+        $scope.experienceDistribution = {
+            data: {
+                datasets: [{
+                    value: 3.5,
+                    color:'#F7464A',
+                    highlight: '#FF5A5E',
+                    label: 'Red'
+                },{
+                    value: 4.5,
+                    color:'#F7464A',
+                    highlight: '#FF5A5E',
+                    label: 'Red'
+                }, {
+                    value: 27.5,
+                    color:'#F7464A',
+                    highlight: '#FF5A5E',
+                    label: 'Red'
+                },
+                {
+                    value: 30,
+                    color: '#46BFBD',
+                    highlight: '#5AD3D1',
+                    label: 'Green'
+                },
+                {
+                    value: 20,
+                    color: '#FDB45C',
+                    highlight: '#FFC870',
+                    label: 'Yellow'
+                }]
+            },
+            settings: pieChartSettings
+        };
+
         $scope.gameLength = {
             data: {
                 labels: ["0-20", "20-25", "25-30", "30-35", "35+"],

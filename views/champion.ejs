@@ -102,40 +102,33 @@
                   </tbody>
                 </table>
 
-                <div class="row">
-
-                  <div class="col-xxs-12 col-xs-6">
-                    <h2 class="champion-stats">Most Frequent Summoners</h2>
-                    <div class="summoner-wrapper">
-                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner1.name %>"/></a>
-                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner2.name %>"/></a>                 
-                    <div class="summoner-text"><strong><%= championData.summoners.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.mostGames.games %></strong> Games</div>
-                    </div>
+                
+                  <h2>Overall Champion Matrix</h2>
+                  <div class="chart-holder">
+                    <canvas tc-chartjs-radar chart-data="overallComparison.data" chart-options="overallComparison.settings" chart-legend="generalComparison" id="canvas2" height="242" width="339"></canvas>
                   </div>
 
-                  <div class="col-xxs-12 col-xs-6">
-                    <h2 class="champion-stats">Highest Win % Summoners</h2>
-                    <div class="summoner-wrapper">
-                     <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner1.name %>"/></a> 
-                      <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner2.name %>"/></a>                
-                    <div class="summoner-text"><strong><%= championData.summoners.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.highestWinPercent.games %></strong> Games</div>
-                    </div>
-                  </div>
-
-                </div>
-
-
-
+                  <span class="glyphicon glyphicon-question-sign" style="position:absolute;top:35%;left:49%" tooltip="Strong performances are further from the center of the graph. Therefore, a lower number of deaths will be further from the center."></span>
+                  <div tc-chartjs-legend chart-legend="generalComparison"></div>
               </div>
 
              
               <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
-                <h2>Overall Champion Matrix</h2>
-                <div class="middle-graphic-holder">
-                  <canvas tc-chartjs-radar chart-data="overallComparison.data" chart-options="overallComparison.settings" chart-legend="generalComparison" id="canvas2" height="242" width="339"></canvas>
+                <h2 class="line-chart-header">Win Rate % by Games Played (Experience)</h2> 
+                <div class="chart-holder">
+                  <canvas tc-chartjs-line chart-data="experienceRate.data" chart-options="experienceRate.settings" id="canvas" height="150" width="300"></canvas>
                 </div>
-                <span class="glyphicon glyphicon-question-sign" style="position:absolute;top:35%;left:49%" tooltip="Strong performances are further from the center of the graph. Therefore, a lower number of deaths will be further from the center."></span>
-                <div tc-chartjs-legend chart-legend="generalComparison"></div>
+                <div tc-chartjs-legend chart-legend="playRate"></div>
+
+                <h2 class="line-chart-header">Experience Breakdown</h2> 
+                <div class="chart-holder">
+                  <canvas tc-chartjs-pie chart-data="experienceDistribution.data.datasets" chart-options="experienceDistribution.settings" id="canvas" height="150" width="300" ></canvas>
+                </div>
+                <div tc-chartjs-legend chart-legend="playRate"></div>
+                
+                <div class="center-google">
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4978994984254577" data-ad-slot="9364389470"></ins>
+                 </div>
                 <h2 class="champion-stats">Damage Composition</h2>
                 <div class="clearfix middle-graphic-holder damage-dealt">
                   <div class="physical-dmg" tooltip="<%= championData.dmgComposition.physicalDmg %>% Physical" style="width:<%= championData.dmgComposition.physicalDmg %>%"></div>
@@ -147,12 +140,7 @@
                   <li><span class="magic-dmg"></span>Magic</li>
                   <li><span class="true-dmg"></span>True</li>
                 </ul>
-                  <div class="center-google">
-                            <ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-4978994984254577"
-     data-ad-slot="9364389470"></ins>
-                 </div>
+                  
 
                 
               </div>
@@ -173,8 +161,22 @@
                   <canvas tc-chartjs-line chart-data="patchPlay.data" chart-options="patchPlay.settings" chart-legend="playRate" id="canvas" height="150" width="300"></canvas>
                 </div>
                 <div tc-chartjs-legend chart-legend="playRate"></div>
-              </div>
 
+                <h2 class="champion-stats">Most Frequent Summoners</h2>
+                <div class="summoner-wrapper">
+                 <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner1.name %>"/></a>
+                  <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner2.name %>"/></a>                 
+                <div class="summoner-text"><strong><%= championData.summoners.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.mostGames.games %></strong> Games</div>
+                </div>
+
+                <h2 class="champion-stats">Highest Win % Summoners</h2>
+                <div class="summoner-wrapper">
+                 <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner1.name %>"/></a> 
+                  <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner2.name %>"/></a>                
+                <div class="summoner-text"><strong><%= championData.summoners.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.highestWinPercent.games %></strong> Games</div>
+                </div>
+              </div>
+            
             </div>
           </div>
         </div>
