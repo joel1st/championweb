@@ -8,6 +8,7 @@ var statTableSchema = new mongoose.Schema({
 		winPercent: Number,
 		playPercent: Number,
 		banRate: Number,
+		experience: Number,
 		kills: Number,
 		deaths: Number,
 		assists: Number,

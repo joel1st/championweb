@@ -1254,16 +1254,22 @@ width: 29%;text-align:center;
     color:white;
     background-color: rgb(37, 43, 47);}
 
-.radar-legend, .line-legend {
+.radar-legend, .line-legend, .pie-legend {
     text-align:center;
   list-style-type: none;
   padding-left: 0px;
 }
-.radar-legend li, .line-legend li {
+.pie-legend {
+  text-align:left;
+}
+.radar-legend li, .line-legend li{
     display:inline-block;
   padding:10px;
 }
-.radar-legend li span, .line-legend li span {
+.pie-legend li {
+  display: block;
+}
+.radar-legend li span, .line-legend li span, .pie-legend li span {
 width: 12px;
 height: 12px;
 position: relative;

@@ -26,6 +26,8 @@
         $scope.generalRole = matchupData.generalRole;
         $scope.championMatrix = matchupData.championData.championMatrix;
         $scope.gameLengthData = matchupData.championData.gameLength;
+        $scope.experienceRate = matchupData.championData.experienceRate;
+        $scope.experienceSample = matchupData.championData.experienceSample;
         $scope.patchWinData = matchupData.championData.patchWin;
         $scope.patchPlayData = matchupData.championData.patchPlay;
         $scope.summoners = matchupData.championData.summoners;
@@ -73,23 +75,23 @@
             data: {
                 labels: ["0-5", "5-15", "15-50", "50-125", "125+"],
                 datasets: [{
-                    label: $scope.champion.name,
+                    label: $scope.champion.name + " Experience",
                     fillColor: "rgba(137,245,162,0.6)",
                     strokeColor: "#89f5a2",
                     pointColor: "#89f5a2",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "#89f5a2",
-                    data: $scope.gameLengthData
+                    data: $scope.experienceRate
                 }, {
-                    label: "Average of " + $scope.champion.roleTitle + " Champs",
+                    label: $scope.champion.name + " Overall",
                     fillColor: "rgba(220,220,220,0.3)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [50, 50, 50, 50, 50]
+                    data: [$scope.generalData[0].val, $scope.generalData[0].val, $scope.generalData[0].val, $scope.generalData[0].val, $scope.generalData[0].val]
                 }]
             },
             settings: lineChartSettings
@@ -98,32 +100,32 @@
         $scope.experienceDistribution = {
             data: {
                 datasets: [{
-                    value: 3.5,
-                    color:'#F7464A',
-                    highlight: '#FF5A5E',
-                    label: 'Red'
+                    value: $scope.experienceSample[0],
+                    color:'#65e4f5',
+                    highlight: '#55ebff',
+                    label: '0-5'
                 },{
-                    value: 4.5,
-                    color:'#F7464A',
-                    highlight: '#FF5A5E',
-                    label: 'Red'
+                    value: $scope.experienceSample[1],
+                    color:'#88f4a1',
+                    highlight: '#81ff9e',
+                    label: '5-15'
                 }, {
-                    value: 27.5,
-                    color:'#F7464A',
-                    highlight: '#FF5A5E',
-                    label: 'Red'
+                    value: $scope.experienceSample[2],
+                    color:'#fff06d',
+                    highlight: '#ffed56',
+                    label: '15-50'
                 },
                 {
-                    value: 30,
-                    color: '#46BFBD',
-                    highlight: '#5AD3D1',
-                    label: 'Green'
+                    value: $scope.experienceSample[3],
+                    color: '#ffa94d',
+                    highlight: '#ff9e37',
+                    label: '50-125'
                 },
                 {
-                    value: 20,
-                    color: '#FDB45C',
-                    highlight: '#FFC870',
-                    label: 'Yellow'
+                    value: $scope.experienceSample[4],
+                    color: '#ff5353',
+                    highlight: '#ff4242',
+                    label: '125+'
                 }]
             },
             settings: pieChartSettings

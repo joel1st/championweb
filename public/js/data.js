@@ -893,7 +893,7 @@ var lineChartSettings = {
 
     //String - Scale label font weight style  
     scaleFontStyle: "normal",
-
+    tooltipTemplate: "GAHHH",
     //String - Scale label font colour  
     scaleFontColor: "rgb(179, 179, 179)",
     legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].pointColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
@@ -909,27 +909,22 @@ var pieChartSettings =  {
       segmentShowStroke : true,
 
       //String - The colour of each segment stroke
-      segmentStrokeColor : '#fff',
+      segmentStrokeColor : 'rgb(30, 35, 37)',
 
       //Number - The width of each segment stroke
-      segmentStrokeWidth : 2,
+      segmentStrokeWidth : 3,
 
       //Number - The percentage of the chart that we cut out of the middle
       percentageInnerCutout : 0, // This is 0 for Pie charts
 
-      //Number - Amount of animation steps
-      animationSteps : 100,
-
-      //String - Animation easing effect
-      animationEasing : 'easeOutBounce',
-
       //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate : true,
+      animateRotate : false,
 
       //Boolean - Whether we animate scaling the Doughnut from the centre
       animateScale : false,
 
+      tooltipTemplate: "<%if (label){%><%=label%> Games: <%}%><%= value %>%",
       //String - A legend template
-      //legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+      legendTemplate : '<ul class="pie-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
 
     };
