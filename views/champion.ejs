@@ -107,8 +107,6 @@
                   <div class="chart-holder" style="max-width:310px">
                     <canvas tc-chartjs-radar chart-data="overallComparison.data" chart-options="overallComparison.settings" chart-legend="generalComparison" id="canvas2" height="242" width="339"></canvas>
                   </div>
-
-                  <span class="glyphicon glyphicon-question-sign" style="position:absolute;top:35%;left:49%" tooltip="Strong performances are further from the center of the graph. Therefore, a lower number of deaths will be further from the center."></span>
                   <div tc-chartjs-legend chart-legend="generalComparison"></div>
               </div>
 
@@ -125,18 +123,18 @@
 
                 <h2 class="line-chart-header" style="margin-bottom: 20px;">Playerbase Experience Distribution</h2> 
                 <div class="chart-holder clearfix">
-                  <div style="width:70%;float:left">
+                  <div style="width:65%;float:left">
                     <canvas tc-chartjs-pie chart-data="experienceDistribution.data.datasets" chart-options="experienceDistribution.settings" chart-legend="experienceDist" id="canvas" height="220" width="300" ></canvas>
                   </div>
-                  <div style="width:30%;float:left">
-                    Games Played
+                  <div style="width:35%;float:left">
+                    <small style="display: block;margin-bottom:10px">2014-2015 Ranked Games</small>
                     <div tc-chartjs-legend chart-legend="experienceDist"></div>
                   </div>
                 </div>
                 
                 
                 <div class="center-google">
-                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4978994984254577" data-ad-slot="9364389470"></ins>
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px;margin-top: 15px;" data-ad-client="ca-pub-4978994984254577" data-ad-slot="9364389470"></ins>
                  </div>
                 <h2 class="champion-stats">Damage Composition</h2>
                 <div class="clearfix middle-graphic-holder damage-dealt">
@@ -703,6 +701,6 @@
       /* Has general data on the chosen champion */
     </script>
     <script src="/dist/js/dirDisqus.js"></script>
-    <script src="/js/championPage.js?v=1.2"></script>
+    <script src="/js/championPage.js?v=5.6.1"></script>
 
 <% include footer.ejs %>

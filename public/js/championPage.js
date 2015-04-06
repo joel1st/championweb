@@ -73,7 +73,7 @@
 
         $scope.experienceRate = {
             data: {
-                labels: ["0-5", "5-15", "15-50", "50-125", "125+"],
+                labels: ["1-5", "5-15", "15-50", "50-125", "125+"],
                 datasets: [{
                     label: $scope.champion.name + " Experience",
                     fillColor: "rgba(137,245,162,0.6)",
@@ -103,7 +103,7 @@
                     value: $scope.experienceSample[0],
                     color:'#65e4f5',
                     highlight: '#55ebff',
-                    label: '0-5'
+                    label: '1-5'
                 },{
                     value: $scope.experienceSample[1],
                     color:'#88f4a1',
