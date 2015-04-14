@@ -133,7 +133,7 @@
 
         $scope.gameLength = {
             data: {
-                labels: ["0-20", "20-25", "25-30", "30-35", "35+"],
+                labels: ["0-25", "25-30", "30-35", "35-40", "40+"],
                 datasets: [{
                     label: $scope.champion.name,
                     fillColor: "rgba(137,245,162,0.6)",
