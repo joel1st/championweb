@@ -65,6 +65,15 @@ var championDataSchema = new mongoose.Schema({
             winPercent: Number
         }
     },
+    trinkets: [{
+        item: {
+            id:Number,
+            name:String,
+            description:String
+        },
+        games: Number,
+        winPercent: Number
+    }],
     summoners:{
         mostGames: {
             summoner1: {
