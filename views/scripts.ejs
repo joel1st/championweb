@@ -1,46 +1,18 @@
-	
-	<script type="text/ng-template" id="template/typeahead/typeahead-popup.html">
-        <ul class="dropdown-menu" ng-show="isOpen()" ng-style="{top: position.top+'px', left: position.left+'px'}" style="display: block;" role="listbox" aria-hidden="{{!isOpen()}}">
-        <li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{match.id}}">
-            <div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
-        </li>
-    </ul>
-    </script>
-
-	<script type="text/ng-template" id="menu.html">
-      <a href="/champion/{{match.model.key}}">
-          <div class="matchup-champion {{match.model.key}}"></div> 
-          <span bind-html-unsafe="match.label | typeaheadHighlight:query" class="dropdown-search"></span>
-      </a>
-    </script>
-
-    <script type="text/ng-template" id="template/tooltip/tooltip-popup.html">
-    <div class="tooltip {{placement}}" ng-class="{ in: isOpen(), fade: animation() }">
-      <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">{{content}}</div>
-    </div>
-  </script>
-
+	<% if(process.env.NODE_ENV === 'production') { %>
+    <script src="/js/master.min.js"></script>
+  <% } else { %>
+    <script src="/dist/js/angular.js"></script>
+    <script src="/dist/js/angular-bootstrap.js"></script>
+    <script src="/dist/js/chart.js"></script>
+    <script src="/dist/js/dirDisqus.js"></script>
+    <script src="/dist/js/tc-angular-chartjs.js"></script>
     
+    <script src="/js/data.js"></script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
-  <script>
-    if (typeof angular === 'undefined') {
-        document.write(unescape("%3Cscript src='/dist/js/angular.min.js' type='text/javascript'%3E%3C/script%3E"));
-    }
-  </script>
-  
-
-	<script src="/dist/js/Chart.min.js?v=5.3"></script>
-	<script src="/dist/js/tc-angular-chartjs.js"></script>
-	<script src="/js/data.js?v=5.6.1"></script>
-	<script src="/js/app.js?v=5.5.1"></script>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Banner Champion.gg -->
-  <script>
-  [].forEach.call(document.querySelectorAll('.adsbygoogle'), function(){
-    (adsbygoogle = window.adsbygoogle || []).push({});
-});
-  </script>
+    <script src="/js/app.js"></script>
+    <script src="/js/championPage.js"></script>
+    <script src="/js/matchupPage.js"></script>
+    <script src="/js/statisticsPage.js"></script>
+  <% } %>
 
 	

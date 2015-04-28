@@ -113,59 +113,15 @@ margin-bottom: -5px;">Current Patch Statistics</h2>
 </div>
 </div>
 <iframe src="http://ib.adnxs.com/tt?id=4267860&referrer=http://champion.gg&cb=<%-Math.random()%>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="728" height="90" class="center"></iframe>
-<% include scripts.ejs %>
+
 
 
 
 <script>
 matchupData.stats = <%- JSON.stringify(data) %>;
 </script>
-<script src="/js/statisticsPage.js?v=5.3.1"></script>
+<% include scripts.ejs %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-(function($){
-  var $fixedHeader = $("#header-fixed")
-  var $table = $("#table-1")
-  var $fixedHeaderTd = $("#header-fixed td");
-  var $originalHeaderTd = $("#original-header td");
-
-  function fixWidths(){
-     clearTimeout(timeOut);
-     var timeOut = setTimeout(function(){
-        $fixedHeader.width($table.width());
-       for(var t=0;t<$fixedHeaderTd.length;t++){
-        $fixedHeaderTd.eq(t).width($originalHeaderTd.eq(t).width());
-       }
-    },200);
-  }
-
-  fixWidths();
-
-  $(window).resize(fixWidths);
-
-  $fixedHeaderTd.add($originalHeaderTd).on('click', fixWidths);
-
-  $(window).bind("scroll", function() {
-      var $this = $(this);
-      var leftOffset = $this.scrollLeft();
-      var offset = $this.scrollTop();
-      var tableOffset = $table.offset().top;
-
-      if (offset >= tableOffset) {
-          
-            $fixedHeader.css('margin-left','-'+leftOffset+'px');
-            console.log('oopsies')
-          
-          if($fixedHeader.is(":hidden")){
-            $fixedHeader.show();
-          }
-      }
-      else if (offset < tableOffset) {
-          $fixedHeader.hide();
-      }
-  });
-})(jQuery);
-
-</script> 
+<script src="/js/statisticsJquery.js"></script>
 
 <% include footer.ejs %>

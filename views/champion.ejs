@@ -684,7 +684,7 @@
 </div>
 <div class="show-more" ng-if="hasMoreItemsToShow(matchupType,order)" ng-click="showMoreItems(matchupType,order)"><small>{{itemsLimit(matchupType,order)}} / {{matchupsCount(matchupType)}} - </small><strong>Show More</strong> </div>
 </script> 
-<% include scripts.ejs %>   
+ 
 <script>
   matchupData.champion = <%- JSON.stringify(champion) %>;
   matchupData.generalRole = <%- JSON.stringify(generalRole) %>;
@@ -692,7 +692,6 @@
   matchupData.patchHistory = <%- JSON.stringify(pageData.core.patchHistory) %>;
   /* Has general data on the chosen champion */
 </script>
-<script src="/dist/js/dirDisqus.js"></script>
-<script src="/js/championPage.js?v=5.7.1"></script>
+<% include scripts.ejs %>
 
 <% include footer.ejs %>
