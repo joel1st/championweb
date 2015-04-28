@@ -3,4 +3,138 @@
  * Copyright (c) 2014 Carl Craig <carlcraig@3c-studios.com>
  * Dual licensed with the Apache-2.0 or MIT license.
  */
-!function(){"use strict";function a(a){return new a}function b(a){return new a("line")}function c(a){return new a("bar")}function d(a){return new a("radar")}function e(a){return new a("polararea")}function f(a){return new a("pie")}function g(a){return new a("doughnut")}function h(){return function(a){function b(b,d,e){var f,g=d[0].getContext("2d"),h=new Chart(g),i=!1,j=!1,k=!1,l=null;for(var m in e)"chartLegend"===m?i=!0:"chart"===m?k=!0:"autoLegend"===m&&(j=!0);b.$watch("data",function(e){if(e){if(f&&f.destroy(),a)f=h[c(a)](b.data,b.options);else{if(!b.type)throw"Error creating chart: Chart type required.";f=h[c(b.type)](b.data,b.options)}i&&(b.legend=f.generateLegend()),j&&(l&&l.remove(),angular.element(d[0]).after(f.generateLegend()),l=angular.element(d[0]).next()),k&&(b.chart=f)}},!0)}function c(a){var b=a.toLowerCase();switch(b){case"line":return"Line";case"bar":return"Bar";case"radar":return"Radar";case"polararea":return"PolarArea";case"pie":return"Pie";case"doughnut":return"Doughnut";default:return a}}var d={restrict:"A",scope:{data:"=chartData",options:"=chartOptions",type:"@chartType",legend:"=chartLegend",chart:"=chart"},link:b};return d}}function i(){function a(a,b){a.$watch("legend",function(a){a&&b.html(a)},!0)}var b={restrict:"A",scope:{legend:"=chartLegend"},link:a};return b}angular.module("tc.chartjs",[]).directive("tcChartjs",a).directive("tcChartjsLine",b).directive("tcChartjsBar",c).directive("tcChartjsRadar",d).directive("tcChartjsPolararea",e).directive("tcChartjsPie",f).directive("tcChartjsDoughnut",g).directive("tcChartjsLegend",i).factory("TcChartjsFactory",h),a.$inject=["TcChartjsFactory"],b.$inject=["TcChartjsFactory"],c.$inject=["TcChartjsFactory"],d.$inject=["TcChartjsFactory"],e.$inject=["TcChartjsFactory"],f.$inject=["TcChartjsFactory"],g.$inject=["TcChartjsFactory"]}();
+(function() {
+    "use strict";
+    angular.module("tc.chartjs", []).directive("tcChartjs", TcChartjs).directive("tcChartjsLine", TcChartjsLine).directive("tcChartjsBar", TcChartjsBar).directive("tcChartjsRadar", TcChartjsRadar).directive("tcChartjsPolararea", TcChartjsPolararea).directive("tcChartjsPie", TcChartjsPie).directive("tcChartjsDoughnut", TcChartjsDoughnut).directive("tcChartjsLegend", TcChartjsLegend).factory("TcChartjsFactory", TcChartjsFactory);
+    function TcChartjs(TcChartjsFactory) {
+        return new TcChartjsFactory();
+    }
+    TcChartjs.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsLine(TcChartjsFactory) {
+        return new TcChartjsFactory("line");
+    }
+    TcChartjsLine.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsBar(TcChartjsFactory) {
+        return new TcChartjsFactory("bar");
+    }
+    TcChartjsBar.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsRadar(TcChartjsFactory) {
+        return new TcChartjsFactory("radar");
+    }
+    TcChartjsRadar.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsPolararea(TcChartjsFactory) {
+        return new TcChartjsFactory("polararea");
+    }
+    TcChartjsPolararea.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsPie(TcChartjsFactory) {
+        return new TcChartjsFactory("pie");
+    }
+    TcChartjsPie.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsDoughnut(TcChartjsFactory) {
+        return new TcChartjsFactory("doughnut");
+    }
+    TcChartjsDoughnut.$inject = [ "TcChartjsFactory" ];
+    function TcChartjsFactory() {
+        return function(chartType) {
+            var directive = {
+                restrict: "A",
+                scope: {
+                    data: "=chartData",
+                    options: "=chartOptions",
+                    type: "@chartType",
+                    legend: "=chartLegend",
+                    chart: "=chart"
+                },
+                link: link
+            };
+            return directive;
+            function link($scope, $elem, $attrs) {
+                var ctx = $elem[0].getContext("2d");
+                var chart = new Chart(ctx);
+                var chartObj;
+                var showLegend = false;
+                var autoLegend = false;
+                var exposeChart = false;
+                var legendElem = null;
+                for (var attr in $attrs) {
+                    if (attr === "chartLegend") {
+                        showLegend = true;
+                    } else if (attr === "chart") {
+                        exposeChart = true;
+                    } else if (attr === "autoLegend") {
+                        autoLegend = true;
+                    }
+                }
+                $scope.$watch("data", function(value) {
+                    if (value) {
+                        if (chartObj) {
+                            chartObj.destroy();
+                        }
+                        if (chartType) {
+                            chartObj = chart[cleanChartName(chartType)]($scope.data, $scope.options);
+                        } else if ($scope.type) {
+                            chartObj = chart[cleanChartName($scope.type)]($scope.data, $scope.options);
+                        } else {
+                            throw "Error creating chart: Chart type required.";
+                        }
+                        if (showLegend) {
+                            $scope.legend = chartObj.generateLegend();
+                        }
+                        if (autoLegend) {
+                            if (legendElem) {
+                                legendElem.remove();
+                            }
+                            angular.element($elem[0]).after(chartObj.generateLegend());
+                            legendElem = angular.element($elem[0]).next();
+                        }
+                        if (exposeChart) {
+                            $scope.chart = chartObj;
+                        }
+                    }
+                }, true);
+            }
+            function cleanChartName(type) {
+                var typeLowerCase = type.toLowerCase();
+                switch (typeLowerCase) {
+                  case "line":
+                    return "Line";
+
+                  case "bar":
+                    return "Bar";
+
+                  case "radar":
+                    return "Radar";
+
+                  case "polararea":
+                    return "PolarArea";
+
+                  case "pie":
+                    return "Pie";
+
+                  case "doughnut":
+                    return "Doughnut";
+
+                  default:
+                    return type;
+                }
+            }
+        };
+    }
+    function TcChartjsLegend() {
+        var directive = {
+            restrict: "A",
+            scope: {
+                legend: "=chartLegend"
+            },
+            link: link
+        };
+        return directive;
+        function link($scope, $elem) {
+            $scope.$watch("legend", function(value) {
+                if (value) {
+                    $elem.html(value);
+                }
+            }, true);
+        }
+    }
+})();
