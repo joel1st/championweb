@@ -198,9 +198,9 @@ var sortData = function(champ1, champ2, position) {
 				apiPrimaryId: "@",
 				apiSecondaryId: "@"
 			},
-			controller: function($scope){
+			controller: ['$scope', function($scope){
 				$scope.positionInfo = {};
-			},
+			}],
 			link: function(scope, elem, attr){
 				var elemCopy = elem;
 				var timed = [];
