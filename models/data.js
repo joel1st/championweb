@@ -792,7 +792,7 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"1,304,810",
+      gamesAnalyzed:"2,834,720",
       patch:"5.8",
       ddPatch:"5.8.1",
       patchHistory: ["5.4","5.5","5.6","5.7","5.8"],
