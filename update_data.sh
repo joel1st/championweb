@@ -9,4 +9,4 @@ mongodump --db leaguetimes --collection roles --out ./db
 mongodump --db leaguetimes --collection stattables --out ./db
 mongodump --db leaguetimes --collection summaries --out ./db
 
-git add -A && git commit -m "$gitmsg" 
+git add -A && git commit -m "$gitmsg" && git push origin master
