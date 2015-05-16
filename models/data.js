@@ -792,10 +792,10 @@
 
    var core = {
       updating : (process.env.NODE_ENV === 'updating'),
-      gamesAnalyzed:"4,921,850",
-      patch:"5.8",
-      ddPatch:"5.8.1",
-      patchHistory: ["5.4","5.5","5.6","5.7","5.8"],
+      gamesAnalyzed:"1,202,990",
+      patch:"5.9",
+      ddPatch:"5.9.1",
+      patchHistory: ["5.5","5.6","5.7","5.8","5.9"],
       masteryOrder: ['Offense','Defense','Utility']
    };
 
