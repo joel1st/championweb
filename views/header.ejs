@@ -1,70 +1,58 @@
 <!doctype html>
 <html lang="en" ng-app="<%= pageData.appName %>"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<%= pageData.description %>">
-
-    <title>Champion.gg - <%= pageData.title %></title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="/css/master.css?v=5.7.1" rel="stylesheet">
-    <script>
-      var matchupData = {};
-    </script>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <div class="primary-hue">
-    
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="<%= pageData.description %>">
+  <title>Champion.gg - <%= pageData.title %></title>
+  <!-- Bootstrap core CSS -->
+  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="/css/master.css?v=5.7.1" rel="stylesheet">
+  <script>
+  var matchupData = {};
+  </script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="primary-hue">
     <div class="main-container">
-
-    <div class="navigation-elem">
-    <div class="inner-nav clearfix">
-              <ul class="nav navbar-nav">
-                <li class="first-button <%if (pageData.name === 'home') { %> active <% } %>"><a href="/">Home</a></li>
-                <li class="<%if (pageData.name === 'stats') { %> active <% } %>"><a href="/statistics/">Statistics</a></li>
-                <li class="<%if (pageData.name === 'faq') { %> active <% } %>"><a href="/faq/">F.A.Q.</a></li>
-              </ul>   
-
-              
-               <div class="social-media">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
-              <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-
-              </div>
-
-              <div class="update-happening"><span class="important-message"> We are currently aggregating patch 5.9 data - check back in 2 days! </span>
-              </div>
-
+      <div class="navigation-elem">
+        <div class="inner-nav clearfix">
+          <ul class="nav navbar-nav">
+            <li class="first-button <%if (pageData.name === 'home') { %> active <% } %>"><a href="/">Home</a></li>
+            <li class="<%if (pageData.name === 'stats') { %> active <% } %>"><a href="/statistics/">Statistics</a></li>
+            <li class="<%if (pageData.name === 'faq') { %> active <% } %>"><a href="/faq/">F.A.Q.</a></li>
+          </ul>
+          
+          <div class="social-media">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
+            <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+          </div>
+          <div class="update-happening"><span class="important-message"> We are currently aggregating patch 5.9 data - check back in 1 day! </span>
+        </div>
       </div>
     </div>
-
     <div class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
         <div class="row clearfix">
           <div class="logo-holder">
             
             <a class="navbar-brand" href="/"><img src="/img/logo.png" /></a>
-
           </div>
           <div class="search-holder">
-          
+            
             <div class="search-fb-holder">
               <div class="input-group" ng-controller="searchCtrl">
                 <input type="text" class="form-control" placeholder="Champion Name" id="query" value="" ng-model="selected" ng-model-options="{debounce: 40}" typeahead="champ as champ.name for champ in championMenu | startsWith:$viewValue | limitTo: 12" typeahead-template-url="menu.html" style="width:188px;display: inline-block;" ng-keyup="determineSend($event.keyCode)" autocomplete="off">
                 <div class="input-group-btn" style="cursor:auto;display: inline-block;">
-                
+                  
                   <button ng-click="getPage()" style="cursor:auto;" type="submit" class="btn btn-success"><span style="cursor:auto;" class="glyphicon glyphicon-search" ></span></button>
-                
+                  
                 </div>
               </div>
             </div>
@@ -73,20 +61,16 @@
           <div class="navigation-holder cleafix">
             <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=championgg%40outlook%2ecom&lc=AU&item_name=ChampionGG&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" alt="donate"> Donate </a>
             <div class="analysis-holder"><small>Patch <strong><%=pageData.core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=pageData.core.gamesAnalyzed%></strong><span class="spacer">|</span> <strong> Platinum+ Ranked </strong></small></div>
-                       
-          </div>     
-        </div>   
+            
+          </div>
+        </div>
       </div>
     </div>
-
-
-
     <div class="page-content">
-
-         <%if (pageData.name === 'home') { %> 
-          <div class="large-header">
-            <h2>Champion.gg analyzes millions of League of Legends Platinum+ games each patch to provide relevant champion builds, runes, masteries, stats, matchups and counters.</h2>
-          </div>
-         <% } %> 
-    
-    <noscript><div class="update-happening">To make the most of this website, we strongly recommend turning JavaScript on! It powers the graphs, data sorting and other cool features!</div></noscript>
+      <%if (pageData.name === 'home') { %>
+      <div class="large-header">
+        <h2>Champion.gg analyzes millions of League of Legends Platinum+ games each patch to provide relevant champion builds, runes, masteries, stats, matchups and counters.</h2>
+      </div>
+      <% } %>
+      
+      <noscript><div class="update-happening">To make the most of this website, we strongly recommend turning JavaScript on! It powers the graphs, data sorting and other cool features!</div></noscript>
