@@ -1,5 +1,5 @@
 var items = require('./items');
-var masteries = require('./masteries');
+var masteries = require('./masteries.json');
 var runes = require('./runes');
 var skills = require('./skills');
 var summoners = require('./summoners');

@@ -1,0 +1,611 @@
+.matchup-champion{    background-image:url('../img/small_champion.jpg?v=5.9.1');} .home-champion{ background-image:url('../img/champion.jpg?v=5.9.1');}.mastery-icon{ background-image:url('http://ddragon.leagueoflegends.com/cdn/5.9.1/img/sprite/gray_mastery0.png'); } .mastery-active{ background-image:url('http://ddragon.leagueoflegends.com/cdn/5.9.1/img/sprite/mastery0.png');}#home .Aatrox {
+	background-position:-0px -0px;
+}#home .Ahri {
+	background-position:-48px -0px;
+}#home .Akali {
+	background-position:-96px -0px;
+}#home .Alistar {
+	background-position:-144px -0px;
+}#home .Amumu {
+	background-position:-192px -0px;
+}#home .Anivia {
+	background-position:-240px -0px;
+}#home .Annie {
+	background-position:-288px -0px;
+}#home .Ashe {
+	background-position:-336px -0px;
+}#home .Azir {
+	background-position:-384px -0px;
+}#home .Blitzcrank {
+	background-position:-432px -0px;
+}#home .Brand {
+	background-position:-0px -48px;
+}#home .Braum {
+	background-position:-48px -48px;
+}#home .Bard {
+	background-position:-144px -576px;
+}#home .Caitlyn {
+	background-position:-96px -48px;
+}#home .Cassiopeia {
+	background-position:-144px -48px;
+}#home .Chogath {
+	background-position:-192px -48px;
+}#home .Corki {
+	background-position:-240px -48px;
+}#home .Darius {
+	background-position:-288px -48px;
+}#home .Diana {
+	background-position:-336px -48px;
+}#home .DrMundo {
+	background-position:-432px -48px;
+}#home .Draven {
+	background-position:-384px -48px;
+}#home .Elise {
+	background-position:-0px -96px;
+}#home .Evelynn {
+	background-position:-48px -96px;
+}#home .Ezreal {
+	background-position:-96px -96px;
+}#home .FiddleSticks {
+	background-position:-144px -96px;
+}#home .Fiora {
+	background-position:-192px -96px;
+}#home .Fizz {
+	background-position:-240px -96px;
+}#home .Galio {
+	background-position:-288px -96px;
+}#home .Gangplank {
+	background-position:-336px -96px;
+}#home .Garen {
+	background-position:-384px -96px;
+}#home .Gnar {
+	background-position:-432px -96px;
+}#home .Gragas {
+	background-position:-0px -144px;
+}#home .Graves {
+	background-position:-48px -144px;
+}#home .Hecarim {
+	background-position:-96px -144px;
+}#home .Heimerdinger {
+	background-position:-144px -144px;
+}#home .Irelia {
+	background-position:-192px -144px;
+}#home .Janna {
+	background-position:-240px -144px;
+}#home .JarvanIV {
+	background-position:-288px -144px;
+}#home .Jax {
+	background-position:-336px -144px;
+}#home .Jayce {
+	background-position:-384px -144px;
+}#home .Jinx {
+	background-position:-432px -144px;
+}#home .Karma {
+	background-position:-48px -192px;
+}#home .Karthus {
+	background-position:-96px -192px;
+}#home .Kassadin {
+	background-position:-144px -192px;
+}#home .Katarina {
+	background-position:-192px -192px;
+}#home .Kayle {
+	background-position:-240px -192px;
+}#home .Kennen {
+	background-position:-288px -192px;
+}#home .Kalista {
+	background-position:-0px -192px;
+}#home .Khazix {
+	background-position:-336px -192px;
+}#home .KogMaw {
+	background-position:-384px -192px;
+}#home .Leblanc {
+	background-position:-432px -192px;
+}#home .LeeSin {
+	background-position:-0px -240px;
+}#home .Leona {
+	background-position:-48px -240px;
+}#home .Lissandra {
+	background-position:-96px -240px;
+}#home .Lucian {
+	background-position:-144px -240px;
+}#home .Lulu {
+	background-position:-192px -240px;
+}#home .Lux {
+	background-position:-240px -240px;
+}#home .Malphite {
+	background-position:-288px -240px;
+}#home .Malzahar {
+	background-position:-336px -240px;
+}#home .Maokai {
+	background-position:-384px -240px;
+}#home .MasterYi {
+	background-position:-432px -240px;
+}#home .MissFortune {
+	background-position:-0px -288px;
+}#home .Mordekaiser {
+	background-position:-96px -288px;
+}#home .Morgana {
+	background-position:-144px -288px;
+}#home .Nami {
+	background-position:-192px -288px;
+}#home .Nasus {
+	background-position:-240px -288px;
+}#home .Nautilus {
+	background-position:-288px -288px;
+}#home .Nidalee {
+	background-position:-336px -288px;
+}#home .Nocturne {
+	background-position:-384px -288px;
+}#home .Nunu {
+	background-position:-432px -288px;
+}#home .Olaf {
+	background-position:-0px -336px;
+}#home .Orianna {
+	background-position:-48px -336px;
+}#home .Pantheon {
+	background-position:-96px -336px;
+}#home .Poppy {
+	background-position:-144px -336px;
+}#home .Quinn {
+	background-position:-192px -336px;
+}#home .Rammus {
+	background-position:-240px -336px;
+}#home .Renekton {
+	background-position:-336px -336px;
+}#home .Rengar {
+	background-position:-384px -336px;
+}#home .RekSai {
+	background-position:-288px -336px;
+}#home .Riven {
+	background-position:-432px -336px;
+}#home .Rumble {
+	background-position:-0px -384px;
+}#home .Ryze {
+	background-position:-48px -384px;
+}#home .Sejuani {
+	background-position:-96px -384px;
+}#home .Shaco {
+	background-position:-144px -384px;
+}#home .Shen {
+	background-position:-192px -384px;
+}#home .Shyvana {
+	background-position:-240px -384px;
+}#home .Singed {
+	background-position:-288px -384px;
+}#home .Sion {
+	background-position:-336px -384px;
+}#home .Sivir {
+	background-position:-384px -384px;
+}#home .Skarner {
+	background-position:-432px -384px;
+}#home .Sona {
+	background-position:-0px -432px;
+}#home .Soraka {
+	background-position:-48px -432px;
+}#home .Swain {
+	background-position:-96px -432px;
+}#home .Syndra {
+	background-position:-144px -432px;
+}#home .Talon {
+	background-position:-192px -432px;
+}#home .Taric {
+	background-position:-240px -432px;
+}#home .Teemo {
+	background-position:-288px -432px;
+}#home .Thresh {
+	background-position:-336px -432px;
+}#home .Tristana {
+	background-position:-384px -432px;
+}#home .Trundle {
+	background-position:-432px -432px;
+}#home .Tryndamere {
+	background-position:-0px -480px;
+}#home .TwistedFate {
+	background-position:-48px -480px;
+}#home .Twitch {
+	background-position:-96px -480px;
+}#home .Udyr {
+	background-position:-144px -480px;
+}#home .Urgot {
+	background-position:-192px -480px;
+}#home .Varus {
+	background-position:-240px -480px;
+}#home .Vayne {
+	background-position:-288px -480px;
+}#home .Veigar {
+	background-position:-336px -480px;
+}#home .Velkoz {
+	background-position:-384px -480px;
+}#home .Vi {
+	background-position:-432px -480px;
+}#home .Viktor {
+	background-position:-0px -528px;
+}#home .Vladimir {
+	background-position:-48px -528px;
+}#home .Volibear {
+	background-position:-96px -528px;
+}#home .Warwick {
+	background-position:-144px -528px;
+}#home .MonkeyKing {
+	background-position:-48px -288px;
+}#home .Xerath {
+	background-position:-192px -528px;
+}#home .XinZhao {
+	background-position:-240px -528px;
+}#home .Yasuo {
+	background-position:-288px -528px;
+}#home .Yorick {
+	background-position:-336px -528px;
+}#home .Zac {
+	background-position:-384px -528px;
+}#home .Zed {
+	background-position:-432px -528px;
+}#home .Ziggs {
+	background-position:-0px -576px;
+}#home .Zilean {
+	background-position:-48px -576px;
+}#home .Zyra {
+	background-position:-96px -576px;
+}.Aatrox {
+	background-position:-0px -0px;
+}.Ahri {
+	background-position:-36px -0px;
+}.Akali {
+	background-position:-72px -0px;
+}.Alistar {
+	background-position:-108px -0px;
+}.Amumu {
+	background-position:-144px -0px;
+}.Anivia {
+	background-position:-180px -0px;
+}.Annie {
+	background-position:-216px -0px;
+}.Ashe {
+	background-position:-252px -0px;
+}.Azir {
+	background-position:-288px -0px;
+}.Blitzcrank {
+	background-position:-324px -0px;
+}.Brand {
+	background-position:-0px -36px;
+}.Braum {
+	background-position:-36px -36px;
+}.Bard {
+	background-position:-108px -432px;
+}.Caitlyn {
+	background-position:-72px -36px;
+}.Cassiopeia {
+	background-position:-108px -36px;
+}.Chogath {
+	background-position:-144px -36px;
+}.Corki {
+	background-position:-180px -36px;
+}.Darius {
+	background-position:-216px -36px;
+}.Diana {
+	background-position:-252px -36px;
+}.DrMundo {
+	background-position:-324px -36px;
+}.Draven {
+	background-position:-288px -36px;
+}.Elise {
+	background-position:-0px -72px;
+}.Evelynn {
+	background-position:-36px -72px;
+}.Ezreal {
+	background-position:-72px -72px;
+}.FiddleSticks {
+	background-position:-108px -72px;
+}.Fiora {
+	background-position:-144px -72px;
+}.Fizz {
+	background-position:-180px -72px;
+}.Galio {
+	background-position:-216px -72px;
+}.Gangplank {
+	background-position:-252px -72px;
+}.Garen {
+	background-position:-288px -72px;
+}.Gnar {
+	background-position:-324px -72px;
+}.Gragas {
+	background-position:-0px -108px;
+}.Graves {
+	background-position:-36px -108px;
+}.Hecarim {
+	background-position:-72px -108px;
+}.Heimerdinger {
+	background-position:-108px -108px;
+}.Irelia {
+	background-position:-144px -108px;
+}.Janna {
+	background-position:-180px -108px;
+}.JarvanIV {
+	background-position:-216px -108px;
+}.Jax {
+	background-position:-252px -108px;
+}.Jayce {
+	background-position:-288px -108px;
+}.Jinx {
+	background-position:-324px -108px;
+}.Karma {
+	background-position:-36px -144px;
+}.Karthus {
+	background-position:-72px -144px;
+}.Kassadin {
+	background-position:-108px -144px;
+}.Katarina {
+	background-position:-144px -144px;
+}.Kayle {
+	background-position:-180px -144px;
+}.Kennen {
+	background-position:-216px -144px;
+}.Kalista {
+	background-position:-0px -144px;
+}.Khazix {
+	background-position:-252px -144px;
+}.KogMaw {
+	background-position:-288px -144px;
+}.Leblanc {
+	background-position:-324px -144px;
+}.LeeSin {
+	background-position:-0px -180px;
+}.Leona {
+	background-position:-36px -180px;
+}.Lissandra {
+	background-position:-72px -180px;
+}.Lucian {
+	background-position:-108px -180px;
+}.Lulu {
+	background-position:-144px -180px;
+}.Lux {
+	background-position:-180px -180px;
+}.Malphite {
+	background-position:-216px -180px;
+}.Malzahar {
+	background-position:-252px -180px;
+}.Maokai {
+	background-position:-288px -180px;
+}.MasterYi {
+	background-position:-324px -180px;
+}.MissFortune {
+	background-position:-0px -216px;
+}.Mordekaiser {
+	background-position:-72px -216px;
+}.Morgana {
+	background-position:-108px -216px;
+}.Nami {
+	background-position:-144px -216px;
+}.Nasus {
+	background-position:-180px -216px;
+}.Nautilus {
+	background-position:-216px -216px;
+}.Nidalee {
+	background-position:-252px -216px;
+}.Nocturne {
+	background-position:-288px -216px;
+}.Nunu {
+	background-position:-324px -216px;
+}.Olaf {
+	background-position:-0px -252px;
+}.Orianna {
+	background-position:-36px -252px;
+}.Pantheon {
+	background-position:-72px -252px;
+}.Poppy {
+	background-position:-108px -252px;
+}.Quinn {
+	background-position:-144px -252px;
+}.Rammus {
+	background-position:-180px -252px;
+}.Renekton {
+	background-position:-252px -252px;
+}.Rengar {
+	background-position:-288px -252px;
+}.RekSai {
+	background-position:-216px -252px;
+}.Riven {
+	background-position:-324px -252px;
+}.Rumble {
+	background-position:-0px -288px;
+}.Ryze {
+	background-position:-36px -288px;
+}.Sejuani {
+	background-position:-72px -288px;
+}.Shaco {
+	background-position:-108px -288px;
+}.Shen {
+	background-position:-144px -288px;
+}.Shyvana {
+	background-position:-180px -288px;
+}.Singed {
+	background-position:-216px -288px;
+}.Sion {
+	background-position:-252px -288px;
+}.Sivir {
+	background-position:-288px -288px;
+}.Skarner {
+	background-position:-324px -288px;
+}.Sona {
+	background-position:-0px -324px;
+}.Soraka {
+	background-position:-36px -324px;
+}.Swain {
+	background-position:-72px -324px;
+}.Syndra {
+	background-position:-108px -324px;
+}.Talon {
+	background-position:-144px -324px;
+}.Taric {
+	background-position:-180px -324px;
+}.Teemo {
+	background-position:-216px -324px;
+}.Thresh {
+	background-position:-252px -324px;
+}.Tristana {
+	background-position:-288px -324px;
+}.Trundle {
+	background-position:-324px -324px;
+}.Tryndamere {
+	background-position:-0px -360px;
+}.TwistedFate {
+	background-position:-36px -360px;
+}.Twitch {
+	background-position:-72px -360px;
+}.Udyr {
+	background-position:-108px -360px;
+}.Urgot {
+	background-position:-144px -360px;
+}.Varus {
+	background-position:-180px -360px;
+}.Vayne {
+	background-position:-216px -360px;
+}.Veigar {
+	background-position:-252px -360px;
+}.Velkoz {
+	background-position:-288px -360px;
+}.Vi {
+	background-position:-324px -360px;
+}.Viktor {
+	background-position:-0px -396px;
+}.Vladimir {
+	background-position:-36px -396px;
+}.Volibear {
+	background-position:-72px -396px;
+}.Warwick {
+	background-position:-108px -396px;
+}.MonkeyKing {
+	background-position:-36px -216px;
+}.Xerath {
+	background-position:-144px -396px;
+}.XinZhao {
+	background-position:-180px -396px;
+}.Yasuo {
+	background-position:-216px -396px;
+}.Yorick {
+	background-position:-252px -396px;
+}.Zac {
+	background-position:-288px -396px;
+}.Zed {
+	background-position:-324px -396px;
+}.Ziggs {
+	background-position:-0px -432px;
+}.Zilean {
+	background-position:-36px -432px;
+}.Zyra {
+	background-position:-72px -432px;
+}.mastery-4111 {
+	background-position:-0px -0px;
+}.mastery-4112 {
+	background-position:-48px -0px;
+}.mastery-4113 {
+	background-position:-96px -0px;
+}.mastery-4114 {
+	background-position:-144px -0px;
+}.mastery-4121 {
+	background-position:-192px -0px;
+}.mastery-4122 {
+	background-position:-240px -0px;
+}.mastery-4123 {
+	background-position:-288px -0px;
+}.mastery-4124 {
+	background-position:-336px -0px;
+}.mastery-4131 {
+	background-position:-384px -0px;
+}.mastery-4132 {
+	background-position:-432px -0px;
+}.mastery-4133 {
+	background-position:-0px -48px;
+}.mastery-4134 {
+	background-position:-48px -48px;
+}.mastery-4141 {
+	background-position:-96px -48px;
+}.mastery-4142 {
+	background-position:-144px -48px;
+}.mastery-4143 {
+	background-position:-192px -48px;
+}.mastery-4144 {
+	background-position:-240px -48px;
+}.mastery-4151 {
+	background-position:-288px -48px;
+}.mastery-4152 {
+	background-position:-336px -48px;
+}.mastery-4154 {
+	background-position:-384px -48px;
+}.mastery-4162 {
+	background-position:-432px -48px;
+}.mastery-4211 {
+	background-position:-0px -96px;
+}.mastery-4212 {
+	background-position:-48px -96px;
+}.mastery-4213 {
+	background-position:-96px -96px;
+}.mastery-4214 {
+	background-position:-144px -96px;
+}.mastery-4221 {
+	background-position:-192px -96px;
+}.mastery-4222 {
+	background-position:-240px -96px;
+}.mastery-4224 {
+	background-position:-288px -96px;
+}.mastery-4231 {
+	background-position:-336px -96px;
+}.mastery-4232 {
+	background-position:-384px -96px;
+}.mastery-4233 {
+	background-position:-432px -96px;
+}.mastery-4234 {
+	background-position:-0px -144px;
+}.mastery-4241 {
+	background-position:-48px -144px;
+}.mastery-4242 {
+	background-position:-96px -144px;
+}.mastery-4243 {
+	background-position:-144px -144px;
+}.mastery-4244 {
+	background-position:-192px -144px;
+}.mastery-4251 {
+	background-position:-240px -144px;
+}.mastery-4252 {
+	background-position:-288px -144px;
+}.mastery-4253 {
+	background-position:-336px -144px;
+}.mastery-4262 {
+	background-position:-384px -144px;
+}.mastery-4311 {
+	background-position:-432px -144px;
+}.mastery-4312 {
+	background-position:-0px -192px;
+}.mastery-4313 {
+	background-position:-48px -192px;
+}.mastery-4314 {
+	background-position:-96px -192px;
+}.mastery-4322 {
+	background-position:-144px -192px;
+}.mastery-4323 {
+	background-position:-192px -192px;
+}.mastery-4324 {
+	background-position:-240px -192px;
+}.mastery-4331 {
+	background-position:-288px -192px;
+}.mastery-4332 {
+	background-position:-336px -192px;
+}.mastery-4333 {
+	background-position:-384px -192px;
+}.mastery-4334 {
+	background-position:-432px -192px;
+}.mastery-4341 {
+	background-position:-0px -240px;
+}.mastery-4342 {
+	background-position:-48px -240px;
+}.mastery-4343 {
+	background-position:-96px -240px;
+}.mastery-4344 {
+	background-position:-144px -240px;
+}.mastery-4352 {
+	background-position:-192px -240px;
+}.mastery-4353 {
+	background-position:-240px -240px;
+}.mastery-4362 {
+	background-position:-288px -240px;
+}

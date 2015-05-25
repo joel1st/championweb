@@ -52,7 +52,6 @@ router.get('/', function(req, res, next) {
         } else if (!data) {
             return next(produceError('serverMaintenance', 503));
         } else {
-            console.log(data.data);
             summaries = data.data;
             if (retrievedYet) {
                 responseObj();

@@ -122,6 +122,6 @@ matchupData.stats = <%- JSON.stringify(data) %>;
 </script>
 <% include scripts.ejs %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/js/statisticsJquery.js"></script>
+<script src="/js/statisticsJquery.js?v=<%=pageData.core.resetCache%>" ></script>
 
 <% include footer.ejs %>

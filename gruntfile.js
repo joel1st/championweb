@@ -42,8 +42,8 @@ module.exports = function(grunt){
 		    js: {
 		      	src: ['public/dist/js/angular.js', 'public/dist/js/angular-bootstrap.js', 
 		      		'public/dist/js/dirDisqus.js', 'public/dist/js/chart.js',
-		      		'public/dist/js/tc-angular-chartjs.js', 'public/js/data.js', 'public/js/app.js',
-		      		'public/js/championPage.js', 'public/js/matchupPage.js', 'public/js/statisticsPage.js'],
+		      		'public/dist/js/tc-angular-chartjs.js', 'public/js/championData.js', 'public/js/chartOptions.js', 
+		      		 'public/js/app.js', 'public/js/championPage.js', 'public/js/matchupPage.js', 'public/js/statisticsPage.js'],
 		      	dest: 'public/js/master.min.js'
 		    },
 		},
@@ -56,7 +56,7 @@ module.exports = function(grunt){
 		},
 		cssmin: {
 		    build: {
-		        src: 'public/css/master.css',
+		        src: ['public/css/master.css', 'public/css/sprite.css'],
 		        dest: 'public/css/master.min.css'
 		    }
     	}
