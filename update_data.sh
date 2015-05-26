@@ -1,5 +1,8 @@
-default="updated data"
-gitmsg=${1:-$default}
+defaultmsg="updated data"
+read -p "Please enter a git message (default : '$defaultmsg'):" gitmsg
+if ["$gitmsg" == ""]; then
+	gitmsg="$defaultmsg"
+fi
 echo $gitmsg
 
 mongodump --db leaguetimes --collection championdatas --out ./db
