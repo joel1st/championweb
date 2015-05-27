@@ -1,8 +1,8 @@
 "use strict";
 
    var newChampion = {
-      key:"",
-      name:"",
+      key:"Ekko",
+      name:"Ekko",
       roleTitle:""//leave blank
    };
 
@@ -46,7 +46,7 @@
    var core = {
       gamesAnalyzed:"4,082,130",
       patch:"5.9",
-      ddPatch:"5.9.1",
+      ddPatch:"5.10.1",
       resetCache: Math.random().toFixed(5),
       patchHistory: ["5.5","5.6","5.7","5.8","5.9"],
       masteryOrder: ['Offense','Defense','Utility']
