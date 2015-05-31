@@ -44,11 +44,11 @@
    };
 
    var core = {
-      gamesAnalyzed:"4,082,130",
-      patch:"5.9",
+      gamesAnalyzed:"1,194,750",
+      patch:"5.10",
       ddPatch:"5.10.1",
       resetCache: Math.random().toFixed(5),
-      patchHistory: ["5.5","5.6","5.7","5.8","5.9"],
+      patchHistory: ["5.6","5.7","5.8","5.9","5.10"],
       masteryOrder: ['Offense','Defense','Utility']
    };
 
