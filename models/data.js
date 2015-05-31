@@ -1,8 +1,8 @@
 "use strict";
 
    var newChampion = {
-      key:"Ekko",
-      name:"Ekko",
+      key:"",
+      name:"",
       roleTitle:""//leave blank
    };
 
