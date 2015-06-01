@@ -1,12 +1,12 @@
 "use strict";
-var statTable = require('../models/statTable.js');
+var WebStatisticsPage = require('../models/web_statistics_page.js');
 var produceError = require('../logic/produceError.js');
 var data = require('../models/data.js');
 var express = require('express');
 var router = express.Router();
 router.get('/', function(req, res, next) {
 
-    statTable.find({}, function(err, doc) {
+    WebStatisticsPage.find({}, function(err, doc) {
         if (err) {
             return next(produceError('serverMaintenance', 503));
         } else if (!doc) {

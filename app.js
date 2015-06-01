@@ -16,7 +16,6 @@ var apiStatic = require('./routes/apiStatic');
 var statistics = require('./routes/statistics');
 var faq = require('./routes/faq');
 var index = require('./routes/index');
-var maintenance = require('./routes/maintenance');
 
 var app = express();
 

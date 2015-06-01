@@ -1,6 +1,6 @@
 /* GET users listing. */
 "use strict";
-var ChampionMatchups = require('../models/championMatchup.js');
+var WebMatchupPage = require('../models/web_matchup_page.js');
 var data = require('../models/data.js');
 var express = require('express');
 var router = express.Router();
@@ -12,7 +12,7 @@ router.get('/:champ1/:champ2/:role', function(req, res) {
     var champRole = req.params.role;
 
     if (typeof data.roleKey[champRole] !== 'undefined') {
-        ChampionMatchups.findOne({
+        WebMatchupPage.findOne({
             'champ1.id': champ1,
             'champ2.id': champ2,
             role: champRole

@@ -6,684 +6,83 @@
       <div class="row">
 
         <div class="col-xs-12 col-sm-3 col-md-2 champion-profile">
-          <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/champion/<%= champion.key %>.png" class="champ-img"/>
-          <h1><%= champion.name %></h1>
-          <ul>
-
-            <% for(var i=0; i<champion.roles.length; i++) {%>
-            <li <%if (champion.role === champion.roles[i].role) { %> class="selected-role"<% } %>>
-              <a href="/champion/<%= champion.key %>/<%= champion.roles[i].title %>">
-                <h3>
-                  <%= champion.roles[i].title %>
-                </h3>
-              </a>
-              <small> <%= champion.roles[i].percentPlayed %>% Role Rate </small>
-              <small style="display:block"> <%= champion.roles[i].games %> Analyzed This Patch </small>
-            </li>
-            <% } %>
-
-            <% if (champion.name === 'Viktor'){ %>
-              <% include viktor-upgrade.ejs %>
-            <% } %>
-
-          </ul>
-
+          <% include champion/champion_image_roles.ejs %>
         </div>
 
         <div class="col-xs-12 col-sm-9 col-md-4 champion-statistics">
-          <h2 style="margin-bottom:8px">Statistics</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr >
-                <th class="first-column"><span class="text-indent">Type</span></th>
-                <th class="second-column">Average</th>
-                <th class="third-column"><span class="glyphicon glyphicon-question-sign" tooltip="<%= champion.name %>'s ranking compared to other <%= champion.roleTitle %> champions."></span> Role Placement</th>
-                <th class="fourth-column">Placement Change this patch</th>
-              </tr>
-            </thead>
-            <tbody>
-             <% for(var i=0; i<championData.general.length; i++) {%>
-             <tr id=<%= 'statistics-' + championData.general[i].title.replace(' ', '-').toLowerCase() + '-row' %> >
-              <td>
-                <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.<%= championData.general[i].titleLink %>&order=descend">
-                  <span class="text-indent"><%= championData.general[i].title %></span>
-                </a>
-              </td>
-
-              <td><%= championData.general[i].val %><% if(i < 3){ %>%<%}%></td>
-              <td>  
-                <strong class="<%if (championData.general[i].position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>">
-                  <%= championData.general[i].position %> 
-                </strong>
-                <small>/ <%= generalRole.totalNumber %></small>
-              </td>
-              <td>
-                <span class="glyphicon <%if (championData.general[i].change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.general[i].change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.general[i].change === 0) { %> same-position <% } %>">
-                </span>
-                <%- Math.abs(championData.general[i].change) %></td>
-              </tr>
-
-              <% } %>
-
-              <tr>
-                <td colspan=2> <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.overallPosition&order=ascend"><span class="text-indent">Overall Placement</span></a></td>
-                <td style="text-align:center"><strong class="<%if (championData.overallPosition.position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>"><%= championData.overallPosition.position %> </strong><small>/ <%= generalRole.totalNumber %></small></td>
-                <td><span class="glyphicon <%if (championData.overallPosition.change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.overallPosition.change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.overallPosition.change === 0) { %> same-position <% } %>">
-                </span> <%- Math.abs(championData.overallPosition.change) %></td>
-              </tr>
-            </tbody>
-          </table>
-
-
-          <h2>Overall Champion Matrix</h2>
-          <div class="chart-holder" style="max-width:310px">
-            <canvas tc-chartjs-radar chart-data="overallComparison.data" chart-options="overallComparison.settings" chart-legend="generalComparison" id="canvas2" height="242" width="339"></canvas>
-          </div>
-          <div tc-chartjs-legend chart-legend="generalComparison"></div>
-        </div>
-
-
-        <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
-          <h2 class="line-chart-header">Win Rate % By Patch</h2>
-          <div class="chart-holder">
-            <canvas tc-chartjs-line chart-data="patchRate.data" chart-options="patchRate.settings" id="canvas3" height="150" width="300"></canvas>
-          </div>
-          <div tc-chartjs-legend chart-legend="playRate"></div>
-          <h2 class="line-chart-header">Play Rate % By Patch</h2>
-          <div class="chart-holder">
-            <canvas tc-chartjs-line chart-data="patchPlay.data" chart-options="patchPlay.settings" chart-legend="playRate" id="canvas" height="150" width="300"></canvas>
-          </div>
-          <div tc-chartjs-legend chart-legend="playRate"></div>
-          <div class="center-google">
-            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px;margin-top: 15px;" data-ad-client="ca-pub-4978994984254577" data-ad-slot="9364389470"></ins>
-          </div>
-          <h2 class="champion-stats">Damage Composition</h2>
-          <div class="clearfix middle-graphic-holder damage-dealt">
-            <div class="physical-dmg" tooltip="<%= championData.dmgComposition.physicalDmg %>% Physical" style="width:<%= championData.dmgComposition.physicalDmg %>%"></div>
-            <div class="magic-dmg" tooltip="<%= championData.dmgComposition.magicDmg %>% Magic" style="left:<%= championData.dmgComposition.physicalDmg %>%;width:<%= championData.dmgComposition.magicDmg %>%"></div>
-            <div class="true-dmg" tooltip="<%= championData.dmgComposition.trueDmg %>% True" style="right:0;width:<%= championData.dmgComposition.trueDmg %>%"></div>
-          </div>
-          <ul class="radar-legend" style="margin-bottom:20px">
-            <li><span class="physical-dmg"></span>Physical</li>
-            <li><span class="magic-dmg"></span>Magic</li>
-            <li><span class="true-dmg"></span>True</li>
-          </ul>
-
-          <div class="viktor-skills">
-            <h2 class="champion-stats">Trinket Stats</h2>
-            <% var trinkets = championData.trinkets; %>
-            <% for(var i = 0; i<trinkets.length; i++){ %>
-              <div style="width:33%;float:left;text-align:center">
-                <img class="possible-build" src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= trinkets[i].item.id %>.png" tooltip="<%= trinkets[i].item.name %>"/>
-                <div class="build-text">
-                  <strong style="display:block"><%= trinkets[i].winPercent %>%</strong>
-                  Win Rate
-                  <strong style="display:block;margin-top:10px"><%= trinkets[i].games %></strong> 
-                  Games </div>
-              </div>        
-            <% } %>
-           
-          </div>
+          <% include champion/champion_statistics.ejs %>
         </div>
 
         <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+          <% include champion/winrate_playrate_damage_advert_trinket.ejs %>
+        </div>
 
-          <h2 class="line-chart-header">Win Rate % by Game Length</h2> 
-          <div class="chart-holder">
-            <canvas tc-chartjs-line chart-data="gameLength.data" chart-options="gameLength.settings" id="canvas" height="150" width="300"></canvas>
-          </div>
-          <div tc-chartjs-legend chart-legend="playRate"></div>
-         <h2 class="line-chart-header">
-           Win Rate % by Games Played 
-           <small style="display:block;margin-top: 10px;">(2014-2015 Ranked Experience)</small>
-         </h2> 
-         <div class="chart-holder">
-           <canvas tc-chartjs-line chart-data="experienceRate.data" chart-options="experienceRate.settings" chart-legend="experienceRate" id="canvas" height="150" width="300"></canvas>
-         </div>
-         <div tc-chartjs-legend chart-legend="experienceRate"></div>
-
-         <h2 class="line-chart-header" style="margin-bottom: 20px;">Playerbase Experience Distribution</h2> 
-         <div class="chart-holder clearfix">
-           <div style="width:65%;float:left">
-             <canvas tc-chartjs-pie chart-data="experienceDistribution.data.datasets" chart-options="experienceDistribution.settings" chart-legend="experienceDist" id="canvas" height="220" width="300" ></canvas>
-           </div>
-           <div style="width:35%;float:left">
-             <small style="display: block;margin-bottom:10px">2014-2015 Ranked Games</small>
-             <div tc-chartjs-legend chart-legend="experienceDist"></div>
-           </div>
-         </div>
-
-          <h2 class="champion-stats">Most Frequent Summoners</h2>
-          <div class="summoner-wrapper">
-           <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner1.name %>"/></a>
-           <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.mostGames.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.mostGames.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.mostGames.summoner2.name %>"/></a>                 
-           <div class="summoner-text"><strong><%= championData.summoners.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.mostGames.games %></strong> Games</div>
-         </div>
-
-         <h2 class="champion-stats">Highest Win % Summoners</h2>
-         <div class="summoner-wrapper">
-           <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner1.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner1.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner1.name %>"/></a> 
-           <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.summoners.highestWinPercent.summoner2.name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.summoners.highestWinPercent.summoner2.url %>" class="possible-build" tooltip="<%= championData.summoners.highestWinPercent.summoner2.name %>"/></a>                
-           <div class="summoner-text"><strong><%= championData.summoners.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.summoners.highestWinPercent.games %></strong> Games</div>
-         </div>
+        <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+          <% include champion/gamelength_experience_summoners.ejs %>
        </div>
 
-     </div>
-   </div>
- </div>
-
- <div class="champion-area">
-  <div class="container-fluid">
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
-        <% if (championData.skills.highestWinPercent) { %>
-        <h2 class="champion-stats">Most Frequent Skill Order</h2>
-        <div class="skill-order clearfix">
-
-          <div class="skill">
-            <div class="img-placeholder"></div>
-            <div class="skill-selections">
-              <% for (var d = 0; d < 18; d++){ %>
-              <div>
-                <span><%= d + 1 %></span>
-              </div>
-              <% } %>
-            </div>
-          </div>
-
-          <% for (var i = 0 ; i < 4; i++){ %>
-          <div class="skill">
-            <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
-
-            <div class="skill-selections">
-              <% var skillGames = championData.skills.mostGames.order %>
-              <% for (var b = 0 ; b < skillGames.length; b++){ %>
-              <div class="<%=skillGames[b][0] === ''+(i+1) ? 'selected' : '' %>">
-
-                <span><%= skillGames[b][0] === ''+(i+1) ? championData.skills.skillInfo[i].key : "" %></span>
-
-                <% if(skillGames[b].length === 3 && skillGames[b][0] === ''+(i+1)){ %>
-                <span><%= championData.skills.skillInfo[skillGames[b][2]-1].key %></span>
-                <% } %>
-
-              </div>
-
-
-              <% } %>
-
-            </div>
-
-          </div>
-          <% } %>
-        </div>
-        <div class="build-text"><strong><%= championData.skills.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.skills.mostGames.games %></strong> Games </div>
-
-
-        <h2 class="champion-stats" style="margin-top:55px">Highest Win % Skill Order</h2>
-        <div class="skill-order clearfix">
-
-          <div class="skill">
-            <div class="img-placeholder"></div>
-            <div class="skill-selections">
-              <% for (var d = 0; d < 18; d++){ %>
-              <div>
-                <span><%= d + 1 %></span>
-              </div>
-              <% } %>
-            </div>
-          </div>
-
-          <% for (var i = 0 ; i < 4; i++){ %>
-          <div class="skill">
-            <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
-
-            <div class="skill-selections">
-              <% var skillGames = championData.skills.highestWinPercent.order %>
-              <% for (var b = 0 ; b < skillGames.length; b++){ %>
-              <div class="<%=skillGames[b][0] === ''+(i+1) ? 'selected' : '' %>">
-
-                <span><%= skillGames[b][0] === ''+(i+1) ? championData.skills.skillInfo[i].key : "" %></span>
-
-                <% if(skillGames[b].length === 3 && skillGames[b][0] === ''+(i+1)){ %>
-                <span><%= championData.skills.skillInfo[skillGames[b][2]-1].key %></span>
-                <% } %>
-
-              </div>
-
-
-              <% } %>
-
-            </div>
-
-          </div>
-          <% } %>
-
-
-
-        </div>
-        <div class="build-text"><strong><%= championData.skills.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.skills.highestWinPercent.games %></strong> Games </div>
-
-        <% } %>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 counter-column">
-           <% if (championData.runes.highestWinPercent) { %>
-           <h2 class="champion-stats" style="margin-top:40px">Most Frequent Runes</h2>
-           <div class="rune-collection">
-            <% for(var i = 0; i < championData.runes.mostGames.runes.length; i++){ %> 
-            <div class="rune-type-area" style="width:98%">
-              <div class="rune-img">
-                <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/rune/<%= championData.runes.mostGames.runes[i].img %>" /> <strong><%= championData.runes.mostGames.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.mostGames.runes[i].name %> </span>
-                <span class="rune-benefits"><small><%= championData.runes.mostGames.runes[i].description %></small></span>
-              </div>
-              <div class="rune-info">
-
-
-              </div>
-            </div>
-            <% } %>
-          </div>
-          <div class="build-text"><strong><%= championData.runes.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.mostGames.games %></strong> Games </div>
-
-          <h2 class="champion-stats" style="margin-top:45px">Highest Win % Runes</h2>
-          <div class="rune-collection">
-            <% for(var i = 0; i < championData.runes.highestWinPercent.runes.length; i++){ %> 
-            <div class="rune-type-area" style="width:98%">
-              <div class="rune-img">
-                <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/rune/<%= championData.runes.highestWinPercent.runes[i].img %>" /> <strong><%= championData.runes.highestWinPercent.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.highestWinPercent.runes[i].name %> </span>
-                <span class="rune-benefits"><small><%= championData.runes.highestWinPercent.runes[i].description %></small></span>
-              </div>
-              <div class="rune-info">
-
-
-              </div>
-            </div>
-            <% } %>
-          </div>
-          <div class="build-text"><strong><%= championData.runes.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.highestWinPercent.games %></strong> Games </div>
-        </div>
       </div>
-      <% } %>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 counter-column" style="border-right:none">
-      <div class="row" style="margin-top:0px">
-        <% if (championData.items.highestWinPercent) { %>
-        <div class="col-xs-12 col-sm-12 col-md-7 counter-column">
-          <h2 class="champion-stats">Most Frequent Core Build</h2>
-          <div class="build-wrapper">
-            <% for(var k=0; k<championData.items.mostGames.items.length; k++) {%>
-            <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.mostGames.items[k].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.items.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.items.mostGames.items[k].name %>"/></a><% if (k!==5){ %> <small>></small> <%}%>
-            <% } %>
+  </div>
 
-            <div class="build-text"><strong><%= championData.items.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.items.mostGames.games %></strong> Games </div> 
-          </div>
+  <div class="champion-area">
+    <div class="container-fluid">
 
-
-          <h2 class="champion-stats"  style="margin-top:40px">Highest Win % Core Build</h2>
-          <div class="build-wrapper">
-            <% for(var l=0; l<championData.items.highestWinPercent.items.length; l++) {%>
-            <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.items.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.items.highestWinPercent.items[l].name %>"/></a><% if (l!==5){ %> <small>></small> <%}%>
-            <% } %>
-
-            <div class="build-text"><strong><%= championData.items.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.items.highestWinPercent.games %></strong> Games </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-5 counter-column">
-          <h2 class="champion-stats">Most Frequent Starters</h2>
-          <div class="build-wrapper">
-            <% for(var k=0; k<championData.firstItems.mostGames.items.length; k++) {%>
-            <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.firstItems.mostGames.items[k].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.firstItems.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.firstItems.mostGames.items[k].name %>"/></a>
-            <% } %>
-
-            <div class="build-text"><strong><%= championData.firstItems.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.firstItems.mostGames.games %></strong> Games </div> 
-          </div>
-          <h2 class="champion-stats" style="margin-top:40px">Highest Win % Starters</h2>
-          <div class="build-wrapper">
-            <% for(var l=0; l<championData.firstItems.highestWinPercent.items.length; l++) {%>
-            <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.firstItems.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank"><img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= championData.firstItems.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.firstItems.highestWinPercent.items[l].name %>"/></a>
-            <% } %>
-
-            <div class="build-text"><strong><%= championData.firstItems.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.firstItems.highestWinPercent.games %></strong> Games</div>
-          </div>
-        </div>
-        <% } %>
-      </div>
-      <div class="row">
-        <% if (championData.masteries.mostGames.masteries[0]) { %>
-        <h2 class="champion-stats">Most Frequent Masteries</h2>
-        <div class="mastery-container clearfix">
-          <% for (var k = 0; k<pageData.core.masteryOrder.length; k++){ %>
-          <div class="mastery<%= k %>">
-            <div class="mastery-header">
-              <%= championData.masteries.mostGames.masteries[k].tree %> - <%= championData.masteries.mostGames.masteries[k].total %>
-            </div>
-            <br />
-            <% for (var z = 1; z<=6; z++){ %>
-            <% var masteryColumn = championData.masteries.mostGames.masteries[k].data['row'+z]; %>
-            <div class="clearfix mastery-row">
-              <% for(var y = 0; y < masteryColumn.length; y++) { %>
-
-              <% if(masteryColumn[y].mastery){ %>
-
-
-              <% if(masteryColumn[y].points){ %>
-
-              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>" api-secondary-id="<%- masteryColumn[y].points-1 %>">
-                <div class="points">
-                  <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
-                  <div class="point"></div>
-                  <% } %>
-                </div>
-              </div>
-
-              <% } else { %>
-              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>">
-
-              </div>
-              <% } %>
-              <% } else { %>
-              <div class="mastery-spacer"></div>
-              <% } %>
-
-              <% } %>
-            </div>
-            <% } %>
-          </div>
-
-
-          <% } %>
-        </div>
-        <div class="build-text"><strong><%= championData.masteries.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.masteries.mostGames.games %></strong> Games</div>
-      </div>
       <div class="row">
 
-        <h2 class="champion-stats">Highest Win % Masteries</h2>
-        <div class="mastery-container clearfix">
-          <% for (var k = 0; k<pageData.core.masteryOrder.length; k++){ %>
-          <div class="mastery<%= k %>">
-            <div class="mastery-header">
-              <%= championData.masteries.highestWinPercent.masteries[k].tree %> - <%= championData.masteries.highestWinPercent.masteries[k].total %>
-            </div>
-            <br />
-            <% for (var z = 1; z<=6; z++){ %>
-            <% var masteryColumn = championData.masteries.highestWinPercent.masteries[k].data['row'+z]; %>
-            <div class="clearfix mastery-row">
-              <% for(var y = 0; y < masteryColumn.length; y++) { %>
-
-              <% if(masteryColumn[y].mastery){ %>
-
-
-              <% if(masteryColumn[y].points){ %>
-              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>" api-secondary-id="<%- masteryColumn[y].points-1 %>">
-                <div class="points">
-                  <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
-                  <div class="point"></div>
-                  <% } %>
-                </div>
-              </div>
-
-              <% } else { %>
-              <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>">
-
-              </div>
-              <% } %>
-              <% } else { %>
-              <div class="mastery-spacer"></div>
-              <% } %>
-
-              <% } %>
-            </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <div>
+            <% if (championData.skills.highestWinPercent) { %>
+              <% include champion/skill_order.ejs %>
             <% } %>
           </div>
-
-
-          <% } %>
-
-        </div>
-        <div class="build-text"><strong><%= championData.masteries.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.masteries.highestWinPercent.games %></strong> Games</div>
-        <% } %>
-      </div>
-
-
-    </div>
-
-
-
-  </div>
-</div>
-</div>
-
-<div class="matchups">
-  <div class="container-fluid"  ng-controller="matchupData">
-    <div class="matchup-wrapper">
-      <div class="matchup-settings">
-        <span>Display matchups with at least</span> 
-        <select class="minimum-games" ng-change="saveMinGames()" ng-model="minGames">
-          <option value="0">Show All</option>
-          <option value="100">100+</option>
-          <option value="250">250+</option>
-          <option value="500">500+</option>
-          <option value="1000">1000+</option>
-          <option value="10000">10000+</option>
-        </select>
-        <span>games.</span>
-      </div>
-    </div>
-    <div class="row counter-row">
-      <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
-        <div class="matchup-header"><h2><%= champion.roleTitle %> Champions that Counter <%= champion.name %></h2> <span class="glyphicon glyphicon-question-sign" tooltip="The coloured bars below show <%= champion.name %>'s performance in the matchup. Red = Weak, Yellow = Even, Green = Strong."></span></div>
-        <filters matchup-type="matchups"></filters>
-        <matchups order="" matchup-type="matchups"></matchups>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <div class="matchup-header"><h2><%= champion.roleTitle %> Champions that <%= champion.name %> Counters</h2> <span class="glyphicon glyphicon-question-sign" tooltip="The coloured bars below show <%= champion.name %>'s performance in the matchup. Green = Strong, Yellow = Even, Red = Weak."></span></div>
-        <filters matchup-type="matchups"></filters>
-        <matchups order="-" matchup-type="matchups"></matchups>
-      </div>
-    </div>
-
-    <%if (champion.role === 'DUO_SUPPORT' || champion.role === 'DUO_CARRY') { %>
-    <div class="row counter-row">
-      <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
-        <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Counter <%= champion.name %></h2></div>
-        <filters matchup-type="adcsupport"></filters>
-        <matchups order="" matchup-type="adcsupport"></matchups>
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that <%= champion.name %> Counters</h2></div>
-        <filters matchup-type="adcsupport"></filters>
-        <matchups order="-" matchup-type="adcsupport"></matchups>
-      </div>
-    </div>
-
-
-    <div class="row counter-row">
-      <div class="col-xs-12 col-sm-12 col-md-6 counter-column">
-
-        <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise poorly with <%= champion.name %></h2></div>
-        <filters matchup-type="synergy"></filters>
-        <matchups order="" matchup-type="synergy"></matchups>
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <div class="matchup-header"><h2><%if (champion.role === 'DUO_SUPPORT') { %> ADC <% } else { %> Support <% } %> Champions that Synergise well with <%= champion.name %></h2></div>
-        <filters matchup-type="synergy"></filters>
-        <matchups order="-" matchup-type="synergy"></matchups>
-      </div>
-
-
-    </div>
-
-    <% } %>
-
-  </div>
-
-</div> 
-
-<div class="champion-area">
-  <div class="container-fluid">
-    <div class="row counter-row">
-      <div class="col-xs-12 col-md-6">
-        <h2> Advertising Support </h2>  
-        <div class="advert-holder" style="margin:auto;margin-left:15px">
-         <ins class="adsbygoogle"
-              style="display:inline-block;width:300px;height:250px"
-              data-ad-client="ca-pub-4978994984254577"
-              data-ad-slot="1373225876"></ins>
-         
-
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-4978994984254577"
-               data-ad-slot="8756891875"></ins>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6" ng-controller="reddit">
-        <h2> Recent <%= champion.name %> Threads on Reddit </h2>
-
-        <div ng-repeat="thread in redditData | filter:enoughUpvotes | limitTo:5" ng-controller="redditThread">
-          <div class="container-reddit">
-            <div class="reddit-titles">
-              <h4><a href="{{thread.data.url}}" target="_blank">{{thread.data.title}}</a></h4>
-              <span ng-click="toggleSummary()" class="reddit-summary">View Summary <span ng-if="!summaryVisible">&#x25B6</span><span ng-if="summaryVisible">&#x25BC</span></span>
-              <a href="{{thread.data.url}}" target="_blank" class="reddit-comments">{{thread.data.num_comments}} comments.</a>
-              <small class="reddit-date">Created on <strong>{{thread.data.created * 1000 | date:'d MMMM yyyy'}}</strong></small>
-            </div>
-            <div ng-if="summaryVisible" class="reddit-summary-area">
-             <div ng-bind-html="thread.data.selftext_html | to_trusted"></div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
-
-</div>
-</div>
-</div>
-
-
-
-<!-- Templates -->
-<script type="text/ng-template" id="filters.html">
-  <div class="clearfix">
-    <div class="search-sorter">
-      <input class="matchupSearch" type="text" ng-model="search[matchupType].name" ng-model-options="{debounce: 30}" placeholder="Search By Name" />
-    </div>
-    <div ng-click="saveSort('statScore')" class="stat-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'statScore'}">
-      Statistical Rating <span class="glyphicon glyphicon-question-sign" tooltip="Statistical rating takes more than win rate into account. Click the graph button under the champion name for more details."></span>
-    </div>
-    <div ng-click="saveSort('winRate')" class="winrate-sorter" ng-class="{'selected-sorter': sortExpression.sortBy === 'winRate'}">
-      {{champion.name}} Win Rate
-    </div>
-  </div>
-</div>
-</script>
-
-
-
-<script type="text/ng-template" id="matchups.html">
-
-  <div ng-repeat="matchup in filtered[matchupType] = (allMatchups[matchupType] | orderBy:[order+sortExpression.sortBy,order+'overallScore'] | startsWith:search[matchupType].name | filter:matchAmount) | limitTo:itemsLimit(matchupType,order)" ng-controller="specificMatchup" class="animate-repeat" ng-class="{'left': order === '', 'right': order === '-'}">  
-    <div class="row counter-matchups">
-
-      <div class="matchup-champion-info">
-        <a href="/champion/{{matchup.key}}/{{generateChampUrl(matchupType)}}">
-          <div class="matchup-champion {{matchup.key}}"></div>
-          <h3>{{matchup.name}}</h3>
-        </a>
-        <span class="glyphicon glyphicon-stats view-more-stats" tooltip="View Indepth Stats" ng-click="toggleMatchup(matchupType, matchup.key)"></span>
-        <span class="glyphicon glyphicon-comment view-more-comment" tooltip="View Discussion" ng-click="matchupDiscussion(matchupType, matchup.key, 'toggle', order)"></span>
-        <a href="{{generateMatchupUrl(matchup.key, matchupType)}}"><span class="glyphicon glyphicon-link view-linked-page" tooltip="View Matchup Page"></span></a>
-      </div>
-
-      <div class="matchup-stats">
-        <div class="progress">
-
-          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ng-class="{'above-average': matchup.statScore > 6, 'below-average': matchup.statScore < 4, 'average': matchup.statScore >= 4 && matchup.statScore <= 6}" ng-style="{'width': order==='' ? (10-matchup.statScore)*10+'%' : matchup.statScore*10+'%'}">
+          <div>
+             <% if (championData.runes.highestWinPercent) { %>
+              <% include champion/runes.ejs %>
+             <% } %>
           </div>
         </div>
-        <small><strong>{{matchup.games}}</strong> Games </small>
-      </div>
-      <div class="winrating-area">
-        <strong>{{matchup.winRate}}%</strong>
 
-      </div>
-    </div>
-
-
-    <div class="row" ng-if="matchupType === 'matchups' && showMatchups && matchupRetrieved">
-      <div class="col-xxs-12 col-xs-6">
-        <h4 ng-if="showMatchups && matchupRetrieved"> Matchup Performance </h4>
-        <div class="middle-graphic-holder">
-          <canvas ng-if="showMatchups && matchupRetrieved" tc-chartjs-radar chart-data="champComparison.data" chart-options="champComparison.settings" chart-legend="championMatchup" height="400" width="560"></canvas>
-        </div> 
-      </div>
-      <ul class="radar-legend visible-xxs">
-        <li><span class="magic-dmg"></span>{{champion.name}}</li>
-        <li><span class="physical-dmg"></span>{{matchup.name}}</li>
-      </ul>
-      <div class="col-xxs-12 col-xs-6">
-        <h4 ng-if="showMatchups && matchupRetrieved"> Gold Over Time </h4>
-        <div class="middle-graphic-holder">
-          <canvas ng-if="showMatchups && matchupRetrieved" tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" height="400" width="560"> </canvas>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <div class="row" style="margin-top:0px">  
+            <div class="col-xs-12 col-sm-12 col-md-7">
+              <% if (championData.items.highestWinPercent) { %>
+                <% include champion/core_build.ejs %>
+              <% } %>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5">
+              <% include champion/first_items.ejs %>  
+            </div>
+          </div>
+          <div class="row">
+            <% if (championData.masteries.mostGames.masteries[0]) { %>
+               <% include champion/masteries.ejs %> 
+            <% } %>
+          </div>
         </div>
-
       </div>
-      <ul class="radar-legend">
-        <li><span class="magic-dmg"></span>{{champion.name}}</li>
-        <li><span class="physical-dmg"></span>{{matchup.name}}</li>
-      </ul>
     </div>
-
-
-
-    <div class="row chart-area matchup-stat-area" ng-if="showMatchups">
-
-      <div class="loading-symbol" ng-if="!matchupRetrieved">Loading...</div>
-      <div class="col-xs-12 col-sm-12 col-md-12" ng-if="matchupRetrieved">
-        <div class="matchup-title-width matchup-div-header"></div><div class="matchup-champ-img-width matchup-div-header">
-        <div class="matchup-champion matchup-table {{champion.key}}"></div>
-      </div><div class="matchup-champ-img-width matchup-div-header">
-      <div class="matchup-champion matchup-table {{matchup.key}}"></div>
-    </div>
-    <table class="table table-striped">
-      <thead>
-
-        <tr>
-          <th class="matchup-title-width" >Type</th>
-          <th class="matchup-values-width">Matchup Average</th>
-          <th class="matchup-values-width">Change</th>
-          <th class="matchup-values-width">Matchup Average</th>
-          <th class="matchup-values-width">Change</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="matchupInfo in matchup.specificMatchup.general">
-          <td class="matchup-title-width">{{matchupInfo.title}}</td>
-
-          <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key, true)].val}}<span ng-if="$index===0">%</span></td>
-          <td class="matchup-values-width"> <span class="glyphicon {{matchupInfo.title}}-title" ng-class="{'glyphicon-arrow-up': matchupInfo[champtype(matchup.key, true)].change > (0), 'glyphicon-arrow-down': matchupInfo[champtype(matchup.key, true)].change < 0}"></span>{{Math.abs(matchupInfo[champtype(matchup.key, true)].change)}}</td>
-          <td class="matchup-values-width">{{matchupInfo[champtype(matchup.key)].val}}<span ng-if="$index===0">%</span></td>
-          <td class="matchup-values-width"><span class="glyphicon {{matchupInfo.title}}-title" ng-class="{'glyphicon-arrow-up': matchupInfo[champtype(matchup.key)].change > (0), 'glyphicon-arrow-down': matchupInfo[champtype(matchup.key)].change < 0}"></span>{{Math.abs(matchupInfo[champtype(matchup.key)].change)}}</small></td>
-
-        </tr>
-      </tbody>
-    </table>
-
   </div>
-</div>
-<div class="row" ng-if="matchupDiscussion(matchupType, matchup.key, 'bind', order)">
-  <disqus disqus-shortname="championgg" disqus-identifier="{{generateId(matchupType, matchup.key)}}" disqus-url="http://champion.gg/{{generateId(matchupType, matchup.key)}}" disqus-id="{{matchupDiscussion(matchupType, matchup.key, 'id', order)}}" ready-to-bind="{{matchupDiscussion(matchupType, matchup.key, 'bind', order)}}" ></disqus>
-</div>
-</div>
+
+  <div class="matchups">
+    <% include champion/counters_matchups.ejs %> 
+  </div> 
+
+  <div class="champion-area">
+    <div class="container-fluid">
+      <div class="row counter-row">
+        <div class="col-xs-12 col-md-6">
+         <% include champion/advertisement.ejs %>
+        </div>
+        <div class="col-xs-12 col-md-6" ng-controller="reddit">
+         <% include champion/reddit.ejs %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
-</div>
-<div class="show-more" ng-if="hasMoreItemsToShow(matchupType,order)" ng-click="showMoreItems(matchupType,order)"><small>{{itemsLimit(matchupType,order)}} / {{matchupsCount(matchupType)}} - </small><strong>Show More</strong> </div>
-</script> 
- 
+
 <script>
   matchupData.champion = <%- JSON.stringify(champion) %>;
   matchupData.generalRole = <%- JSON.stringify(generalRole) %>;

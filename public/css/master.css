@@ -1066,7 +1066,7 @@ top: -21px;
   width:24%;
 }
 .matchup-champ-img-width{
-  width:38%;
+  width:34%;
   text-align:center;
 }
 .matchup-div-header{
@@ -1341,26 +1341,26 @@ font-size:0.9em;
 }
 
 
-.viktor-skills{
+.viktor-skills, .trinket-stats{
   margin-top: 35px;
 position: relative;
 left: 6px;
 }
-.viktor-skills small{
+.viktor-skills small, .trinket-stats small{
   position: relative;
 left: -7px;
 }
-.viktor-skill{
+.viktor-skill, .trinket-single{
   width:25%;
   position:relative;
   display: inline-block
 }
 
-.viktor-skill img{
+.viktor-skill img, .trinket-single img{
   width:36px;
   height:36px;
 }
-.viktor-key{
+.viktor-key, .trinket-key{
   position:absolute;
   top:4px;
 }

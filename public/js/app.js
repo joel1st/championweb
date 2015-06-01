@@ -11,24 +11,24 @@ var sortData = function(champ1, champ2, position) {
 
 	appCore.run(['$templateCache', function($templateCache) {
 		$templateCache.put('template/typeahead/typeahead-popup.html',
-			'<ul class="dropdown-menu" ng-show="isOpen()" ng-style="{top: position.top+\'px\',' 
-			+	'left: position.left+\'px\'}" style="display: block;" role="listbox" aria-hidden="{{!isOpen()}}">'
-			+ 		'<li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)"' 
-			+		'ng-click="selectMatch($index)" role="option" id="{{match.id}}">'
-	        +    	'<div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>'
-	        +'</li></ul>');
+			'<ul class="dropdown-menu" ng-show="isOpen()" ng-style="{top: position.top+\'px\','  +
+				'left: position.left+\'px\'}" style="display: block;" role="listbox" aria-hidden="{{!isOpen()}}">' +
+			 		'<li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)"' +
+					'ng-click="selectMatch($index)" role="option" id="{{match.id}}">' +
+	            	'<div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>' +
+	        '</li></ul>');
 
 		$templateCache.put('menu.html', 
-			'<a href="/champion/{{match.model.key}}">'
-	        +  '<div class="dropdown-img matchup-champion {{match.model.key}}"></div>'
-	        +  '<span bind-html-unsafe="match.label | typeaheadHighlight:query" class="dropdown-search"></span>'
-	      	+'</a>')
+			'<a href="/champion/{{match.model.key}}">'+
+	          '<div class="dropdown-img matchup-champion {{match.model.key}}"></div>'+
+	          '<span bind-html-unsafe="match.label | typeaheadHighlight:query" class="dropdown-search"></span>'+
+	      	'</a>');
 
 	    $templateCache.put('template/tooltip/tooltip-popup.html', 
-			'<div class="tooltip {{placement}}" ng-class="{ in: isOpen(), fade: animation() }">'
-		    +  '<div class="tooltip-arrow"></div>'
-		    +  '<div class="tooltip-inner">{{content}}</div>'
-		    +'</div>')
+			'<div class="tooltip {{placement}}" ng-class="{ in: isOpen(), fade: animation() }">'+ 
+		      '<div class="tooltip-arrow"></div>'+
+		      '<div class="tooltip-inner">{{content}}</div>'+
+		    '</div>');
 	}]);
 
 	appCore.filter('to_trusted', ['$sce', function($sce) {
@@ -52,7 +52,7 @@ var sortData = function(champ1, champ2, position) {
 
 		$scope.getPage = function(){
 			window.location.assign('/champion/'+ $scope.selected);
-		}
+		};
 
 		$scope.determineSend = function(keyCode) {
 			if (keyCode === 13) {
@@ -138,11 +138,11 @@ var sortData = function(champ1, champ2, position) {
 			getTemplate: function(tElement, tAttrs){
 				var beginning = "<div class='primary-content'>";
 				var obj = {
-					masteries: "<div ng-if=\"tooltipContent\"><h4>{{tooltipContent.name}}</h4>"
-								+ "<div class=\"description\" ng-repeat=\"tip in tooltipContent.description\">"
-								+ "{{grahh}}<div ng-class=\"{'highlight' : $index == apiSecondaryId}\" ng-bind-html=\"tip | to_trusted\">"
-								+ "</div></div></div>"
-				}
+					masteries: "<div ng-if=\"tooltipContent\"><h4>{{tooltipContent.name}}</h4>"+
+								"<div class=\"description\" ng-repeat=\"tip in tooltipContent.description\">"+ 
+								"<div ng-class=\"{'highlight' : $index == apiSecondaryId}\" ng-bind-html=\"tip | to_trusted\">"+ 
+								"</div></div></div>"
+				};
 				var end = "<div ng-if=\"!tooltipContent\">Loading...</div>"+
 						"</div><div class='arrow-down'></div>";
 				return beginning + obj[tAttrs.apiType] + end;
@@ -177,7 +177,7 @@ var sortData = function(champ1, champ2, position) {
 				scope.$watch('tooltipContent', function(){
 					$timeout(function(){
 						adjustCss();
-					}, 1)
+					}, 1);
 				}, true);
 
 				$http.get('/static/'+scope.apiType+'/'+scope.apiPrimaryId).success(function(data, status, headers, config){
@@ -187,7 +187,7 @@ var sortData = function(champ1, champ2, position) {
 				});
 				 
 			}
-		}
+		};
 	}]);
 
 	appCore.directive('championTip', ['$compile', '$timeout', function($compile, $timeout){
@@ -207,7 +207,7 @@ var sortData = function(champ1, champ2, position) {
 				mouseenterFunction = function(){
 					timed[timed.length] = $timeout(function(){
 						scope.positionInfo = this.getBoundingClientRect();                    
-						var currentToolTip = "<tool-container api-type="+scope.apiType+" api-primary-id="+scope.apiPrimaryId+" api-secondary-id="+(scope.apiSecondaryId || 'none')+" position='positionInfo' class='currentTooltip'></tool-container>"
+						var currentToolTip = "<tool-container api-type="+scope.apiType+" api-primary-id="+scope.apiPrimaryId+" api-secondary-id="+(scope.apiSecondaryId || 'none')+" position='positionInfo' class='currentTooltip'></tool-container>";
 						var tool = $compile(currentToolTip)(scope);
 						angular.element(document.getElementsByTagName('body')[0]).prepend(tool);
 					}.bind(this), 50);
@@ -228,7 +228,7 @@ var sortData = function(champ1, champ2, position) {
 				elem.bind('mouseleave', mouseoutFunction);
 
 			}
-		}
+		};
 	}]);
 
 })(angular, matchupData);

@@ -1,7 +1,7 @@
 "use strict";
-var ChampionData = require('../models/championData.js');
-var ChampionRoles = require('../models/championRoles.js');
-var Roles = require('../models/roles.js');
+var WebChampionPage = require('../models/web_champion_page.js');
+var WebChampionRoles = require('../models/web_champion_roles.js');
+var WebOverallRoleData = require('../models/web_overall_role_data.js');
 var data = require('../models/data.js');
 var produceError = require('../logic/produceError.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
@@ -48,7 +48,7 @@ router.get('/:champ', function(req, res, next) {
             }
         };
 
-        ChampionRoles.findOne({
+        WebChampionRoles.findOne({
             key: champKey
         }, function(err, doc) {
             if (err) {
@@ -69,7 +69,7 @@ router.get('/:champ', function(req, res, next) {
                 champion.role = doc.roles[0].role;
                 champion.roleTitle = data.roleKey[doc.roles[0].role];
 
-                ChampionData.findOne({
+                WebChampionPage.findOne({
                     key: champKey,
                     role: champion.roles[0].role
                 }, function(err, doc) {
@@ -84,7 +84,7 @@ router.get('/:champ', function(req, res, next) {
                     }
                 });
 
-                Roles.findOne({
+                WebOverallRoleData.findOne({
                     role: champion.roles[0].role
                 }, function(err, doc) {
                     if (err) {
@@ -138,7 +138,7 @@ router.get('/:champ/:role', function(req, res, next) {
             }
         };
         
-        ChampionRoles.findOne({
+        WebChampionRoles.findOne({
             key: champKey
         }, function(err, doc) {
             if (err) {
@@ -154,7 +154,7 @@ router.get('/:champ/:role', function(req, res, next) {
             }
         });
 
-        ChampionData.findOne({
+        WebChampionPage.findOne({
             key: champKey,
             role: champRole
         }, function(err, doc) {
@@ -169,7 +169,7 @@ router.get('/:champ/:role', function(req, res, next) {
             }
         });
 
-        Roles.findOne({
+        WebOverallRoleData.findOne({
             role: champRole
         }, function(err, doc) {
             if (err) {

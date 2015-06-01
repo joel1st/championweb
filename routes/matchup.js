@@ -1,6 +1,6 @@
 /* GET users listing. */
 "use strict";
-var ChampionMatchups = require('../models/championMatchup.js');
+var WebMatchupPage = require('../models/web_matchup_page.js');
 var produceError = require('../logic/produceError.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
 var data = require('../models/data.js');
@@ -48,7 +48,7 @@ router.get('/:champ1/:champ2/:role', function(req, res, next) {
         champ2 = data.champList[champ2].id;
         champRole = data.roleList[champRole];
 
-        ChampionMatchups.findOne({
+        WebMatchupPage.findOne({
             'champ1.id': champ1,
             'champ2.id': champ2,
             role: champRole

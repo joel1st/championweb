@@ -31,20 +31,8 @@
    'SYNERGY':'synergy'
 	};
 
-
-
-   var determineKey = function(id){
-      for(var champ in champList){
-         if(champList.hasOwnProperty(champ)){
-            if(id === champList[champ].id){
-               return champList[champ].key;
-            }
-         }
-      }
-   };
-
    var core = {
-      gamesAnalyzed:"1,194,750",
+      gamesAnalyzed:"2,020,610",
       patch:"5.10",
       ddPatch:"5.10.1",
       resetCache: Math.random().toFixed(5),
@@ -57,4 +45,3 @@
    exports.champList = require('../apiData/champions.json');
    exports.roleList = roleList;
    exports.roleKey = roleKey;
-   exports.determineKey = determineKey;

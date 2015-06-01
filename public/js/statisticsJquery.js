@@ -1,7 +1,7 @@
 // jquery
 (function($){
-  var $fixedHeader = $("#header-fixed")
-  var $table = $("#table-1")
+  var $fixedHeader = $("#header-fixed");
+  var $table = $("#table-1");
   var $fixedHeaderTd = $("#header-fixed td");
   var $originalHeaderTd = $("#original-header td");
 
@@ -29,12 +29,11 @@
 
       if (offset >= tableOffset) {
           
-            $fixedHeader.css('margin-left','-'+leftOffset+'px');
-            console.log('oopsies')
+        $fixedHeader.css('margin-left','-'+leftOffset+'px');
           
-          if($fixedHeader.is(":hidden")){
-            $fixedHeader.show();
-          }
+        if($fixedHeader.is(":hidden")){
+          $fixedHeader.show();
+        }
       }
       else if (offset < tableOffset) {
           $fixedHeader.hide();

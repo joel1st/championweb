@@ -1,7 +1,6 @@
 "use strict";
-var ChampionData = require('../models/championData.js');
-var ChampionRoles = require('../models/championRoles.js');
-var Summaries = require('../models/summaries.js');
+var WebChampionRoles = require('../models/web_champion_roles.js');
+var WebHomePageSummaries = require('../models/web_home_page_summaries.js');
 var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
 var produceError = require('../logic/produceError.js');
 var data = require('../models/data.js');
@@ -27,7 +26,7 @@ router.get('/', function(req, res, next) {
         });
     }
 
-    ChampionRoles.find({}).sort({
+    WebChampionRoles.find({}).sort({
         name: 1
     }).exec(function(err, data) {
         if (err) {
@@ -44,7 +43,7 @@ router.get('/', function(req, res, next) {
         }
     });
 
-    Summaries.findOne({
+    WebHomePageSummaries.findOne({
         id: 1
     }, function(err, data) {
         if (err) {

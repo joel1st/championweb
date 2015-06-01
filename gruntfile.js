@@ -24,6 +24,7 @@ module.exports = function(grunt){
 					'logic/*.js',
 					'models/*.js',
 					'public/js/*.js',
+					'!public/js/master.min.js',
 					'*.js' 
 				],
 			options: {

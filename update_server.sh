@@ -1,8 +1,8 @@
 git pull
-mongorestore --db leaguetimes --collection championdatas --drop db/leaguetimes/championdatas.bson
-mongorestore --db leaguetimes --collection championmatchups --drop db/leaguetimes/championmatchups.bson
-mongorestore --db leaguetimes --collection championroles --drop db/leaguetimes/championroles.bson
-mongorestore --db leaguetimes --collection roles --drop db/leaguetimes/roles.bson
-mongorestore --db leaguetimes --collection stattables --drop db/leaguetimes/stattables.bson
-mongorestore --db leaguetimes --collection summaries --drop db/leaguetimes/summaries.bson
+mongorestore --db leaguetimes --collection webchampionpages --drop db/leaguetimes/webchampionpages.bson
+mongorestore --db leaguetimes --collection webchampionroles --drop db/leaguetimes/webchampionroles.bson
+mongorestore --db leaguetimes --collection webmatchuppages --drop db/leaguetimes/webmatchuppages.bson
+mongorestore --db leaguetimes --collection weboverallroledatas --drop db/leaguetimes/weboverallroledatas.bson
+mongorestore --db leaguetimes --collection webhomepagesummaries --drop db/leaguetimes/webhomepagesummaries.bson
+mongorestore --db leaguetimes --collection webstatisticspages --drop db/leaguetimes/webstatisticspages.bson
 cd bin && NODE_ENV=production pm2 restart www.js

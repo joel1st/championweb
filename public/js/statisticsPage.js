@@ -40,7 +40,7 @@
         $scope.changeOrder = function(){
             $scope.order = ($scope.order === '-') ? '' : '-';
             $location.search('order', ($scope.order === '-') ? 'descend' : 'ascend');
-        }
+        };
 
         $scope.changeSelection = function(property) {
             if (property !== 'role' && property !== 'title') {
