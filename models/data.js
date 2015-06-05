@@ -32,7 +32,7 @@
 	};
 
    var core = {
-      gamesAnalyzed:"3,054,550",
+      gamesAnalyzed:"3,549,640",
       patch:"5.10",
       ddPatch:"5.10.1",
       resetCache: Math.random().toFixed(5),
