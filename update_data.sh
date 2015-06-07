@@ -5,6 +5,7 @@ if [ "$gitmsg" == "" ]; then
 fi
 echo $gitmsg
 
+mongodump --db leaguetimes --collection weboverallstats --out ./db
 mongodump --db leaguetimes --collection webchampionpages --out ./db
 mongodump --db leaguetimes --collection webchampionroles --out ./db
 mongodump --db leaguetimes --collection webmatchuppages --out ./db

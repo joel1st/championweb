@@ -5,6 +5,7 @@ mongodump --db leaguetimes --collection webmatchuppages --out ./db
 mongodump --db leaguetimes --collection weboverallroledatas --out ./db
 mongodump --db leaguetimes --collection webhomepagesummaries --out ./db
 mongodump --db leaguetimes --collection webstatisticspages --out ./db
+mongodump --db leaguetimes --collection weboverallrolestats --out ./db
 git add -A && git commit -m "updated data" && git push
 
 
@@ -16,6 +17,7 @@ mongorestore --db leaguetimes --collection webmatchuppages --drop db/leaguetimes
 mongorestore --db leaguetimes --collection weboverallroledatas --drop db/leaguetimes/weboverallroledatas.bson
 mongorestore --db leaguetimes --collection webhomepagesummaries --drop db/leaguetimes/webhomepagesummaries.bson
 mongorestore --db leaguetimes --collection webstatisticspages --drop db/leaguetimes/webstatisticspages.bson
+mongorestore --db leaguetimes --collection weboverallroledatas --drop db/leaguetimes/weboverallstats.bson
 cd bin && NODE_ENV=production pm2 restart www.js
 
 
