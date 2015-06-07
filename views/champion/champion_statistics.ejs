@@ -13,7 +13,7 @@
    <tr id=<%= 'statistics-' + championData.general[i].title.replace(' ', '-').toLowerCase() + '-row' %> >
     <td>
       <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.<%= championData.general[i].titleLink %>&order=descend">
-        <span class="text-indent"><%= championData.general[i].title %></span>
+        <%= championData.general[i].title %>
       </a>
     </td>
 
@@ -33,7 +33,7 @@
     <% } %>
 
     <tr>
-      <td colspan=2> <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.overallPosition&order=ascend"><span class="text-indent">Overall Placement</span></a></td>
+      <td colspan=2> <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.overallPosition&order=ascend">Overall Placement</a></td>
       <td style="text-align:center"><strong class="<%if (championData.overallPosition.position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>"><%= championData.overallPosition.position %> </strong><small>/ <%= generalRole.totalNumber %></small></td>
       <td><span class="glyphicon <%if (championData.overallPosition.change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.overallPosition.change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.overallPosition.change === 0) { %> same-position <% } %>">
       </span> <%- Math.abs(championData.overallPosition.change) %></td>

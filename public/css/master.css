@@ -498,9 +498,6 @@ font-size: 1.42em;
 margin-top: 5px;
 text-align: center;
 }
-span.text-indent {
-margin-left: 6px;
-}
 .first-column{
   width:37%
 }
@@ -912,8 +909,7 @@ background-color: #212325;
 .champion-statistics tr>td:first-child, .summary-side tr>td:first-child, .matchups tr>td:first-child, #matchups tr>td:first-child{
     color: #FFE08C;
     
-    padding-left: 10px;
-    /* margin-left: 25px; */
+    padding-left: 15px;
 }
 
 .champion-statistics tr>td:nth-child(3), .champion-statistics tr>td:nth-child(4), .champion-statistics tr>th:nth-child(3), .champion-statistics tr>th:nth-child(4){
