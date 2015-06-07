@@ -38,34 +38,38 @@
             <a href="https://twitter.com/share" class="twitter-share-button" data-via="champion_gg">Tweet</a>
             <div class="fb-like" data-href="https://www.facebook.com/championgg" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
           </div>
-          <div class="update-happening"><!--<span class="important-message"> We are currently aggregating patch 5.10 data - check back in 1 day!--></span>
+          <div class="update-happening">
+            <% if (core.headline) { %>
+             <span class="important-message"> <%= core.headline %> </span>
+            <% } %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="navbar navbar-inverse" role="navigation">
-      <div class="container-fluid">
-        <div class="row clearfix">
-          <div class="logo-holder">
-            
+      <div class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+         <div class="row clearfix">
+            <div class="logo-holder">
             <a class="navbar-brand" href="/"><img src="/img/logo.png" /></a>
           </div>
           <div class="search-holder">
             
             <div class="search-fb-holder">
               <div class="input-group" ng-controller="searchCtrl">
+
                 <input type="text" class="form-control" placeholder="Champion Name" id="query" value="" ng-model="selected" ng-model-options="{debounce: 40}" typeahead="champ as champ.name for champ in championMenu | startsWith:$viewValue | limitTo: 12" typeahead-template-url="menu.html" style="width:188px;display: inline-block;" ng-keyup="determineSend($event.keyCode)" autocomplete="off">
-                <div class="input-group-btn" style="cursor:auto;display: inline-block;">
-                  
+                <div class="input-group-btn" style="cursor:auto;display: inline-block;">  
                   <button ng-click="getPage()" style="cursor:auto;" type="submit" class="btn btn-success"><span style="cursor:auto;" class="glyphicon glyphicon-search" ></span></button>
-                  
                 </div>
+              
               </div>
             </div>
             
           </div>
           <div class="navigation-holder cleafix">
             <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=championgg%40outlook%2ecom&lc=AU&item_name=ChampionGG&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" alt="donate"> Donate </a>
-            <div class="analysis-holder"><small>Patch <strong><%=core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=core.gamesAnalyzed%></strong><span class="spacer">|</span> <strong> Platinum+ Ranked </strong></small></div>
+            <div class="analysis-holder">
+              <small>Patch <strong><%=core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=core.gamesAnalyzed%></strong><span class="spacer">|</span> <strong> Platinum+ Ranked </strong></small> 
+            </div>
             
           </div>
         </div>
@@ -73,4 +77,4 @@
     </div>
     <div class="page-content">
       
-      <noscript><div class="update-happening">To make the most of this website, we strongly recommend turning JavaScript on! It powers the graphs, data sorting and other cool features!</div></noscript>
+    <noscript><div class="update-happening">To make the most of this website, we strongly recommend turning JavaScript on! It powers the graphs, data sorting and other cool features!</div></noscript>

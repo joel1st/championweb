@@ -10,7 +10,8 @@ module.exports = function(req, res, next){
     res.locals.core = {
 		ddPatch: require('../api_data/dd_patch.json').ddPatch,
 		resetCache: Math.random().toFixed(5),
-		masteryOrder: ['Offense','Defense','Utility']
+		masteryOrder: ['Offense','Defense','Utility'],
+		headline: require('../headline.js')
 	};
 
 	if (typeof webOverallCache !== 'object'){
