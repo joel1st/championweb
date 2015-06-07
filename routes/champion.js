@@ -43,7 +43,7 @@ router.get('/:champ', function(req, res, next) {
             if (championData !== null) {
                     res.render('champion', resObj);
                 } else {
-                    res.render('newchampion', resObj);
+                    res.render('new_champion', resObj);
                 }
             }
         };
@@ -54,17 +54,17 @@ router.get('/:champ', function(req, res, next) {
             if (err) {
                 return next(produceError('serverMaintenance', 503));
             } else if (!doc || doc.roles.length === 0) {
-                if (champKey === data.newChampion.key) {
-                    dataCount = 1;
-                    championData = null;
-                    generalRole = null;
-                    championVotes = null;
-                    champion = data.newChampion;
-                    response();
-                } else {
-                    return next(produceError('serverMaintenance', 503));
-                }
+                dataCount = 1;
+                championData = null;
+                generalRole = null;
+                championVotes = null;
+                champion = {
+                    key: champKey,
+                    name: data.champList[champKey].name
+                };
+                response();
             } else {
+
                 champion = JSON.parse(JSON.stringify(doc));
                 champion.role = doc.roles[0].role;
                 champion.roleTitle = data.roleKey[doc.roles[0].role];

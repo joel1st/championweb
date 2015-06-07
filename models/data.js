@@ -1,11 +1,4 @@
 "use strict";
-
-   var newChampion = {
-      key:"",
-      name:"",
-      roleTitle:""//leave blank
-   };
-
    var roleList =  {
 	'Top':'TOP',
 	'Middle' : 'MIDDLE',
@@ -41,7 +34,6 @@
    };
 
    exports.core = core;
-   exports.newChampion = newChampion;
    exports.champList = require('../api_data/champions.json');
    exports.roleList = roleList;
    exports.roleKey = roleKey;
