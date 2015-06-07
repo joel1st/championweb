@@ -1,23 +1,23 @@
 Mongodump file
-mongodump --db leaguetimes --collection webchampionpages --out ./db
-mongodump --db leaguetimes --collection webchampionroles --out ./db
-mongodump --db leaguetimes --collection webmatchuppages --out ./db
-mongodump --db leaguetimes --collection weboverallroledatas --out ./db
-mongodump --db leaguetimes --collection webhomepagesummaries --out ./db
-mongodump --db leaguetimes --collection webstatisticspages --out ./db
-mongodump --db leaguetimes --collection weboverallrolestats --out ./db
+mongodump --db championgg --collection webchampionpages --out ./db
+mongodump --db championgg --collection webchampionroles --out ./db
+mongodump --db championgg --collection webmatchuppages --out ./db
+mongodump --db championgg --collection weboverallroledatas --out ./db
+mongodump --db championgg --collection webhomepagesummaries --out ./db
+mongodump --db championgg --collection webstatisticspages --out ./db
+mongodump --db championgg --collection weboverallrolestats --out ./db
 git add -A && git commit -m "updated data" && git push
 
 
 cd /code/championweb
 git pull
-mongorestore --db leaguetimes --collection webchampionpages --drop db/leaguetimes/webchampionpages.bson
-mongorestore --db leaguetimes --collection webchampionroles --drop db/leaguetimes/webchampionroles.bson
-mongorestore --db leaguetimes --collection webmatchuppages --drop db/leaguetimes/webmatchuppages.bson
-mongorestore --db leaguetimes --collection weboverallroledatas --drop db/leaguetimes/weboverallroledatas.bson
-mongorestore --db leaguetimes --collection webhomepagesummaries --drop db/leaguetimes/webhomepagesummaries.bson
-mongorestore --db leaguetimes --collection webstatisticspages --drop db/leaguetimes/webstatisticspages.bson
-mongorestore --db leaguetimes --collection weboverallroledatas --drop db/leaguetimes/weboverallstats.bson
+mongorestore --db championgg --collection webchampionpages --drop db/championgg/webchampionpages.bson
+mongorestore --db championgg --collection webchampionroles --drop db/championgg/webchampionroles.bson
+mongorestore --db championgg --collection webmatchuppages --drop db/championgg/webmatchuppages.bson
+mongorestore --db championgg --collection weboverallroledatas --drop db/championgg/weboverallroledatas.bson
+mongorestore --db championgg --collection webhomepagesummaries --drop db/championgg/webhomepagesummaries.bson
+mongorestore --db championgg --collection webstatisticspages --drop db/championgg/webstatisticspages.bson
+mongorestore --db championgg --collection weboverallroledatas --drop db/championgg/weboverallstats.bson
 cd bin && NODE_ENV=production pm2 restart www.js
 
 

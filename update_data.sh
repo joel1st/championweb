@@ -5,13 +5,13 @@ if [ "$gitmsg" == "" ]; then
 fi
 echo $gitmsg
 
-mongodump --db leaguetimes --collection weboverallstats --out ./db
-mongodump --db leaguetimes --collection webchampionpages --out ./db
-mongodump --db leaguetimes --collection webchampionroles --out ./db
-mongodump --db leaguetimes --collection webmatchuppages --out ./db
-mongodump --db leaguetimes --collection weboverallroledatas --out ./db
-mongodump --db leaguetimes --collection webhomepagesummaries --out ./db
-mongodump --db leaguetimes --collection webstatisticspages --out ./db
+mongodump --db championgg --collection weboverallstats --out ./db
+mongodump --db championgg --collection webchampionpages --out ./db
+mongodump --db championgg --collection webchampionroles --out ./db
+mongodump --db championgg --collection webmatchuppages --out ./db
+mongodump --db championgg --collection weboverallroledatas --out ./db
+mongodump --db championgg --collection webhomepagesummaries --out ./db
+mongodump --db championgg --collection webstatisticspages --out ./db
 
 grunt production
 

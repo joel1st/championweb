@@ -22,12 +22,13 @@ npm install
 
 Restore database from project directory
 ```sh
-mongorestore --db leaguetimes --collection webchampionpages --drop db/leaguetimes/webchampionpages.bson
-mongorestore --db leaguetimes --collection webchampionroles --drop db/leaguetimes/webchampionroles.bson
-mongorestore --db leaguetimes --collection webmatchuppages --drop db/leaguetimes/webmatchuppages.bson
-mongorestore --db leaguetimes --collection weboverallroledatas --drop db/leaguetimes/weboverallroledatas.bson
-mongorestore --db leaguetimes --collection webhomepagesummaries --drop db/leaguetimes/webhomepagesummaries.bson
-mongorestore --db leaguetimes --collection webstatisticspages --drop db/leaguetimes/webstatisticspages.bson
+mongorestore --db championgg --collection webchampionpages --drop db/championgg/webchampionpages.bson
+mongorestore --db championgg --collection webchampionroles --drop db/championgg/webchampionroles.bson
+mongorestore --db championgg --collection webmatchuppages --drop db/championgg/webmatchuppages.bson
+mongorestore --db championgg --collection weboverallroledatas --drop db/championgg/weboverallroledatas.bson
+mongorestore --db championgg --collection weboverallstats --drop db/championgg/weboverallstats.bson
+mongorestore --db championgg --collection webhomepagesummaries --drop db/championgg/webhomepagesummaries.bson
+mongorestore --db championgg --collection webstatisticspages --drop db/championgg/webstatisticspages.bson
 ```
 
 Start Champion.gg
