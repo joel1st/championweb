@@ -11,8 +11,8 @@ var compress = require('compression');
 //routes
 var champion = require('./routes/champion');
 var matchup = require('./routes/matchup');
-var matchupJson = require('./routes/matchupJson');
-var apiStatic = require('./routes/apiStatic');
+var matchupJson = require('./routes/matchup_json');
+var apiStatic = require('./routes/api_static');
 var statistics = require('./routes/statistics');
 var faq = require('./routes/faq');
 var index = require('./routes/index');

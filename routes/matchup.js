@@ -1,8 +1,8 @@
 /* GET users listing. */
 "use strict";
 var WebMatchupPage = require('../models/web_matchup_page.js');
-var produceError = require('../logic/produceError.js');
-var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
+var produceError = require('../logic/produce_error.js');
+var lowerCaseChamp = require('../logic/lower_case_champ.js');
 var data = require('../models/data.js');
 var express = require('express');
 var router = express.Router();

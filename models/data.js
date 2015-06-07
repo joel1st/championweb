@@ -42,6 +42,6 @@
 
    exports.core = core;
    exports.newChampion = newChampion;
-   exports.champList = require('../apiData/champions.json');
+   exports.champList = require('../api_data/champions.json');
    exports.roleList = roleList;
    exports.roleKey = roleKey;

@@ -30,7 +30,6 @@ var webChampionPage = new mongoose.Schema({
 			items: [{
 				id:Number,
 				name:String,
-				description:String
 			}],
 			games: Number,
 			winPercent: Number
@@ -39,7 +38,6 @@ var webChampionPage = new mongoose.Schema({
 			items: [{
 				id:Number,
 				name:String,
-				description:String
 			}],
 			games: Number,
 			winPercent: Number
@@ -50,7 +48,6 @@ var webChampionPage = new mongoose.Schema({
 			items: [{
 				id:Number,
 				name:String,
-				description:String
 			}],
 			games: Number,
 			winPercent: Number
@@ -59,7 +56,6 @@ var webChampionPage = new mongoose.Schema({
 			items: [{
 				id:Number,
 				name:String,
-				description:String
 			}],
 			games: Number,
 			winPercent: Number
@@ -69,7 +65,6 @@ var webChampionPage = new mongoose.Schema({
 		item: {
 			id:Number,
 			name:String,
-			description:String
 		},
 		games: Number,
 		winPercent: Number
@@ -78,12 +73,10 @@ var webChampionPage = new mongoose.Schema({
 		mostGames: {
 			summoner1: {
 				name:String,
-				description: String,
 				url: String
 			},
 			summoner2: {
 				name:String,
-				description: String,
 				url: String
 			},
 			games: Number,
@@ -92,12 +85,10 @@ var webChampionPage = new mongoose.Schema({
 		highestWinPercent: {
 			summoner1: {
 				name:String,
-				description: String,
 				url: String
 			},
 			summoner2: {
 				name:String,
-				description: String,
 				url: String
 			},
 			games: Number,
@@ -107,7 +98,6 @@ var webChampionPage = new mongoose.Schema({
 	skills:{
 		skillInfo: [{
 			name: String,
-			description: String,
 			img: String,
 			key: String
 		}],

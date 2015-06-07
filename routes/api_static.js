@@ -1,6 +1,6 @@
 /* GET users listing. */
 "use strict";
-var apiData = require('../apiData');
+var apiData = require('../api_data');
 var express = require('express');
 var router = express.Router();
 

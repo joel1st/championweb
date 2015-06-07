@@ -1,6 +1,6 @@
 "use strict";
 var WebStatisticsPage = require('../models/web_statistics_page.js');
-var produceError = require('../logic/produceError.js');
+var produceError = require('../logic/produce_error.js');
 var data = require('../models/data.js');
 var express = require('express');
 var router = express.Router();

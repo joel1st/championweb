@@ -3,8 +3,8 @@ var WebChampionPage = require('../models/web_champion_page.js');
 var WebChampionRoles = require('../models/web_champion_roles.js');
 var WebOverallRoleData = require('../models/web_overall_role_data.js');
 var data = require('../models/data.js');
-var produceError = require('../logic/produceError.js');
-var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
+var produceError = require('../logic/produce_error.js');
+var lowerCaseChamp = require('../logic/lower_case_champ.js');
 var express = require('express');
 var router = express.Router();
 

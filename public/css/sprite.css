@@ -16,14 +16,14 @@
 	background-position:-336px -0px;
 }#home .Azir {
 	background-position:-384px -0px;
+}#home .Bard {
+	background-position:-144px -576px;
 }#home .Blitzcrank {
 	background-position:-432px -0px;
 }#home .Brand {
 	background-position:-0px -48px;
 }#home .Braum {
 	background-position:-48px -48px;
-}#home .Bard {
-	background-position:-144px -576px;
 }#home .Caitlyn {
 	background-position:-96px -48px;
 }#home .Cassiopeia {
@@ -36,18 +36,18 @@
 	background-position:-288px -48px;
 }#home .Diana {
 	background-position:-336px -48px;
-}#home .DrMundo {
-	background-position:-432px -48px;
 }#home .Draven {
 	background-position:-384px -48px;
+}#home .DrMundo {
+	background-position:-432px -48px;
+}#home .Ekko {
+	background-position:-192px -576px;
 }#home .Elise {
 	background-position:-0px -96px;
 }#home .Evelynn {
 	background-position:-48px -96px;
 }#home .Ezreal {
 	background-position:-96px -96px;
-}#home .Ekko {
-	background-position:-192px -576px;
 }#home .FiddleSticks {
 	background-position:-144px -96px;
 }#home .Fiora {
@@ -82,6 +82,8 @@
 	background-position:-384px -144px;
 }#home .Jinx {
 	background-position:-432px -144px;
+}#home .Kalista {
+	background-position:-0px -192px;
 }#home .Karma {
 	background-position:-48px -192px;
 }#home .Karthus {
@@ -94,8 +96,6 @@
 	background-position:-240px -192px;
 }#home .Kennen {
 	background-position:-288px -192px;
-}#home .Kalista {
-	background-position:-0px -192px;
 }#home .Khazix {
 	background-position:-336px -192px;
 }#home .KogMaw {
@@ -124,6 +124,8 @@
 	background-position:-432px -240px;
 }#home .MissFortune {
 	background-position:-0px -288px;
+}#home .MonkeyKing {
+	background-position:-48px -288px;
 }#home .Mordekaiser {
 	background-position:-96px -288px;
 }#home .Morgana {
@@ -152,12 +154,12 @@
 	background-position:-192px -336px;
 }#home .Rammus {
 	background-position:-240px -336px;
+}#home .RekSai {
+	background-position:-288px -336px;
 }#home .Renekton {
 	background-position:-336px -336px;
 }#home .Rengar {
 	background-position:-384px -336px;
-}#home .RekSai {
-	background-position:-288px -336px;
 }#home .Riven {
 	background-position:-432px -336px;
 }#home .Rumble {
@@ -228,8 +230,6 @@
 	background-position:-96px -528px;
 }#home .Warwick {
 	background-position:-144px -528px;
-}#home .MonkeyKing {
-	background-position:-48px -288px;
 }#home .Xerath {
 	background-position:-192px -528px;
 }#home .XinZhao {
@@ -266,14 +266,14 @@
 	background-position:-252px -0px;
 }.Azir {
 	background-position:-288px -0px;
+}.Bard {
+	background-position:-108px -432px;
 }.Blitzcrank {
 	background-position:-324px -0px;
 }.Brand {
 	background-position:-0px -36px;
 }.Braum {
 	background-position:-36px -36px;
-}.Bard {
-	background-position:-108px -432px;
 }.Caitlyn {
 	background-position:-72px -36px;
 }.Cassiopeia {
@@ -286,18 +286,18 @@
 	background-position:-216px -36px;
 }.Diana {
 	background-position:-252px -36px;
-}.DrMundo {
-	background-position:-324px -36px;
 }.Draven {
 	background-position:-288px -36px;
+}.DrMundo {
+	background-position:-324px -36px;
+}.Ekko {
+	background-position:-144px -432px;
 }.Elise {
 	background-position:-0px -72px;
 }.Evelynn {
 	background-position:-36px -72px;
 }.Ezreal {
 	background-position:-72px -72px;
-}.Ekko {
-	background-position:-144px -432px;
 }.FiddleSticks {
 	background-position:-108px -72px;
 }.Fiora {
@@ -332,6 +332,8 @@
 	background-position:-288px -108px;
 }.Jinx {
 	background-position:-324px -108px;
+}.Kalista {
+	background-position:-0px -144px;
 }.Karma {
 	background-position:-36px -144px;
 }.Karthus {
@@ -344,8 +346,6 @@
 	background-position:-180px -144px;
 }.Kennen {
 	background-position:-216px -144px;
-}.Kalista {
-	background-position:-0px -144px;
 }.Khazix {
 	background-position:-252px -144px;
 }.KogMaw {
@@ -374,6 +374,8 @@
 	background-position:-324px -180px;
 }.MissFortune {
 	background-position:-0px -216px;
+}.MonkeyKing {
+	background-position:-36px -216px;
 }.Mordekaiser {
 	background-position:-72px -216px;
 }.Morgana {
@@ -402,12 +404,12 @@
 	background-position:-144px -252px;
 }.Rammus {
 	background-position:-180px -252px;
+}.RekSai {
+	background-position:-216px -252px;
 }.Renekton {
 	background-position:-252px -252px;
 }.Rengar {
 	background-position:-288px -252px;
-}.RekSai {
-	background-position:-216px -252px;
 }.Riven {
 	background-position:-324px -252px;
 }.Rumble {
@@ -478,8 +480,6 @@
 	background-position:-72px -396px;
 }.Warwick {
 	background-position:-108px -396px;
-}.MonkeyKing {
-	background-position:-36px -216px;
 }.Xerath {
 	background-position:-144px -396px;
 }.XinZhao {

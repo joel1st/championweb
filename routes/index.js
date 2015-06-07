@@ -1,8 +1,8 @@
 "use strict";
 var WebChampionRoles = require('../models/web_champion_roles.js');
 var WebHomePageSummaries = require('../models/web_home_page_summaries.js');
-var lowerCaseChamp = require('../logic/lowerCaseChamp.js');
-var produceError = require('../logic/produceError.js');
+var lowerCaseChamp = require('../logic/lower_case_champ.js');
+var produceError = require('../logic/produce_error.js');
 var data = require('../models/data.js');
 var express = require('express');
 var router = express.Router();
