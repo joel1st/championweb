@@ -12,7 +12,7 @@
   </div>
   <% for (var i = 0 ; i < 4; i++){ %>
   <div class="skill">
-    <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
     <div class="skill-selections">
       <% var skillGames = championData.skills.mostGames.order %>
       <% for (var b = 0 ; b < skillGames.length; b++){ %>
@@ -46,7 +46,7 @@
   </div>
   <% for (var i = 0 ; i < 4; i++){ %>
   <div class="skill">
-    <img src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
     <div class="skill-selections">
       <% var skillGames = championData.skills.highestWinPercent.order %>
       <% for (var b = 0 ; b < skillGames.length; b++){ %>

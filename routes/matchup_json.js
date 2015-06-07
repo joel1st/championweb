@@ -1,7 +1,7 @@
 /* GET users listing. */
 "use strict";
 var WebMatchupPage = require('../models/web_matchup_page.js');
-var data = require('../models/data.js');
+var roleHashTable = require('../logic/role_hash_table.js');
 var express = require('express');
 var router = express.Router();
 
@@ -11,7 +11,7 @@ router.get('/:champ1/:champ2/:role', function(req, res) {
     var champ2 = req.params.champ2;
     var champRole = req.params.role;
 
-    if (typeof data.roleKey[champRole] !== 'undefined') {
+    if (typeof roleHashTable.roleKey[champRole] !== 'undefined') {
         WebMatchupPage.findOne({
             'champ1.id': champ1,
             'champ2.id': champ2,

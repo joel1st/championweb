@@ -1,5 +1,5 @@
 <% if(process.env.NODE_ENV === 'production') { %>
-	<script src="/js/master.min.js?v=<%=pageData.core.resetCache%>"></script>
+	<script src="/js/master.min.js?v=<%=core.resetCache%>"></script>
 <% } else { %>
 	<script src="/dist/js/angular.js"></script>
 	<script src="/dist/js/angular-bootstrap.js"></script>

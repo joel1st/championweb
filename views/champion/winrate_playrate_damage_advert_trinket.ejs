@@ -28,7 +28,7 @@
   <% var trinkets = championData.trinkets; %>
   <% for(var i = 0; i<trinkets.length; i++){ %>
     <div style="width:33%;float:left;text-align:center">
-      <img class="possible-build" src="//ddragon.leagueoflegends.com/cdn/<%= pageData.core.ddPatch %>/img/item/<%= trinkets[i].item.id %>.png" tooltip="<%= trinkets[i].item.name %>"/>
+      <img class="possible-build" src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= trinkets[i].item.id %>.png" tooltip="<%= trinkets[i].item.name %>"/>
       <div class="build-text">
         <strong style="display:block"><%= trinkets[i].winPercent %>%</strong>
         Win Rate

@@ -3,7 +3,7 @@ var WebChampionRoles = require('../models/web_champion_roles.js');
 var WebHomePageSummaries = require('../models/web_home_page_summaries.js');
 var lowerCaseChamp = require('../logic/lower_case_champ.js');
 var produceError = require('../logic/produce_error.js');
-var data = require('../models/data.js');
+var champList = require('../api_data/champions.json');
 var express = require('express');
 var router = express.Router();
 
@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
             summaries: summaries,
             data: champData,
             pageData: {
-                core: data.core,
                 appName: 'core',
                 name: 'home',
                 title: 'LoL Champion Stats, Builds, Runes, Masteries, Counters and Matchups!',
@@ -63,7 +62,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:champ', function(req, res, next) {
     var champKey = req.params.champ;
-    if (typeof data.champList[champKey] !== 'undefined' || lowerCaseChamp(champKey)) {
+    if (typeof champList[champKey] !== 'undefined' || lowerCaseChamp(champKey)) {
         res.redirect('/champion/' + req.params.champ);
     } else {
         return next(produceError('pageNotFound', 404));

@@ -1,12 +1,14 @@
 "use strict";
 var express = require('express');
-var data = require('./models/data');
 var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var compress = require('compression');
+
+//middle ware
+var overallData = require('./middleware/overall_data.js');
 
 //routes
 var champion = require('./routes/champion');
@@ -46,6 +48,7 @@ app.use(function(req, res, next){
   next();
 });
 
+app.use(overallData);
 
 app.use('/champion', champion);
 app.use('/matchup', matchup);
@@ -75,8 +78,7 @@ if (app.get('env') === 'development') {
           pageData:{
             appName: 'core',
             name:'error',
-            title: 'We got ourselves a problem...',
-            core: data.core
+            title: 'We got ourselves a problem...'
           },
           message: err.message,
           error: err
@@ -91,8 +93,7 @@ if (app.get('env') === 'development') {
         pageData:{
           appName: 'core',
           name:'error',
-          title: 'We got ourselves a wild teemo problem...',
-          core: data.core
+          title: 'We got ourselves a wild teemo problem...'
         },
         message: err.message,
         error: {}

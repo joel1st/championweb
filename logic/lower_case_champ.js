@@ -1,8 +1,8 @@
 "use strict";
-var data = require('../models/data.js');
+var champList = require('../api_data/champions.json');
 
 var lowerCaseChamp = function(champName) {
-    for (var prop in data.champList) {
+    for (var prop in champList) {
         if (prop.toLowerCase() === champName.toLowerCase()) {
             return prop;
         }

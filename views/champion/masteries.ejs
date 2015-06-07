@@ -1,6 +1,6 @@
 <h2 class="champion-stats">Most Frequent Masteries</h2>
 <div class="mastery-container clearfix">
-  <% for (var k = 0; k<pageData.core.masteryOrder.length; k++){ %>
+  <% for (var k = 0; k<core.masteryOrder.length; k++){ %>
     <div class="mastery<%= k %>">
       <div class="mastery-header">
         <%= championData.masteries.mostGames.masteries[k].tree %> - <%= championData.masteries.mostGames.masteries[k].total %>
@@ -39,7 +39,7 @@
 
 <h2 class="champion-stats">Highest Win % Masteries</h2>
 <div class="mastery-container clearfix">
-  <% for (var k = 0; k<pageData.core.masteryOrder.length; k++){ %>
+  <% for (var k = 0; k<core.masteryOrder.length; k++){ %>
     <div class="mastery<%= k %>">
       <div class="mastery-header">
         <%= championData.masteries.highestWinPercent.masteries[k].tree %> - <%= championData.masteries.highestWinPercent.masteries[k].total %>

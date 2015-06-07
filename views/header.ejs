@@ -8,7 +8,7 @@
   <!-- Bootstrap core CSS -->
   <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
   <% if(process.env.NODE_ENV === 'production') { %>
-    <link href="/css/master.min.css?v=<%=pageData.core.resetCache%>" rel="stylesheet">
+    <link href="/css/master.min.css?v=<%=core.resetCache%>" rel="stylesheet">
   <% } else { %>
      <link href="/css/master.css" rel="stylesheet">
      <link href="/css/sprite.css" rel="stylesheet">
@@ -65,7 +65,7 @@
           </div>
           <div class="navigation-holder cleafix">
             <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=championgg%40outlook%2ecom&lc=AU&item_name=ChampionGG&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" alt="donate"> Donate </a>
-            <div class="analysis-holder"><small>Patch <strong><%=pageData.core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=pageData.core.gamesAnalyzed%></strong><span class="spacer">|</span> <strong> Platinum+ Ranked </strong></small></div>
+            <div class="analysis-holder"><small>Patch <strong><%=core.patch%></strong> <span class="spacer">|</span> Games Analyzed <strong><%=core.gamesAnalyzed%></strong><span class="spacer">|</span> <strong> Platinum+ Ranked </strong></small></div>
             
           </div>
         </div>

@@ -2,7 +2,8 @@
 var WebChampionPage = require('../models/web_champion_page.js');
 var WebChampionRoles = require('../models/web_champion_roles.js');
 var WebOverallRoleData = require('../models/web_overall_role_data.js');
-var data = require('../models/data.js');
+var champList = require('../api_data/champions.json');
+var roleHashTable = require('../logic/role_hash_table.js');
 var produceError = require('../logic/produce_error.js');
 var lowerCaseChamp = require('../logic/lower_case_champ.js');
 var express = require('express');
@@ -12,8 +13,7 @@ var pageData = {
     appName: 'championPage',
     name: 'champion',
     description: '',
-    title: '',
-    core: data.core
+    title: ''
 };
 
 router.get('/:champ', function(req, res, next) {
@@ -24,7 +24,7 @@ router.get('/:champ', function(req, res, next) {
     var generalRole = {};
     var championData = {};
     var championVotes = {};
-    var champMatch = typeof data.champList[champKey] !== 'undefined';
+    var champMatch = typeof champList[champKey] !== 'undefined';
     if (champMatch || lowerCaseChamp(champKey)) {
         if (!champMatch) {
             champKey = lowerCaseChamp(champKey);
@@ -60,14 +60,14 @@ router.get('/:champ', function(req, res, next) {
                 championVotes = null;
                 champion = {
                     key: champKey,
-                    name: data.champList[champKey].name
+                    name: champList[champKey].name
                 };
                 response();
             } else {
 
                 champion = JSON.parse(JSON.stringify(doc));
                 champion.role = doc.roles[0].role;
-                champion.roleTitle = data.roleKey[doc.roles[0].role];
+                champion.roleTitle = roleHashTable.roleKey[doc.roles[0].role];
 
                 WebChampionPage.findOne({
                     key: champKey,
@@ -102,9 +102,7 @@ router.get('/:champ', function(req, res, next) {
     } else {
         return next(produceError('champNotFound'));
     }
-
 });
-
 
 
 router.get('/:champ/:role', function(req, res, next) {
@@ -116,13 +114,13 @@ router.get('/:champ/:role', function(req, res, next) {
     var championData = {};
     var championVotes = {};
 
-    var champMatch = typeof data.champList[champKey] !== 'undefined';
+    var champMatch = typeof champList[champKey] !== 'undefined';
     console.log(champMatch);
-    if (typeof data.roleList[champRole] !== 'undefined' && (champMatch || lowerCaseChamp(champKey))) {
+    if (typeof roleHashTable.roleList[champRole] !== 'undefined' && (champMatch || lowerCaseChamp(champKey))) {
         if (!champMatch) {
             champKey = lowerCaseChamp(champKey);
         }
-        champRole = data.roleList[champRole];
+        champRole = roleHashTable.roleList[champRole];
         var response = function() {
             if (dataCount === 2) {
                 var resObj = {
@@ -148,7 +146,7 @@ router.get('/:champ/:role', function(req, res, next) {
             } else {
                 champion = JSON.parse(JSON.stringify(doc));
                 champion.role = champRole;
-                champion.roleTitle = data.roleKey[champRole];
+                champion.roleTitle = roleHashTable.roleKey[champRole];
                 response();
                 dataCount++;
             }

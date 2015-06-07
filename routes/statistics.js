@@ -1,7 +1,6 @@
 "use strict";
 var WebStatisticsPage = require('../models/web_statistics_page.js');
 var produceError = require('../logic/produce_error.js');
-var data = require('../models/data.js');
 var express = require('express');
 var router = express.Router();
 router.get('/', function(req, res, next) {
@@ -15,7 +14,6 @@ router.get('/', function(req, res, next) {
             res.render('statistics', {
                 data: doc,
                 pageData: {
-                    core: data.core,
                     appName: 'statsPage',
                     name: 'stats',
                     title: 'League of Legends Stats by Champion Role for the Current Patch',
