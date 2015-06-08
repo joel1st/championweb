@@ -4,124 +4,101 @@
 <div class="container-fluid">
   <div class="center-google" style="top:12px">
     <ins class="adsbygoogle"
-       style="display:inline-block;width:728px;height:90px"
-       data-ad-client="ca-pub-4978994984254577"
-       data-ad-slot="8843012271"></ins>
+    style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-4978994984254577"
+    data-ad-slot="8843012271"></ins>
   </div>
-<h2 style="margin-top: 35px;
-margin-bottom: -5px;">Current Patch Statistics</h2>
-<div class="row" id="stats"  ng-controller="data">
-<div class="search-sorter" style="display:inline-block;">
-  <input class="matchupSearch" type="text" ng-model="search.title" ng-change="searchUrl()" ng-model-options="{debounce: 40}" style="margin-left:-22px;" placeholder="Filter By Name" />
-</div>
-<div style="display:inline-block">
-    Sort Role 
-    <select class="minimum-games" ng-change="chosenRole()" ng-model="roleSort.role" style="padding:5px">
-      <option value="">Show All</option>
-      <option value="Top">Top</option>
-      <option value="Middle">Middle</option>
-      <option value="Support">Support</option>
-      <option value="ADC">ADC</option>
-      <option value="Jungle">Jungle</option>
-    </select>
-  </div>
+  <h2 style="margin-top: 35px;
+  margin-bottom: -5px;">Current Patch Statistics</h2>
+  <div class="row" id="stats"  ng-controller="data">
+    <div class="search-sorter" style="display:inline-block;">
+      <input class="matchupSearch" type="text" ng-model="search.title" ng-change="searchUrl()" ng-model-options="{debounce: 40}" style="margin-left:-22px;" placeholder="Filter By Name" />
+    </div>
+    <div style="display:inline-block">
+      Sort Role 
+      <select class="minimum-games" ng-change="chosenRole()" ng-model="roleSort.role" style="padding:5px">
+        <option value="">Show All</option>
+        <option value="Top">Top</option>
+        <option value="Middle">Middle</option>
+        <option value="Support">Support</option>
+        <option value="ADC">ADC</option>
+        <option value="Jungle">Jungle</option>
+      </select>
+    </div>
 
-<table class="table table-striped" id="table-1" style="table-layout: auto;">
-  <thead id="original-header">
-    <tr ng-class="{'down':determineOrder('down'),'up':determineOrder('up')}">
-      <td style="width:3%" ng-click="changeOrder()"><span>Rank</span></td>
-      <td ng-class="{'selected-column':determineSelected('title')}" style="width:10%;min-width:134px" ng-click="changeSelection('title')"><span>Champion</span></td>
-      <td ng-class="{'selected-column':determineSelected('role')}" ng-click="changeSelection('role')"><span>Role</span></td>
-      <td ng-class="{'selected-column':determineSelected('winPercent')}" ng-click="changeSelection('winPercent')"><span>Win Percent</span></td>
-       <td  ng-class="{'selected-column':determineSelected('playPercent')}" ng-click="changeSelection('playPercent')"><span>Play Percent</span></td>
-        <td  ng-class="{'selected-column':determineSelected('banRate')}" ng-click="changeSelection('banRate')"><span>Ban Rate</span></td>
-        <td  ng-class="{'selected-column':determineSelected('experience')}" ng-click="changeSelection('experience')"><span>Playerbase Avg. Games</span></td>
-        <td  ng-class="{'selected-column':determineSelected('kills')}" style="width: 4%;"ng-click="changeSelection('kills')"><span>Kills</span></td>
-         <td  ng-class="{'selected-column':determineSelected('deaths')}" style="width: 5%;" ng-click="changeSelection('deaths')"><span>Deaths</span></td>
-         <td  ng-class="{'selected-column':determineSelected('assists')}" style="width: 5%;" ng-click="changeSelection('assists')"><span>Assists</span></td>
-         <td  ng-class="{'selected-column':determineSelected('largestKillingSpree')}" ng-click="changeSelection('largestKillingSpree')"><span>Largest Killing Spree</span></td>
-         <td  ng-class="{'selected-column':determineSelected('totalDamageDealtToChampions')}" ng-click="changeSelection('totalDamageDealtToChampions')"><span>Damage Dealt</span></td>
-         <td  ng-class="{'selected-column':determineSelected('totalDamageTaken')}" ng-click="changeSelection('totalDamageTaken')"><span>Damage Taken</span></td>
-         <td  ng-class="{'selected-column':determineSelected('totalHeal')}" ng-click="changeSelection('totalHeal')"><span>Total Healing</span></td>
-         
-         <td  ng-class="{'selected-column':determineSelected('minionsKilled')}" ng-click="changeSelection('minionsKilled')"><span>Minions Killed</span></td>
-         <td  ng-class="{'selected-column':determineSelected('neutralMinionsKilledEnemyJungle')}" ng-click="changeSelection('neutralMinionsKilledEnemyJungle')"><span>Enemy Jungle CS</span></td>
-         <td  ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}" ng-click="changeSelection('neutralMinionsKilledTeamJungle')"><span>Team Jungle CS</span></td>
-         <td  ng-class="{'selected-column':determineSelected('goldEarned')}" ng-click="changeSelection('goldEarned')"><span>Gold Earned</span></td>
-         <td  ng-class="{'selected-column':determineSelected('overallPosition')}" ng-click="changeSelection('overallPosition')"><span>Role Position</span></td>
-         <td  ng-class="{'selected-column':determineSelected('overallPositionChange')}" ng-click="changeSelection('overallPositionChange')"><span>Position Change</span></td>
-    </tr>
-  </thead>
-  <thead id="header-fixed">
-    <tr ng-class="{'down':determineOrder('down'),'up':determineOrder('up')}">
-    <td style="width:3%" ng-click="changeOrder()"><span>Rank</span></td>
-      <td ng-class="{'selected-column':determineSelected('title')}"ng-click="changeSelection('title')"><span>Champion</span></td>
-      <td ng-class="{'selected-column':determineSelected('role')}" ng-click="changeSelection('role')"><span>Role</span></td>
-      <td ng-class="{'selected-column':determineSelected('winPercent')}" ng-click="changeSelection('winPercent')"><span>Win Percent</span></td>
-       <td  ng-class="{'selected-column':determineSelected('playPercent')}" ng-click="changeSelection('playPercent')"><span>Play Percent</span></td>
-        <td  ng-class="{'selected-column':determineSelected('banRate')}" ng-click="changeSelection('banRate')"><span>Ban Rate</span></td>
-        <td  ng-class="{'selected-column':determineSelected('experience')}" ng-click="changeSelection('experience')"><span>Playerbase Avg. Games</span></td>
-        <td  ng-class="{'selected-column':determineSelected('kills')}"ng-click="changeSelection('kills')"><span>Kills</span></td>
-         <td  ng-class="{'selected-column':determineSelected('deaths')}"ng-click="changeSelection('deaths')"><span>Deaths</span></td>
-         <td  ng-class="{'selected-column':determineSelected('assists')}" style="width: 5%;" ng-click="changeSelection('assists')"><span>Assists</span></td>
-         <td  ng-class="{'selected-column':determineSelected('largestKillingSpree')}" ng-click="changeSelection('largestKillingSpree')"><span>Largest Killing Spree</span></td>
-         <td  ng-class="{'selected-column':determineSelected('totalDamageDealtToChampions')}" ng-click="changeSelection('totalDamageDealtToChampions')"><span>Damage Dealt</span></td>
-         <td  ng-class="{'selected-column':determineSelected('totalDamageTaken')}" ng-click="changeSelection('totalDamageTaken')"><span>Damage Taken</span></td>
-         <td  ng-class="{'selected-column':determineSelected('totalHeal')}" ng-click="changeSelection('totalHeal')"><span>Total Healing</span></td>
-         
-         <td  ng-class="{'selected-column':determineSelected('minionsKilled')}" ng-click="changeSelection('minionsKilled')"><span>Minions Killed</span></td>
-         <td  ng-class="{'selected-column':determineSelected('neutralMinionsKilledEnemyJungle')}" ng-click="changeSelection('neutralMinionsKilledEnemyJungle')"><span>Enemy Jungle CS</span></td>
-         <td  ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}" ng-click="changeSelection('neutralMinionsKilledTeamJungle')"><span>Team Jungle CS</span></td>
-         <td  ng-class="{'selected-column':determineSelected('goldEarned')}" ng-click="changeSelection('goldEarned')"><span>Gold Earned</span></td>
-         <td  ng-class="{'selected-column':determineSelected('overallPosition')}" ng-click="changeSelection('overallPosition')"><span>Role Position</span></td>
-         <td  ng-class="{'selected-column':determineSelected('overallPositionChange')}" ng-click="changeSelection('overallPositionChange')"><span>Position Change</span></td>
-    </tr>
-  </thead>
- 
-  <tbody ng-cloak>
-     <tr ng-repeat="champion in filteredChampions = (championData | startsWith:search.title | filter:roleSort | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy])">
+    <table class="table table-striped" id="table-1" style="table-layout: auto;">
+      <stat-header stat-type="original-header"></stat-header>
+      <stat-header stat-type="header-fixed"></stat-header>
+
+      <script type="text/ng-template" id="statheader.html">
+        <thead id="{{statType}}">
+          <tr ng-class="{'down':determineOrder('down'),'up':determineOrder('up')}">
+            <td style="width:3%" ng-click="changeOrder()"><span>Rank</span></td>
+            <td ng-class="{'selected-column':determineSelected('title')}" style="width:10%;min-width:134px" ng-click="changeSelection('title')"><span>Champion</span></td>
+            <td ng-class="{'selected-column':determineSelected('role')}" ng-click="changeSelection('role')"><span>Role</span></td>
+            <td ng-class="{'selected-column':determineSelected('winPercent')}" ng-click="changeSelection('winPercent')"><span>Win Percent</span></td>
+            <td  ng-class="{'selected-column':determineSelected('playPercent')}" ng-click="changeSelection('playPercent')"><span>Play Percent</span></td>
+            <td  ng-class="{'selected-column':determineSelected('banRate')}" ng-click="changeSelection('banRate')"><span>Ban Rate</span></td>
+            <td  ng-class="{'selected-column':determineSelected('experience')}" ng-click="changeSelection('experience')"><span>Playerbase Avg. Games</span></td>
+            <td  ng-class="{'selected-column':determineSelected('kills')}" style="width: 4%;"ng-click="changeSelection('kills')"><span>Kills</span></td>
+            <td  ng-class="{'selected-column':determineSelected('deaths')}" style="width: 5%;" ng-click="changeSelection('deaths')"><span>Deaths</span></td>
+            <td  ng-class="{'selected-column':determineSelected('assists')}" style="width: 5%;" ng-click="changeSelection('assists')"><span>Assists</span></td>
+            <td  ng-class="{'selected-column':determineSelected('largestKillingSpree')}" ng-click="changeSelection('largestKillingSpree')"><span>Largest Killing Spree</span></td>
+            <td  ng-class="{'selected-column':determineSelected('totalDamageDealtToChampions')}" ng-click="changeSelection('totalDamageDealtToChampions')"><span>Damage Dealt</span></td>
+            <td  ng-class="{'selected-column':determineSelected('totalDamageTaken')}" ng-click="changeSelection('totalDamageTaken')"><span>Damage Taken</span></td>
+            <td  ng-class="{'selected-column':determineSelected('totalHeal')}" ng-click="changeSelection('totalHeal')"><span>Total Healing</span></td>
+
+            <td  ng-class="{'selected-column':determineSelected('minionsKilled')}" ng-click="changeSelection('minionsKilled')"><span>Minions Killed</span></td>
+            <td  ng-class="{'selected-column':determineSelected('neutralMinionsKilledEnemyJungle')}" ng-click="changeSelection('neutralMinionsKilledEnemyJungle')"><span>Enemy Jungle CS</span></td>
+            <td  ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}" ng-click="changeSelection('neutralMinionsKilledTeamJungle')"><span>Team Jungle CS</span></td>
+            <td  ng-class="{'selected-column':determineSelected('goldEarned')}" ng-click="changeSelection('goldEarned')"><span>Gold Earned</span></td>
+            <td  ng-class="{'selected-column':determineSelected('overallPosition')}" ng-click="changeSelection('overallPosition')"><span>Role Position</span></td>
+            <td  ng-class="{'selected-column':determineSelected('overallPositionChange')}" ng-click="changeSelection('overallPositionChange')"><span>Position Change</span></td>
+          </tr>
+        </thead>
+      </script>
+
+      <tbody ng-cloak>
+       <tr ng-repeat="champion in filteredChampions = (championData | startsWith:search.title | filter:roleSort | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy])">
         <td class="rank">{{indexNumber($index, filteredChampions.length)}}</td>
         <td ng-class="{'selected-column':determineSelected('title')}">
-        <a href="/champion/{{champion.key}}/{{champion.role}}">
-          <div class="matchup-champion {{champion.key}}"></div>
-          <span class="stat-champ-title">{{champion.title}}</span>
-        </a>
+          <a href="/champion/{{champion.key}}/{{champion.role}}">
+            <div class="matchup-champion {{champion.key}}"></div>
+            <span class="stat-champ-title">{{champion.title}}</span>
+          </a>
         </td>
         <td class="stats-role-title" ng-class="{'selected-column':determineSelected('role')}" >{{champion.role}}</td>
         <td ng-class="{'selected-column':determineSelected('winPercent')}">
-        <span ng-class="{'top-half': (champion.general.winPercent >= 50), 'bottom-half': (champion.general.winPercent < 50)}">{{champion.general.winPercent}}%</span>
+          <span ng-class="{'top-half': (champion.general.winPercent >= 50), 'bottom-half': (champion.general.winPercent < 50)}">{{champion.general.winPercent}}%</span>
         </td>
-         <td  ng-class="{'selected-column':determineSelected('playPercent')}">{{champion.general.playPercent}}%</td>
-         <td  ng-class="{'selected-column':determineSelected('banRate')}">{{champion.general.banRate}}%</td>
-         <td  ng-class="{'selected-column':determineSelected('experience')}">{{champion.general.experience}}</td>
-          <td  ng-class="{'selected-column':determineSelected('kills')}">{{champion.general.kills}}</td>
-           <td  ng-class="{'selected-column':determineSelected('deaths')}">{{champion.general.deaths}}</td>
-           <td  ng-class="{'selected-column':determineSelected('assists')}">{{champion.general.assists}}</td>
-          <td ng-class="{'selected-column':determineSelected('largestKillingSpree')}" >{{champion.general.largestKillingSpree}}</td>
-           <td ng-class="{'selected-column':determineSelected('totalDamageDealtToChampions')}">{{champion.general.totalDamageDealtToChampions}}</td>
-           <td ng-class="{'selected-column':determineSelected('totalDamageTaken')}">{{champion.general.totalDamageTaken}}</td>
-           <td  ng-class="{'selected-column':determineSelected('totalHeal')}">{{champion.general.totalHeal}}</td>
+        <td  ng-class="{'selected-column':determineSelected('playPercent')}">{{champion.general.playPercent}}%</td>
+        <td  ng-class="{'selected-column':determineSelected('banRate')}">{{champion.general.banRate}}%</td>
+        <td  ng-class="{'selected-column':determineSelected('experience')}">{{champion.general.experience}}</td>
+        <td  ng-class="{'selected-column':determineSelected('kills')}">{{champion.general.kills}}</td>
+        <td  ng-class="{'selected-column':determineSelected('deaths')}">{{champion.general.deaths}}</td>
+        <td  ng-class="{'selected-column':determineSelected('assists')}">{{champion.general.assists}}</td>
+        <td ng-class="{'selected-column':determineSelected('largestKillingSpree')}" >{{champion.general.largestKillingSpree}}</td>
+        <td ng-class="{'selected-column':determineSelected('totalDamageDealtToChampions')}">{{champion.general.totalDamageDealtToChampions}}</td>
+        <td ng-class="{'selected-column':determineSelected('totalDamageTaken')}">{{champion.general.totalDamageTaken}}</td>
+        <td  ng-class="{'selected-column':determineSelected('totalHeal')}">{{champion.general.totalHeal}}</td>
 
-           <td  ng-class="{'selected-column':determineSelected('minionsKilled')}">{{champion.general.minionsKilled}}</td>
-           <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledEnemyJungle')}">{{champion.general.neutralMinionsKilledEnemyJungle}}</td>
-           <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}">{{champion.general.neutralMinionsKilledTeamJungle}}</td>
-           <td ng-class="{'selected-column':determineSelected('goldEarned')}">{{champion.general.goldEarned}}</td>
-           <td ng-class="{'selected-column':determineSelected('overallPosition')}">{{champion.general.overallPosition}}</td>
-           <td ng-class="{'selected-column':determineSelected('overallPositionChange')}"><span class="glyphicon" ng-class="{'glyphicon-arrow-up': (champion.general.overallPositionChange > 0), 'glyphicon-arrow-down': (champion.general.overallPositionChange < 0), 'same-position': (champion.general.overallPositionChange === 0)}">{{Math.abs(champion.general.overallPositionChange)}}</span></td>
-  </tbody>
-</table>
-</div>
+        <td  ng-class="{'selected-column':determineSelected('minionsKilled')}">{{champion.general.minionsKilled}}</td>
+        <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledEnemyJungle')}">{{champion.general.neutralMinionsKilledEnemyJungle}}</td>
+        <td ng-class="{'selected-column':determineSelected('neutralMinionsKilledTeamJungle')}">{{champion.general.neutralMinionsKilledTeamJungle}}</td>
+        <td ng-class="{'selected-column':determineSelected('goldEarned')}">{{champion.general.goldEarned}}</td>
+        <td ng-class="{'selected-column':determineSelected('overallPosition')}">{{champion.general.overallPosition}}</td>
+        <td ng-class="{'selected-column':determineSelected('overallPositionChange')}"><span class="glyphicon" ng-class="{'glyphicon-arrow-up': (champion.general.overallPositionChange > 0), 'glyphicon-arrow-down': (champion.general.overallPositionChange < 0), 'same-position': (champion.general.overallPositionChange === 0)}">{{Math.abs(champion.general.overallPositionChange)}}</span></td>
+      </tbody>
+    </table>
+  </div>
 </div>
 <iframe src="http://ib.adnxs.com/tt?id=4267860&referrer=http://champion.gg&cb=<%-Math.random()%>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="728" height="90" class="center"></iframe>
 
-
-
-
 <script>
-matchupData.stats = <%- JSON.stringify(data) %>;
+  matchupData.stats = <%- JSON.stringify(data) %>;
 </script>
 <% include scripts.ejs %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/js/statisticsJquery.js?v=<%=core.resetCache%>" ></script>
+<script src="/js/statistics-jquery.js?v=<%=core.resetCache%>" ></script>
 
 <% include footer.ejs %>
