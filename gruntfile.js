@@ -43,8 +43,8 @@ module.exports = function(grunt){
 		    js: {
 		      	src: ['public/dist/js/angular.js', 'public/dist/js/angular-bootstrap.js', 
 		      		'public/dist/js/dirDisqus.js', 'public/dist/js/chart.js',
-		      		'public/dist/js/tc-angular-chartjs.js', 'public/js/championData.js', 'public/js/chartOptions.js', 
-		      		 'public/js/app.js', 'public/js/championPage.js', 'public/js/matchupPage.js', 'public/js/statisticsPage.js'],
+		      		'public/dist/js/tc-angular-chartjs.js', 'public/js/champion_data.js', 'public/js/chart_options.js', 'public/js/championgg_tooltip.js',
+		      		 'public/js/app.js', 'public/js/champion_page.js', 'public/js/matchup_page.js', 'public/js/statistics_page.js'],
 		      	dest: 'public/js/master.min.js'
 		    },
 		},
