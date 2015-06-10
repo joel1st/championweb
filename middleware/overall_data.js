@@ -1,9 +1,10 @@
 var WebOverallStats = require('../models/web_overall_stats.js');
 var produceError = require('../logic/produce_error.js');
 
+var ddPatch = require('../api_data/dd_patch.json').ddPatch,
 var core = {
-	ddPatch: require('../api_data/dd_patch.json').ddPatch,
-	resetCache: Math.random().toFixed(5),
+	ddPatch: ddPatch,
+	resetCache: ddPatch + Math.random().toFixed(6),
 	masteryOrder: ['Offense','Defense','Utility'],
 	headline: require('../headline.js')
 };
