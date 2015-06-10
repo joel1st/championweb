@@ -1,7 +1,7 @@
 var WebOverallStats = require('../models/web_overall_stats.js');
 var produceError = require('../logic/produce_error.js');
 
-var ddPatch = require('../api_data/dd_patch.json').ddPatch,
+var ddPatch = require('../api_data/dd_patch.json').ddPatch;
 var core = {
 	ddPatch: ddPatch,
 	resetCache: ddPatch + Math.random().toFixed(6),
@@ -17,7 +17,7 @@ var webOverallCache;
 
 module.exports = function(req, res, next){
 
-    	res.locals.core = core;
+    res.locals.core = core;
 
 	if (typeof webOverallCache !== 'object'){
 		WebOverallStats.findOne({}, function(err, data) {
