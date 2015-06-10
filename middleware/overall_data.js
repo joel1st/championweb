@@ -1,18 +1,22 @@
 var WebOverallStats = require('../models/web_overall_stats.js');
 var produceError = require('../logic/produce_error.js');
+
+var core = {
+	ddPatch: require('../api_data/dd_patch.json').ddPatch,
+	resetCache: Math.random().toFixed(5),
+	masteryOrder: ['Offense','Defense','Utility'],
+	headline: require('../headline.js')
+};
+
 var webOverallCache;
 // Example Cached Data:
 // gamesAnalyzed:"3,549,640",
 // patch:"5.10",
-// patchHistory: ["5.6","5.7","5.8","5.9","5.10"],
+// patchHistory: ["5.6","5.7","5.8","5.9","5.10"]
+
 module.exports = function(req, res, next){
 
-    res.locals.core = {
-		ddPatch: require('../api_data/dd_patch.json').ddPatch,
-		resetCache: Math.random().toFixed(5),
-		masteryOrder: ['Offense','Defense','Utility'],
-		headline: require('../headline.js')
-	};
+    	res.locals.core = core;
 
 	if (typeof webOverallCache !== 'object'){
 		WebOverallStats.findOne({}, function(err, data) {
