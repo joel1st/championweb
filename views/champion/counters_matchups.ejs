@@ -195,7 +195,7 @@
     </div>
   </div>
   <div class="row" ng-if="matchupDiscussion(matchupType, matchup.key, 'bind', order)">
-    <disqus disqus-shortname="championgg" disqus-identifier="{{generateId(matchupType, matchup.key)}}" disqus-url="http://champion.gg/{{generateId(matchupType, matchup.key)}}" disqus-id="{{matchupDiscussion(matchupType, matchup.key, 'id', order)}}" ready-to-bind="{{matchupDiscussion(matchupType, matchup.key, 'bind', order)}}" ></disqus>
+    <disqus disqus-shortname="championgg" disqus-identifier="{{generateMatchupUrl(matchup.key, matchupType)}}" disqus-url="http://champion.gg{{generateMatchupUrl(matchup.key, matchupType)}}" disqus-id="{{matchupDiscussion(matchupType, matchup.key, 'id', order)}}" ready-to-bind="{{matchupDiscussion(matchupType, matchup.key, 'bind', order)}}" ></disqus>
   </div>
 </div>
 <div class="show-more" ng-if="hasMoreItemsToShow(matchupType,order)" ng-click="showMoreItems(matchupType,order)">

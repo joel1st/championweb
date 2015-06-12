@@ -1,7 +1,8 @@
 <% include header.ejs %>
 <div class="container-fluid" id="matchups">
 <h2>
-<%= data.champ1.name %> <%= data.champ1.roleTitle %> <%= (data.role==='SYNERGY')? 'Synergy With' : 'Against'%> <%= data.champ2.name %> <%= data.champ2.roleTitle %></h2>
+  <%= data.champ1.name %> <%= data.champ1.roleTitle %> <%= (data.role==='SYNERGY')? 'Synergy With' : 'Against'%> <%= data.champ2.name %> <%= data.champ2.roleTitle %>
+</h2>
 <div class="row champion-area matchup-area">
   <% for(var t=1; t<3; t++) {%>
 
@@ -22,22 +23,22 @@
   <div class="col-xs-12 col-sm-6 col-md-8 matchup-block" style="text-align:center">
 
 
-                <h3>
-                <% if(data.role !== 'SYNERGY'){ %>
-                  <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> has the advantage! <% } %>
-                  <% if(data.champ1.performance <= 4.25) { %>  <span class="victor2"><%=data.champ2.name%></span> has the advantage! <% } %> 
-                  <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
-                    Skill based matchup!
-                  <% } %>
-                <% } else { %>
-                  <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Strong Synergy! <% } %>
-                  <% if(data.champ1.performance <= 4.25) { %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Weak Synergy! <% } %> 
-                  <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
-                    Standard Synergy
-                  <% } %>
-                <% } %>
+    <h3>
+    <% if(data.role !== 'SYNERGY'){ %>
+      <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> has the advantage! <% } %>
+      <% if(data.champ1.performance <= 4.25) { %>  <span class="victor2"><%=data.champ2.name%></span> has the advantage! <% } %> 
+      <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
+        Skill based matchup!
+      <% } %>
+    <% } else { %>
+      <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Strong Synergy! <% } %>
+      <% if(data.champ1.performance <= 4.25) { %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Weak Synergy! <% } %> 
+      <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
+        Standard Synergy
+      <% } %>
+    <% } %>
 
-                </h3>
+    </h3>
 
 
 
@@ -108,7 +109,7 @@
             </div>
          </div>
     <div class="row">
-      <disqus disqus-shortname="championgg" disqus-identifier="<%=data.champ1.id%>v<%=data.champ2.id%><%=data.role%>" disqus-url="http://champion.gg/<%=data.champ1.id%>v<%=data.champ2.id%><%=data.role%>" disqus-id="disqus_thread" ready-to-bind="true"></disqus>
+      <disqus disqus-shortname="championgg" disqus-id="disqus_thread" ready-to-bind="true"></disqus>
     </div>
 </div>
 </div>
