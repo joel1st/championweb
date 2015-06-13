@@ -35,7 +35,7 @@ module.exports = function(req, res, next){
 	}
 
 	function attachDbData(){
-		res.locals.core.gamesAnalyzed = webOverallCache.gamesAnalyzed;
+		res.locals.core.championsAnalyzed = webOverallCache.championsAnalyzed;
 		res.locals.core.patch = webOverallCache.patch;
 		res.locals.core.patchHistory = webOverallCache.patchHistory;
 		next();
