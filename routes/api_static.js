@@ -4,16 +4,9 @@ var apiData = require('../api_data');
 var express = require('express');
 var router = express.Router();
 
-router.get('/items/:id', function(req, res) {
-    var id = req.params.id;
-    if(apiData.items.hasOwnProperty(id)){
-        res.json(apiData.items[id]); 
-    } else {
-        res.statusCode = 404;
-        res.send('invalid request');
-    }
-});
-
+/**
+ * Route set up for indepth mastery info.
+ */
 router.get('/masteries/:id', function(req, res) {
     res.setHeader('Cache-Control', 'public, max-age=180'); //cache masteries for 3 minutes.
 
@@ -25,17 +18,27 @@ router.get('/masteries/:id', function(req, res) {
         res.send('invalid request');
     }
 });
-/*
-router.get('/runes/:id', function(req, res) {
+
+/**
+ * Route set up for when we add indepth tool tips to items
+ * --> not currently used.
+ */
+router.get('/items/:id', function(req, res) {
     var id = req.params.id;
-    if(apiData.masteries.hasOwnProperty(id)){
-        res.json(apiData.masteries[id]); 
+    if(apiData.items.hasOwnProperty(id)){
+        res.json(apiData.items[id]); 
     } else {
         res.statusCode = 404;
         res.send('invalid request');
     }
-});*/
+});
 
+
+
+/**
+ * Route set up for when we add indepth summoner spell information
+ * --> not currently used.
+ */
 router.get('/summoners/:id', function(req, res) {
     var id = req.params.id;
     var match = false;
@@ -52,6 +55,12 @@ router.get('/summoners/:id', function(req, res) {
     }
 });
 
+
+/**
+ * Route set up for when we add summoner skill order information
+ * --> not currently used - may be working, but commented out incase,
+ *     there are potential bugs.
+ */
 
 // router.get('/skills/:champion/:id', function(req, res) {
 //     var id = req.params.id;
@@ -81,8 +90,6 @@ router.get('/summoners/:id', function(req, res) {
 //         }
 //     }
 // });
-
-
 
 
 module.exports = router;

@@ -13,16 +13,17 @@
     "express": "4.10.2",
     "mongoose": "3.8.19",
     "morgan": "1.5.0 ",
+    "q": "1.4.1",
     "serve-favicon": "2.1.7"
   },
-  "devDependencies" : {
-    "grunt" :                   "~0.4.0",
-    "grunt-contrib-cssmin":         "*",
-    "grunt-contrib-uglify":         "*",
-    "grunt-contrib-watch":          "*",
-    "grunt-contrib-concat":         "*",
-    "grunt-contrib-jshint":         "*",
-    "grunt-htmlhint":               "*",
-    "matchdep":                     "*"
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-htmlhint": "*",
+    "matchdep": "*"
   }
 }

@@ -6,6 +6,13 @@ var errors = {
     invalidMatchup: 'That appears to be an invalid or old matchup!'
 };
 
+/**
+ * A function for generating errors. 
+ * @param  {string} errorType  - the key for the error type (which corresponds with the keys 
+ *                             in the error object above).
+ * @param  {number} errorNumber - the response number of the error (defaults to 404).
+ * @return {object} - the error object.
+ */
 var produceError = function(errorType, errorNumber) {
     var err = new Error(errors[errorType]);
     err.status = errorNumber || 404;
