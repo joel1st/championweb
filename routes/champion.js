@@ -40,7 +40,7 @@ function getChampionRoles(champKey){
     return deferred.promise;
 }
 
-function getChampionPage(champKey, role){
+function getChampionPage(champKey, role, redirect){
     var deferred = q.defer();
 
     WebChampionPage.findOne({
@@ -51,7 +51,12 @@ function getChampionPage(champKey, role){
             deferred.reject('server_maintenance');
         
         } else if (!doc) {
-            deferred.reject('server_maintenance');
+            if (redirect){
+                res.redirect('/champion/'+champKey);
+            } else {
+                deferred.reject('server_maintenance');
+            }
+            
          
         } else {
             deferred.resolve(doc.toObject());
@@ -160,7 +165,7 @@ router.get('/:champ/:role', function(req, res, next) {
 
         q.all([
             getChampionRoles(champKey),
-            getChampionPage(champKey, champRole),
+            getChampionPage(champKey, champRole, true),
             getOverallRoleData(champRole)
         ]).spread(function(_championRoles_, _championData_, _generalRole_){
             champion = _championRoles_;
