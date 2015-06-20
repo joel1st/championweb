@@ -60,6 +60,7 @@ router.get('/:champ1/:champ2/:role', function(req, res, next) {
                 return next(produceError('invalidMatchup'));
             } else {
                 pageData = doc;
+                pageData.roleTitle = roleHashTable.roleKey[pageData.role];
                 matchupResponse();
             }
         });

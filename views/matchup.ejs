@@ -109,12 +109,10 @@
             </div>
          </div>
     <div class="row">
-      <disqus disqus-shortname="championgg" disqus-id="disqus_thread" ready-to-bind="true"></disqus>
+      <disqus disqus-shortname="championgg" disqus-identifier="/matchup/<%= data.champ1.key %>/<%= data.champ2.key %>/<%= data.roleTitle %>" disqus-url="http://champion.gg/matchup/<%= data.champ1.key %>/<%= data.champ2.key %>/<%= data.roleTitle %>" disqus-id="disqus_thread" ready-to-bind="true" ></disqus>
     </div>
 </div>
 </div>
-
-<% include scripts.ejs %>
 
 <script>
   matchupData.champ1 = <%- JSON.stringify(data.champ1) %>
@@ -123,7 +121,5 @@
 	matchupData.goldLength = <%- JSON.stringify(data.goldLength) %>;
 </script>
 
-<script src="/dist/js/dirDisqus.js"></script>
-<script src="/js/matchupPage.js"></script>
-
+<% include scripts.ejs %>
 <% include footer.ejs %>
