@@ -163,21 +163,28 @@ router.get('/:champ/:role', function(req, res, next) {
         }
         champRole = roleHashTable.roleList[champRole];
 
-        q.all([
-            getChampionRoles(champKey),
-            getChampionPage(champKey, champRole, res),
-            getOverallRoleData(champRole)
-        ]).spread(function(_championRoles_, _championData_, _generalRole_){
-            champion = _championRoles_;
-            champion.role = champRole;
-            champion.roleTitle = roleHashTable.roleKey[champRole];
-            championData = _championData_;
-            generalRole = _generalRole_;
-            res.render('champion', generateResponseObj(champion, generalRole, championData));
+        getChampionPage(champKey, champRole, res)
+            .then(function(_championData_){
+                q.all([
+                    getChampionRoles(champKey),   
+                    getOverallRoleData(champRole)
+                ]).spread(function(_championRoles_, _generalRole_){
+                    champion = _championRoles_;
+                    champion.role = champRole;
+                    champion.roleTitle = roleHashTable.roleKey[champRole];
+                    championData = _championData_;
+                    generalRole = _generalRole_;
+                    res.render('champion', generateResponseObj(champion, generalRole, championData));
+               
+                }, function(){
+                    next(produceError('serverMaintenance', 503));
+                
+                });
 
-        }, function(){
-            next(produceError('serverMaintenance', 503));
-        });
+            }, function(){
+                next(produceError('serverMaintenance', 503));
+            
+            });
 
     } else {
         return next(produceError('champNotFound'));
