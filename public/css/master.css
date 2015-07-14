@@ -1289,7 +1289,7 @@ margin-right: 6px;
   width:42%;
 }
 .summary-side .matchup-champion {
-  transform: scale(0.7);
+  zoom:0.7;
   margin-left: -4px
 }
 .summary-side .table .champion-name{
@@ -1570,7 +1570,7 @@ border-right: 1px solid rgba(0,0,0,0.21);
 }
 
 #stats div.matchup-champion{
-  transform: scale(0.7);
+  zoom: 0.7;
 } 
 
 span.stat-champ-title{
@@ -1700,7 +1700,7 @@ h1.champ2, .victor2{
     margin:auto;
     display: block;
     position: relative;
-    transform: scale(1.25);
+    zoom:1.25;
 }
 
 .summary h3{
