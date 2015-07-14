@@ -1289,14 +1289,14 @@ margin-right: 6px;
   width:42%;
 }
 .summary-side .matchup-champion {
-  zoom:0.7;
+  transform: scale(0.7);
   margin-left: -4px
 }
 .summary-side .table .champion-name{
   position: absolute;
-left: 38px;
-top: 12px;
-font-size: 1em;
+  left: 42px;
+  top: 11px;
+  font-size: 1em;
 }
 .summary-side .table .champion-name:hover{
 color: #FCFF90;
@@ -1570,12 +1570,12 @@ border-right: 1px solid rgba(0,0,0,0.21);
 }
 
 #stats div.matchup-champion{
-  zoom: 0.7;
+  transform: scale(0.7);
 } 
 
 span.stat-champ-title{
 position: relative;
-top: -6px;
+/* top: -6px; */
 font-weight:bold;
 }
 
@@ -1690,17 +1690,23 @@ h1.champ2, .victor2{
 .matchup-champion{
     width: 36px;
     height: 36px;
+    margin-top: -5px;
     display: inline-block;
-    position: relative;
-    margin-left: -2px;
+    /* float: left; */
+    margin-left: -7px;
+    margin-bottom: -12px;
+    padding: 0px;
+    /* margin: 0px; */
+    /* position: initial; */
 }
 .home-champion{
     width: 48px;
     height: 48px;
     margin:auto;
+    margin-bottom: 10px;
     display: block;
     position: relative;
-    zoom:1.25;
+    transform: scale(1.25);
 }
 
 .summary h3{
