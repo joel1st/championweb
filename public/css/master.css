@@ -1686,7 +1686,6 @@ h1.champ2, .victor2{
   /* background-color: rgba(176, 219, 255, 0.03); */
   /* padding-bottom: 15px; */
 }
-
 .matchup-champion{
     width: 36px;
     height: 36px;
@@ -1927,6 +1926,8 @@ text-transform: uppercase;
 .matchup-champion.dropdown-img{
     margin-left: -9px;
     margin-right: 8px;
+    margin-bottom: -4px;
+    margin-top: 0px;
 }
 /* Responsive */
 
