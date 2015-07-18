@@ -1929,6 +1929,12 @@ text-transform: uppercase;
     margin-bottom: -4px;
     margin-top: 0px;
 }
+.counter-matchups .matchup-champion {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-left: -4px;
+}
 /* Responsive */
 
  @media (min-width: 992px) and (max-width: 1267px) {
