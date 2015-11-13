@@ -40,6 +40,13 @@
         $fixedHeader.css('margin-left','-'+leftOffset+'px');
           
         if($fixedHeader.is(":hidden")){
+          //Fixes discrepancy between fixedHeader and tables width upon filtering or changing sort role. 
+          if($fixedHeader.width() != $table.width()){
+            $fixedHeader.width($table.width());
+              for(var t=0;t<$fixedHeaderTd.length;t++){
+                $fixedHeaderTd.eq(t).width($originalHeaderTd.eq(t).width());
+              }
+          }
           $fixedHeader.show();
         }
       }
