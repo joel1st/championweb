@@ -39,8 +39,9 @@ body{
 }
 
 .mastery-row{
-  position:relative;
-  left:-2px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
 a {
 color: #89f5a2;
