@@ -1833,13 +1833,13 @@ border: 1px solid black;
   text-align:center;
 }
 .mastery0{
-  background-image:url('/img/mastery0.jpg');
+  background-image:url('/img/mastery0.jpg?v=5.22.3');
 }
 .mastery1{
-  background-image:url('/img/mastery1.jpg');
+  background-image:url('/img/mastery1.jpg?v=5.22.3');
 }
 .mastery2{
-  background-image:url('/img/mastery2.jpg');
+  background-image:url('/img/mastery2.jpg?v=5.22.3');
 }
 .mastery-container{
   border-right:none !important;
