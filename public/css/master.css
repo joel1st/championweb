@@ -1816,7 +1816,7 @@ border: 1px solid black;
 /* masteries */
 
 .mastery0, .mastery1, .mastery2{
-  float:left;
+  display: inline-block;
   cursor:default;
   position:relative;
   padding:10px;
@@ -1830,6 +1830,7 @@ border: 1px solid black;
 .mastery-header{
   font-weight:bold;
   font-size:1.1em;
+  text-align:center;
 }
 .mastery0{
   background-image:url('/img/mastery0.jpg');
@@ -1843,7 +1844,7 @@ border: 1px solid black;
 .mastery-container{
   border-right:none !important;
   position:relative;
-  left:9px;
+  text-align: center;
 }
 .mastery-icon{
   margin-left: 6px;
@@ -1859,7 +1860,7 @@ border: 1px solid black;
   z-index:88;
 }
 .mastery-icon .points {display: block;width:100%;height: 8px;padding: 0px;margin: 0px;background-color:rgba(0, 0, 0, 0.83);position:absolute;bottom:0px;}
-.mastery-icon .point {display: block;position: relative;background-color:yellow;width: 4px;height: 4px;margin-left: 4px;top: 3px;float: left;}
+.mastery-icon .point {display: block;position: relative;background-color:yellow;width: 4px;height: 4px;margin-left: 3px;top: 3px;float: left;}
 .mastery-spacer{
     width: 40px;
   
