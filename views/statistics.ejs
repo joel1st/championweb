@@ -72,10 +72,6 @@
         </tr>
       </thead>
 
-      <script type="text/ng-template" id="statheader.html">
-        
-      </script>
-
       <tbody ng-cloak>
        <tr ng-repeat="champion in filteredChampions = (championData | startsWith:search.title | filter:roleSort | orderBy:[order+sortExpression.sortBy,order+sortExpression.lastSortBy])">
         <td class="rank">{{indexNumber($index, filteredChampions.length)}}</td>

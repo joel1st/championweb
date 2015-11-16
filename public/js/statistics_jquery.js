@@ -4,14 +4,6 @@
   var $table = $("#table-1");
   var $fixedHeaderTd = $("#header-fixed td");
   var $originalHeaderTd = $("#original-header td");
-  // setInterval(function(){
-  //   $fixedHeader = $("#header-fixed");
-  //   console.log("Hi", $fixedHeader);
-  //   $table = $("#table-1");
-  //   $fixedHeaderTd = $("#header-fixed td");
-  //   $originalHeaderTd = $("#original-header td");
-  // }, 100);
-  
 
   function fixWidths(){
      clearTimeout(timeOut);

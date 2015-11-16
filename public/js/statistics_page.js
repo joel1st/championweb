@@ -2,16 +2,6 @@
 (function(angular, matchupData) {
 
     var statsApp = angular.module('statsPage', ['core']);
-    statsApp.directive('statHeader', [function(){
-        return {
-            restrict: "E",
-            templateUrl: 'statheader.html',
-            replace: true,
-            scope: {
-                'statType' : '@statType'
-            }
-        };
-    }]);
 
     statsApp.controller('data', ['$scope', '$location', function($scope, $location) {
         var urlParams = $location.search();
