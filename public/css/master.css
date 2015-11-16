@@ -1847,8 +1847,7 @@ border: 1px solid black;
   text-align: center;
 }
 .mastery-icon{
-  margin-left: 6px;
-  margin-top: 6px;
+  margin: 3px;
   border: 1px solid grey;
   width: 40px;
   height: 40px;
@@ -1862,17 +1861,12 @@ border: 1px solid black;
 .mastery-icon .points {display: block;width:100%;height: 8px;padding: 0px;margin: 0px;background-color:rgba(0, 0, 0, 0.83);position:absolute;bottom:0px;}
 .mastery-icon .point {display: block;position: relative;background-color:yellow;width: 4px;height: 4px;margin-left: 3px;top: 3px;float: left;}
 .mastery-spacer{
-    width: 40px;
-  
-    height: 40px;
-  
-    margin-left: 6px;
-  
-    margin-top: 6px;
+  width: 40px;
+  height: 40px;
+  margin: 3px;
   position:relative;
-  
-    display: block;
-    float: left;
+  display: block;
+  float: left;
 }
 
 .mastery-active{
