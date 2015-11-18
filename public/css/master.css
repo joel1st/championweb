@@ -1542,7 +1542,7 @@ color: #FFE08C;
 
 #stats td{
   text-align:center;
-
+  box-sizing: content-box;
 }
 
 #stats tbody td{
@@ -1571,7 +1571,7 @@ border-right: 1px solid rgba(0,0,0,0.21);
 }
 
 #stats div.matchup-champion{
-  transform: scale(0.7);
+  transform: scale(0.75);
 } 
 
 span.stat-champ-title{
