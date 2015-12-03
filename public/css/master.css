@@ -71,7 +71,9 @@ display: none !important;
 }
 
 .table {
+  overflow: hidden;
   table-layout: fixed;
+  width: 100%;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -889,7 +891,7 @@ margin: auto;
 
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
-    padding: 8px;
+    padding: 8px 2px 8px 2px;
     line-height: 1.42857143;
     vertical-align: middle;
     border-top: none;
