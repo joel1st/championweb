@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    if (!window.JSON) { //for older browser support: see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
+        window.JSON = {
+            parse: function (sJSON) { return eval("(" + sJSON + ")"); },
+            stringify: function (vContent) {
+                if (vContent instanceof Object) {
+                    var sOutput = "";
+                    if (vContent.constructor === Array) {
+                        for (var nId = 0; nId < vContent.length; sOutput += this.stringify(vContent[nId]) + ",", nId++);
+                        return "[" + sOutput.substr(0, sOutput.length - 1) + "]";
+                    }
+                    if (vContent.toString !== Object.prototype.toString) { return "\"" + vContent.toString().replace(/"/g, "\\$&") + "\""; }
+                    for (var sProp in vContent) { sOutput += "\"" + sProp.replace(/"/g, "\\$&") + "\":" + this.stringify(vContent[sProp]) + ","; }
+                    return "{" + sOutput.substr(0, sOutput.length - 1) + "}";
+                }
+                return typeof vContent === "string" ? "\"" + vContent.replace(/"/g, "\\$&") + "\"" : String(vContent);
+            }
+        };
+    }
+    var getParameterByName = function (name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var cpmstar_siteskin_settings = JSON.parse(getParameterByName("cpmstar_siteskin_settings"));    //this can't be namespaced because the site skin script needs to access it
+    cpmstar_siteskin_settings.d = parent.document;
+    (function () {
+        var t = document.createElement('script'); t.type = 'text/javascript'; t.async = 1; t.src = "//server.cpmstar.com/cached/js/siteskin_v100.pack.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(t, s);
+    })();
+</script>
+</body>

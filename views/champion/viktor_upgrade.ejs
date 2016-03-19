@@ -1,0 +1,29 @@
+<div class="viktor-skills">
+  <h2 class="champion-stats">Most Frequent Upgrades</h2>
+  <% var viktor = championData.unique.mostGames; %>
+  <% for(var i = 0; i<viktor.order.length; i++){ %>
+  <div class="viktor-skill">
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[viktor.order[i]-1].img %>" tooltip="<%= championData.skills.skillInfo[viktor.order[i]-1].name %>"/>
+    <span class="viktor-key"><%= championData.skills.skillInfo[viktor.order[i]-1].key %></span>
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= 3196+i %>.png" class="possible-build"/>
+  </div>
+  <% if (i!==2){ %> <small>></small> <%}%>
+  
+  <% } %>
+  <div class="build-text"><strong><%= viktor.winPercent %>%</strong> Win Rate | <strong><%= viktor.games %></strong> Games </div>
+</div>
+<div class="viktor-skills">
+  <h2 class="champion-stats">Highest Win % Upgrades</h2>
+
+  <% var viktor = championData.unique.highestWinPercent; %>
+  <% for(var i = 0; i<viktor.order.length; i++){ %>
+  <div class="viktor-skill">
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[viktor.order[i]-1].img %>" tooltip="<%= championData.skills.skillInfo[viktor.order[i]-1].name %>"/>
+    <span class="viktor-key"><%= championData.skills.skillInfo[viktor.order[i]-1].key %></span>
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= 3196+i %>.png" class="possible-build"/>
+  </div>
+  <% if (i!==2){ %> <small>></small> <%}%>
+  
+  <% } %>
+  <div class="build-text"><strong><%= viktor.winPercent %>%</strong> Win Rate | <strong><%= viktor.games %></strong> Games </div>
+</div>

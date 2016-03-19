@@ -1,0 +1,22 @@
+<h2 class="champion-stats">Most Frequent Starters</h2>
+<div class="build-wrapper">
+  <% for(var k=0; k<championData.firstItems.mostGames.items.length; k++) {%>
+    <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.firstItems.mostGames.items[k].name %>" rel="nofollow" target="_blank">
+      <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= championData.firstItems.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.firstItems.mostGames.items[k].name %>"/>
+    </a>
+  <% } %>
+  <div class="build-text">
+    <strong><%= championData.firstItems.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.firstItems.mostGames.games %></strong> Games
+  </div>
+</div>
+<h2 class="champion-stats" style="margin-top:40px">Highest Win % Starters</h2>
+<div class="build-wrapper">
+  <% for(var l=0; l<championData.firstItems.highestWinPercent.items.length; l++) {%>
+    <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.firstItems.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank">
+      <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= championData.firstItems.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.firstItems.highestWinPercent.items[l].name %>"/>
+    </a>
+  <% } %>
+  <div class="build-text">
+    <strong><%= championData.firstItems.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.firstItems.highestWinPercent.games %></strong> Games
+  </div>
+</div>

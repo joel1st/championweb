@@ -1,0 +1,20 @@
+<img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/champion/<%= champion.key %>.png" class="champ-img"/>
+<h1><%= champion.name %></h1>
+<ul>
+
+  <% for(var i=0; i<champion.roles.length; i++) {%>
+  <li <%if (champion.role === champion.roles[i].role) { %> class="selected-role"<% } %>>
+    <a href="/champion/<%= champion.key %>/<%= champion.roles[i].title %>">
+      <h3>
+        <%= champion.roles[i].title %>
+      </h3>
+    </a>
+    <small> <%= champion.roles[i].percentPlayed %>% Role Rate </small>
+    <small style="display:block"> <%= champion.roles[i].games %> Analyzed This Patch </small>
+  </li>
+  <% } %>
+  
+  <% if (champion.name === 'Viktor'){ %>
+    <% include viktor_upgrade.ejs %>
+  <% } %>
+</ul>

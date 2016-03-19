@@ -1,0 +1,24 @@
+<h2> Recent <%= champion.name %> Threads on Reddit </h2>
+<div ng-repeat="thread in redditData | filter:enoughUpvotes | limitTo:5" ng-controller="redditThread">
+  <div class="container-reddit">
+    <div class="reddit-titles">
+      <h4>
+        <a href="{{thread.data.url}}" target="_blank">
+          {{thread.data.title}}
+        </a>
+      </h4>
+      <span ng-click="toggleSummary()" class="reddit-summary">
+        View Summary<span ng-if="!summaryVisible">&#x25B6</span><span ng-if="summaryVisible">&#x25BC</span>
+      </span>
+      <a href="{{thread.data.url}}" target="_blank" class="reddit-comments">
+        {{thread.data.num_comments}} comments.
+      </a>
+      <small class="reddit-date">
+        Created on <strong>{{thread.data.created * 1000 | date:'d MMMM yyyy'}}</strong>
+      </small>
+    </div>
+    <div ng-if="summaryVisible" class="reddit-summary-area">
+      <div ng-bind-html="thread.data.selftext_html | to_trusted"></div>
+    </div>
+  </div>
+</div>

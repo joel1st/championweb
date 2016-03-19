@@ -1,0 +1,29 @@
+<h2 class="champion-stats">Most Frequent Core Build</h2>
+<div class="build-wrapper">
+  <% for(var k=0; k<championData.items.mostGames.items.length; k++) {%>
+    <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.mostGames.items[k].name %>" rel="nofollow" target="_blank">
+      <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= championData.items.mostGames.items[k].id %>.png" class="possible-build" tooltip="<%= championData.items.mostGames.items[k].name %>"/>
+    </a>
+    <% if (k!==5){ %>
+     <small>></small> 
+    <%}%>
+  <% } %>
+  <div class="build-text">
+    <strong><%= championData.items.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.items.mostGames.games %></strong> Games 
+  </div>
+</div>
+
+<h2 class="champion-stats"  style="margin-top:40px">Highest Win % Core Build</h2>
+<div class="build-wrapper">
+  <% for(var l=0; l<championData.items.highestWinPercent.items.length; l++) {%>
+    <a href="http://leagueoflegends.wikia.com/wiki/<%= championData.items.highestWinPercent.items[l].name %>" rel="nofollow" target="_blank">
+      <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= championData.items.highestWinPercent.items[l].id %>.png" class="possible-build" tooltip="<%= championData.items.highestWinPercent.items[l].name %>"/>
+    </a>
+    <% if (l!==5){ %>
+      <small>></small>
+    <%}%>
+  <% } %>
+  <div class="build-text">
+    <strong><%= championData.items.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.items.highestWinPercent.games %></strong> Games 
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<h2 class="champion-stats">Most Frequent Masteries</h2>
+<div class="mastery-container clearfix">
+  <% for (var k = 0; k<core.masteryOrder.length; k++){ %>
+    <div class="mastery<%= k %>">
+      <div class="mastery-header">
+        <%= championData.masteries.mostGames.masteries[k].tree %> - <%= championData.masteries.mostGames.masteries[k].total %>
+      </div>
+      <% for (var z = 1; z<=6; z++){ %>
+        <% var masteryColumn = championData.masteries.mostGames.masteries[k].data['row'+z]; %>
+        <div class="clearfix mastery-row">
+          <% for(var y = 0; y < masteryColumn.length; y++) { %>
+            <% if(masteryColumn[y].mastery){ %>
+              <% if(masteryColumn[y].points){ %>
+                <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>" api-secondary-id="<%- masteryColumn[y].points-1 %>">
+                  <div class="points">
+                    <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
+                      <div class="point"></div>
+                    <% } %>
+                   </div>
+                </div>
+              <% } else { %>
+                <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>">
+                </div>
+              <% } %>
+              <% if(z % 2 == 1 && y == 0){ %>
+                <div class="mastery-spacer"></div>
+              <% } %>
+            <% } %>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>
+<div class="build-text">
+  <strong><%= championData.masteries.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.masteries.mostGames.games %></strong> Games
+</div>
+
+
+<h2 class="champion-stats">Highest Win % Masteries</h2>
+<div class="mastery-container clearfix">
+  <% for (var k = 0; k<core.masteryOrder.length; k++){ %>
+    <div class="mastery<%= k %>">
+      <div class="mastery-header">
+        <%= championData.masteries.highestWinPercent.masteries[k].tree %> - <%= championData.masteries.highestWinPercent.masteries[k].total %>
+      </div>
+      <% for (var z = 1; z<=6; z++){ %>
+        <% var masteryColumn = championData.masteries.highestWinPercent.masteries[k].data['row'+z]; %>
+        <div class="clearfix mastery-row">
+          <% for(var y = 0; y < masteryColumn.length; y++) { %>
+            <% if(masteryColumn[y].mastery){ %>
+              <% if(masteryColumn[y].points){ %>
+                <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %> mastery-active" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>" api-secondary-id="<%- masteryColumn[y].points-1 %>">
+                  <div class="points">
+                    <% for(var p = 0; p < masteryColumn[y].points; p++){ %>
+                      <div class="point"></div>
+                    <% } %>
+                   </div>
+                </div>
+              <% } else { %>
+                <div class="mastery-icon mastery-<%= masteryColumn[y].mastery %>" champion-tip api-type="masteries" api-primary-id="<%= masteryColumn[y].mastery %>">
+                </div>
+              <% } %>
+              <% if(z % 2 == 1 && y == 0){ %>
+                <div class="mastery-spacer"></div>
+              <% } %>
+            <% } %>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>
+<div class="build-text">
+  <strong><%= championData.masteries.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.masteries.highestWinPercent.games %></strong> Games
+</div>

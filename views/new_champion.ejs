@@ -1,0 +1,23 @@
+<% include header.ejs %>
+
+<div class="large-header">
+	<div class="container-fluid">
+		<div class="row">
+	          <div class="col-xs-12 col-sm-4 col-md-3 champion-profile">
+	            <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/champion/<%= champion.key %>.png" class="champ-img"/>
+	            <h1><%= champion.name %></h1>
+	          </div>
+	          <div class="col-xs-12 col-sm-8 col-md-9">
+	            <h2 style="margin-top:30px"> 
+	            	We're currently in the process of generating stats for <%= champion.name %> - Check Back Soon! 
+	            </h2>
+	          </div>
+	    </div>
+	</div>
+</div>
+<div style="width:100%;padding:35px;text-align:center">
+Think something on the site is broken? Please send me a message... (on reddit) <a href="http://reddit.com/u/joeldo/">/u/joeldo</a>
+</div>
+<% include scripts.ejs %>
+
+<% include footer.ejs %>

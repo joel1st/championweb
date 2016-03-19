@@ -1,0 +1,34 @@
+<h2 class="champion-stats" style="margin-top:40px">Most Frequent Runes</h2>
+<div class="rune-collection">
+  <% for(var i = 0; i < championData.runes.mostGames.runes.length; i++){ %>
+  <div class="rune-type-area" style="width:98%">
+    <div class="rune-img">
+      <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/rune/<%= championData.runes.mostGames.runes[i].img %>" /> <strong><%= championData.runes.mostGames.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.mostGames.runes[i].name %> </span>
+      <span class="rune-benefits"><small><%= championData.runes.mostGames.runes[i].description %></small></span>
+    </div>
+    <div class="rune-info">
+    </div>
+  </div>
+  <% } %>
+</div>
+<div class="build-text">
+  <strong><%= championData.runes.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.mostGames.games %></strong> Games
+</div>
+
+
+<h2 class="champion-stats" style="margin-top:45px">Highest Win % Runes</h2>
+<div class="rune-collection">
+  <% for(var i = 0; i < championData.runes.highestWinPercent.runes.length; i++){ %>
+  <div class="rune-type-area" style="width:98%">
+    <div class="rune-img">
+      <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/rune/<%= championData.runes.highestWinPercent.runes[i].img %>" /> <strong><%= championData.runes.highestWinPercent.runes[i].number %>x</strong> <span class="rune-title"><%= championData.runes.highestWinPercent.runes[i].name %> </span>
+      <span class="rune-benefits"><small><%= championData.runes.highestWinPercent.runes[i].description %></small></span>
+    </div>
+    <div class="rune-info">
+    </div>
+  </div>
+  <% } %>
+</div>
+<div class="build-text">
+  <strong><%= championData.runes.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.runes.highestWinPercent.games %></strong> Games
+</div>

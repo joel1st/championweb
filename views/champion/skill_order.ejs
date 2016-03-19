@@ -1,0 +1,66 @@
+<h2 class="champion-stats">Most Frequent Skill Order</h2>
+<div class="skill-order clearfix">
+  <div class="skill">
+    <div class="img-placeholder"></div>
+    <div class="skill-selections">
+      <% for (var d = 0; d < 18; d++){ %>
+      <div>
+        <span><%= d + 1 %></span>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <% for (var i = 0 ; i < 4; i++){ %>
+  <div class="skill">
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
+    <div class="skill-selections">
+      <% var skillGames = championData.skills.mostGames.order %>
+      <% for (var b = 0 ; b < skillGames.length; b++){ %>
+      <div class="<%=skillGames[b][0] === ''+(i+1) ? 'selected' : '' %>">
+        <span><%= skillGames[b][0] === ''+(i+1) ? championData.skills.skillInfo[i].key : "" %></span>
+        <% if(skillGames[b].length === 3 && skillGames[b][0] === ''+(i+1)){ %>
+        <span><%= championData.skills.skillInfo[skillGames[b][2]-1].key %></span>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+</div>
+<div class="build-text">
+  <strong><%= championData.skills.mostGames.winPercent %>%</strong> Win Rate | <strong><%= championData.skills.mostGames.games %></strong> Games
+</div>
+
+
+<h2 class="champion-stats" style="margin-top:55px">Highest Win % Skill Order</h2>
+<div class="skill-order clearfix">
+  <div class="skill">
+    <div class="img-placeholder"></div>
+    <div class="skill-selections">
+      <% for (var d = 0; d < 18; d++){ %>
+      <div>
+        <span><%= d + 1 %></span>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <% for (var i = 0 ; i < 4; i++){ %>
+  <div class="skill">
+    <img src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/spell/<%= championData.skills.skillInfo[i].img %>" tooltip="<%= championData.skills.skillInfo[i].name %>"/>
+    <div class="skill-selections">
+      <% var skillGames = championData.skills.highestWinPercent.order %>
+      <% for (var b = 0 ; b < skillGames.length; b++){ %>
+      <div class="<%=skillGames[b][0] === ''+(i+1) ? 'selected' : '' %>">
+        <span><%= skillGames[b][0] === ''+(i+1) ? championData.skills.skillInfo[i].key : "" %></span>
+        <% if(skillGames[b].length === 3 && skillGames[b][0] === ''+(i+1)){ %>
+        <span><%= championData.skills.skillInfo[skillGames[b][2]-1].key %></span>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+</div>
+<div class="build-text">
+  <strong> <%= championData.skills.highestWinPercent.winPercent %>%</strong> Win Rate | <strong><%= championData.skills.highestWinPercent.games %></strong> Games
+</div>

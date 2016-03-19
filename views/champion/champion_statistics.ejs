@@ -1,0 +1,49 @@
+<h2 style="margin-bottom:8px">Statistics</h2>
+<table class="table table-striped">
+  <thead>
+    <tr >
+      <th class="first-column"><span class="text-indent">Type</span></th>
+      <th class="second-column">Average</th>
+      <th class="third-column"><span class="glyphicon glyphicon-question-sign" tooltip="<%= champion.name %>'s ranking compared to other <%= champion.roleTitle %> champions."></span> Role Placement</th>
+      <th class="fourth-column">Placement Change this patch</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for(var i=0; i<championData.general.length; i++) {%>
+   <tr id=<%= 'statistics-' + championData.general[i].title.replace(' ', '-').toLowerCase() + '-row' %> >
+    <td>
+      <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.<%= championData.general[i].titleLink %>&order=descend">
+        <%= championData.general[i].title %>
+      </a>
+    </td>
+
+    <td><%= championData.general[i].val %><% if(i < 3){ %>%<%}%></td>
+    <td>  
+      <strong class="<%if (championData.general[i].position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>">
+        <%= championData.general[i].position %> 
+      </strong>
+      <small>/ <%= generalRole.totalNumber %></small>
+    </td>
+    <td>
+      <span class="glyphicon <%if (championData.general[i].change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.general[i].change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.general[i].change === 0) { %> same-position <% } %>">
+      </span>
+      <%- Math.abs(championData.general[i].change) %></td>
+    </tr>
+
+    <% } %>
+
+    <tr>
+      <td colspan=2> <a href="/statistics/#?roleSort=<%= champion.roleTitle %>&sortBy=general.overallPosition&order=ascend">Overall Placement</a></td>
+      <td style="text-align:center"><strong class="<%if (championData.overallPosition.position <= (generalRole.totalNumber/2)) { %> top-half <% } else { %> bottom-half <% } %>"><%= championData.overallPosition.position %> </strong><small>/ <%= generalRole.totalNumber %></small></td>
+      <td><span class="glyphicon <%if (championData.overallPosition.change > 0) { %> glyphicon-arrow-up <% } %> <%if (championData.overallPosition.change < 0) { %> glyphicon-arrow-down <% } %> <%if (championData.overallPosition.change === 0) { %> same-position <% } %>">
+      </span> <%- Math.abs(championData.overallPosition.change) %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Overall Champion Matrix</h2>
+<div class="chart-holder" style="max-width:310px">
+  <canvas tc-chartjs-radar chart-data="overallComparison.data" chart-options="overallComparison.settings" chart-legend="generalComparison" id="canvas2" height="242" width="339"></canvas>
+</div>
+<div tc-chartjs-legend chart-legend="generalComparison"></div>

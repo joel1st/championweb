@@ -1,0 +1,35 @@
+Mongodump file
+mongodump --db championgg --collection webchampionpages --out ./db
+mongodump --db championgg --collection webchampionroles --out ./db
+mongodump --db championgg --collection webmatchuppages --out ./db
+mongodump --db championgg --collection weboverallroledatas --out ./db
+mongodump --db championgg --collection webhomepagesummaries --out ./db
+mongodump --db championgg --collection webstatisticspages --out ./db
+mongodump --db championgg --collection weboverallrolestats --out ./db
+git add -A && git commit -m "updated data" && git push
+
+
+cd /code/championweb
+git pull
+mongorestore --db championgg --collection webchampionpages --drop db/championgg/webchampionpages.bson
+mongorestore --db championgg --collection webchampionroles --drop db/championgg/webchampionroles.bson
+mongorestore --db championgg --collection webmatchuppages --drop db/championgg/webmatchuppages.bson
+mongorestore --db championgg --collection weboverallroledatas --drop db/championgg/weboverallroledatas.bson
+mongorestore --db championgg --collection webhomepagesummaries --drop db/championgg/webhomepagesummaries.bson
+mongorestore --db championgg --collection webstatisticspages --drop db/championgg/webstatisticspages.bson
+mongorestore --db championgg --collection weboverallroledatas --drop db/championgg/weboverallstats.bson
+cd bin && NODE_ENV=production pm2 restart www.js
+
+
+NODE_ENV=production pm2 restart www.js
+NODE_ENV=updating pm2 restart www.js
+NODE_ENV=serverUpdate pm2 restart www.js
+
+NODE_ENV=production pm2 start www.js -i max
+NODE_ENV=updating pm2 start www.js -i max
+NODE_ENV=serverUpdate pm2 start www.js -i max
+
+
+UPDATES=aggregation node performUpdate
+
+mongodump --db leaguetimes --collection votes

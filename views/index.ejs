@@ -1,0 +1,147 @@
+<% include header.ejs %>
+<div class="container-fluid">
+	<div class="row summary">
+		<div class="win-summary summary-side" style="border-right: 1px solid rgb(36, 45, 48);">
+			<span class="champion-name champion-list-header"><a href="statistics/#?sortBy=general.winPercent&order=descend"><span class="summary-highlight">
+			Win Rates</span></a></span>
+
+			<table class="table table-striped">
+              <thead>
+                <tr >
+                  <th class="first-summary">Role</th>
+                  <th class="second-summary"><span class="top-half">Highest</span></th>
+                  <th class="third-summary"><span class="bottom-half">Lowest</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                 <% for(var y=0;y<summaries.length;y++){ %>
+                 <tr>
+                  <td><a href="statistics/#?sortBy=general.winPercent&order=descend&roleSort=<%= summaries[y].title %>"><%= summaries[y].title %></a></td>
+                  <td><a href="/champion/<%=summaries[y].highestWinRate.key%>/<%=summaries[y].title%>">
+							<div class="matchup-champion <%=summaries[y].highestWinRate.key%>"></div>
+								<span class="champion-name"><%= summaries[y].highestWinRate.name %></span>
+							</a>
+							<span class="top-half summary-value"><%= summaries[y].highestWinRate.value %>%</span>
+					</td>
+                  <td>  
+                    <a href="/champion/<%=summaries[y].lowestWinRate.key%>/<%=summaries[y].title%>">
+							<div class="matchup-champion <%=summaries[y].lowestWinRate.key%>"></div>
+								<span class="champion-name"><%= summaries[y].lowestWinRate.name %></span>
+							</a>
+							<span class="bottom-half summary-value"><%= summaries[y].lowestWinRate.value %>%</span>
+                  </td>
+                  </tr>
+
+                <% } %>
+              </tbody>
+            </table>
+		</div>
+		<div class="overall-summary summary-side" style="border-right: 1px solid rgb(36, 45, 48);position:relative">
+			<span class="champion-name champion-list-header"><a href="statistics/#?sortBy=general.overallPosition&order=ascend"><span class="summary-highlight">Overall Performance Ranking</span></a></span><span class="glyphicon glyphicon-question-sign" style="position: absolute;right: 20px;top:20px;" tooltip="Overall Performance takes more than win rate into account - including play rate, ban rate, kda, gold, cs, damage and other role dependant stats."></span>
+			<table class="table table-striped">
+              <thead>
+                <tr >
+                  <th style="width:22%">Role</th>
+                  <th style="width:39%"><span class="top-half">Best</span></th>
+                  <th style="width:39%"><span class="bottom-half">Worst</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                 <% for(var l=0;l<summaries.length;l++){ %>
+                 <tr>
+                  <td><a href="statistics/#?sortBy=general.overallPosition&order=ascend&roleSort=<%= summaries[l].title %>"><%= summaries[l].title %></a></td>
+                  <td><a href="/champion/<%=summaries[l].bestOverall.key%>/<%=summaries[l].title%>">
+							<div class="matchup-champion <%=summaries[l].bestOverall.key%>"></div>
+							<span class="champion-name"><%= summaries[l].bestOverall.name %></span></a>
+							
+							</td>
+                  <td>  
+                    <a href="/champion/<%=summaries[l].worstOverall.key%>/<%=summaries[l].title%>">
+							<div class="matchup-champion <%=summaries[l].worstOverall.key%>"></div>
+							<span class="champion-name"><%= summaries[l].worstOverall.name %></span></a>
+                  </td>
+                  </tr>
+
+                <% } %>
+              </tbody>
+            </table>
+			
+		</div>
+		<div class="change-summary summary-side">
+			<span class="champion-name champion-list-header"><a href="statistics/#?sortBy=general.overallPositionChange&order=descend"><span class="summary-highlight">Champion Ranking Changes</span></a></span>
+
+			<table class="table table-striped">
+              <thead>
+                <tr >
+                  <th class="first-summary">Role</th>
+                  <th class="second-summary"><span class="top-half">Most Improved</span></th>
+                  <th class="third-summary"><span class="bottom-half">Least Improved</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                 <% for(var x=0;x<summaries.length;x++){ %>
+                 <tr>
+                  <td><a href="statistics/#?sortBy=general.overallPositionChange&order=descend&roleSort=<%= summaries[x].title %>"><%= summaries[x].title %></a></td>
+                  <td><a href="/champion/<%=summaries[x].mostImproved.key%>/<%=summaries[x].title%>">
+							<div class="matchup-champion <%=summaries[x].mostImproved.key%>"></div>
+							<span class="champion-name"><%= summaries[x].mostImproved.name %></span></a>
+							<span class="top-half summary-value"><span class="glyphicon  glyphicon-arrow-up"></span> <%=summaries[x].mostImproved.difference %></span>
+							</td>
+                  <td>  
+                    <a href="/champion/<%=summaries[x].leastImproved.key%>/<%=summaries[x].title%>">
+							<div class="matchup-champion <%=summaries[x].leastImproved.key%>"></div>
+							<span class="champion-name"><%= summaries[x].leastImproved.name %></span></a>
+							<span class="bottom-half summary-value"><span class="glyphicon  glyphicon-arrow-down"></span> <%=summaries[x].leastImproved.difference %> </span>
+                  </td>
+                  </tr>
+
+                <% } %>
+              </tbody>
+            </table>
+		</div>
+	</div>
+
+		
+
+	<div class="row" style="margin-top:40px" id="home">
+		<span class="champion-name champion-list-header">Choose a champion for <span class="summary-highlight">in-depth statistics</span> and <span class="summary-highlight">counters</span>.</span>
+		<div class="col-md-9 clearfix" style="margin-top:15px;">
+		<% for(var i=0;i<data.length;i++){ %>
+			<div class="champ-height">
+				<div class="champ-index-img <%= data[i].key %>">
+				<a href="/champion/<%= data[i].key %>">
+				<div class="home-champion <%= data[i].key %>"></div>
+				<span class="champion-name"><%= data[i].name %></span>
+				</a>
+					<% for(var t=0;t<data[i].roles.length;t++){ %>
+						<a href="/champion/<%= data[i].key %>/<%= data[i].roles[t].title %>" style="display:block">
+							<%= data[i].roles[t].title %>
+						</a>
+					<% } %>
+				</div>
+			</div>
+		<% } %>
+		</div>
+		<div class="col-md-3">
+		      <!-- /22280732/ChampionGG_300x250_HP_ATF1 -->
+		      <div id='div-gpt-ad-1443488528500-4'>
+		      <script type='text/javascript'>
+		      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1443488528500-4'); });
+		      </script>
+		      </div>
+		
+		      <!-- /22280732/ChampionGG_300x250_HP_BTF1 -->
+		      <div id='div-gpt-ad-1443488528500-5'>
+		      <script type='text/javascript'>
+		      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1443488528500-5'); });
+		      </script>
+		      </div>
+		</div>
+
+
+	</div>
+</div>
+
+<% include scripts.ejs %>
+
+<% include footer.ejs %>

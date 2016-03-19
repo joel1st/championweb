@@ -1,0 +1,125 @@
+<% include header.ejs %>
+<div class="container-fluid" id="matchups">
+<h2>
+  <%= data.champ1.name %> <%= data.champ1.roleTitle %> <%= (data.role==='SYNERGY')? 'Synergy With' : 'Against'%> <%= data.champ2.name %> <%= data.champ2.roleTitle %>
+</h2>
+<div class="row champion-area matchup-area">
+  <% for(var t=1; t<3; t++) {%>
+
+  <div class="col-xs-6 col-sm-3 col-md-2 matchup-block champion-profile <% if (t===2) { %>pull-right<% } %>">
+   <a href="/champion/<%- data['champ'+t].key %>/<%- data['champ'+t].roleTitle %>">
+    <img src="//ddragon.leagueoflegends.com/cdn/<%- core.ddPatch %>/img/champion/<%- data['champ'+t].key %>.png" class="champ-img"/>
+    <h1 class="champ<%=t%>"><%-data['champ'+t].name%></h1>
+    <ul>
+      <li>      
+          <h3 class="selected">
+              <%- data['champ'+t].roleTitle %>
+          </h3>         
+        </li>      
+    </ul>
+    </a>
+  </div>
+  <% } %>
+  <div class="col-xs-12 col-sm-6 col-md-8 matchup-block" style="text-align:center">
+
+
+    <h3>
+    <% if(data.role !== 'SYNERGY'){ %>
+      <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> has the advantage! <% } %>
+      <% if(data.champ1.performance <= 4.25) { %>  <span class="victor2"><%=data.champ2.name%></span> has the advantage! <% } %> 
+      <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
+        Skill based matchup!
+      <% } %>
+    <% } else { %>
+      <% if(data.champ1.performance >= 5.75){ %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Strong Synergy! <% } %>
+      <% if(data.champ1.performance <= 4.25) { %>  <span class="victor1"><%=data.champ1.name%></span> and <span class="victor2"><%=data.champ2.name%></span> have Weak Synergy! <% } %> 
+      <% if(!(data.champ1.performance >= 5.75)&&!(data.champ1.performance <= 4.25)){ %>
+        Standard Synergy
+      <% } %>
+    <% } %>
+
+    </h3>
+
+
+
+  	<strong> Total Games Analyzed: <%= data.totalGames %> </strong> <br />
+        <div class="matchup-progress-bars <%if(data.role === 'SYNERGY'){%> synergy <%}%>">
+                <h4> Statistical Performance </h4>
+                <div class="progress">
+                  <strong class="statistic-rating"> </strong>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  style="width:<%- data.champ1.performance * 10 %>%"></div>
+                </div>           
+      </div>
+
+
+ 	       <% if(data.role !== 'ADCSUPPORT' && data.role !== 'SYNERGY'){ %>
+           <div class="row" ng-controller="matchupGraphs">
+              <div class="col-xs-12 col-sm-12 col-md-6 matchup-block" style="border-right: 1px solid rgb(59, 62, 66);">
+              	<div class="matchup-chart-holder">
+                  <h4> Matchup Performance </h4>
+                  <div>
+                    <canvas tc-chartjs-radar chart-data="champComparison.data" chart-options="champComparison.settings" chart-legend="championMatchup" height="400" width="560"></canvas>
+                  </div>
+                 </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6">
+              <div class="matchup-chart-holder">
+                <h4> Gold Over Time </h4>
+                <div>
+                  <canvas tc-chartjs-line chart-data="goldIncome.data" chart-options="goldIncome.settings" height="400" width="560"> </canvas>
+                </div>
+                </div>
+              </div>
+              
+              <div tc-chartjs-legend chart-legend="championMatchup"></div>
+            </div>
+          <% } %>
+
+            <div class="row chart-area matchup-stat-area">
+             <div class="col-xs-12 col-sm-12 col-md-12 matchup-block">
+              <div class="matchup-title-width matchup-div-header"></div><div class="matchup-champ-img-width matchup-div-header">
+                <div class="matchup-champion matchup-table <%= data.champ1.key %>"></div>
+                </div><div class="matchup-champ-img-width matchup-div-header">
+                <div class="matchup-champion matchup-table <%= data.champ2.key %>"></div>
+                </div>
+              <table class="table table-striped">
+              <thead>  
+                <tr>
+                  <th class="matchup-title-width">Type</th>
+                  <th class="matchup-values-width">Matchup Average</th>
+                  <th class="matchup-values-width">Change</th>
+                  <th class="matchup-values-width">Matchup Average</th>
+                  <th class="matchup-values-width">Change</th>
+                </tr>
+              </thead>
+              <tbody style="text-align:left">
+                <% for(var i=0; i<data.general.length; i++) {%>
+                     <tr>
+                  <td class="matchup-title-width"><%=data.general[i].title%></td>
+                  <td class="matchup-values-width"><%=data.general[i].champ1.val%><% if (data.general[i].title === 'Win Rate'){%>%<% } %></td>
+                  <td class="matchup-values-width"> <span class="glyphicon <% if (data.general[i].title === 'Deaths'){%> Deaths-title <% } %><%if (data.general[i].champ1.change > 0) { %> glyphicon-arrow-up <% } if (data.general[i].champ1.change < 0) { %> glyphicon-arrow-down <% } %>"></span><%- Math.abs(data.general[i].champ1.change) %></td>
+                  <td class="matchup-values-width"><%=data.general[i].champ2.val%><% if (data.general[i].title === 'Win Rate'){%>%<% } %></td>
+                   <td class="matchup-values-width"> <span class="glyphicon  <% if (data.general[i].title === 'Deaths'){%> Deaths-title <% } %><%if (data.general[i].champ2.change > 0) { %> glyphicon-arrow-up <% } if (data.general[i].champ2.change < 0) { %> glyphicon-arrow-down <% } %>"></span><%- Math.abs(data.general[i].champ2.change) %></small></td>    
+                </tr>
+                  <% } %>
+               
+              </tbody>
+            </table>
+               
+            </div>
+         </div>
+    <div class="row">
+      <disqus disqus-shortname="championgg" disqus-identifier="/matchup/<%= data.champ1.key %>/<%= data.champ2.key %>/<%= data.roleTitle %>" disqus-url="http://champion.gg/matchup/<%= data.champ1.key %>/<%= data.champ2.key %>/<%= data.roleTitle %>" disqus-id="disqus_thread" ready-to-bind="true" ></disqus>
+    </div>
+</div>
+</div>
+
+<script>
+  matchupData.champ1 = <%- JSON.stringify(data.champ1) %>
+  matchupData.champ2 = <%- JSON.stringify(data.champ2) %>
+	matchupData.championMatrix = <%- JSON.stringify(data.championMatrix) %>;
+	matchupData.goldLength = <%- JSON.stringify(data.goldLength) %>;
+</script>
+
+<% include scripts.ejs %>
+<% include footer.ejs %>

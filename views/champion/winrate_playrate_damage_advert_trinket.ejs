@@ -1,0 +1,46 @@
+<h2 class="line-chart-header">Win Rate % By Patch</h2>
+<div class="chart-holder">
+  <canvas tc-chartjs-line chart-data="patchRate.data" chart-options="patchRate.settings" id="canvas3" height="150" width="300"></canvas>
+</div>
+<div tc-chartjs-legend chart-legend="playRate"></div>
+<h2 class="line-chart-header">Play Rate % By Patch</h2>
+<div class="chart-holder">
+  <canvas tc-chartjs-line chart-data="patchPlay.data" chart-options="patchPlay.settings" chart-legend="playRate" id="canvas" height="150" width="300"></canvas>
+</div>
+<div tc-chartjs-legend chart-legend="playRate"></div>
+<div class="center-google">
+  <!-- /22280732/ChampionGG_300x250_Champion_ATF1 -->
+  <div id='div-gpt-ad-1443488528500-1'>
+  <script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1443488528500-1'); });
+  </script>
+  </div>
+</div>
+
+<h2 class="champion-stats">Damage Composition</h2>
+<div class="clearfix middle-graphic-holder damage-dealt">
+  <div class="physical-dmg" tooltip="<%= championData.dmgComposition.physicalDmg %>% Physical" style="width:<%= championData.dmgComposition.physicalDmg %>%"></div>
+  <div class="magic-dmg" tooltip="<%= championData.dmgComposition.magicDmg %>% Magic" style="left:<%= championData.dmgComposition.physicalDmg %>%;width:<%= championData.dmgComposition.magicDmg %>%"></div>
+  <div class="true-dmg" tooltip="<%= championData.dmgComposition.trueDmg %>% True" style="right:0;width:<%= championData.dmgComposition.trueDmg %>%"></div>
+</div>
+<ul class="radar-legend" style="margin-bottom:20px">
+  <li><span class="physical-dmg"></span>Physical</li>
+  <li><span class="magic-dmg"></span>Magic</li>
+  <li><span class="true-dmg"></span>True</li>
+</ul>
+
+<div class="trinket-stats">
+  <h2 class="champion-stats">Trinket Stats</h2>
+  <% var trinkets = championData.trinkets; %>
+  <% for(var i = 0; i<trinkets.length; i++){ %>
+    <div style="width:33%;float:left;text-align:center">
+      <img class="possible-build" src="//ddragon.leagueoflegends.com/cdn/<%= core.ddPatch %>/img/item/<%= trinkets[i].item.id %>.png" tooltip="<%= trinkets[i].item.name %>"/>
+      <div class="build-text">
+        <strong style="display:block"><%= trinkets[i].winPercent %>%</strong>
+        Win Rate
+        <strong style="display:block;margin-top:10px"><%= trinkets[i].games %></strong> 
+        Games </div>
+    </div>        
+  <% } %>
+ 
+</div>

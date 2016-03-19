@@ -1,0 +1,19 @@
+<% if(process.env.NODE_ENV === 'production') { %>
+	<script src="/js/master.min.js?v=<%=core.resetCache%>"></script>
+<% } else { %>
+	<script src="/dist/js/angular.js"></script>
+	<script src="/dist/js/angular-bootstrap.js"></script>
+	<script src="/dist/js/chart.js"></script>
+	<script src="/dist/js/dirDisqus.js"></script>
+	<script src="/dist/js/tc-angular-chartjs.js"></script>
+
+	<script src="/js/champion_data.js"></script>
+	<script src="/js/chart_options.js"></script>
+	<script src="/js/championgg_tooltip.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/champion_page.js"></script>
+	<script src="/js/matchup_page.js"></script>
+	<script src="/js/statistics_page.js"></script>
+<% } %>
+
+	
