@@ -92,9 +92,6 @@ crashlytics-build.properties
 
 # sftp configuration file
 sftp-config.json
-<<<<<<< HEAD
 
 # MacOS
 .DS_Store
-=======
->>>>>>> 0acee52b21d5eb5856cd35d38022084123812434

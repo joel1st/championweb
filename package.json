@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "championweb",
-=======
-  "name": "application-name",
->>>>>>> 0acee52b21d5eb5856cd35d38022084123812434
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -21,7 +17,6 @@
     "serve-favicon": "2.1.7"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "*",
     "grunt-contrib-cssmin": "*",
@@ -29,15 +24,6 @@
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-htmlhint-plus": "^0.1.0",
-=======
-    "grunt": "~0.4.0",
-    "grunt-contrib-cssmin": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-htmlhint": "*",
->>>>>>> 0acee52b21d5eb5856cd35d38022084123812434
     "matchdep": "*"
   }
 }
