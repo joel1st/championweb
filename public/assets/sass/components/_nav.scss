@@ -1,0 +1,396 @@
+.navigation-elem {
+    /* width: 95%; */
+    max-width: 1400px;
+    /* background-color: rgb(28, 33, 35); */
+    border-bottom: 1px solid rgb(38, 43, 47);
+    border-top: 1px solid rgb(27, 34, 34);
+    margin: auto;
+
+    .inner-nav {
+        max-width: 1395px;
+        margin: auto;
+        width: 97%;
+        position: relative;
+
+        .update-happening{
+            @media(max-width: 1060px){
+                float: left;
+                width: 100%;
+                top: 0;
+                margin-bottom: 7px;
+            }
+        }
+
+        .navbar-nav {
+            float: left;
+            margin-top: 0;
+            margin-right: 15px;
+            /* margin-bottom: -4px; */
+            margin-left: 20px;
+            display: inline-block;
+
+            @media (max-width: 1060px) {
+                margin-bottom: 0;
+            }
+
+            @media (max-width: 410px) {
+                margin: 0;
+            }
+
+            li {
+
+                &.first-button {
+                    margin-left: 0;
+
+                    @media (max-width: 600px) {
+                        margin-left: 5px;
+                    }
+
+                    @media (max-width: 410px) {
+                        margin-left: 7px;
+                    }
+
+                    @media (max-width: 360px) {
+                        margin-left: 7px;
+                    }
+                }
+
+                a {
+                    //color: #F7F7F7;
+                    background: none;
+
+                    &:hover, &:focus {
+                        color: #F7F7F7;
+                        background: none;
+                    }
+                }
+            }
+
+            li {
+                position: relative;
+                /* display: block; */
+                display: inline-block;
+                margin-left: 40px;
+
+                @media (max-width: 775px) {
+                    float: none;
+                    margin-left: 15px;
+                }
+
+                @media (max-width: 410px) {
+                    margin-left: 2px;
+                }
+
+                a {
+                    font-weight: bold;
+                    text-transform: uppercase;
+
+                    &:hover, &:focus {
+                        text-decoration: none;
+                        background-color: #15181A;
+                        /* border-left: 1px solid rgb(43, 49, 52); */
+                        /* border-right: 1px solid rgb(43,49,52); */
+                    }
+
+                    @media (min-width: 768px) {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                    }
+                }
+            }
+        }
+
+        .social-media {
+            display: block;
+            /* position: absolute; */
+            /* top: -12px; */
+            /* float: right; */
+            /* top: 12px; */
+            /* right: 10px; */
+            /* left: 13px; */
+            float: right;
+            margin-top: 10px;
+
+            @media (max-width: 600px) {
+                float: none;
+                margin-left: 20px;
+            }
+
+            .fb_iframe_widget {
+                display: inline-block;
+                position: relative;
+                top: -5px;
+            }
+        }
+    }
+}
+
+.navbar {
+    min-height: 75px;
+    /* width: 95%; */
+    /* background-color: rgb(27, 32, 34); */
+    max-width: 1400px;
+    /* width: 95%; */  /* height: 100%; */
+
+    padding-bottom: 15px;
+    margin: auto;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+
+    @media (max-width: 600px) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.navbar-inverse {
+    /* min-height: 85px; */
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-bottom: 1px solid rgb(38, 43, 47);
+    background-color: rgba(25, 30, 31, 1);
+    //background-color: transparent;
+    /* background-color: #222222; */
+
+    @media(max-width:1060px) {
+        margin-bottom: 12px;
+    }
+
+    .navbar-nav {
+        li {
+            a {
+                color: #F7F7F7;
+
+                &:hover, &:focus {
+                    color: #89f5a2;
+                    background-color: transparent;
+                    transition:color 0.15s;
+                }
+            }
+        }
+    }
+
+    .logo-holder {
+        float: left;
+        /* padding:10px; */
+        width: 33%;
+        margin-top: 2px;
+
+        @media (min-width: 1060px) and (max-width: 1240px) {
+            width: 30%;
+        }
+
+        @media (min-width: 775px) and (max-width: 1060px) {
+            width: 50%;
+        }
+
+        @media (max-width: 775px) {
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            padding: 10px 0 0;
+        }
+
+        .navbar-brand {
+
+            @media (max-width: 775px) {
+                float: none;
+                
+                img {
+                    display: inline-block;
+                }
+            }
+
+            img {
+                margin-top: -6px;
+                margin-left: 34px;
+                width: 75%;
+                max-width: 330px;
+
+                @media (max-width: 410px) {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+    .search-holder{
+        float: left;
+        /* margin-top: 10px; */
+        padding: 10px;
+        width: 25%;
+        position: relative;
+        top: -14px;
+        left: 58px;
+
+        @media (min-width: 1060px) and (max-width: 1240px) {
+            width: 24%;
+            left: 0;
+        }
+
+        @media (max-width: 775px) {
+            width: 100%;
+            margin-top: -12px;
+            left: 0;
+        }
+
+        .search-fb-holder{
+            margin: auto;
+            width: 230px;
+
+            .input-group {
+                display: block;
+                position: relative;
+                top: 20px;
+                margin: auto;
+
+                .form-control {
+                    height: 42px;
+
+                    &:focus {
+                        /* border-color: #66afe9; */
+                        outline: 0;
+                        -webkit-box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
+                        box-shadow: 0 0 10px rgba(5, 5, 5, 0.6);
+                    }
+                }
+
+                #query {
+                    background-color: #1E2325;
+                    border: 1px solid rgb(43, 49, 52);
+                    font-weight: 400;
+                    color: rgb(255, 255, 255);
+                }
+
+                ul.dropdown-menu {
+                    position: absolute;
+                    background-color: #1C2123;
+                    top: 100%;
+                    left: 0;
+                    z-index: 1000;
+                    display: none;
+                    float: left;
+                    min-width: 160px;
+                    padding: 3px 0;
+                    margin: 0;
+                    font-size: 14px;
+                    text-align: left;
+                    list-style: none;
+                    border: 1px solid #2F2F2F;
+                    border-radius: 0;
+                    -webkit-box-shadow: 0 6px 20px rgba(0,0,0,.875);
+                    box-shadow: 0 6px 20px rgba(0,0,0,.875);
+
+
+                    li {
+
+                        a {
+                            display: block;
+                            padding: 3px 20px;
+                            clear: both;
+                            font-weight: 400;
+                            line-height: 1.42857143;
+                            color: #CBCBCB;
+                            text-transform: none;
+                            white-space: nowrap;
+                            background-color: rgb(33, 34, 36);
+
+                            .dropdown-search{
+                                position: relative;
+                                top: -11px;
+                            }
+
+                            @include matchup-champion();
+
+                            .dropdown-img{
+                                margin-left: -9px;
+                                margin-right: 8px;
+                                margin-bottom: -4px;
+                                margin-top: 0px;
+                            }
+                        }
+                    }
+
+                    .active {
+
+                        a, a:hover, a:focus {
+                            color: #fff;
+                            text-decoration: none;
+                            background-color: #3FBB83;
+                            outline: 0;
+                        }
+                    }
+                }
+
+                .input-group-btn button{
+                    height: 42px;
+                    /* margin-bottom: 4px; */
+
+                    .glyphicon-search{
+                        color: rgb(43, 43, 43);
+                    }
+                }
+            }
+        }
+    }
+
+    .navigation-holder{
+        float: right;
+        padding: 10px;
+        padding-right: 0;
+        width: 38%;
+
+        @media (min-width: 1060px) and (max-width: 1240px) {
+            width: 44%;
+
+            .nav {
+                li {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        @media (min-width: 775px) and (max-width: 1060px) {
+            width: 100%;
+        }
+
+        @media (max-width: 775px) {
+            width: 100%;
+            padding: 0;
+        }
+
+        .analysis-holder{
+            margin: auto;
+            margin-top: 18px;
+            text-transform: capitalize;
+            /* width: 300px; */
+            color: #717777;
+            text-align: right;
+            padding-right: 20px;
+
+            @media (max-width: 1060px) {
+                text-align: center;
+                margin-top: 5px;
+                margin-bottom: -7px;
+            }
+
+            strong {
+                font-size: 1.2em;
+                color: #EDEDEF;
+                margin-left: 3px;
+                display: inline-block;
+            }
+
+            .spacer {
+                margin-left: 7px;
+                margin-right: 7px;
+            }
+        }
+    }
+}

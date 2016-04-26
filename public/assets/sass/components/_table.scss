@@ -1,0 +1,94 @@
+@mixin cell-styles {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: none;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.table-striped.table {
+
+    .first-column{
+        width: 37%
+    }
+
+    .second-column{
+        width: 21%
+    }
+
+    .third-column{
+        width: 21%
+    }
+
+    .fourth-column{
+        width: 21%
+    }
+
+    thead {
+
+        tr {
+            th {
+                @include cell-styles();
+                border-bottom: 1px solid rgb(43, 49, 52);
+            }
+
+            td {
+                @include cell-styles();
+            }
+        }
+    }
+
+    tbody {
+
+        tr {
+            th {
+                @include cell-styles();
+            }
+
+            td {
+                @include cell-styles();
+            }
+        }
+
+        tr:nth-child(odd) {
+            td, th {
+                background-color: #222425;
+            }
+        }
+    }
+
+    tfoot {
+
+        tr {
+            th {
+                @include cell-styles();
+            }
+
+            td {
+                @include cell-styles();
+            }
+        }
+    }
+}
+
+.summary-side {
+    .table-striped {
+        tbody {
+            tr {
+                td:first-child {
+                    color: #FFE08C;
+                    padding-left: 15px;
+                }
+            }
+
+            tr:nth-child(odd) {
+                th, td {
+
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,187 @@
+.summary {
+    /* margin-top: 45px; */
+    /* width: 98%; */
+    /* margin-bottom: 55px; */
+    padding-top: 15px;
+    /* background-color: rgba(24, 28, 29, 1); */
+    /* padding-bottom: 18px; */
+    /* padding-left: 1%; */
+    padding-right: 1%;
+    max-width: 1350px;
+    margin: auto;
+
+    .champion-list-header {
+        @include champion-list-header();
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+
+    .win-summary {
+        width: 36.75%;
+        padding: 1.25%;
+        float: left;
+
+        @media (max-width: 1267px) {
+            width: 58%;
+        }
+
+        @media (max-width: 900px) {
+            width: 100%;
+        }
+
+    }
+    .overall-summary {
+        width: 30.5%;
+        padding: 1.25%;
+        float: left;
+
+        @media (max-width: 1267px) {
+            width: 42%;
+        }
+
+        @media (max-width: 900px) {
+            width: 100%;
+        }
+    }
+
+    .change-summary {
+        width: 32.75%;
+        padding: 1.25%;
+        float: left;
+
+        @media (max-width: 1267px) {
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            width: 100%;
+        }
+    }
+
+    .table-striped {
+
+        thead, tbody {
+            tr {
+                th:nth-child(2), th:nth-child(3) {
+                    text-align: center;
+                }
+
+                td:nth-child(1), td:nth-child(2) {
+                    border-right: 1px solid rgb(43, 49, 52);
+                }
+
+                td:nth-child(2), td:nth-child(3) {
+                    position: relative;
+                }
+            }
+        }
+
+        thead {
+            tr {
+                .first-summary{
+                    width: 16%;
+                }
+                .second-summary{
+                    width: 42%;
+                }
+                .third-summary{
+                    width: 42%;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    a {
+                        @include matchup-champion();
+
+                        .matchup-champion {
+                            transform: scale(0.7);
+                            margin-left: -4px;
+                        }
+
+                        .champion-name {
+                            position: absolute;
+                            left: 42px;
+                            top: 11px;
+                            font-size: 1em;
+                            font-weight: 700;
+                            color: #E0E0E0;
+
+                            &:hover {
+                                color: #FCFF90;
+                            }
+                        }
+                    }
+
+                    .summary-value{
+                        background-color: rgb(27, 32, 33);
+                        right: 10px;
+                        position: absolute;
+                        top: 15px;
+                        font-size: 0.9em;
+                    }
+                }
+            }
+
+            tr:nth-child(odd) {
+                td {
+                    background-color: #191E1F;
+                }
+            }
+        }
+    }
+}
+
+#home {
+
+    .champion-list-header {
+        @include champion-list-header();
+        text-transform: uppercase;
+        margin-left: 50px;
+        margin-bottom: 10px;
+
+        @media (max-width: 775px) {
+            margin-left: 25px;
+        }
+    }
+
+    .champ-height {
+        min-height: 175px;
+        text-align: center;
+        width: 12%;
+        float: left;
+
+        @media (max-width: 775px) {
+            width: 18%;
+        }
+
+        @media (max-width: 600px) {
+            width: 24%;
+        }
+
+        @media (max-width: 495px) {
+            width: 32%;
+        }
+
+        .champ-index-img{
+            border-right: 1px solid rgb(43, 49, 52);
+
+            .home-champion{
+                width: 48px;
+                height: 48px;
+                margin: auto;
+                margin-bottom: 10px;
+                display: block;
+                position: relative;
+                transform: scale(1.25);
+            }
+
+            .champion-name {
+                @include champion-list-header();
+            }
+        }
+    }
+}
