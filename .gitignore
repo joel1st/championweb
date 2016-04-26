@@ -95,3 +95,6 @@ sftp-config.json
 
 # MacOS
 .DS_Store
+
+#Custom Deployment
+db.js
