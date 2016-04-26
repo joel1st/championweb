@@ -11,9 +11,16 @@ module.exports = function(grunt){
 					'logic/*.js',
 					'models/*.js',
 					'public/js/*.js',
-					'*.js'   
+					'*.js'
 				],
 				tasks: ['jshint']
+			},
+			css: {
+				files: ['public/assets/sass/**/*.scss'],
+				tasks: ['css'],
+				options: {
+					livereload: true
+				}
 			}
 		},
 		pkg: grunt.file.readJSON('package.json'),
@@ -25,7 +32,7 @@ module.exports = function(grunt){
 					'models/*.js',
 					'public/js/*.js',
 					'!public/js/master.min.js',
-					'*.js' 
+					'*.js'
 				],
 			options: {
 			// options here to override JSHint defaults
@@ -41,12 +48,12 @@ module.exports = function(grunt){
 		},
 		concat: {
 		    js: {
-		      	src: ['public/dist/js/angular.js', 'public/dist/js/angular-bootstrap.js', 
+		      	src: ['public/dist/js/angular.js', 'public/dist/js/angular-bootstrap.js',
 		      		'public/dist/js/dirDisqus.js', 'public/dist/js/chart.js',
 		      		'public/dist/js/tc-angular-chartjs.js', 'public/js/champion_data.js', 'public/js/chart_options.js', 'public/js/championgg_tooltip.js',
 		      		 'public/js/app.js', 'public/js/champion_page.js', 'public/js/matchup_page.js', 'public/js/statistics_page.js'],
 		      	dest: 'public/js/master.min.js'
-		    },
+		    }
 		},
 	    uglify: {
 			build:  {
@@ -60,9 +67,17 @@ module.exports = function(grunt){
 		        src: ['public/css/master.css', 'public/css/sprite.css'],
 		        dest: 'public/css/master.min.css'
 		    }
+    	},
+    	sass: {
+			dist: {
+				files: {
+					"public/css/master.css": "public/assets/sass/app.scss"
+				}
+			}
     	}
     });
-	
-	grunt.registerTask('production', ['concat', 'uglify','cssmin']);
+
+	grunt.registerTask('css', ['sass', 'cssmin']);
+	grunt.registerTask('production', ['concat', 'uglify', 'css']);
 	grunt.registerTask('default', []);
 };
