@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public'), {maxAge:86400000})); //on
 //pages
 //set cache headers for page now that we are utilizing cloudflare
 app.use(function(req, res, next){
-  res.setHeader('Cache-Control', 'public, max-age=60'); //cache pages for 1 minute, if needed I can purge cache from cloud flare
+  res.setHeader('Cache-Control', 'public, max-age=86400'); //cache pages for 1 minute, if needed I can purge cache from cloud flare
   next();
 });
 

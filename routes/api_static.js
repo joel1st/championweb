@@ -8,7 +8,7 @@ var router = express.Router();
  * Route set up for indepth mastery info.
  */
 router.get('/masteries/:id', function(req, res) {
-    res.setHeader('Cache-Control', 'public, max-age=180'); //cache masteries for 3 minutes.
+    res.setHeader('Cache-Control', 'public, max-age=86400'); //cache masteries for 3 minutes.
 
     var id = req.params.id;
     if(apiData.masteries.hasOwnProperty(id)){
