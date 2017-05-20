@@ -23,7 +23,7 @@
     <table class="table table-striped" id="table-1" style="table-layout: auto;">
       <thead id="original-header">
         <tr ng-class="{'down':determineOrder('down'),'up':determineOrder('up')}">
-          <td style="width:3%" ng-click="changeOrder()"><span>Rank</span></td>
+          <td style="width:3%" ng-click="changeOrder()"><span>#</span></td>
           <td ng-class="{'selected-column':determineSelected('title')}" style="width:10%;min-width:134px" ng-click="changeSelection('title')"><span>Champion</span></td>
           <td ng-class="{'selected-column':determineSelected('role')}" ng-click="changeSelection('role')"><span>Role</span></td>
           <td ng-class="{'selected-column':determineSelected('winPercent')}" ng-click="changeSelection('winPercent')"><span>Win Percent</span></td>
