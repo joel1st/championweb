@@ -1,0 +1,51 @@
+body {
+    font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #E0E0E0;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Roboto", "Helvetica Neue",Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff
+}
+
+h1 {
+    color: $theme-primary;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+h2 {
+    color: #FFED68;
+    font-size: 1.42em;
+    margin-top: 5px;
+    text-align: center;
+}
+
+a {
+    color: $theme-primary;
+
+    &:hover, &:focus {
+        color: #FCFF90;
+        /* text-decoration: underline; */
+    }
+}
+
+.glyphicon-arrow-up, .top-half, .green-death-arrow{
+    color: $theme-primary;
+}
+
+.glyphicon-arrow-up.Deaths-title{
+    color: $theme-danger;
+}
+
+.glyphicon-arrow-down, .bottom-half, .red-death-arrow{
+    color: $theme-danger;
+}
+
+.glyphicon-arrow-down.Deaths-title{
+    color: $theme-primary;
+}

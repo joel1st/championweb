@@ -1,0 +1,21 @@
+.tooltip-hover{
+    z-index:88888888888;
+    position:absolute;
+    opacity:0;
+    left:0;
+    right:0;
+    display:block;
+    text-align:center;
+    width:80%;
+    max-width:300px;
+    min-width:120px;
+    transition:opacity 0.2s;
+}
+
+.tooltip-hover > .primary-content{
+    padding:10px;
+    background-color:rgba(1,1,1,0.85);
+    color:white;
+    border-radius: 3px;
+    z-index:99999999;
+}

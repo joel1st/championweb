@@ -1,0 +1,61 @@
+body {
+    position: relative;
+    background: url('../img/bg.jpg');
+    background-color: #181c1c;
+
+    .primary-hue{
+        /* background-color: rgba(205, 255, 240, 0.04); */
+        /* max-width: 1400px; */
+        margin: auto;
+        /* background: url('../img/bg.jpg'); */;
+    }
+
+    .main-container{
+        max-width: 1400px;
+        width: 95%;
+        /* margin-top: 15px; */
+        margin: auto;
+        background-color: rgba(176, 219, 255, 0.03);
+        box-shadow: 0px 0px 15px rgba(0, 0, 20, 0.21);
+        border: 1px solid #121617;
+        /* border-left: 1px solid rgb(35, 42, 44); */
+        /* border-right: 1px solid rgb(35,42,44); */
+    }
+
+    /** XXS Breakpoint **/
+    @media (max-width: 600px) {
+
+        @for $i from 1 through 12 {
+            .col-xxs-#{$i} {
+                min-height: 1px;
+                padding-left: 15px;
+                padding-right: 15px;
+                position: relative;
+                width: 8.333333333333332% * $i;
+                float: left;
+            }
+
+            .col-xxs-push-#{$i} {
+                left: 8.333333333333332% * $i;
+            }
+
+            .col-xxs-pull-#{$i} {
+                right: 8.333333333333332% * $i;
+            }
+
+            .col-xxs-offset-1 {
+                margin-left: 8.333333333333332% * $i;
+            }
+        }
+
+    }
+
+    .visible-xxs{
+        display: none;
+
+        @media (max-width: 600px) {
+            display: block;
+        }
+    }
+
+}
