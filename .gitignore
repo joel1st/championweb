@@ -92,3 +92,9 @@ crashlytics-build.properties
 
 # sftp configuration file
 sftp-config.json
+
+# MacOS
+.DS_Store
+
+#Custom Deployment
+db.js

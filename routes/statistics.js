@@ -4,7 +4,6 @@ var produceError = require('../logic/produce_error.js');
 var express = require('express');
 var router = express.Router();
 router.get('/', function(req, res, next) {
-
     WebStatisticsPage.find({}, function(err, doc) {
         if (err) {
             return next(produceError('serverMaintenance', 503));
